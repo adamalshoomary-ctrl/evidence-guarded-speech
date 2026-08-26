@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "sample_id": "speech_sound_powered_non_held_out_adult_sample_v1",
+  "checkpoint": "22E4B",
+  "status": "sample_rules_frozen_before_the_sample_was_built",
+  "declared_before_the_sample_existed": true,
+  "purpose": "State, before any clip is selected, exactly which participants the checkpoint 22E4B powered replication may use. Checkpoint 22E4 measured every eligible lane against the frozen checkpoint 22D gates and recorded no_selection on a sample that used 8 of 77 available development adults and 4 of 25 available threshold tuning adults. This contract enlarges the participant sample and changes nothing else. It cannot establish pronunciation correctness, acceptable language variety, Australian performance, scientific validity, product readiness or a clinical conclusion.",
+  "declaration": {
+    "this_replaces_an_underpowered_estimate": true,
+    "whatever_this_produces_is_the_reported_result": true,
+    "a_repeat_until_something_passes_is_prohibited": true,
+    "reason": "The checkpoint 22E4 threshold tuning partition held 34 positive opportunities. The strongest candidate raised about fifteen concerns and needed twelve of them to be right, so a difference of two flags separated a pass from a fail. Two of the five gates, the Wilson lower bound and the minimum true positive count, are explicit sample size penalties. The sample size came from the checkpoint 22D compute budget rather than from a scientific argument, so the correct reading of no_selection is that the estimate was underpowered rather than that the method is settled.",
+    "single_reported_run": "This sample is prepared once and every eligible lane runs on it once, with the contract's two exact repeats. If a legitimate full rerun is ever required, it takes a new sample and report version; version 1.0 evidence is never silently replaced.",
+    "gates_may_be_changed": false,
+    "gate_evidence": "An exploratory analysis scored each of the five original SpeechOcean762 reviewers as though the reviewer were the candidate system, against the same four of five consensus and through the same frozen scoring code. Three of the five pass every gate on both partitions. The gates therefore sit at roughly competent human level and no result licenses lowering one."
+  },
+  "source_id": "speechocean762",
+  "split_source": {
+    "assignment_artifact": ".research_data/speech_sound_patterns/splits/speechocean762-v1.2.0.json",
+    "assignment_sha256": "8bb4fc723051b94525b75e91c0b5a89625e853bfcd023a21a45fde5207e80eb5",
+    "assignment_sha256_method": "corpus_manifest.canonical_json_sha256 of the whole assignment document, the same value the SpeechOcean762 corpus manifest already records",
+    "assignments_unchanged": true,
+    "participant_exclusive": true,
+    "reassignment_of_any_participant_prohibited": true
+  },
+  "sample_policy": {
+    "speechocean762": {
+      "development_participants_per_source_stratum": {
+        "source_adult_f": 43,
+        "source_adult_m": 34,
+        "source_child_f": 4,
+        "source_child_m": 4
+      },
+      "threshold_tuning_participants_per_source_stratum": {
+        "source_adult_f": 14,
+        "source_adult_m": 11,
+        "source_child_f": 2,
+        "source_child_m": 2
+      },
+      "clips_per_selected_participant": 20,
+      "source_strata": [
+        "source_adult_f",
+        "source_adult_m",
+        "source_child_f",
+        "source_child_m"
+      ]
+    }
+  },
+  "sample_shape": {
+    "adult_participants": {
+      "development": 77,
+      "threshold_tuning": 25,
+      "note": "every non held out adult in the corpus"
+    },
+    "child_participants": {
+      "development": 8,
+      "threshold_tuning": 4,
+      "note": "unchanged from the checkpoint 22D sample"
+    },
+    "adult_clips": 2040,
+    "child_clips": 240,
+    "speechocean_clips": 2280,
+    "checkpoint_22e4_adult_clips": 240,
+    "adult_clip_multiplier": 8.5
+  },
+  "held_out": {
+    "adult_participants_sealed": 26,
+    "child_participants_sealed": 24,
+    "held_out_access_allowed": false,
+    "unsealed_at": "22H",
+    "reason": "A powered development and tuning estimate is still not an evaluation. The held out participants remain the only untouched evidence and no outcome of this replication may open them."
+  },
+  "child_policy": {
+    "child_sample_enlarged": false,
+    "child_rows_used_for_selection_or_thresholds": false,
+    "child_rows_reported_as_diagnostics": true,
+    "reason": "The frozen gates are adult only, so a larger child sample could not change any pass or fail. The child sample is held at its checkpoint 22D size so the diagnostic class stays comparable, and its remaining low power is reported as a limitation rather than hidden. Owner decision, 2026-07-27."
+  },
+  "superset_claim": {
+    "is_superset_of_frozen_v1_0_0_sample": true,
+    "reason": "Participants are selected in the same deterministic stable key order within each split and stratum, so raising a count keeps every previously selected participant and appends the next ones. Every checkpoint 22E4 clip therefore reappears in this sample under a new safe identifier, and the private record identifier proves it.",
+    "verification_required": "every checkpoint 22E4 SpeechOcean private record id must be present in the powered sample before the sample is accepted"
+  },
+  "secondary_sources": {
+    "reused_unchanged_by_reference": [
+      "acted_clear_speech",
+      "common_phone_1_0",
+      "common_voice_26_australian_english"
+    ],
+    "clip_counts": {
+      "acted_clear_speech": 25,
+      "common_phone_1_0": 30,
+      "common_voice_26_australian_english": 30
+    },
+    "reason": "These sources supply non gate evidence only and their selection is unchanged, so the powered manifest points at the identical canonical files rather than making a second copy. Every referenced file is hash verified against the frozen manifest before the powered manifest is accepted.",
+    "may_enter_selection_gates": false
+  },
+  "truth_and_metric_rules": {
+    "inherited_unchanged_from": "benchmark-contract-v1.0.0.json",
+    "benchmark_contract_sha256": "cee5b9a2865ed704b91b8a7859419f9ad08141525c8d108862bb83518c3c415b",
+    "benchmark_contract_sha256_method": "file sha256, the same value the checkpoint 22E4 comparison contract pins",
+    "phone_map_path": "benchmark-phone-map-v1.0.0.json",
+    "expert_label_policy_changed": false,
+    "phone_scope_changed": false,
+    "alignment_changed": false,
+    "metric_definitions_changed": false,
+    "what_this_contract_changes": "the number of participants, and nothing else"
+  },
+  "selection_integrity": {
+    "selection_uses_labels_or_model_outputs": false,
+    "selection_seed": "speech_sound_patterns_benchmark_v1",
+    "seed_changed": false,
+    "sample_may_be_rebuilt_to_change_a_result": false
+  },
+  "release_boundaries": {
+    "normal_pipeline": false,
+    "candidate_artifact": false,
+    "coaching": false,
+    "personal_progress": false,
+    "scientific_release": false,
+    "product_release": false,
+    "screening": false,
+    "diagnosis": false,
+    "severity": false,
+    "cause": false,
+    "treatment": false
+  }
+}

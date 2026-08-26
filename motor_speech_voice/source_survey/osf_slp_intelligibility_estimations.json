@@ -1,0 +1,93 @@
+{
+  "source_id": "osf_slp_intelligibility_estimations",
+  "title": "Reliability and validity of speech language pathologists' estimations of intelligibility in dysarthria",
+  "citation": "Open Science Framework project sr9aw.",
+  "canonical_source": {
+    "landing_page": "https://osf.io/sr9aw/",
+    "terms_or_licence_url": "https://osf.io/sr9aw/"
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "United States English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "20 speakers with dysarthria, 70 naive listeners producing orthographic transcriptions, and 21 speech language pathologists producing visual analogue and percent estimates.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Assembled to study clinician estimation rather than to be reused as a reference corpus."
+    ]
+  },
+  "tasks_present": [
+    "read_sentences"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "intelligibility_multi_listener_transcription",
+    "independent_rater_or_annotator_count": 70,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "unresolved",
+    "failure_reasons": [
+      "Seventy unfamiliar listeners producing orthographic transcriptions is exactly the evidence shape item 23 names for intelligibility.",
+      "The project carries no licence at all, so no reuse permission exists to rely on and the rights question fails closed.",
+      "Whether the speaker audio itself is included could not be established without opening the project files."
+    ]
+  },
+  "access": {
+    "route": "open_direct_download",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_without_contact",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "The Open Science Framework API node record for sr9aw, queried 2026-08-19."
+    ],
+    "findings": [
+      "The project is public but the API returns no licence relationship and a null node licence, so nothing has been granted.",
+      "Public visibility is not a licence. Absent a grant, default copyright applies and this fails closed on rights.",
+      "This is the closest openly visible match for the intelligibility truth class, which makes its missing licence worth recording precisely rather than glossing."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_licence_unresolved",
+    "reasons": [
+      "No licence is assigned, so there is no permission to rely on."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "osf_slp_intelligibility_estimations_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

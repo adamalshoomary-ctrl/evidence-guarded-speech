@@ -1,0 +1,379 @@
+{
+  "schema_version": "1.0.0",
+  "review_id": "speech_sound_corpus_provider_transfer_review",
+  "review_version": "1.2.0",
+  "checkpoint": "22E4B",
+  "reviewed": "2026-07-27",
+  "scope_statement": "Every corpus manifest records governance.provider_transfer as requires_separate_provider_terms_review or blocked. This review is that separate step. It decides, for one named external lane and one named corpus at a time, whether a private copy of clips may be transmitted to that provider for developer benchmarking. It is an engineering record written by the implementing agent, not legal advice, and it does not grant any scientific or product release. Version 1.2.0 extends the same single permitted Azure and SpeechOcean762 pair from the checkpoint 22E4 frozen comparison to the checkpoint 22E4B powered replication, which needs every non held out adult speaker because the recorded no_selection rested on a sample of 8 of 77 development adults and 4 of 25 tuning adults. Nothing else changes: child speakers, held out speakers, Australian Common Voice, every other lane and all owner audio remain excluded exactly as before.",
+  "not_legal_advice": "This review records the licence text, provider terms and documentation the implementer read, with dates and sources, so the reasoning can be audited or overturned. Adam remains the decision maker for any commercial or legal risk.",
+  "principles": [
+    "a pair that is not listed here is prohibited; absence is never permission",
+    "a corpus whose manifest sets provider_transfer to blocked can never be listed as permitted",
+    "permission to transmit is not permission to publish results; publication rights are recorded separately in the provider register",
+    "transmit the smallest sample that answers the question; where a frozen gate must be passed separately on the development and the threshold tuning partitions, both of those partitions are the smallest sufficient sample and nothing beyond them is permitted",
+    "prefer adult speakers when a question can be answered without child speech",
+    "no personal or owner audio is covered by this review under any circumstance",
+    "a held out speaker is never transmitted, at any checkpoint, for any question"
+  ],
+  "personal_audio_statement": "Adam's own recordings in /audio are excluded from every decision in the decisions list below. No corpus decision permits sending owner or user audio to any external provider. Owner audio may leave the machine only through an explicit, separately recorded owner decision naming one exact file by hash, listed under owner_audio_decisions. Absence of such an entry is prohibition.",
+  "owner_audio_policy": {
+    "default": "prohibited",
+    "granting_authority": "Adam only, stated explicitly in the working session; never inferred from a general instruction to test or to use the system",
+    "scope_rule": "each grant covers one named file identified by SHA256, one named lane and one named purpose; it never generalises to other recordings, other lanes or later purposes",
+    "user_audio_rule": "no grant here may ever cover a recording of anyone other than Adam himself; third party or future user audio needs its own consent design and is outside this review"
+  },
+  "owner_audio_decisions": [
+    {
+      "decision_id": "accent_contrast_2026_07_25",
+      "evidence_class": "development_demonstration_only",
+      "file_path": "audio/accent/Accent Contrast Recording.m4a",
+      "file_sha256": "da530382502dafc3f27c0a9bb706df023a36eafe9f1d47dc1e33f413b277ecc4",
+      "granted": "2026-07-25",
+      "granted_by": "Adam, stated explicitly in the working session as you can use azure the full system, after being told that the transfer review otherwise excludes his own audio",
+      "lane_id": "azure_speech",
+      "limitations": [
+        "one speaker is not a population, so nothing here estimates Australian performance",
+        "a performed American accent is not a native American accent, so the American pass is not an American reference",
+        "neither pass carries expert human phone labels, so no production is known to be correct or incorrect",
+        "this can never become accuracy evidence, a threshold, a selection input, a validation or a gate result"
+      ],
+      "privacy_note": "Azure processes real time pronunciation assessment audio in server memory in australiaeast without retaining it, which is why this lane was the one Adam was asked about.",
+      "purpose": "Demonstrate how one external scorer's output moves when the same speaker reads the same eight sentences twice, once in his native Australian accent and once aiming at American, holding speaker, words and room constant. This isolates the variety effect that is otherwise tangled with speaker differences, and specifically tests whether the two control sentences of dialect stable consonants also move.",
+      "scope_note": "Covers this one file only, sent to Azure pronunciation assessment only, for this one demonstration. It does not permit sending any other owner recording, does not permit any other lane, and does not create a standing permission. Adam is the only speaker in this recording; no other person's voice is present.",
+      "single_use": true
+    }
+  ],
+  "decisions": [
+    {
+      "attribution_obligation": "Cite Zhang et al., SpeechOcean762, Interspeech 2021, and retain CC BY 4.0 attribution in every published aggregate result.",
+      "conditions": [
+        "checkpoint 22E3 transmitted the development split and the adult strata only",
+        "checkpoint 22E4 additionally permits the threshold tuning split, still the adult strata only, because the unchanged selection gates must be evaluated separately on development and on tuning",
+        "adult strata only; no child clip may be transmitted under this decision",
+        "no expert outcome, reviewer string or aggregate mispronunciation may be transmitted; only the audio and the intended reference text",
+        "no held out participant may ever be transmitted",
+        "overall, fluency, prosody, completeness and native likeness scores may be returned by the provider but may never be read into any comparison"
+      ],
+      "decision": "permitted",
+      "evidence": [
+        {
+          "claim": "SpeechOcean762 is released under CC BY 4.0 with commercial use permitted for its declared role",
+          "source": "speech_sound_patterns/corpus_manifests/speechocean762-v1.2.0.json",
+          "verified": "2026-07-25"
+        },
+        {
+          "claim": "CC BY 4.0 section 2(a)(1)(A) grants reproduction rights, and Share in section 1(k) means providing material to the public",
+          "source": "https://creativecommons.org/licenses/by/4.0/legalcode",
+          "verified": "2026-07-25"
+        },
+        {
+          "claim": "the customer is responsible for obtaining any licences, permissions or other proprietary rights required for content input into the speech service, and Microsoft processes it as the customer's third party cloud service processor",
+          "source": "https://learn.microsoft.com/en-us/legal/cognitive-services/speech-service/speech-to-text/data-privacy-security",
+          "verified": "2026-07-25"
+        },
+        {
+          "claim": "Microsoft does not retain or store data provided by customers when doing real time speech to text, fast transcription, pronunciation assessment and speech translation, and real time audio input is processed only in server memory with no data stored at rest",
+          "source": "https://learn.microsoft.com/en-us/legal/cognitive-services/speech-service/speech-to-text/data-privacy-security",
+          "verified": "2026-07-25"
+        },
+        {
+          "claim": "the Australia East resource is a Free F0 Speech tier, so the checkpoint 22E4 request volume carries negligible cost, and cost is not the reason for limiting the sample",
+          "source": "speech_sound_patterns/provider_register/provider-register-v1.1.0.json",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "azure_speech",
+      "licence_basis": "CC BY 4.0. Section 2(a)(1)(A) grants a worldwide, royalty free, irrevocable licence to reproduce and Share the licensed material in whole or in part. Transmitting a private copy to a processor acting on our behalf is a reproduction. It is not Share, which section 1 defines as providing material to the public, so the section 3(a)(1) attribution conditions, which apply if You Share the licensed material, are not triggered by the transmission itself. Attribution is retained in the corpus manifest regardless and will accompany any published result.",
+      "privacy_basis": "The corpus is a public research release. Real time pronunciation assessment audio is not retained or stored by Microsoft, and the resource is deployed in australiaeast. The corpus manifest prohibition on reidentification is unaffected because no speaker identity is transmitted, only a safe clip identifier held locally.",
+      "provider_terms_basis": "Microsoft requires the customer to hold the rights to content it inputs, which CC BY 4.0 supplies. Microsoft acts as the customer's third party cloud service processor and does not claim ownership of submitted audio.",
+      "sensitivity_notes": "SpeechOcean762 contains both adult and child second language speakers. Child clips are excluded from every transmission under this decision, at checkpoint 22E3 because the schema question did not need them and at checkpoint 22E4 because the frozen gates are adult only, so child speech cannot contribute to a threshold, a gate or a selection and transmitting it would buy nothing. The frozen sample holds only two positive child relations in development and four in tuning, so no child estimate from it could be trusted in any case.",
+      "source_id": "speechocean762"
+    },
+    {
+      "attribution_obligation": "Cite Catherine Mayo, Acted clear speech corpus, DOI 10.7488/ds/138, under CC BY 3.0.",
+      "conditions": [
+        "not used in checkpoint 22E3; permitted for later subcheckpoints only",
+        "results remain timing fixture evidence and never a population accuracy estimate"
+      ],
+      "decision": "permitted",
+      "evidence": [
+        {
+          "claim": "Acted Clear Speech is CC BY 3.0 with commercial use permitted for its declared fixture role",
+          "source": "speech_sound_patterns/corpus_manifests/acted-clear-speech-2013.json",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "azure_speech",
+      "licence_basis": "CC BY 3.0. The unported and Edinburgh DataShare release grants reproduction and distribution rights, so transmitting a private copy to a processor is permitted, and attribution is retained locally and in any published result.",
+      "privacy_basis": "Single consenting adult speaker in a published research release; no retention by Microsoft for real time requests.",
+      "provider_terms_basis": "Same Microsoft input rights and processor position as the SpeechOcean762 decision.",
+      "sensitivity_notes": "One adult speaker only. Its declared role is a phone boundary timing fixture, so any Azure result on this source remains timing and robustness evidence and can never become population accuracy.",
+      "source_id": "acted_clear_speech"
+    },
+    {
+      "attribution_obligation": "None required by licence. Provenance is retained in the corpus manifest regardless.",
+      "conditions": [
+        "not used in checkpoint 22E3; permitted for later subcheckpoints only",
+        "results remain system disagreement evidence and never substitution, deletion or insertion truth"
+      ],
+      "decision": "permitted",
+      "evidence": [
+        {
+          "claim": "Common Phone version 1.0 is released under CC0 1.0 with commercial use permitted",
+          "source": "speech_sound_patterns/corpus_manifests/common-phone-v1.0.json",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "azure_speech",
+      "licence_basis": "CC0 1.0. The rights holder waived copyright and related rights worldwide, so there is no licence restriction on reproducing or transmitting the recordings and no attribution condition.",
+      "privacy_basis": "Public release with no retention by Microsoft for real time requests. The corpus manifest prohibition on speaker reidentification and dataset rehosting is unaffected by a private processing request.",
+      "provider_terms_basis": "Same Microsoft input rights and processor position as the SpeechOcean762 decision.",
+      "sensitivity_notes": "Common Phone carries only automatic phone alignments, so any Azure output on it is system disagreement evidence, never phone relation truth. Common Phone also overlaps the Wav2Vec2 CommonPhone training lineage and 264 speakers shared with the Australian Common Voice package were already excluded.",
+      "source_id": "common_phone_1_0"
+    },
+    {
+      "attribution_obligation": "Cite Panayotov et al., LibriSpeech, ICASSP 2015, and retain CC BY 4.0 attribution.",
+      "conditions": [
+        "not used in checkpoint 22E3; permitted for later subcheckpoints only",
+        "results remain runtime and determinism evidence and never phone production truth"
+      ],
+      "decision": "permitted",
+      "evidence": [
+        {
+          "claim": "the selected LibriSpeech subsets are CC BY 4.0 with commercial use permitted for their declared regression role",
+          "source": "speech_sound_patterns/corpus_manifests/librispeech-slr12-small.json",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "azure_speech",
+      "licence_basis": "CC BY 4.0, with the same reproduction reasoning as the SpeechOcean762 decision.",
+      "privacy_basis": "Public read speech release from public domain audiobooks; no retention by Microsoft for real time requests.",
+      "provider_terms_basis": "Same Microsoft input rights and processor position as the SpeechOcean762 decision.",
+      "sensitivity_notes": "Adult read speech with no phone level human labels, so its role stays runtime and determinism regression only.",
+      "source_id": "librispeech_slr12_small"
+    },
+    {
+      "attribution_obligation": "Not applicable while transfer is blocked.",
+      "conditions": [
+        "no clip from this source may be transmitted to any external lane",
+        "Australian variety evidence for external lanes therefore does not exist and must be reported as missing"
+      ],
+      "decision": "not_permitted",
+      "evidence": [
+        {
+          "claim": "the Australian Common Voice manifest blocks provider transfer",
+          "source": "speech_sound_patterns/corpus_manifests/common-voice-26-australian-english.json",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "azure_speech",
+      "licence_basis": "The corpus manifest sets governance.provider_transfer to blocked. The Mozilla Data Collective access terms carry redistribution, reidentification and account termination duties that were not resolved for onward transmission to a commercial processor.",
+      "privacy_basis": "Not reached.",
+      "provider_terms_basis": "Not reached. The corpus side already fails, so provider terms are irrelevant.",
+      "sensitivity_notes": "This is the only Australian variety evidence in the stack, so its unavailability to external lanes is a real and recorded limitation of every external comparison, not an oversight.",
+      "source_id": "common_voice_26_australian_english"
+    },
+    {
+      "attribution_obligation": "Not reached.",
+      "conditions": [
+        "no audio may be transmitted until written benchmark and aggregate publication permission exists",
+        "written region, retention, deletion and training use answers must also exist",
+        "a real substitution response and documented deletion and insertion behavior must be observed before this lane can be treated as exact relation evidence"
+      ],
+      "decision": "not_permitted",
+      "evidence": [
+        {
+          "claim": "the ELSA lane is conditional with an unverified credential and five outstanding blockers",
+          "source": "speech_sound_patterns/provider_register/provider-register-v1.0.0.json",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "elsa_scripted_v3",
+      "licence_basis": "CC BY 4.0 would permit the reproduction, so the corpus side does not block this pair.",
+      "privacy_basis": "Processing region is the closest of Singapore, Ireland or United States East with no Australian region, retention is open ended at the provider's discretion with no audio specific deletion timeline, and aggregate anonymised usage data may be used to improve machine learning capabilities. None of these were answered in writing.",
+      "provider_terms_basis": "The provider side blocks it. No API token exists, the token is issued only after an NDA, and the master services agreement confidentiality clause makes comparative publication a negotiated written permission rather than a default right. A benchmark that cannot be reported has no engineering value.",
+      "sensitivity_notes": "Not reached.",
+      "source_id": "speechocean762"
+    },
+    {
+      "attribution_obligation": "Not reached.",
+      "conditions": [
+        "no audio may be transmitted until written benchmark and aggregate publication permission exists",
+        "written region, retention, deletion and training use answers must also exist",
+        "a real substitution response and documented deletion and insertion behavior must be observed before this lane can be treated as exact relation evidence"
+      ],
+      "decision": "not_permitted",
+      "evidence": [
+        {
+          "claim": "the ELSA lane is conditional with an unverified credential and five outstanding blockers",
+          "source": "speech_sound_patterns/provider_register/provider-register-v1.0.0.json",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "elsa_scripted_v3",
+      "licence_basis": "CC BY 3.0 would permit the reproduction, so the corpus side does not block this pair.",
+      "privacy_basis": "Processing region is the closest of Singapore, Ireland or United States East with no Australian region, retention is open ended at the provider's discretion with no audio specific deletion timeline, and aggregate anonymised usage data may be used to improve machine learning capabilities. None of these were answered in writing.",
+      "provider_terms_basis": "The provider side blocks it. No API token exists, the token is issued only after an NDA, and the master services agreement confidentiality clause makes comparative publication a negotiated written permission rather than a default right. A benchmark that cannot be reported has no engineering value.",
+      "sensitivity_notes": "Not reached.",
+      "source_id": "acted_clear_speech"
+    },
+    {
+      "attribution_obligation": "Not reached.",
+      "conditions": [
+        "no audio may be transmitted until written benchmark and aggregate publication permission exists",
+        "written region, retention, deletion and training use answers must also exist",
+        "a real substitution response and documented deletion and insertion behavior must be observed before this lane can be treated as exact relation evidence"
+      ],
+      "decision": "not_permitted",
+      "evidence": [
+        {
+          "claim": "the ELSA lane is conditional with an unverified credential and five outstanding blockers",
+          "source": "speech_sound_patterns/provider_register/provider-register-v1.0.0.json",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "elsa_scripted_v3",
+      "licence_basis": "CC0 1.0 places no restriction on the reproduction, so the corpus side does not block this pair.",
+      "privacy_basis": "Processing region is the closest of Singapore, Ireland or United States East with no Australian region, retention is open ended at the provider's discretion with no audio specific deletion timeline, and aggregate anonymised usage data may be used to improve machine learning capabilities. None of these were answered in writing.",
+      "provider_terms_basis": "The provider side blocks it. No API token exists, the token is issued only after an NDA, and the master services agreement confidentiality clause makes comparative publication a negotiated written permission rather than a default right. A benchmark that cannot be reported has no engineering value.",
+      "sensitivity_notes": "Not reached.",
+      "source_id": "common_phone_1_0"
+    },
+    {
+      "attribution_obligation": "Not reached.",
+      "conditions": [
+        "no audio may be transmitted until written benchmark and aggregate publication permission exists",
+        "written region, retention, deletion and training use answers must also exist",
+        "a real substitution response and documented deletion and insertion behavior must be observed before this lane can be treated as exact relation evidence"
+      ],
+      "decision": "not_permitted",
+      "evidence": [
+        {
+          "claim": "the ELSA lane is conditional with an unverified credential and five outstanding blockers",
+          "source": "speech_sound_patterns/provider_register/provider-register-v1.0.0.json",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "elsa_scripted_v3",
+      "licence_basis": "CC BY 4.0 would permit the reproduction, so the corpus side does not block this pair.",
+      "privacy_basis": "Processing region is the closest of Singapore, Ireland or United States East with no Australian region, retention is open ended at the provider's discretion with no audio specific deletion timeline, and aggregate anonymised usage data may be used to improve machine learning capabilities. None of these were answered in writing.",
+      "provider_terms_basis": "The provider side blocks it. No API token exists, the token is issued only after an NDA, and the master services agreement confidentiality clause makes comparative publication a negotiated written permission rather than a default right. A benchmark that cannot be reported has no engineering value.",
+      "sensitivity_notes": "Not reached.",
+      "source_id": "librispeech_slr12_small"
+    },
+    {
+      "attribution_obligation": "Not reached.",
+      "conditions": [
+        "no audio may be transmitted to this lane",
+        "reopening this lane requires a new explicit owner decision"
+      ],
+      "decision": "not_permitted",
+      "evidence": [
+        {
+          "claim": "Adam declined the iFLYTEK lane on reputational and unauditable privacy grounds before checkpoint 22E3 implementation began",
+          "source": "owner decision recorded in the checkpoint 22E3 working session",
+          "verified": "2026-07-25"
+        }
+      ],
+      "lane_id": "iflytek_ise_global",
+      "licence_basis": "CC BY 4.0 would permit the reproduction, so the corpus side does not block this pair.",
+      "privacy_basis": "Not reached. The recorded concerns remain that processing is in Singapore with lawful transfer out and affiliate sharing permitted, the retention promise is not independently auditable, and the policy permits use for continuous product development with no explicit training exclusion.",
+      "provider_terms_basis": "Not reached. Adam declined this lane on 2026-07-25 as the owner decision, so no audio is transmitted regardless of terms.",
+      "sensitivity_notes": "Not reached.",
+      "source_id": "speechocean762"
+    }
+  ],
+  "unlisted_pairs_are_prohibited": true,
+  "checkpoint_22e3_transmission_plan": {
+    "clip_count": 5,
+    "justification": "Five short adult development clips, each sent twice per locale, is the smallest sample that can both confirm which documented fields actually appear and show whether identical requests return identical responses. Child clips, tuning clips, held out clips and every other corpus are excluded because they are not needed to answer the schema question.",
+    "lanes_receiving_audio": [
+      "azure_speech"
+    ],
+    "locales": [
+      "en-AU",
+      "en-US"
+    ],
+    "project_split": "development",
+    "repeats_per_configuration": 2,
+    "source_id": "speechocean762",
+    "strata": [
+      "source_adult_f",
+      "source_adult_m"
+    ],
+    "total_requests": 20
+  },
+  "revised": "2026-07-27",
+  "supersedes": {
+    "note": "Versions 1.0.0 and 1.1.0 stay on disk unchanged as the record of what was decided before each earlier transmission. Both are still validated by the tests so a later edit cannot quietly rewrite that history. Nothing permitted there is withdrawn here, and nothing refused there is granted here.",
+    "path": "speech_sound_patterns/corpus_manifests/provider-transfer-review-v1.1.0.json",
+    "review_version": "1.1.0"
+  },
+  "checkpoint_22e4_transmission_plan": {
+    "approximate_audio_minutes_per_configuration": 16.5,
+    "clip_count": 240,
+    "justification": "The frozen selection gates must be evaluated separately on the development and the threshold tuning adult partitions, so both are required and neither can be dropped. Two repeats per configuration are required because the contract grants zero numeric tolerance and a provider that silently returns different numbers for an identical request must be caught rather than assumed stable. Both locales are sent because they are different models that must never be pooled: en-US is the only Azure configuration that names a produced phone, and en-AU is the only Azure configuration calibrated for Australian speech, so omitting either would remove evidence the checkpoint is meant to report. Child clips, held out clips, Australian Common Voice, the timing fixture, the Common Phone set and the LibriSpeech subset are all excluded because none of them is needed to answer this question.",
+    "lanes_receiving_audio": [
+      "azure_speech"
+    ],
+    "locales": [
+      "en-AU",
+      "en-US"
+    ],
+    "owner_decision": "Adam approved this volume explicitly in the working session on 2026-07-25 after being shown that it raises the transmitted sample from five clips to the full adult development and tuning set, and that both locales would be sent.",
+    "project_splits": [
+      "development",
+      "threshold_tuning"
+    ],
+    "repeats_per_configuration": 2,
+    "source_id": "speechocean762",
+    "strata": [
+      "source_adult_f",
+      "source_adult_m"
+    ],
+    "total_requests": 960,
+    "what_this_plan_does_not_permit": [
+      "sending any child clip",
+      "sending any held out clip",
+      "sending Australian Common Voice to any lane",
+      "sending anything to ELSA, iFLYTEK, SpeechAce, SpeechSuper or SoapBox",
+      "sending any recording of Adam or of any other person",
+      "treating any returned score as reference truth or as Australian truth"
+    ]
+  },
+  "checkpoint_22e4b_transmission_plan": {
+    "approximate_audio_hours_all_configurations": 9.72,
+    "approximate_audio_minutes_per_configuration": 145.9,
+    "clip_count": 2040,
+    "en_au_note": "Checkpoint 22E4 confirmed that en-AU names zero of its phone positions and therefore produced no scorable evidence at all. Sending it the powered sample cannot change that and is expected to reconfirm it. It is sent anyway by explicit owner decision, so the record shows every eligible lane measured on identical evidence.",
+    "justification": "The frozen selection gates must be evaluated separately on the development and the threshold tuning adult partitions, so both are required and neither can be dropped. Checkpoint 22E4 used a fraction of the adult speakers this project already holds and its outcome turned on 34 positive tuning opportunities and a difference of two flags, so the smallest sample that answers the powered question is every non held out adult. Two repeats per configuration are required because the contract grants zero numeric tolerance. Both locales are sent because they are different models that must never be pooled, and because the owner decided that every eligible lane receives the same powered sample so that no lane can be described as having been reduced after it failed to produce evidence. Child clips, held out clips, Australian Common Voice, the timing fixture, the Common Phone set and the LibriSpeech subset are all excluded because none of them is needed to answer this question.",
+    "lanes_receiving_audio": [
+      "azure_speech"
+    ],
+    "locales": [
+      "en-AU",
+      "en-US"
+    ],
+    "owner_decision": "Adam approved this volume explicitly on 2026-07-27, after being shown the audio hours, the Azure Australia East standard rate of A$1.4492 per audio hour, the resulting cost of about A$14, and the A$289.83 of account credit remaining. He also moved the Speech resource from the free F0 tier to standard S0 himself, because the free tier allows five audio hours a month and would have truncated the run.",
+    "project_splits": [
+      "development",
+      "threshold_tuning"
+    ],
+    "repeats_per_configuration": 2,
+    "source_id": "speechocean762",
+    "strata": [
+      "source_adult_f",
+      "source_adult_m"
+    ],
+    "supersedes_plan": "checkpoint_22e4_transmission_plan",
+    "total_requests": 8160,
+    "what_this_plan_does_not_permit": [
+      "sending any child clip",
+      "sending any held out clip",
+      "sending Australian Common Voice to any lane",
+      "sending anything to ELSA, iFLYTEK, SpeechAce, SpeechSuper or SoapBox",
+      "sending any recording of Adam or of any other person",
+      "treating any returned score as reference truth or as Australian truth"
+    ]
+  }
+}

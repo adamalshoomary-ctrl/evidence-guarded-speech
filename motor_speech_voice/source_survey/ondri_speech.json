@@ -1,0 +1,95 @@
+{
+  "source_id": "ondri_speech",
+  "title": "Ontario Neurodegenerative Disease Research Initiative motor speech recordings",
+  "citation": "Sunderland, K. M. et al. Characteristics of the Ontario Neurodegenerative Disease Research Initiative cohort. Alzheimer's & Dementia 19(1), 2023.",
+  "canonical_source": {
+    "landing_page": "https://ondri.ca/",
+    "terms_or_licence_url": null
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "Canadian English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "147 participants aged 55 to 85 at baseline, 122 at one year follow-up, across neurodegenerative disease groups.",
+    "age_band": "adults",
+    "clinical_status": "clinical",
+    "limitations": [
+      "A disease cohort recruited for a different longitudinal purpose.",
+      "Parkinson's disease participants were recorded in the optimal medication ON state, which is a controlled but non-representative condition."
+    ]
+  },
+  "tasks_present": [
+    "alternating_motion_rate",
+    "sequential_motion_rate"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "motor_task_accuracy_two_annotator",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": false,
+    "adjudication_defined": false,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "Syllable segmentation came from a Praat script that trained raters then corrected, so the human labels are corrections of a machine proposal rather than independent marking.",
+      "The paper states explicitly that inter-annotator agreement is not available, so annotator disagreement cannot be inspected.",
+      "Files were trimmed before analysis and the longest syllable train was selected, which is a preparation decision that the reference and any candidate would share."
+    ]
+  },
+  "access": {
+    "route": "application_and_review",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": true,
+    "account_required": true,
+    "agreement_signature_required": true,
+    "fee": null,
+    "state": "obtainable_only_after_contact_or_agreement",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Full text of the Computer Speech & Language paper describing the ONDRI and Sub-ONDRI annotation, read on 2026-08-19."
+    ],
+    "findings": [
+      "The Sub-ONDRI subgroup of five participants did receive two independent annotators, but five participants cannot support any measurement error or variation estimate.",
+      "The full ONDRI set was segmented at syllable level only, so it carries no voice onset time or vowel duration reference."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_truth_class",
+    "reasons": [
+      "Explicitly unavailable inter-annotator agreement means the reference cannot report its own uncertainty, which item 23 requires of every human reference.",
+      "Access needs an institutional application this project cannot make."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "ondri_speech_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

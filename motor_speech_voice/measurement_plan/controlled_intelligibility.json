@@ -1,0 +1,209 @@
+{
+  "candidate_id": "controlled_intelligibility",
+  "title": "Controlled intelligibility",
+  "register_lane": "functional",
+  "governance_lane": "controlled_intelligibility",
+  "related_governance_lanes": [
+    "motor_speech",
+    "general_speech"
+  ],
+  "register_row": {
+    "candidate": "Controlled intelligibility",
+    "narrowest_defensible_observation": "The relationship between an independently adjudicated production and words transcribed by multiple unfamiliar listeners under a fixed listening protocol",
+    "required_reference": "Intended prompt, independently adjudicated actual production and blinded listener-level transcriptions retained separately",
+    "disposition_23a": "Candidate independent outcome, not motor truth or cause"
+  },
+  "observation": {
+    "what_would_be_measured": "How much of what a person actually said gets through to listeners who do not know them, under a listening condition fixed in advance.",
+    "why_it_is_not_yet_a_measure": [
+      "Intelligibility is a property of a speaker, a listener, a message and a channel together. Attributing it to the speaker alone is the exact error the Clarity Prediction Challenge record was kept as a warning against, where a hearing aid algorithm and a listener's hearing loss would have been charged to the talker.",
+      "It answers a functional listener question and never a motor cause.",
+      "Three separate things must be distinguished and cannot be collapsed: what the prompt asked for, what the person actually produced, and what the listener heard. Only the third is the measurement."
+    ],
+    "claim_level": "measured_observation_candidate_not_selected"
+  },
+  "reference_requirement": {
+    "truth_class": "intelligibility_truth",
+    "substitutions_refused": [
+      "Automatic speech recognition confidence is not a listener.",
+      "One familiar listener is not several unfamiliar listeners, because familiarity is itself a large effect.",
+      "A clinician's estimate of intelligibility is a clinical judgement and a different truth class.",
+      "A consensus transcription destroys the between listener variation that is the measurement's own uncertainty."
+    ],
+    "public_availability": "sources_exist_none_lawfully_usable",
+    "source_survey_basis": [
+      "speech_accessibility_project",
+      "torgo",
+      "talkbank_phonbank_clinical",
+      "ua_speech",
+      "osf_slp_intelligibility_estimations",
+      "clarity_prediction_challenge"
+    ],
+    "consequence": "The survey found sources of the right shape and none this project may lawfully use. The largest permits commercial development and is blocked by a data use agreement needing an organisational countersignature, which is the missing legal entity blocking a route concretely. One openly visible collection carrying transcriptions from seventy unfamiliar listeners has no licence assigned at all, and public visibility is not a grant."
+  },
+  "estimand_shape": {
+    "question": "How much of the variation in listener transcription accuracy belongs to the speaker rather than to the listener, the stimulus or the listening condition.",
+    "unit_of_analysis": "participant_by_listener",
+    "comparison": "Speaker against speaker under a fixed listening condition, with listener and stimulus treated as separate facets rather than as noise.",
+    "status": "candidate_shape_not_selected"
+  },
+  "variance_components_to_separate": [
+    "between_participant",
+    "within_participant_between_session",
+    "between_listener",
+    "listener_by_speaker_interaction",
+    "between_prompt_or_stimulus",
+    "adaptation_or_familiarity_effect",
+    "between_room_or_environment",
+    "between_device",
+    "residual_unexplained"
+  ],
+  "required_statistician_inputs": [
+    {
+      "input": "How many listeners hear each speaker, how many speakers each listener hears, and whether the design is fully crossed or nested.",
+      "why_public_research_cannot_supply_it": "This is the central design decision of a listener study and it drives cost, burden and every variance component. It needs a statistician and a budget."
+    },
+    {
+      "input": "The listener adaptation control: how quickly listeners improve at understanding a given speaker, and how presentation order guards against it.",
+      "why_public_research_cannot_supply_it": "Adaptation size depends on the population and the material, and no pilot exists."
+    },
+    {
+      "input": "The scoring rule for a partially correct transcription, and how a listener's spelling, homophone choice or morphological guess is treated.",
+      "why_public_research_cannot_supply_it": "This belongs in a listener manual written by the relevant professionals."
+    },
+    {
+      "input": "How the independently adjudicated actual production is established, since intelligibility is scored against what was produced rather than against what was prompted.",
+      "why_public_research_cannot_supply_it": "Adjudicating actual production is itself a two annotator task with its own manual and its own cost."
+    },
+    {
+      "input": "The one primary estimand for the question, stated before any data exists, together with the secondary quantities that may be reported beside it.",
+      "why_public_research_cannot_supply_it": "An estimand follows from an intended benefit and an intended claim. Checkpoint 23B has neither: the draft intended use records that it does not yet identify a sufficiently concrete benefit or eventual human action."
+    },
+    {
+      "input": "Expected between-person and within-person variance for the quantity, from a pilot run under the same task and capture path.",
+      "why_public_research_cannot_supply_it": "No task is selected and no pilot has been run, so there is no variance to expect. Published variance from another protocol, population or capture path describes that study rather than this one."
+    },
+    {
+      "input": "The precision the study must reach, expressed as an acceptable confidence interval width for each reported quantity rather than as a target point estimate.",
+      "why_public_research_cannot_supply_it": "Acceptable precision is a consequence of the claim being made and the harm of being wrong. Both belong to the accountable governance roles."
+    },
+    {
+      "input": "The number of candidate questions being carried, and how multiplicity across them will be handled.",
+      "why_public_research_cannot_supply_it": "The construct register may be narrowed or rejected entirely by the governance group, so the count of questions is not yet fixed."
+    },
+    {
+      "input": "Expected withdrawal, partial task completion, unusable recordings and missing reference, as rates rather than as a contingency.",
+      "why_public_research_cannot_supply_it": "These depend on the recruited population, the burden of the final protocol and the capture path, none of which exist."
+    },
+    {
+      "input": "Recruitment feasibility, participant burden and the cost of each additional participant, rater or listener.",
+      "why_public_research_cannot_supply_it": "There is no sponsor, no budget ceiling and no recruitment route, so feasibility cannot be estimated."
+    }
+  ],
+  "agreement_and_reliability": {
+    "statistic_family": "transcription_based_accuracy",
+    "form_selection_inputs": [
+      "Whether the reported unit is one listener or a panel mean, since a panel mean is far more reliable than any member of it and the two must not be reported interchangeably.",
+      "Whether listeners are treated as a fixed panel or as a sample from a listener population the claim generalises to.",
+      "Whether the analysis models speaker and listener as crossed random effects rather than averaging listeners away first."
+    ],
+    "reporting_standards": [
+      "grras_reliability_and_agreement_reporting",
+      "generalisability_theory_multi_facet",
+      "cosmin_measurement_property_guidance"
+    ],
+    "notes": [
+      "Averaging listeners before analysis discards the listener variance component and makes the result look more precise than it is.",
+      "A speaker who is easy for one listener and hard for another is reporting a real interaction, not measurement error."
+    ],
+    "measurement_error_required": true
+  },
+  "missingness_and_abstention": {
+    "categories": [
+      "participant_withdrew",
+      "task_not_attempted",
+      "task_attempted_but_invalid",
+      "recording_quality_invalid",
+      "unsupported_context_or_variety",
+      "reference_missing_or_unresolved",
+      "reference_raters_disagreed_beyond_adjudication",
+      "consent_withdrawn_after_collection"
+    ],
+    "note": "A listener who withdraws mid session leaves an incomplete block, which is a design problem rather than a missing value to impute.",
+    "reported_separately": true
+  },
+  "split_and_clustering": {
+    "cluster_units": [
+      "listener",
+      "prompt_or_stimulus",
+      "site",
+      "repeated_session",
+      "device"
+    ],
+    "leakage_risks": [
+      "A listener who has already heard a speaker is no longer an unfamiliar listener for that speaker, so listeners are consumed by exposure and must be tracked across splits.",
+      "Reusing the same prompt sentences across development and evaluation lets a listener learn the material rather than the speaker.",
+      "A participant's sessions, attempts and recordings must move together. Splitting them puts the same person on both sides of a comparison and makes a memorised speaker look like a general result.",
+      "Anything inspected during checkpoint 23C feasibility work is permanently pilot and development evidence for that participant and their related household, session and repeated recordings.",
+      "Item 22 material is not reusable by default. Even development use needs a new lawful purpose, consent, rights and ethics decision, and an overlap register covering every repository source and participant."
+    ],
+    "minimum_split_unit": "participant"
+  },
+  "subgroup_and_representation": [
+    "listeners with normal hearing under a verified hearing screen",
+    "listener language background and familiarity with the speaker's variety",
+    "Australian English varieties the claim includes, including Aboriginal Englishes",
+    "multilingual adults and adults who speak English as an additional language",
+    "adults who cannot read the prompt, where a spoken alternative applies",
+    "disability, communication difference and assisted communication",
+    "gender-diverse voices and professional voice users",
+    "regional and remote participants and their capture conditions",
+    "device and capture-path strata the claim includes"
+  ],
+  "blockers": [
+    {
+      "blocker": "Every located source of the right shape is either non commercial, unlicensed, restricted to credentialed clinicians, about children, or blocked by an agreement requiring an organisational countersignature.",
+      "blocker_class": "reference_evidence_not_lawfully_usable"
+    },
+    {
+      "blocker": "No construct, task or measure is selected. Every lane in the checkpoint 23B governance contract remains unselected, and the register may be rejected in full.",
+      "blocker_class": "no_task_or_construct_selected"
+    },
+    {
+      "blocker": "No independent statistician is engaged, and the checkpoint requires the statistical plan to be prospectively received and reviewed by one.",
+      "blocker_class": "statistician_absent"
+    },
+    {
+      "blocker": "No pilot has been run, so no variance estimate exists to size anything against.",
+      "blocker_class": "no_pilot_variance"
+    },
+    {
+      "blocker": "The accountable professional and paid lived-experience governance roles are unfilled, and no external authority has been approached.",
+      "blocker_class": "professional_governance_absent"
+    },
+    {
+      "blocker": "There is no legal entity to sponsor collection, hold the data or sign an agreement, which the source survey already demonstrated as a concrete rather than formal obstacle.",
+      "blocker_class": "no_legal_entity"
+    },
+    {
+      "blocker": "No institution pathway or ethics review exists, and participant recording is prohibited until one does.",
+      "blocker_class": "ethics_review_absent"
+    }
+  ],
+  "sample_size": {
+    "method_candidates": [
+      "A generalisability theory decision study, which projects the reliability of a planned design by reweighting variance components measured in an earlier generalisability study, and so sizes the number of listeners and the number of items separately because each carries its own component. Lakes, K. D. and Hoyt, W. T. Applications of generalizability theory to clinical child and adolescent psychology research. Journal of Clinical Child and Adolescent Psychology, 2009, doi:10.1080/15374410802575461, open access and read at source. Brennan, R. L. Generalizability Theory, Springer 2001, is the standard reference text and was not opened here.",
+      "Bonett, D. G. Sample size requirements for estimating intraclass correlations with desired precision. Statistics in Medicine, 2002, doi:10.1002/sim.1108, applied to the listener facet where an averaged listener panel is the reported unit. Primary text not opened here."
+    ],
+    "prerequisites": [
+      "A fixed listening condition and stimulus set.",
+      "A pilot estimate of listener, speaker and interaction variance.",
+      "A decision on the crossed or nested listener design."
+    ],
+    "state": "not_computable_without_the_inputs_above",
+    "computed_value": null
+  },
+  "schema_version": "1.0.0",
+  "record_id": "controlled_intelligibility_measurement_inputs_v1",
+  "selected": false
+}

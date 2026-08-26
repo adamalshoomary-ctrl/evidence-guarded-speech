@@ -1,0 +1,46 @@
+{
+  "question_id": "clinical_decision_support_exemption",
+  "domain": "medical_device_regulation",
+  "question": "Could the clinical decision support exemption reduce the burden for any version of this project?",
+  "applies_to_purposes": [
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Therapeutic Goods Administration, Understanding clinical decision support system software regulation",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-clinical-decision-support-system-software-regulation",
+      "currency": "Retrieved 2026-08-19",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "If your software provides decision support directly to patients (or any non-health professional user) it also does not qualify for the exemption. ... With the rapid uptake of artificial intelligence and its growing incorporation into medical devices, it is important to understand that an AI-enabled CDSS will not meet the exemption criteria."
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Understanding clinical decision support system software regulation, exemption criteria",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-clinical-decision-support-system-software-regulation",
+      "currency": "Retrieved 2026-08-19",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "(a) is intended by its manufacturer to be for the sole purpose of providing or supporting a recommendation to a health professional about preventing, diagnosing, curing or alleviating a disease, ailment, defect or injury in persons; and (b) is not intended to directly process or analyse a medical image or signal from another medical device (including an in vitro diagnostic device); and (c) is not intended to replace the clinical judgement of a health professional in relation to making a clinical diagnosis or decision about the treatment of patients"
+    }
+  ],
+  "reading": [
+    "No. Three independent reasons close it, and any one would be enough.",
+    "The exemption is unavailable for software that provides decision support directly to patients or any non health professional user, which rules out every consumer facing design.",
+    "The regulator states plainly that an AI-enabled clinical decision support system will not meet the exemption criteria. This project is built on machine learning components throughout.",
+    "Criterion (a) requires the sole purpose of supporting a recommendation to a health professional, and the health professional definition may not include speech pathologists."
+  ],
+  "confidence": "clear_on_the_face_of_the_source",
+  "consequences": [
+    "There is no lighter regulatory route available by describing a future screening feature as decision support. That door is shut before the argument starts."
+  ],
+  "decided_by": [
+    "australian_regulatory_specialist"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "clinical_decision_support_exemption_reading_v1",
+  "conflicts": [],
+  "unresolved": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

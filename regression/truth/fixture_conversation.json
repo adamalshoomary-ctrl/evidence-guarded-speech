@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.1.0",
+  "fixture_id": "fixture_conversation",
+  "fixture_kind": "assembled_human_recording",
+  "audio": {
+    "path": "regression/fixtures/conversation.wav",
+    "sha256": "1158739c38d468969e50fbd1fc5f6b93425657978e574b58a476b9694471d966"
+  },
+  "reference": {
+    "source": "LibriSpeech dev-clean corpus metadata for speakers 1272 (John Rose), 1988 (Ransom), the deterministic assembly recorded in regression/fixtures/conversation-manifest.json, and an independent FFprobe container duration",
+    "annotator_role": "source corpus maintainers, whose speaker identities are carried through an assembly that adds no labels of its own",
+    "guide_version": "1.0.0",
+    "date": "2026-08-24",
+    "adjudication_status": "corpus_metadata_derived",
+    "independent_from_pipeline": true
+  },
+  "coverage": [
+    "recording identity by exact byte hash",
+    "conversation mode",
+    "two audible speakers",
+    "container duration"
+  ],
+  "limitations": [
+    "The recording is assembled from read audiobook utterances, so it carries no filled pauses, repetitions, false starts or repairs, and no measurement of those may be validated against it.",
+    "The conversation fixture is two readers taking turns, not a conversation. There is no overlap and no interruption, so turn taking and attribution under overlap are untested by it.",
+    "No exhaustive human word, pause, overlap or renderer event annotation exists for it. Those dimensions are evaluated against synthetic ground truth only.",
+    "It represents no population, and specifically not Australian English."
+  ],
+  "expectations": {
+    "artifact_checks": [
+      {
+        "artifact": "master.json",
+        "path": "meta.recording_type",
+        "value": "conversation"
+      },
+      {
+        "artifact": "master.json",
+        "path": "meta.num_speakers",
+        "value": 2
+      },
+      {
+        "artifact": "master.json",
+        "path": "meta.audio_duration_s",
+        "value": 123.89,
+        "tolerance": 0.05
+      },
+      {
+        "artifact": "audio_quality.json",
+        "path": "audio.byte_sha256",
+        "value": "1158739c38d468969e50fbd1fc5f6b93425657978e574b58a476b9694471d966"
+      }
+    ]
+  }
+}

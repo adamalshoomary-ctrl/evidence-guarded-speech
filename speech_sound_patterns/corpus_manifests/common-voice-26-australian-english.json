@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "common_voice_26_australian_english_manifest_v1",
+  "source_id": "common_voice_26_australian_english",
+  "title": "Common Voice Scripted Speech 26.0 Australian English",
+  "version": {
+    "label": "26.0 Australian English subset",
+    "release_date": "2026-07-20",
+    "immutable_id": "mdc_cmrt710620013mm071t45y6wb"
+  },
+  "citation": "Mozilla Data Collective Curators. Common Voice Scripted Speech 26.0 Australian English, dataset cmrt710620013mm071t45y6wb.",
+  "canonical_source": {
+    "landing_page": "https://mozilladatacollective.com/datasets/cmrt710620013mm071t45y6wb",
+    "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-21",
+    "account_required": true,
+    "terms_state": "accepted",
+    "terms_url": "https://mozilladatacollective.com/terms/consumers",
+    "terms_version": "2026-05-06",
+    "terms_snapshot_sha256": "1552eb9684a8127f157b1b54e77c3f7e95bce22a13718b0fb728b22caf3922cb"
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC0-1.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-21",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "australian_robustness_stress_test",
+      "asr_disagreement_stress_test",
+      "microphone_and_abstention_stress_test"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "phone_truth",
+      "australian_lexical_variant_truth",
+      "speaker_reidentification",
+      "dataset_rehosting"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/common_voice_26_au",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Do not rehost or re-share, do not attempt reidentification, maintain reasonable safeguards, and cease use or delete copies if required by account termination and the applicable dataset licence."
+  },
+  "population": {
+    "description": "Validated Australian English accented scripted speech subset with 55,922 clips from 804 self identified speakers in the supplied speaker disjoint splits.",
+    "known_strata": [
+      "source_train",
+      "source_dev",
+      "source_test",
+      "self_reported_australian_accent"
+    ],
+    "limitations": [
+      "Accent information is self reported context rather than phonetic truth.",
+      "Sentence validation does not prove every phone matched one pronunciation.",
+      "The subset does not provide Australian lexical pronunciation variants or phone timestamps."
+    ]
+  },
+  "annotation": {
+    "truth_class": "validated_sentence_audio",
+    "provenance": "Common Voice sentence prompts, listener validation votes and optional self reported metadata; no phone annotation.",
+    "fields_retained": [
+      "client_id_private",
+      "path_private",
+      "sentence_id",
+      "sentence",
+      "validation_votes",
+      "self_reported_accent_context",
+      "source_split"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "A validated sentence is suitable for robustness testing only.",
+      "Self reported demographic fields are optional and cannot create pronunciation truth."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "Authenticated API metadata inspected.",
+      "Downloaded archive SHA256 matched the API checksum.",
+      "train.tsv, dev.tsv and test.tsv fields, rows and client identifiers audited privately."
+    ],
+    "findings": [
+      "The package contains 52,984 train, 1,540 dev and 1,398 test clips.",
+      "The splits contain 754, 16 and 34 speakers respectively.",
+      "No client identifier appears in more than one supplied split."
+    ]
+  },
+  "participant_split": {
+    "status": "audited",
+    "unit": "participant",
+    "source_split_provenance": "The package supplies train, dev and test TSV files with zero client identifier overlap.",
+    "project_strategy": "Map source train to development, source dev to threshold tuning and source test to frozen held out evaluation.",
+    "frozen_held_out": true,
+    "assignment_artifact": ".research_data/speech_sound_patterns/splits/common-voice-26-au.json",
+    "assignment_sha256": "696863e5bbb9a5c02d42c23c1dcb3e57b995b03938faef6dda48d310c28c59f3",
+    "participant_counts": {
+      "development": 754,
+      "threshold_tuning": 16,
+      "held_out_evaluation": 34
+    },
+    "cross_split_overlap_count": 0,
+    "strata": {
+      "train": {
+        "development": 754,
+        "threshold_tuning": 0,
+        "held_out_evaluation": 0
+      },
+      "dev": {
+        "development": 0,
+        "threshold_tuning": 16,
+        "held_out_evaluation": 0
+      },
+      "test": {
+        "development": 0,
+        "threshold_tuning": 0,
+        "held_out_evaluation": 34
+      }
+    }
+  },
+  "lineage": {
+    "lineage_group": "common_voice",
+    "derived_from": [
+      "common_voice_26_english"
+    ],
+    "independence_claim": "not_independent_of_common_voice_family",
+    "duplicate_detection": "Private client and clip identifiers must be checked against every Common Voice derived source before assembly.",
+    "candidate_model_overlap_status": "unknown_requires_model_specific_audit"
+  },
+  "archives": [
+    {
+      "filename": "common-voice-scripted-speech-26-0-austra-c6a1c1a1.tar.gz",
+      "size_bytes": 2078906484,
+      "canonical_download_url": "https://mozilladatacollective.com/api/datasets/cmrt710620013mm071t45y6wb/download",
+      "upstream_checksum": {
+        "algorithm": "sha256",
+        "value": "bc463e2d37801637872c9f5c998ddab5944fdb1f609c1eb3af0bb58007d87ea9"
+      },
+      "local_sha256": "bc463e2d37801637872c9f5c998ddab5944fdb1f609c1eb3af0bb58007d87ea9",
+      "local_verification_status": "verified"
+    }
+  ]
+}

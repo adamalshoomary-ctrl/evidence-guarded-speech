@@ -1,0 +1,53 @@
+{
+  "question_id": "automated_decision_transparency_from_december_2026",
+  "domain": "privacy",
+  "question": "What changes on 10 December 2026 for software that makes decisions about people?",
+  "applies_to_purposes": [
+    "consumer_communication_coaching",
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Privacy and Other Legislation Amendment Act 2024 (Cth), Schedule 1 Part 15, inserting Australian Privacy Principle 1.7 into Schedule 1 of the Privacy Act 1988",
+      "url": "https://www.legislation.gov.au/C2024A00128/latest/text",
+      "currency": "Act No. 128 of 2024, as made 10 December 2024",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "1.7 Without limiting subclause 1.3, the APP privacy policy of an APP entity must contain the information covered by subclause 1.8 if: (a) the entity has arranged for a computer program to make, or do a thing that is substantially and directly related to making, a decision; and (b) the decision could reasonably be expected to significantly affect the rights or interests of an individual; and (c) personal information about the individual is used in the operation of the computer program to make the decision or do the thing that is substantially and directly related to making the decision."
+    },
+    {
+      "citation": "Privacy and Other Legislation Amendment Act 2024 (Cth), Schedule 1 Part 15, inserted Australian Privacy Principle 1.9",
+      "url": "https://www.legislation.gov.au/C2024A00128/latest/text",
+      "currency": "Act No. 128 of 2024, as made 10 December 2024",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "For the purposes of subclauses 1.7 and 1.8: (a) making a decision includes refusing or failing to make a decision; and (b) doing a thing includes refusing or failing to do a thing; and (c) a decision may affect the rights or interests of an individual, whether the rights or interests of the individual are adversely or beneficially affected ..."
+    }
+  ],
+  "reading": [
+    "From 10 December 2026 an Australian Privacy Principle entity whose software makes, or materially contributes to, decisions that could significantly affect a person's rights or interests must say so in its privacy policy and describe the kinds of information and decisions involved.",
+    "The obligation is a transparency one about the privacy policy. It does not prohibit automated decisions and does not create a right to human review.",
+    "Note that clause 1.9(c) covers beneficial as well as adverse effects, so a feature that helps someone is not outside it.",
+    "The current research makes no such decision, and the obligation binds Australian Privacy Principle entities, so it does not apply to a solo researcher covered by the non business exemption. It becomes live at exactly the point the project becomes a product operated by an entity."
+  ],
+  "confidence": "clear_on_the_face_of_the_source",
+  "unresolved": [
+    {
+      "question": "Whether a coaching output that changes what a person practises would be a decision that could reasonably be expected to significantly affect their rights or interests.",
+      "why_it_cannot_be_settled_here": "The threshold is untested and the regulator's detailed guidance on the new obligation had not been published when this was read.",
+      "who_must_settle_it": "An Australian privacy lawyer."
+    }
+  ],
+  "consequences": [
+    "The existing plan already requires the future privacy impact assessment to record whether any future feature crosses this boundary rather than waiting for release. This record supplies the exact test it must be recorded against."
+  ],
+  "decided_by": [
+    "australian_privacy_lawyer"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "automated_decision_transparency_from_december_2026_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

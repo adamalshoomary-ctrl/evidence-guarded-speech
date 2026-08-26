@@ -1,0 +1,194 @@
+{
+  "candidate_id": "rapid_syllable_task_accuracy",
+  "title": "Rapid syllable task accuracy",
+  "register_lane": "motor_task",
+  "governance_lane": "motor_speech",
+  "related_governance_lanes": [
+    "controlled_intelligibility"
+  ],
+  "register_row": {
+    "candidate": "Rapid syllable task accuracy",
+    "narrowest_defensible_observation": "Observable omissions, substitutions, additions, sequence breaks or incomplete performance under frozen scoring rules",
+    "required_reference": "Two blinded trained annotators and intended prompt",
+    "disposition_23a": "Priority supporting evidence; never a disorder label"
+  },
+  "observation": {
+    "what_would_be_measured": "Whether the syllables a person produced match the syllables the prompt asked for, counted under frozen rules, without any statement about why they differed.",
+    "why_it_is_not_yet_a_measure": [
+      "An error count is only meaningful against an intended prompt, and no prompt is selected.",
+      "The scoring rules that decide what counts as an omission, a substitution or a sequence break do not exist, and they change the number more than the speaker does.",
+      "Checkpoint 23A recorded that this can never become a disorder label. A person may depart from a prompt for reasons that have nothing to do with motor speech, including mishearing it, misreading it or choosing a different strategy."
+    ],
+    "claim_level": "measured_observation_candidate_not_selected"
+  },
+  "reference_requirement": {
+    "truth_class": "task_fidelity",
+    "substitutions_refused": [
+      "An automatic transcript cannot establish what a person intended to say, which is the same limit that makes ordinary pipeline recordings ineligible for item 22.",
+      "Elapsed file duration says nothing about whether the task was performed.",
+      "A diagnosis attached to the recording is population description, not a per attempt error count."
+    ],
+    "public_availability": "no_qualifying_public_source",
+    "source_survey_basis": [
+      "ewa_db",
+      "younger_nt_adults",
+      "ondri_speech"
+    ],
+    "consequence": "The survey found rapid syllable recordings in quantity and no source that marks task errors with two independent annotators. EWA-DB's manual annotation is corrected automatic transcription plus phenomenon tags; it marks no syllable boundary, count, onset or task error."
+  },
+  "estimand_shape": {
+    "question": "How often two trained annotators agree on whether a given attempt contained an observable departure from the prompt, and how far an algorithm agrees with their adjudicated result.",
+    "unit_of_analysis": "participant_by_attempt",
+    "comparison": "Algorithm against adjudicated human marking, and annotator against annotator, on the same attempts.",
+    "status": "candidate_shape_not_selected"
+  },
+  "variance_components_to_separate": [
+    "between_participant",
+    "within_participant_between_session",
+    "within_session_between_attempt",
+    "between_rater",
+    "rater_by_participant_interaction",
+    "between_prompt_or_stimulus",
+    "practice_or_order_effect",
+    "algorithm_or_model_version",
+    "residual_unexplained"
+  ],
+  "required_statistician_inputs": [
+    {
+      "input": "Whether accuracy is a binary judgement per attempt, a count of departures, or a category per departure type, because each needs a different agreement statistic.",
+      "why_public_research_cannot_supply_it": "This follows from the scoring manual, which does not exist and must be written by the relevant professionals."
+    },
+    {
+      "input": "The expected base rate of observable departures in the recruited population, since a rare category makes chance corrected agreement unstable.",
+      "why_public_research_cannot_supply_it": "The population frame is undecided and no pilot exists. Item 22 met this exact problem when its pre-search audit found one positive coarse target in development and none in tuning."
+    },
+    {
+      "input": "The one primary estimand for the question, stated before any data exists, together with the secondary quantities that may be reported beside it.",
+      "why_public_research_cannot_supply_it": "An estimand follows from an intended benefit and an intended claim. Checkpoint 23B has neither: the draft intended use records that it does not yet identify a sufficiently concrete benefit or eventual human action."
+    },
+    {
+      "input": "Expected between-person and within-person variance for the quantity, from a pilot run under the same task and capture path.",
+      "why_public_research_cannot_supply_it": "No task is selected and no pilot has been run, so there is no variance to expect. Published variance from another protocol, population or capture path describes that study rather than this one."
+    },
+    {
+      "input": "The precision the study must reach, expressed as an acceptable confidence interval width for each reported quantity rather than as a target point estimate.",
+      "why_public_research_cannot_supply_it": "Acceptable precision is a consequence of the claim being made and the harm of being wrong. Both belong to the accountable governance roles."
+    },
+    {
+      "input": "The number of candidate questions being carried, and how multiplicity across them will be handled.",
+      "why_public_research_cannot_supply_it": "The construct register may be narrowed or rejected entirely by the governance group, so the count of questions is not yet fixed."
+    },
+    {
+      "input": "Expected withdrawal, partial task completion, unusable recordings and missing reference, as rates rather than as a contingency.",
+      "why_public_research_cannot_supply_it": "These depend on the recruited population, the burden of the final protocol and the capture path, none of which exist."
+    },
+    {
+      "input": "Recruitment feasibility, participant burden and the cost of each additional participant, rater or listener.",
+      "why_public_research_cannot_supply_it": "There is no sponsor, no budget ceiling and no recruitment route, so feasibility cannot be estimated."
+    }
+  ],
+  "agreement_and_reliability": {
+    "statistic_family": "categorical_agreement",
+    "form_selection_inputs": [
+      "Whether categories are nominal or ordered, which decides whether disagreements are weighted.",
+      "Whether the same annotators mark every attempt, which decides which chance corrected coefficient applies.",
+      "The base rate of each category, because a high agreement figure on a rare category can be an artefact of the rate rather than of the annotators.",
+      "Whether raw agreement is reported beside the chance corrected figure, since the two answer different questions."
+    ],
+    "reporting_standards": [
+      "grras_reliability_and_agreement_reporting",
+      "cosmin_measurement_property_guidance"
+    ],
+    "notes": [
+      "Raw disagreement is data. It is preserved rather than replaced by an adjudicated label, because the disagreement rate is itself the ceiling on any later claim.",
+      "A category that no annotator ever assigns is reported as unobserved rather than as perfect agreement."
+    ],
+    "measurement_error_required": true
+  },
+  "missingness_and_abstention": {
+    "categories": [
+      "participant_withdrew",
+      "task_not_attempted",
+      "task_attempted_but_invalid",
+      "recording_quality_invalid",
+      "unsupported_context_or_variety",
+      "reference_missing_or_unresolved",
+      "reference_raters_disagreed_beyond_adjudication",
+      "algorithm_abstained",
+      "consent_withdrawn_after_collection"
+    ],
+    "note": "An attempt that was not performed as instructed is a task fidelity outcome, not a poor score. The two must never be merged, because merging them turns a misunderstood instruction into evidence about a person's speech.",
+    "reported_separately": true
+  },
+  "split_and_clustering": {
+    "cluster_units": [
+      "site",
+      "repeated_session",
+      "rater",
+      "prompt_or_stimulus"
+    ],
+    "leakage_risks": [
+      "Prompts must be grouped. An annotator or model that has seen the intended sequence can reconstruct it rather than observe it.",
+      "A participant's sessions, attempts and recordings must move together. Splitting them puts the same person on both sides of a comparison and makes a memorised speaker look like a general result.",
+      "Anything inspected during checkpoint 23C feasibility work is permanently pilot and development evidence for that participant and their related household, session and repeated recordings.",
+      "Item 22 material is not reusable by default. Even development use needs a new lawful purpose, consent, rights and ethics decision, and an overlap register covering every repository source and participant."
+    ],
+    "minimum_split_unit": "participant"
+  },
+  "subgroup_and_representation": [
+    "adults for whom the prompt language or syllable sequence is unfamiliar",
+    "Australian English varieties the claim includes, including Aboriginal Englishes",
+    "multilingual adults and adults who speak English as an additional language",
+    "adults who cannot read the prompt, where a spoken alternative applies",
+    "disability, communication difference and assisted communication",
+    "gender-diverse voices and professional voice users",
+    "regional and remote participants and their capture conditions",
+    "device and capture-path strata the claim includes"
+  ],
+  "blockers": [
+    {
+      "blocker": "No public source marks rapid syllable task errors with two independent annotators, so the reference must be created prospectively.",
+      "blocker_class": "no_reference_evidence_exists"
+    },
+    {
+      "blocker": "No construct, task or measure is selected. Every lane in the checkpoint 23B governance contract remains unselected, and the register may be rejected in full.",
+      "blocker_class": "no_task_or_construct_selected"
+    },
+    {
+      "blocker": "No independent statistician is engaged, and the checkpoint requires the statistical plan to be prospectively received and reviewed by one.",
+      "blocker_class": "statistician_absent"
+    },
+    {
+      "blocker": "No pilot has been run, so no variance estimate exists to size anything against.",
+      "blocker_class": "no_pilot_variance"
+    },
+    {
+      "blocker": "The accountable professional and paid lived-experience governance roles are unfilled, and no external authority has been approached.",
+      "blocker_class": "professional_governance_absent"
+    },
+    {
+      "blocker": "There is no legal entity to sponsor collection, hold the data or sign an agreement, which the source survey already demonstrated as a concrete rather than formal obstacle.",
+      "blocker_class": "no_legal_entity"
+    },
+    {
+      "blocker": "No institution pathway or ethics review exists, and participant recording is prohibited until one does.",
+      "blocker_class": "ethics_review_absent"
+    }
+  ],
+  "sample_size": {
+    "method_candidates": [
+      "Sample size methods for chance corrected agreement coefficients, which require the expected agreement, the expected category base rates and the desired confidence interval width. Sim, J. and Wright, C. C. The kappa statistic in reliability studies: use, interpretation, and sample size requirements. Physical Therapy, 2005, doi:10.1093/ptj/85.3.257. Citation confirmed against Crossref; primary text not opened here.",
+      "Bonett, D. G. Sample size requirements for estimating intraclass correlations with desired precision. Statistics in Medicine, 2002, where the outcome is treated as continuous."
+    ],
+    "prerequisites": [
+      "A written scoring manual with fixed departure categories.",
+      "A pilot estimate of each category's base rate.",
+      "A decision on double marking coverage."
+    ],
+    "state": "not_computable_without_the_inputs_above",
+    "computed_value": null
+  },
+  "schema_version": "1.0.0",
+  "record_id": "rapid_syllable_task_accuracy_measurement_inputs_v1",
+  "selected": false
+}

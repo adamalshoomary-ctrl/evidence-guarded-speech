@@ -1,0 +1,69 @@
+{
+  "question_id": "queensland_recording_and_publication",
+  "domain": "recording_and_surveillance_law",
+  "question": "What does Queensland law permit when recording a person's speech, and what does it permit afterwards?",
+  "applies_to_purposes": [
+    "developer_research_only"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Invasion of Privacy Act 1971 (Qld), section 43",
+      "url": "https://www.legislation.qld.gov.au/view/pdf/inforce/current/act-1971-050",
+      "currency": "Current as at 1 July 2024",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "(1) A person is guilty of an offence against this Act if the person uses a listening device to overhear, record, monitor or listen to a private conversation and is liable on conviction on indictment to a maximum penalty of 40 penalty units or imprisonment for 2 years. (2) Subsection (1) does not apply, (a) where the person using the listening device is a party to the private conversation ..."
+    },
+    {
+      "citation": "Invasion of Privacy Act 1971 (Qld), section 45",
+      "url": "https://www.legislation.qld.gov.au/view/pdf/inforce/current/act-1971-050",
+      "currency": "Current as at 1 July 2024",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "(1) A person who, having been a party to a private conversation and having used a listening device to overhear, record, monitor or listen to that conversation, subsequently communicates or publishes to any other person any record of the conversation made, directly or indirectly, by the use of the listening device or any statement prepared from such a record is guilty of an offence against this Act and is liable on conviction on indictment to a maximum penalty of 40 penalty units or imprisonment for 2 years. (2) Subsection (1) does not apply where the communication or publication, (a) is made to another party to the private conversation or with the consent, express or implied, of all other parties to the private conversation ..."
+    },
+    {
+      "citation": "Penalties and Sentences Regulation 2025 (Qld), section 4",
+      "url": "https://www.legislation.qld.gov.au/view/pdf/inforce/current/sl-2025-0106",
+      "currency": "Current as at 1 July 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "For section 5A(1) of the Act, the value prescribed is $172.70."
+    }
+  ],
+  "reading": [
+    "Recording and sharing are two separate questions with two separate answers, and the second is the one that bites on a research pipeline.",
+    "Section 43(2)(a) permits a party to a private conversation to record it. That is the well known position and it is about recording only.",
+    "Section 45(1) then makes it an offence for that same party to communicate or publish the record to any other person, unless all other parties consented. Handing recordings to trained annotators or listeners is on its face communicating a record to another person.",
+    "Section 45(1) expressly extends to any statement prepared from such a record, so transcripts and derived documents are caught too, not only the audio.",
+    "There is a prior question. Whether a recorded research session is a private conversation at all depends on the section 4 definition, which excludes circumstances in which a person ought reasonably to expect the words may be recorded. A properly consented research recording may fall outside the definition entirely, which would make both sections moot.",
+    "At the current prescribed value of $172.70 per penalty unit, the 40 penalty unit maximum is $6,908, or two years imprisonment. This arithmetic is the reader's own; the value and the unit count are quoted above."
+  ],
+  "confidence": "reading_with_material_uncertainty",
+  "unresolved": [
+    {
+      "question": "Whether a consented research recording session is a private conversation within the section 4 definition.",
+      "why_it_cannot_be_settled_here": "It turns on the circumstances and on the actual consent documents, which do not exist.",
+      "who_must_settle_it": "A Queensland lawyer, reading the final consent materials."
+    },
+    {
+      "question": "Whether Queensland has enacted surveillance devices legislation replacing this Act.",
+      "why_it_cannot_be_settled_here": "The 1971 Act was confirmed still in force in its 1 July 2024 form, and a research pass reported secondary commentary about a reform proposal that could not be confirmed at the Queensland legislation register. The question is recorded as open rather than answered either way.",
+      "who_must_settle_it": "A Queensland lawyer."
+    }
+  ],
+  "consequences": [
+    "Consent must cover onward communication to annotators and listeners, not only the act of recording. A consent form that only permits recording could leave the annotation step exposed.",
+    "This is a criminal provision applying to a natural person. It has no entity requirement and no turnover threshold, so it applies to Adam personally today."
+  ],
+  "decided_by": [
+    "queensland_lawyer",
+    "owner"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "queensland_recording_and_publication_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

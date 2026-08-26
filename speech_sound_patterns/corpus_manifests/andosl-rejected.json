@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "andosl_manifest_v1",
+  "source_id": "andosl",
+  "title": "Australian National Database of Spoken Language",
+  "version": {
+    "label": "collection record as published on Research Data Australia",
+    "release_date": "1990s",
+    "immutable_id": "research_data_australia_record_124997"
+  },
+  "citation": "Millar, J. Bruce et al. The Australian National Database of Spoken Language. Research Data Australia collection record 124997.",
+  "canonical_source": {
+    "landing_page": "https://researchdata.edu.au/australian-national-database-spoken-language/124997",
+    "licence_url": "https://researchdata.edu.au/australian-national-database-spoken-language/124997"
+  },
+  "access": {
+    "state": "rejected",
+    "retrieved_at": null,
+    "account_required": false,
+    "terms_state": "rejected",
+    "terms_url": "https://researchdata.edu.au/australian-national-database-spoken-language/124997",
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "restricted_role_only",
+    "spdx_id": null,
+    "commercial_use_permitted": false,
+    "verified_at": "2026-07-29",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "manifest_only"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "commercial_product_engineering",
+      "use_without_written_permission"
+    ],
+    "raw_data_committed": false,
+    "local_storage": null,
+    "rehosting_permitted": null,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Do not acquire, retain, upload or process source data while the recorded rights state blocks use."
+  },
+  "population": {
+    "description": "Australian English recordings with phonetic, phonemic and word level annotation across documented Australian accent groups.",
+    "known_strata": [],
+    "limitations": [
+      "The published rights statement permits private research and study only, so commercial product engineering is prohibited.",
+      "No distribution host serves the collection any more, so there is no acquisition route even if the rights changed.",
+      "An accent group label describes a speaker and never licenses a judgement about one."
+    ]
+  },
+  "annotation": {
+    "truth_class": "unavailable",
+    "provenance": "No annotations acquired; the public collection record was read.",
+    "fields_retained": [],
+    "original_records_retained": false,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "No source record may enter engineering while access or rights remain blocked."
+    ]
+  },
+  "capability_audit": {
+    "status": "blocked_or_pending",
+    "inspected_materials": [
+      "Research Data Australia collection record 124997, read 2026-07-29.",
+      "Domain name and HTTP reachability of the former ANDOSL host, checked 2026-07-29."
+    ],
+    "findings": [
+      "The rights statement reserves all rights and permits private research and study only, with any other use requiring permission. Commercial use is prohibited.",
+      "Intellectual property is owned by Macquarie University and the collection is managed by Associate Professor Steve Cassidy.",
+      "andosl.anu.edu.au still carries a domain name alias chain to an Australian National University address, but nothing answers on port 80 or 443. The earlier record that it no longer resolves was imprecise; the conclusion that it is unreachable holds.",
+      "The owner declined acquisition enquiries on 2026-07-28, so the permission route is closed by decision as well as by licence."
+    ]
+  },
+  "participant_split": {
+    "status": "not_applicable",
+    "unit": null,
+    "source_split_provenance": "No source participant data is acquired or approved.",
+    "project_strategy": "no_data_use_until_rights_change",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {}
+  },
+  "lineage": {
+    "lineage_group": "andosl",
+    "derived_from": [],
+    "independence_claim": "no_evidence_claim_permitted",
+    "duplicate_detection": "Required if rights later permit acquisition.",
+    "candidate_model_overlap_status": "not_applicable"
+  },
+  "archives": []
+}

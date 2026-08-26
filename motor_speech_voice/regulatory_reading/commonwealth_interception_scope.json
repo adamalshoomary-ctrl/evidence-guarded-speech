@@ -1,0 +1,45 @@
+{
+  "question_id": "commonwealth_interception_scope",
+  "domain": "recording_and_surveillance_law",
+  "question": "Does Commonwealth interception law apply to recording speech on a local device?",
+  "applies_to_purposes": [
+    "developer_research_only"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Telecommunications (Interception and Access) Act 1979 (Cth), section 6(1)",
+      "url": "https://www.legislation.gov.au/C2004A02124/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "For the purposes of this Act (other than Schedule 1), but subject to this section, interception of a communication passing over a telecommunications system consists of listening to or recording, by any means, such a communication in its passage over that telecommunications system without the knowledge of the person making the communication."
+    },
+    {
+      "citation": "Telecommunications (Interception and Access) Act 1979 (Cth), section 7(1)",
+      "url": "https://www.legislation.gov.au/C2004A02124/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "A person shall not: (a) intercept; (b) authorize, suffer or permit another person to intercept; or (c) do any act or thing that will enable him or her or another person to intercept; a communication passing over a telecommunications system."
+    }
+  ],
+  "reading": [
+    "No. The prohibition is confined to a communication passing over a telecommunications system, and the definition of interception requires the recording to happen in its passage over that system.",
+    "Recording a person speaking into a microphone in the same room does not meet the definition, so Queensland law rather than Commonwealth interception law is the operative rule.",
+    "This changes if a session is ever conducted over a phone or voice call and recorded in transit, which would need its own reading."
+  ],
+  "confidence": "clear_on_the_face_of_the_source",
+  "consequences": [
+    "This closes an open item the engineering plan lists, which required legal review to map Commonwealth interception questions. The reading narrows that to the case where capture happens over a call."
+  ],
+  "decided_by": [
+    "queensland_lawyer"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "commonwealth_interception_scope_reading_v1",
+  "conflicts": [],
+  "unresolved": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

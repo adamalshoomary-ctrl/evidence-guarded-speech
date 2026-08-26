@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0.0",
+  "repair_id": "speech_sound_patterns_contextual_calibration_repair_v1",
+  "status": "rules_frozen_before_contextual_calibration",
+  "purpose": "Test whether legitimate expected-phone context and model-evidence categories can separate systematic recognizer confusions from adult expert relation concerns. This is a developer-review candidate comparison only.",
+  "prior_repair": {
+    "contract_path": "benchmark-repair-contract-v1.0.0.json",
+    "contract_sha256": "3da9d53ccde6b5ba6155522077db7df4dd09f1164616216c04b5dab9b63d1a18",
+    "decision": "no_system_or_threshold_selected",
+    "reason": "numeric_only_calibration_did_not_meet_frozen_precision_recall_and_false_concern_gates",
+    "may_be_rewritten": false
+  },
+  "input_policy": {
+    "expected_only_manifest_sha256": "c918feffa7c0a3a3fa99ce7a9e028621e8fb002980777297f30088e5975331da",
+    "ctc_process_sha256": "20caf67e749e76326b3d95064aae669559f14b63802aebb8e60465681c141773",
+    "allowed_project_splits": [
+      "development",
+      "threshold_tuning"
+    ],
+    "held_out_access_allowed": false,
+    "child_labels_used_for_training_or_thresholds": false,
+    "candidate_inputs_only": true
+  },
+  "feature_policy": {
+    "numeric_features_from_prior_repair": true,
+    "numeric_preprocessing": "fixed_missing_value_then_development_fold_standardization",
+    "categorical_features": [
+      "expected_arpabet",
+      "word_position",
+      "previous_expected_arpabet",
+      "next_expected_arpabet",
+      "greedy_alignment_relation_type",
+      "best_competing_consonant",
+      "expected_competing_pair"
+    ],
+    "categorical_preprocessing": {
+      "encoding": "one_hot",
+      "handle_unknown": "ignore",
+      "minimum_frequency": 5,
+      "fitted_on": "development_training_fold_only"
+    },
+    "participant_identity_feature_allowed": false,
+    "source_sex_feature_allowed": false,
+    "word_identity_feature_allowed": false,
+    "reviewer_outcome_feature_allowed": false,
+    "tuning_may_change_features": false
+  },
+  "model_comparison": {
+    "selection_metric": "four_fold_participant_grouped_development_average_precision",
+    "tie_break_order": [
+      "higher_average_precision",
+      "simpler_model_family_order",
+      "lexicographically_smaller_hyperparameters"
+    ],
+    "fixed_random_state": 2204,
+    "class_weight": "balanced",
+    "candidate_families": [
+      {
+        "family": "l2_logistic_regression",
+        "family_order": 1,
+        "hyperparameters": {
+          "c": [
+            0.01,
+            0.1,
+            1.0,
+            10.0
+          ],
+          "solver": "liblinear",
+          "max_iter": 2000
+        }
+      },
+      {
+        "family": "histogram_gradient_boosting",
+        "family_order": 2,
+        "hyperparameters": {
+          "learning_rate": 0.05,
+          "max_iter": 200,
+          "max_leaf_nodes": [
+            7,
+            15
+          ],
+          "l2_regularization": [
+            1.0,
+            10.0
+          ],
+          "min_samples_leaf": 20
+        }
+      },
+      {
+        "family": "random_forest",
+        "family_order": 3,
+        "hyperparameters": {
+          "n_estimators": 500,
+          "max_depth": [
+            3,
+            5
+          ],
+          "min_samples_leaf": [
+            10,
+            25
+          ],
+          "max_features": "sqrt",
+          "n_jobs": 1
+        }
+      }
+    ],
+    "training_split": "development",
+    "threshold_split": "threshold_tuning",
+    "coefficients_or_trees_refit_after_tuning": false
+  },
+  "threshold_policy": {
+    "grid_minimum": 0.0,
+    "grid_maximum": 1.0,
+    "grid_step": 0.01,
+    "selection": "highest_tuning_recall_meeting_all_development_out_of_fold_and_tuning_gates_then_highest_precision_then_highest_threshold"
+  },
+  "selection_gates": {
+    "minimum_precision_point_estimate": 0.75,
+    "minimum_precision_wilson_95_lower": 0.5,
+    "maximum_false_concerns_per_scorable_opportunity": 0.01,
+    "minimum_recall": 0.2,
+    "minimum_true_positives": 7,
+    "same_input_target_features_exact": true,
+    "every_tuning_participant_reported": true,
+    "failure_behavior": "no_system_or_threshold_selected"
+  },
+  "population_policy": {
+    "eligible_population": "source_adults_only",
+    "children": "unavailable_insufficient_positive_reference_opportunities",
+    "insertions": "unavailable_no_positive_consensus_examples",
+    "held_out": "sealed_for_checkpoint_22H"
+  },
+  "release_boundaries": {
+    "normal_pipeline": false,
+    "candidate_artifact": false,
+    "coaching": false,
+    "personal_progress": false,
+    "scientific_release": false,
+    "product_release": false,
+    "screening": false,
+    "diagnosis": false,
+    "severity": false,
+    "cause": false,
+    "treatment": false
+  }
+}

@@ -1,0 +1,852 @@
+{
+  "schema_version": "1.1.0",
+  "register_id": "speech_sound_provider_register",
+  "register_version": "1.2.0",
+  "checkpoint": "22E3",
+  "updated": "2026-07-25",
+  "secrets_policy": "credentials are referenced by gitignored .env variable name only; no secret value, account password, multifactor code or recovery code may ever appear in this register",
+  "lanes": [
+    {
+      "lane_id": "azure_speech",
+      "display_name": "Microsoft Azure AI Speech pronunciation assessment",
+      "kind": "external_api",
+      "role": "core_external_score_comparator",
+      "status": "ready",
+      "reason": "Australia East resource exists, its credential authenticated, and the checkpoint 22E3 schema smoke test confirmed on real responses that en-AU returns per position phoneme accuracy scores whose phone name fields are emitted empty, while en-US with the IPA alphabet returns named expected phones and named scored candidate phones. Public Microsoft Online Services terms permit comparative benchmarking and publication. en-AU is score evidence only and en-US named phones remain a separate dialect limited evidence class, never Australian truth.",
+      "audio_policy": "corpus_transfer_review_required",
+      "eligible_sources": [
+        "speechocean762",
+        "acted_clear_speech",
+        "common_phone_1_0",
+        "librispeech_slr12_small"
+      ],
+      "output_semantics": "Phone naming is gated by locale alone, not by request settings. On one identical public corpus clip, en-AU returned zero named phones out of 17 positions under the IPA alphabet, the SAPI alphabet and the default, and en-GB returned zero as well, while en-US returned 17 of 17 named under both SAPI and IPA. en-AU therefore emits Phoneme, NBestPhonemes[].Phoneme and Syllables[].Syllable as empty strings alongside real AccuracyScore values: it is a genuine Australian calibrated scorer, not a stub, but it cannot name a produced sound. en-US with PhonemeAlphabet IPA and NBestPhonemeCount five returns named expected phones, five named and scored candidate phones per position, syllable groups with graphemes and word ErrorType values including Omission and Insertion. Locales must never be pooled and en-US produced phone output may inform dialect stable consonant relations only.",
+      "permissions": {
+        "benchmark_publication": "permitted_by_public_terms",
+        "evidence": [
+          {
+            "claim": "Universal License Terms for Online Services contain no approval requirement for benchmarking; the Competitive Benchmarking clause imposes only reciprocal duties on customers offering competing services",
+            "source": "https://www.microsoft.com/licensing/terms/product/ForOnlineServices/all",
+            "verified": "2026-07-23"
+          }
+        ]
+      },
+      "privacy": {
+        "processing_region": "australiaeast; Azure Speech does not store or process data outside the resource region",
+        "retention": "real-time pronunciation assessment audio is processed in server memory and not retained",
+        "training_use": "Microsoft documents no retention for real time pronunciation assessment and positions itself as the customer's third party cloud service processor. No documented training use of real time customer audio was found. This is recorded as no documented training use rather than as a positive contractual exclusion."
+      },
+      "credentials": {
+        "env_var_names": [
+          "AZURE_SPEECH_KEY",
+          "AZURE_SPEECH_REGION",
+          "AZURE_SPEECH_ENDPOINT"
+        ],
+        "verified": {
+          "date": "2026-07-24",
+          "method": "sts/v1.0/issueToken request against the australiaeast endpoint using the .env key without printing it; no audio sent",
+          "outcome": "HTTP 200"
+        }
+      },
+      "prohibited_uses": [
+        "treating any Azure score as reference or Australian truth",
+        "pooling en-AU and en-US outputs",
+        "reading an en-AU phone name key as a produced phone; those keys are emitted empty",
+        "using en-US NBest phones for vowel, diphthong or post-vocalic r relations",
+        "using overall pronunciation, fluency, prosody or native-likeness scores"
+      ],
+      "blocked_pending": [],
+      "evidence": [
+        {
+          "claim": "en-AU is a supported pronunciation assessment locale with phoneme-level accuracy scores",
+          "source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "phoneme name, IPA alphabet, syllable group and spoken phoneme output remain en-US only in current documentation",
+          "source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "pronunciation assessment audio is processed in memory, not retained, and stays in the resource region",
+          "source": "https://learn.microsoft.com/en-us/legal/cognitive-services/speech-service/speech-to-text/data-privacy-security",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "Speech resource tempdoubleaa-speech-aue created in resource group speech-research, region Australia East, Free F0 tier",
+          "source": "portal.azure.com deployment CognitiveServicesSpeechServices-20260724141741",
+          "verified": "2026-07-24"
+        },
+        {
+          "claim": "Microsoft does not retain or store customer data for real time speech to text, fast transcription, pronunciation assessment and speech translation, and real time audio is processed only in server memory",
+          "source": "https://learn.microsoft.com/en-us/legal/cognitive-services/speech-service/speech-to-text/data-privacy-security",
+          "verified": "2026-07-25"
+        },
+        {
+          "claim": "en-AU and en-US are both listed pronunciation assessment locales in the documentation source",
+          "source": "https://raw.githubusercontent.com/MicrosoftDocs/azure-ai-docs/main/articles/ai-services/speech-service/includes/language-support/pronunciation-assessment.md",
+          "verified": "2026-07-25"
+        },
+        {
+          "claim": "Microsoft documents that phoneme name is available in en-US with IPA and in en-US and zh-CN with SAPI, and that for other locales only the phoneme score is available; empty phoneme and syllable fields in other locales are widely reported by other customers as expected behavior",
+          "source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment",
+          "verified": "2026-07-25"
+        }
+      ],
+      "transfer_review": {
+        "review_id": "speech_sound_corpus_provider_transfer_review",
+        "review_version": "1.0.0",
+        "permitted_sources": [
+          "speechocean762",
+          "acted_clear_speech",
+          "common_phone_1_0",
+          "librispeech_slr12_small"
+        ]
+      },
+      "observed_output": {
+        "checkpoint": "22E3",
+        "summary": "Twenty requests, five development adult SpeechOcean762 clips sent twice per locale, all returned HTTP 200. Both locales repeated exactly with zero tolerance on every score and phone name. en-AU advanced as score_only and en-US advanced as exact_relation_capable.",
+        "evidence": [
+          {
+            "claim": "en-AU emits phone name keys as empty strings while returning real phoneme accuracy scores",
+            "source": "speech_sound_patterns/external-schema-smoke-v1.0.0.json",
+            "verified": "2026-07-25"
+          },
+          {
+            "claim": "en-US honours PhonemeAlphabet IPA and NBestPhonemeCount over the REST short audio header, which the REST reference does not document",
+            "source": "speech_sound_patterns/external-schema-smoke-v1.0.0.json",
+            "verified": "2026-07-25"
+          },
+          {
+            "claim": "identical requests returned identical assessments in both locales, and the two locales returned different utterance accuracy scores on the same audio with a maximum absolute difference of 27 points",
+            "source": "speech_sound_patterns/external-schema-smoke-v1.0.0.json",
+            "verified": "2026-07-25"
+          },
+          {
+            "claim": "a controlled probe over one identical clip showed phone naming depends only on locale: en-AU named zero of 17 phones under IPA, SAPI and the default alphabet, en-GB named zero, and en-US named 17 of 17 under both alphabets, so the empty Australian names are a locale limitation and not a calling error",
+            "source": "speech_sound_patterns/azure_locale_probe.py",
+            "verified": "2026-07-25"
+          }
+        ]
+      }
+    },
+    {
+      "lane_id": "elsa_scripted_v3",
+      "display_name": "ELSA Scripted V3 API",
+      "kind": "external_api",
+      "role": "conditional_external_exact_substitution",
+      "status": "conditional",
+      "reason": "Documented phoneme_error_arpabet is the strongest external produced-phone field found, but it fires for substitutions only, no public worked example exists, access requires an NDA before a token, and the MSA confidentiality clause makes benchmark publication a negotiated written permission rather than a default right.",
+      "audio_policy": "corpus_transfer_review_required",
+      "eligible_sources": [
+        "speechocean762",
+        "acted_clear_speech",
+        "common_phone_1_0",
+        "librispeech_slr12_small"
+      ],
+      "output_semantics": "per phoneme: trans_arpabet, start and end times, decision, nativeness_score, phoneme_error and phoneme_error_arpabet; the error fields present the expected and detected phone for substitutions when decision is incorrect; deletion and insertion semantics are undocumented; the reference model is General American with no Australian variant.",
+      "permissions": {
+        "benchmark_publication": "written_permission_required",
+        "evidence": [
+          {
+            "claim": "API token is issued only after an NDA is signed",
+            "source": "https://api-external-doc.elsanow.co/faq",
+            "verified": "2026-07-23"
+          },
+          {
+            "claim": "MSA confidentiality section requires keeping information and materials provided by the other party confidential, so publishing comparative results needs written consent",
+            "source": "https://elsaspeak.com/en/legal/msa/",
+            "verified": "2026-07-23"
+          }
+        ]
+      },
+      "privacy": {
+        "processing_region": "closest of Singapore, Ireland or US East; no Australian region",
+        "retention": "open ended: personal data retained as long as ELSA deems reasonably necessary; no audio-specific deletion timeline",
+        "training_use": "aggregate anonymized usage data may be used to improve products and machine learning capabilities"
+      },
+      "credentials": {
+        "env_var_names": [
+          "ELSA_API_TOKEN"
+        ],
+        "verified": null
+      },
+      "prohibited_uses": [
+        "treating the General American reference as Australian truth",
+        "using the nativeness score at any level",
+        "scoring vowel, diphthong or post-vocalic r relations",
+        "uploading any audio before written benchmark and publication permission exists"
+      ],
+      "blocked_pending": [
+        "Adam to send the drafted API and permissions enquiry",
+        "API enquiry, NDA signed by Adam, and token issued",
+        "written benchmark and aggregate publication permission",
+        "written region, retention, deletion and training-use answers",
+        "one real substitution response demonstrating phoneme_error_arpabet format",
+        "documented deletion and insertion behavior"
+      ],
+      "evidence": [
+        {
+          "claim": "response schema exposes phoneme timing, decisions, phoneme_error and phoneme_error_arpabet",
+          "source": "https://api-external-doc.elsanow.co/elsa/scripted_v3/audio_file/post-score-audio",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "field definitions state the error fields present the correct transcription and what the user pronounced, for substitutions",
+          "source": "https://api-external-doc.elsanow.co/Scripted-api-info",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "no Australian English model is documented anywhere in the public docs",
+          "source": "https://api-external-doc.elsanow.co/faq",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "checkpoint 22E3 sent no audio to ELSA; the lane failed closed and an access enquiry was drafted for Adam to send",
+          "source": "speech_sound_patterns/external-schema-smoke-v1.0.0.json",
+          "verified": "2026-07-25"
+        }
+      ]
+    },
+    {
+      "lane_id": "iflytek_ise_global",
+      "display_name": "iFLYTEK Global Pronunciation Assessment (ISE)",
+      "kind": "external_api",
+      "role": "experimental_public_corpus_comparator",
+      "status": "owner_declined",
+      "reason": "Adam declined this lane on 2026-07-25 before any audio was sent. The recorded engineering concerns stand: the English response never names the produced phone, the adult or pupil group switch is documented for Chinese tasks only, privacy promises are practically unauditable, and the vendor remains on the US Entity List. The account and free quota exist and the credential was verified with a harmless handshake, so the lane can be reopened, but only by a new explicit owner decision.",
+      "audio_policy": "blocked",
+      "eligible_sources": [],
+      "output_semantics": "English phoneme layer returns beg_pos, content holding the expected phoneme, end_pos and dp_message error flags where 0 is normal, 16 missed, 32 incremental, 64 readback and 128 replacement; a replacement flag never names the produced phone; the group parameter for adult, youth or pupil applies only to Chinese tasks.",
+      "permissions": {
+        "benchmark_publication": "permitted_by_public_terms",
+        "evidence": [
+          {
+            "claim": "platform agreement contains no clause prohibiting benchmarking, comparative evaluation or publication; contracting party is IFLYTEK Co., Ltd. with PRC court jurisdiction",
+            "source": "https://global.xfyun.cn/doc/policy/agreement.html",
+            "verified": "2026-07-23"
+          }
+        ]
+      },
+      "privacy": {
+        "processing_region": "iFLYTEK Open Platform server in Singapore, with lawful transfer out permitted and affiliate sharing allowed",
+        "retention": "privacy policy states voice is processed in real time without saving data more than a week; not independently auditable",
+        "training_use": "policy permits use for continuous development and optimization of products and services; no explicit exclusion"
+      },
+      "credentials": {
+        "env_var_names": [
+          "IFLYTEK_APP_ID",
+          "IFLYTEK_API_KEY",
+          "IFLYTEK_API_SECRET"
+        ],
+        "verified": {
+          "date": "2026-07-24",
+          "method": "signed WebSocket upgrade handshake against wss://ise-api-sg.xf-yun.com/v2/ise using .env credentials; no audio or evaluation payload sent",
+          "outcome": "HTTP 101 Switching Protocols; 100,000 free calls claimed, valid until 2026-10-22"
+        }
+      },
+      "prohibited_uses": [
+        "sending any audio, public corpus or otherwise, while the owner decline stands",
+        "sending personal, user or owner audio",
+        "treating a replacement flag as produced-phone identity",
+        "using any child or adult group interpretation for English tasks",
+        "using standardness, fluency or overall scores",
+        "treating this lane as exact relation or child truth"
+      ],
+      "blocked_pending": [
+        "a new explicit owner decision to reopen this lane"
+      ],
+      "evidence": [
+        {
+          "claim": "English phoneme layer fields and dp_message flag semantics; no produced-phone field",
+          "source": "https://global.xfyun.cn/doc/voiceservice/ise/API.html",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "group parameter is documented as only supported for Chinese words, phrases, sentences and chapters",
+          "source": "https://global.xfyun.cn/doc/voiceservice/ise/API.html",
+          "verified": "2026-07-24"
+        },
+        {
+          "claim": "100,000 free service calls for three months, then approximately 0.003 USD per call",
+          "source": "https://global.xfyun.cn/doc/platform/pricing.html",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "iFLYTEK remains on the US Entity List; use of services is not an export but reputational exposure is recorded",
+          "source": "Federal Register 2019-22210 and subsequent listings",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "Adam declined the iFLYTEK lane on reputational and unauditable privacy grounds before checkpoint 22E3 implementation began; no audio was sent",
+          "source": "owner decision recorded in the checkpoint 22E3 working session",
+          "verified": "2026-07-25"
+        }
+      ]
+    },
+    {
+      "lane_id": "segmentation_free_gop",
+      "display_name": "Segmentation-free GOP, independent implementation",
+      "kind": "local_method",
+      "role": "core_local_repair",
+      "status": "ready",
+      "reason": "The published method is CC BY 4.0 and its core is label-blind and training-free over a CTC phone model, directly attacking the forced-boundary weakness behind the 22D recall miss; the authors' repository has no code licence, so only an independent implementation of the published equations on the already-screened Apache-2.0 Meta phone model is permitted.",
+      "audio_policy": "no_audio",
+      "eligible_sources": [],
+      "output_semantics": "expected-phone-conditioned goodness scores computed from CTC posteriors without forced pre-segmentation; produces concern evidence for expected phones, not produced-phone identity by itself.",
+      "permissions": {
+        "benchmark_publication": "not_applicable_local",
+        "evidence": [
+          {
+            "claim": "paper is CC BY 4.0, permitting independent reimplementation of the published equations",
+            "source": "https://arxiv.org/abs/2507.16838",
+            "verified": "2026-07-23"
+          }
+        ]
+      },
+      "lineage": {
+        "model_id": "facebook/wav2vec2-lv-60-espeak-cv-ft",
+        "revision": "ae45363bf3413b374fecd9dc8bc1df0e24c3b7f4",
+        "licence_evidence": "Apache-2.0 licence tag on the Hugging Face model repository, observed 2026-07-24; pretraining Libri-Light LibriVox audio, fine-tuning CommonVoice with eSpeak IPA targets",
+        "training_data": [
+          "Libri-Light (LibriVox public domain audio)",
+          "Common Voice (CC0) with eSpeak-generated IPA phoneme labels"
+        ],
+        "non_independent_sources": []
+      },
+      "prohibited_uses": [
+        "copying or adapting code from the unlicensed frank613/CTC-based-GOP repository",
+        "using any SpeechOcean762-trained GOPT or score-regression head",
+        "claiming produced-phone identity from a goodness score"
+      ],
+      "blocked_pending": [],
+      "evidence": [
+        {
+          "claim": "repository has no licence file and only reproduction scripts; must not be copied",
+          "source": "https://github.com/frank613/CTC-based-GOP",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "method reports AUC 0.914 versus 0.796 for forced-alignment GOP on real child errors; only the optional GOPT regression head is SpeechOcean-trained",
+          "source": "https://arxiv.org/abs/2507.16838",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "author licence enquiry to NTNU is optional and must not block the clean implementation",
+          "source": "speech_sound_patterns/engineering-plan.md checkpoint 22E1",
+          "verified": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "lane_id": "powsm",
+      "display_name": "POWSM phonetic open Whisper-style model",
+      "kind": "local_model",
+      "role": "core_local_free_phone_comparator",
+      "status": "ready",
+      "reason": "Released weights carry an explicit CC BY 4.0 licence with a documented model card and emit unconstrained phone sequences from a different architecture than expected-phone-conditioned GOP; the 22E2 isolated-environment audit passed: the pinned checkpoint's pickle was audited opcode by opcode before load, repeats were exact and Mac runtime and memory were measured.",
+      "audio_policy": "no_audio",
+      "eligible_sources": [],
+      "output_semantics": "unconstrained IPA phone sequence recognition plus ASR and audio-guided G2P and P2G tasks in a roughly 350M parameter ESPnet model with a 16 kHz, 20 second window; output is candidate phone evidence, never truth.",
+      "permissions": {
+        "benchmark_publication": "not_applicable_local",
+        "evidence": [
+          {
+            "claim": "model repository carries an explicit cc-by-4.0 licence tag with a documented model card",
+            "source": "https://huggingface.co/espnet/powsm",
+            "verified": "2026-07-24"
+          }
+        ]
+      },
+      "lineage": {
+        "model_id": "espnet/powsm",
+        "revision": "21ffa410432ace159f3c1fdeed304c70eddf7d34",
+        "licence_evidence": "cc-by-4.0 licence tag on the Hugging Face repository, observed 2026-07-24",
+        "training_data": [
+          "IPAPack++ (~17k hours with G2P-derived phone labels; SpeechOcean762 and L2-ARCTIC used as evaluation sets only)"
+        ],
+        "non_independent_sources": []
+      },
+      "prohibited_uses": [
+        "treating agreement with ZIPA as independent confirmation because both derive from the IPAPack++ family",
+        "treating G2P-derived training lineage as human phone truth",
+        "loading any revision other than the pinned and audited 21ffa410 snapshot"
+      ],
+      "blocked_pending": [],
+      "evidence": [
+        {
+          "claim": "POWSM paper describes tasks, architecture and IPAPack++ training with SpeechOcean762 as out-of-domain evaluation only",
+          "source": "https://arxiv.org/abs/2510.24992",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "22E2 feasibility passed: pickle audit clean, exact repeats on label-blind development clips, runtime and memory measured in the isolated pinned environment",
+          "source": "speech_sound_patterns/local-research-feasibility-v1.0.0.json",
+          "verified": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "lane_id": "zipa",
+      "display_name": "ZIPA multilingual phone recognizers",
+      "kind": "local_model",
+      "role": "conditional_local_free_phone",
+      "status": "conditional",
+      "reason": "The code repository is MIT and Apple-Silicon-friendly ONNX artifacts exist, and the four zipa weight repositories now carry apache-2.0 licence tags observed 2026-07-24, but none has a model card licence statement or training provenance bundle, so author confirmation of the exact checkpoint licence and provenance is still required before any weight is loaded.",
+      "audio_policy": "no_audio",
+      "eligible_sources": [],
+      "output_semantics": "unconstrained IPA phone sequence recognition from Zipformer CTC and transducer variants trained on IPAPack++ with G2P-derived labels biased toward canonical pronunciations; output is candidate phone evidence, never truth.",
+      "permissions": {
+        "benchmark_publication": "not_applicable_local",
+        "evidence": [
+          {
+            "claim": "code repository is MIT licensed",
+            "source": "https://github.com/lingjzhu/zipa",
+            "verified": "2026-07-23"
+          }
+        ]
+      },
+      "lineage": {
+        "model_id": "anyspeech/zipa-cr-l",
+        "revision": null,
+        "licence_evidence": "apache-2.0 licence tags observed on anyspeech/zipa-cr-s, zipa-cr-l, zipa-t-s and zipa-t-l on 2026-07-24, but no model card licence statement or training provenance bundle exists on any weight repository",
+        "training_data": [
+          "IPAPack++ (~17k hours, G2P-derived phone labels; SpeechOcean762 and L2-ARCTIC used as evaluation sets only)"
+        ],
+        "non_independent_sources": []
+      },
+      "prohibited_uses": [
+        "loading or benchmarking any weight before licence and provenance confirmation",
+        "treating agreement with POWSM as independent confirmation because both derive from the IPAPack++ family"
+      ],
+      "blocked_pending": [
+        "author confirmation or model-card statement of the exact checkpoint licence and training provenance",
+        "pin of the exact confirmed revision"
+      ],
+      "evidence": [
+        {
+          "claim": "ZIPA paper published at ACL 2025 with SpeechOcean762 as evaluation only",
+          "source": "https://aclanthology.org/2025.acl-long.961/",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "weight repositories carry apache-2.0 tags but no model cards; observed via the Hugging Face API",
+          "source": "https://huggingface.co/api/models?author=anyspeech",
+          "verified": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "lane_id": "wav2vec2_commonphone",
+      "display_name": "Wav2Vec2 CommonPhone IPA recognizer",
+      "kind": "local_model",
+      "role": "supporting_only_local_comparator",
+      "status": "supporting_only",
+      "reason": "CC0 weights and safetensors make this the lowest-friction local comparator, but it was trained on Common Phone, which derives from Common Voice, so this project's Common Phone and Australian Common Voice evidence are non-independent of the model and can never count toward its selection gates, headline results or corroboration.",
+      "audio_policy": "no_audio",
+      "eligible_sources": [],
+      "output_semantics": "IPA phone recognition over 101 phones across six languages with reported English phone error rate around eleven percent; output is candidate phone evidence, never truth.",
+      "permissions": {
+        "benchmark_publication": "not_applicable_local",
+        "evidence": [
+          {
+            "claim": "model repository carries a cc0-1.0 licence tag",
+            "source": "https://huggingface.co/pklumpp/Wav2Vec2_CommonPhone",
+            "verified": "2026-07-24"
+          }
+        ]
+      },
+      "lineage": {
+        "model_id": "pklumpp/Wav2Vec2_CommonPhone",
+        "revision": "e856cb96ef8fc5972ba43310d61cb4b3d6bc1e87",
+        "licence_evidence": "cc0-1.0 licence tag on the Hugging Face repository, observed 2026-07-24",
+        "training_data": [
+          "Common Phone (derived from Common Voice)"
+        ],
+        "non_independent_sources": [
+          "common_phone_1_0",
+          "common_voice_26_australian_english"
+        ]
+      },
+      "prohibited_uses": [
+        "counting Common Phone or Australian Common Voice results toward selection gates for this model",
+        "using agreement on those sources as corroboration",
+        "advancing this lane beyond supporting evidence"
+      ],
+      "blocked_pending": [],
+      "evidence": [
+        {
+          "claim": "trained on Common Phone, which the corpus lineage audit already links to Common Voice with 264 shared speakers excluded",
+          "source": "speech_sound_patterns/corpus_manifests/registry-v1.0.0.json",
+          "verified": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "lane_id": "unsw_speech_attributes",
+      "display_name": "UNSW Speech Attributes articulatory models",
+      "kind": "local_model",
+      "role": "research_only_articulatory",
+      "status": "blocked",
+      "reason": "The Space code is Apache 2.0 and the method could explain voicing, place, manner and vowel-feature differences, but the actual SA_US_Adult and SA_Aus_Child checkpoints carry no licence tag, model card or training statement, and the published method trained on TIMIT and validated on L2-ARCTIC, so commercial checkpoint use is blocked pending written author confirmation.",
+      "audio_policy": "no_audio",
+      "eligible_sources": [],
+      "output_semantics": "35 binary phonological attribute detections covering voicing, place, manner and vowel features from wav2vec2 CTC models; explanatory evidence only, never a phone score substitute or truth.",
+      "permissions": {
+        "benchmark_publication": "not_applicable_local",
+        "evidence": [
+          {
+            "claim": "Space README declares apache-2.0 for the code",
+            "source": "https://huggingface.co/spaces/mostafaashahin/Speech-Attributes",
+            "verified": "2026-07-23"
+          }
+        ]
+      },
+      "lineage": {
+        "model_id": "mostafaashahin/SA_US_Adult",
+        "revision": "619a6d2448feddb7b2c9f413b4395c0f845b048b",
+        "licence_evidence": "no licence tag, model card or training statement on SA_US_Adult (revision above) or SA_Aus_Child (2091fef945a567f5cb96faf3901a5e6c7292ff28), observed 2026-07-24",
+        "training_data": [
+          "published method: TIMIT (LDC-restricted) plus LibriSpeech; validated on L2-ARCTIC (CC BY-NC); exact checkpoint corpora unconfirmed"
+        ],
+        "non_independent_sources": []
+      },
+      "prohibited_uses": [
+        "loading any checkpoint before written licence and training-rights confirmation",
+        "using attribute outputs as phone relation truth",
+        "commercial deployment of TIMIT- or L2-ARCTIC-derived weights without proved rights"
+      ],
+      "blocked_pending": [
+        "combined UNSW enquiry answer covering checkpoint licence, training corpora and derived-weight rights",
+        "serialization security review before any load"
+      ],
+      "evidence": [
+        {
+          "claim": "method paper by Shahin, Epps and Ahmed, UNSW",
+          "source": "https://arxiv.org/abs/2311.07037",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "lane_id": "child_phoneme_model",
+      "display_name": "wav2vec_children_ASR child phoneme model",
+      "kind": "local_model",
+      "role": "conditional_child_feasibility",
+      "status": "blocked",
+      "reason": "The model card reports an OpenRAIL licence and MyST plus Providence fine-tuning for child phoneme representations and vocalization classification, not validated pronunciation assessment; OpenRAIL is not an unrestricted commercial grant and the derived-weight rights of MyST and Providence are unresolved, so the checkpoint may not be downloaded or loaded yet.",
+      "audio_policy": "no_audio",
+      "eligible_sources": [],
+      "output_semantics": "child speech phoneme representations and vocalization classification fine-tuned from wav2vec2; a feasibility candidate for child phone evidence, not a validated child pronunciation assessor.",
+      "permissions": {
+        "benchmark_publication": "not_applicable_local",
+        "evidence": [
+          {
+            "claim": "model repository carries an openrail licence tag",
+            "source": "https://huggingface.co/lijialudew/wav2vec_children_ASR",
+            "verified": "2026-07-24"
+          }
+        ]
+      },
+      "lineage": {
+        "model_id": "lijialudew/wav2vec_children_ASR",
+        "revision": "c0e5ca013970bd9332449c5219f0ad150c7753b9",
+        "licence_evidence": "openrail licence tag on the Hugging Face repository, observed 2026-07-24; exact OpenRAIL conditions and derived-data rights unreviewed",
+        "training_data": [
+          "LibriSpeech",
+          "MyST child speech corpus",
+          "Providence corpus"
+        ],
+        "non_independent_sources": []
+      },
+      "prohibited_uses": [
+        "downloading or loading the checkpoint before the OpenRAIL and derived-data rights review",
+        "claiming child validity from the model name or public availability"
+      ],
+      "blocked_pending": [
+        "review of the exact OpenRAIL terms",
+        "written confirmation of MyST and Providence derived-weight rights if the terms are ambiguous"
+      ],
+      "evidence": [
+        {
+          "claim": "MyST is free for research with commercial licensing through Boulder Learning",
+          "source": "https://myst.cemantix.org",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "lane_id": "auskidtalk",
+      "display_name": "AusKidTalk Australian child speech corpus",
+      "kind": "acquisition_path",
+      "role": "australian_child_acquisition_collaboration",
+      "status": "conditional",
+      "reason": "The only right-accent, right-age Australian child asset, covering roughly 620 children aged 3 to 12 including disordered speech, but current access is research-only through a data custodian and the published annotation workflow is orthographic, so this is an acquisition and collaboration path, not a ready scoring system.",
+      "audio_policy": "no_audio",
+      "eligible_sources": [],
+      "output_semantics": "audiovisual Australian child speech recordings with orthographic, time-aligned annotations; phone-level annotation availability, commercial research rights and derived-model rights are not established.",
+      "permissions": {
+        "benchmark_publication": "written_permission_required",
+        "evidence": [
+          {
+            "claim": "access is governed by research ethics and a data custodian; no public commercial terms exist",
+            "source": "https://link.springer.com/article/10.1007/s10579-026-09929-5",
+            "verified": "2026-07-24"
+          }
+        ]
+      },
+      "prohibited_uses": [
+        "any data access before custodian agreement",
+        "treating orthographic annotation as phone truth"
+      ],
+      "blocked_pending": [
+        "combined UNSW enquiry answer covering corpus access, phone-level annotation availability, aggregate benchmarking, commercial research and derived-model rights"
+      ],
+      "evidence": [
+        {
+          "claim": "corpus described in Language Resources and Evaluation, July 2026, with orthographic annotation workflow; authors include Shahin and Ahmed",
+          "source": "https://link.springer.com/article/10.1007/s10579-026-09929-5",
+          "verified": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "lane_id": "bookbot_au_g2p",
+      "display_name": "Bookbot Australian English broad-IPA G2P",
+      "kind": "local_model",
+      "role": "conditional_prompt_target_support",
+      "status": "conditional",
+      "reason": "Apache 2.0 and named for an Australian broad-IPA WikiPron variant, making it the candidate generator of Australian expected-phone targets for 22F, but its model card does not document training and evaluation datasets sufficiently, so provenance and variant checks against independent Australian references must pass before it may propose targets; it is never an acoustic scorer.",
+      "audio_policy": "no_audio",
+      "eligible_sources": [],
+      "output_semantics": "grapheme-to-phoneme conversion producing Australian English broad IPA; proposed targets only, never accepted-variant truth and never an acoustic judgement.",
+      "permissions": {
+        "benchmark_publication": "not_applicable_local",
+        "evidence": [
+          {
+            "claim": "model repository carries an apache-2.0 licence tag",
+            "source": "https://huggingface.co/bookbot/byt5-small-wikipron-eng-latn-au-broad",
+            "verified": "2026-07-24"
+          }
+        ]
+      },
+      "lineage": {
+        "model_id": "bookbot/byt5-small-wikipron-eng-latn-au-broad",
+        "revision": "66cb13a5d68cc5d07479cacf897fb7e0f91b2f3f",
+        "licence_evidence": "apache-2.0 licence tag on the Hugging Face repository, observed 2026-07-24; WikiPron source and Australian variant provenance not yet verified",
+        "training_data": [
+          "WikiPron Australian English broad transcriptions (stated; unverified)"
+        ],
+        "non_independent_sources": []
+      },
+      "prohibited_uses": [
+        "defining accepted pronunciation truth by itself",
+        "proposing 22F targets before provenance verification and comparison against independent Australian references"
+      ],
+      "blocked_pending": [
+        "verification of WikiPron source and Australian variant provenance",
+        "comparison of generated targets against licensed or independently documented Australian references"
+      ],
+      "evidence": [
+        {
+          "claim": "Bookbot is a Sydney-based company; its English acoustic models are single-speaker LJSpeech work unsuitable for adult Australian scoring",
+          "source": "https://huggingface.co/bookbot",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "lane_id": "soapbox",
+      "display_name": "SoapBox Labs child speech API",
+      "kind": "external_api",
+      "role": "rejected_unobtainable",
+      "status": "rejected",
+      "reason": "Curriculum Associates acquired SoapBox and stated it would not enter new contracts with outside organizations; soapboxlabs.com now redirects to the acquirer's internal AI Labs page with no developer offering, and documented default product-improvement logging contradicts the earlier immediate-deletion assumption; no account or audio is requested.",
+      "audio_policy": "blocked",
+      "eligible_sources": [],
+      "output_semantics": "custom ARPAbet targets and per-phone quality scores were documented for legacy customers; not obtainable for new third parties.",
+      "permissions": {
+        "benchmark_publication": "prohibited_without_waiver",
+        "evidence": [
+          {
+            "claim": "Curriculum Associates will complete existing contracts but does not plan to enter into new contracts with outside organizations",
+            "source": "https://marketbrief.edweek.org/strategy-operations/k-12-dealmaking-curriculum-associates-scoops-up-soapbox-labs-parentsquare-acquires-remind/2023/12",
+            "verified": "2026-07-23"
+          }
+        ]
+      },
+      "prohibited_uses": [
+        "seeking credentials",
+        "uploading any audio",
+        "citing SoapBox privacy as immediate deletion"
+      ],
+      "blocked_pending": [
+        "reconsider only if Curriculum Associates supplies a written external API offer with acceptable terms"
+      ],
+      "evidence": [
+        {
+          "claim": "soapboxlabs.com redirects to curriculumassociates.com/about/ailabs with no developer signup",
+          "source": "https://www.curriculumassociates.com/about/ailabs",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "data privacy documentation makes product-improvement logging the default with opt-out via support",
+          "source": "https://docs.soapboxlabs.com/resources/data-privacy/",
+          "verified": "2026-07-23"
+        },
+        {
+          "claim": "checkpoint 22E3 sought no credential and sent no audio to SoapBox; the lane remains rejected unobtainable",
+          "source": "speech_sound_patterns/external-schema-smoke-v1.0.0.json",
+          "verified": "2026-07-25"
+        }
+      ]
+    },
+    {
+      "lane_id": "speechace",
+      "display_name": "SpeechAce API",
+      "kind": "external_api",
+      "role": "conditional_reserve",
+      "status": "blocked",
+      "reason": "Technically strong custom-phone and sound-most-like evidence, but current terms prohibit using the API or its data to test or evaluate any other speech assessment system and prohibit publishing evaluation results without written approval, so the lane is blocked unless SpeechAce grants a written waiver; sound_most_like semantics would also need empirical verification.",
+      "audio_policy": "blocked",
+      "eligible_sources": [],
+      "output_semantics": "per-phone quality scores with a sound_most_like field whose documented definition describes similarity to the expected phoneme; whether it is a full independent phone identification is unproven from public docs.",
+      "permissions": {
+        "benchmark_publication": "prohibited_without_waiver",
+        "evidence": [
+          {
+            "claim": "terms prohibit using the API or data to train, test or evaluate another speech engine or assessment system and prohibit publishing evaluation results without written prior approval",
+            "source": "https://www.speechace.com/terms-of-service/",
+            "verified": "2026-07-23"
+          }
+        ]
+      },
+      "prohibited_uses": [
+        "creating an account or uploading audio before a written waiver",
+        "relying on sound_most_like semantics without empirical verification"
+      ],
+      "blocked_pending": [
+        "written waiver for comparative evaluation and aggregate publication"
+      ],
+      "evidence": [
+        {
+          "claim": "API documents phoneme-level scoring and sound_most_like in phone_score_list",
+          "source": "https://api-docs.speechace.com/api-reference/score-text-pronunciation",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "lane_id": "speechsuper",
+      "display_name": "SpeechSuper API",
+      "kind": "external_api",
+      "role": "rejected_by_terms",
+      "status": "rejected",
+      "reason": "Current terms prohibit using the API or any product data to train, test or evaluate another speech engine, machine learning model or speech assessment system, which is exactly the planned comparative evaluation, so the lane is rejected and no account or audio is permitted.",
+      "audio_policy": "blocked",
+      "eligible_sources": [],
+      "output_semantics": "phone-level scoring exists but is unusable for this benchmark under current terms.",
+      "permissions": {
+        "benchmark_publication": "prohibited_without_waiver",
+        "evidence": [
+          {
+            "claim": "terms prohibit using the API or product data to test or evaluate another speech assessment system",
+            "source": "https://www.speechsuper.com/terms.html",
+            "verified": "2026-07-23"
+          }
+        ]
+      },
+      "prohibited_uses": [
+        "creating an account",
+        "uploading any audio"
+      ],
+      "blocked_pending": [],
+      "evidence": [
+        {
+          "claim": "reverse engineering section quoted and verified verbatim",
+          "source": "https://www.speechsuper.com/terms.html",
+          "verified": "2026-07-23"
+        }
+      ]
+    }
+  ],
+  "recorded_rejections": [
+    {
+      "candidate": "audio-native large multimodal models (GPT-4o class, Gemini)",
+      "reason": "published testing left about 48 percent of phoneme items unscored with inconsistent repeat behavior; no current Gemini pronunciation assessment feature supplies the required exact phone relation",
+      "evidence": [
+        {
+          "claim": "GPT-4o realtime phoneme-level evaluation study",
+          "source": "https://arxiv.org/abs/2503.11229",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "candidate": "Google Cloud Speech-to-Text pronunciation preview",
+      "reason": "the earlier limited preview did not become a supported phone-level product; current release notes document transcription, adaptation and timestamps only",
+      "evidence": [
+        {
+          "claim": "no pronunciation assessment feature in current release notes",
+          "source": "https://cloud.google.com/speech-to-text/docs/release-notes",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "candidate": "AWS Transcribe and OpenAI speech services",
+      "reason": "expose transcription, timestamps and confidence rather than expected-to-produced phone pronunciation relations",
+      "evidence": [
+        {
+          "claim": "AWS Transcribe feature documentation",
+          "source": "https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "candidate": "torchaudio MMS forced-alignment weights",
+      "reason": "CC BY-NC licence is non-commercial and does not fit this proprietary commercial engineering path",
+      "evidence": [
+        {
+          "claim": "MMS_FA pipeline licence",
+          "source": "https://docs.pytorch.org/audio/stable/generated/torchaudio.pipelines.MMS_FA.html",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "candidate": "Allosaurus universal phone recognizer",
+      "reason": "GPL-3.0 copyleft is incompatible with this proprietary commercial product and training provenance is opaque",
+      "evidence": [
+        {
+          "claim": "repository licence",
+          "source": "https://github.com/xinjli/allosaurus",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "candidate": "checkpoints trained on L2-ARCTIC, TIMIT or other restricted sources",
+      "reason": "blocked unless exact commercial and derived-model rights are proved; availability is not permission",
+      "evidence": [
+        {
+          "claim": "L2-ARCTIC is CC BY-NC and TIMIT requires an LDC licence",
+          "source": "speech_sound_patterns/engineering-plan.md acquisition register",
+          "verified": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "candidate": "Language Confidence, Tencent, Alibaba, Chivox, ETS SpeechRater, Pearson Versant",
+      "reason": "documented reserves or rejects: Language Confidence has the same evaluation-prohibition terms, no Australian model despite being Sydney-based, and no produced-phone field; the others lack the required phone relation output or have unacceptable access conditions",
+      "evidence": [
+        {
+          "claim": "Language Confidence prohibited activities clause and US/UK-only phonetic system",
+          "source": "https://languageconfidence.ai/policy/api-terms-of-service",
+          "verified": "2026-07-23"
+        }
+      ]
+    }
+  ]
+}

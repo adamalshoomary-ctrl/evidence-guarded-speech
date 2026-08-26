@@ -1,0 +1,1087 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_id": "communication_coaching_baseline",
+  "protocol_version": "1.0.0",
+  "status": "pilot_not_validated",
+  "title": "Communication coaching starting assessment",
+  "purpose": "Create a provisional coaching starting profile from controlled, natural, and personally meaningful speech without diagnosis or ranking.",
+  "product_scope": {
+    "recording_mode": "solo",
+    "claim_authority": [
+      "measured_observation",
+      "coaching_interpretation"
+    ],
+    "forbidden_claims": [
+      "diagnosis",
+      "screening_result",
+      "clinical_conclusion",
+      "intelligence",
+      "personality",
+      "honesty",
+      "professionalism",
+      "emotion_as_fact",
+      "accent_quality",
+      "gender_from_voice",
+      "race_or_ethnicity_from_voice",
+      "speaker_identity",
+      "global_communication_score",
+      "ranking_between_people"
+    ],
+    "not_in_scope": [
+      "application_ui",
+      "clinical_detection",
+      "pronunciation_scoring",
+      "gameplay",
+      "user_accounts"
+    ]
+  },
+  "eligibility": {
+    "age": {
+      "gate": "none",
+      "exact_age_collected": false,
+      "age_norms_used": false,
+      "note": "The backend does not block by age. Public launch privacy and consent flows must still handle people who cannot independently consent."
+    },
+    "launch_languages": [
+      "en"
+    ],
+    "language_policy": "Use a versioned language specific pack. Confirm the task language with the user. Never treat automatic language detection as truth.",
+    "unsupported_language_behavior": "Do not score. Explain that the assessment pack is not yet supported and retain only separately consented technical evidence."
+  },
+  "session": {
+    "target_duration_s": 540,
+    "acceptable_duration_s": {
+      "minimum": 480,
+      "maximum": 660
+    },
+    "estimated_recorded_s": 315,
+    "quality_policy": "baseline",
+    "preparation_policy": "Record preparation time for every speaking task and do not compare prepared with unprepared attempts.",
+    "core_sequence": [
+      {
+        "step_id": "context",
+        "task_options": [
+          "context_and_consent_en_v1"
+        ],
+        "required": true
+      },
+      {
+        "step_id": "recording_check",
+        "task_options": [
+          "recording_check_en_v1"
+        ],
+        "required": true
+      },
+      {
+        "step_id": "standard_sample",
+        "task_options": [
+          "standard_reading_en_v1",
+          "spoken_repetition_alternative_en_v1"
+        ],
+        "required": true
+      },
+      {
+        "step_id": "natural_sample",
+        "task_options": [
+          "spontaneous_explanation_en_v1"
+        ],
+        "required": true
+      },
+      {
+        "step_id": "goal_sample",
+        "task_options": [
+          "goal_specific_response_en_v1"
+        ],
+        "required": true
+      },
+      {
+        "step_id": "repeat_sample",
+        "task_options": [
+          "anchor_repeat_en_v1",
+          "spoken_anchor_repeat_alternative_en_v1"
+        ],
+        "required": true
+      },
+      {
+        "step_id": "reflection",
+        "task_options": [
+          "self_reflection_en_v1"
+        ],
+        "required": true
+      }
+    ],
+    "paired_task_rules": {
+      "standard_reading_en_v1": "anchor_repeat_en_v1",
+      "spoken_repetition_alternative_en_v1": "spoken_anchor_repeat_alternative_en_v1"
+    },
+    "optional_follow_up_task": "uncertainty_repeat_en_v1",
+    "completion_rule": "Complete one task option in every required step. Technical failures trigger a retry, accommodations remain visible, and skipped optional research tasks never block coaching."
+  },
+  "consent": {
+    "coaching_processing": {
+      "required_for_session": true,
+      "default": false,
+      "separate_choice": true
+    },
+    "raw_audio_retention": {
+      "required_for_session": false,
+      "default": false,
+      "separate_choice": true
+    },
+    "human_review": {
+      "required_for_session": false,
+      "default": false,
+      "separate_choice": true
+    },
+    "research_collection": {
+      "required_for_session": false,
+      "default": false,
+      "separate_choice": true
+    },
+    "model_improvement": {
+      "required_for_session": false,
+      "default": false,
+      "separate_choice": true
+    },
+    "fairness_metadata": {
+      "required_for_session": false,
+      "default": false,
+      "separate_choice": true
+    },
+    "withdrawal_policy": "Stopping or declining optional uses must not reduce coaching access. Actual retention and deletion periods must be approved before public launch."
+  },
+  "progression_handoff": {
+    "output": "provisional_starting_profile",
+    "overall_score_allowed": false,
+    "selection_inputs": [
+      "user_goal",
+      "task_specific_observations",
+      "measurement_availability",
+      "measurement_quality",
+      "within_session_repeat_evidence",
+      "user_self_report"
+    ],
+    "same_day_success": "practice_completion_only",
+    "later_day_success": "retention_evidence",
+    "new_prompt_success": "transfer_evidence",
+    "mastery_rule": "Requires retained performance on a later day and success on a suitable new prompt. Exact thresholds remain unvalidated and are not defined here.",
+    "progress_metric_policy": "Use only measurements separately approved by the reliability policy. Current metrics remain blocked from progress."
+  },
+  "content_assets": {
+    "reading_anchor_en_001": {
+      "language": "en",
+      "version": "1.0.0",
+      "source": "original_repository_text",
+      "declared_word_count": 99,
+      "text": "On Saturday morning, a neighbourhood team prepared the local hall for an open day. Maya checked the schedule while Jordan moved chairs near the windows. At first, the room felt quiet and unfinished, but soon people arrived with posters, boxes, and bright signs. One volunteer noticed that the entrance was difficult to find, so the team placed a clear sign beside the path. By midday, visitors were asking questions, sharing ideas, and offering to help. The team finished tired but pleased because a simple plan, explained clearly and adjusted together, had turned an empty room into a welcoming place."
+    },
+    "reading_repeat_excerpt_en_001": {
+      "language": "en",
+      "version": "1.0.0",
+      "source": "original_repository_text",
+      "declared_word_count": 25,
+      "text": "On Saturday morning, a neighbourhood team prepared the local hall for an open day. Maya checked the schedule while Jordan moved chairs near the windows."
+    },
+    "spoken_alternative_en_001": {
+      "language": "en",
+      "version": "1.0.0",
+      "source": "original_repository_text",
+      "sentences": [
+        "The room was quiet when the first volunteer arrived.",
+        "A clear sign helped visitors find the entrance.",
+        "People asked questions and shared useful ideas.",
+        "The team changed its plan when something was unclear.",
+        "By midday, the empty hall felt welcoming."
+      ]
+    },
+    "spoken_repeat_excerpt_en_001": {
+      "language": "en",
+      "version": "1.0.0",
+      "source": "original_repository_text",
+      "declared_word_count": 17,
+      "text": "The room was quiet when the first volunteer arrived. A clear sign helped visitors find the entrance."
+    },
+    "repeated_phrase_en_001": {
+      "language": "en",
+      "version": "1.0.0",
+      "source": "original_repository_text",
+      "declared_word_count": 10,
+      "text": "We planned the work carefully and explained each step clearly."
+    }
+  },
+  "tasks": [
+    {
+      "task_id": "context_and_consent_en_v1",
+      "task_version": "1.0.0",
+      "status": "core",
+      "kind": "self_report",
+      "language": "en",
+      "purpose": "Record the user's goal, intended situation, task context, consent choices, accommodations, and whether speech feels usual today.",
+      "constructs": [
+        "declared_goal",
+        "communication_context",
+        "temporary_state",
+        "self_selected_accommodations"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "Choose the communication situation you care about, who you expect to speak with, and any support that would make this assessment easier. You may decline optional questions."
+      },
+      "expected_text_asset": null,
+      "duration_s": {
+        "target": 60,
+        "minimum": 30,
+        "maximum": 120
+      },
+      "recording": {
+        "required": false,
+        "quality_policy": null,
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "self_report.goal",
+        "self_report.context",
+        "self_report.representativeness",
+        "self_report.accommodations"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "context_only",
+        "progress": "not_a_speech_measurement",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "not_applicable",
+      "repetitions": 1,
+      "accommodations": [
+        "plain_text",
+        "spoken_instructions",
+        "extra_time",
+        "prefer_not_to_answer"
+      ],
+      "retry_policy": "Answers can be corrected before recording begins.",
+      "stop_conditions": [
+        "consent_declined",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [],
+        "limitations": "Self report is declared context, not an acoustic measurement."
+      }
+    },
+    {
+      "task_id": "recording_check_en_v1",
+      "task_version": "1.0.0",
+      "status": "core",
+      "kind": "recording_calibration",
+      "language": "en",
+      "purpose": "Detect microphone or room failure before any coaching sample is interpreted.",
+      "constructs": [
+        "recording_quality"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "Place the device in a comfortable fixed position. Stay quiet for five seconds, then describe where you are recording in your normal comfortable voice for about fifteen seconds. Do not share an address or private details."
+      },
+      "expected_text_asset": null,
+      "duration_s": {
+        "target": 30,
+        "minimum": 20,
+        "maximum": 60
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 5
+      },
+      "measurements_enabled": [
+        "audio_quality.*"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "technical_gate_only",
+        "progress": "not_a_speech_skill",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "none",
+      "repetitions": 1,
+      "accommodations": [
+        "spoken_instructions",
+        "text_instructions",
+        "setup_help",
+        "technical_retry"
+      ],
+      "retry_policy": "A technical or baseline quality failure requests a new recording and never lowers a user score.",
+      "stop_conditions": [
+        "unreadable_audio",
+        "near_silence",
+        "severe_clipping",
+        "baseline_quality_rejected",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "recording_check_en_v1"
+        ],
+        "limitations": "Uncalibrated device amplitude is not true vocal sound pressure level."
+      }
+    },
+    {
+      "task_id": "standard_reading_en_v1",
+      "task_version": "1.0.0",
+      "status": "core",
+      "kind": "fixed_reading",
+      "language": "en",
+      "purpose": "Collect a fixed-content English anchor for task-specific delivery observations.",
+      "constructs": [
+        "reading_delivery",
+        "task_specific_rate",
+        "task_specific_pausing",
+        "task_specific_prosody"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "Read the passage once in your normal comfortable voice. This is not a test of accent, literacy, or acting. You may choose the spoken alternative instead."
+      },
+      "expected_text_asset": "reading_anchor_en_001",
+      "duration_s": {
+        "target": 90,
+        "minimum": 45,
+        "maximum": 150
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "computed_metrics.talk_time_s",
+        "computed_metrics.words",
+        "computed_metrics.wpm",
+        "computed_metrics.filler_count",
+        "computed_metrics.fillers_per_min",
+        "computed_metrics.drag_count",
+        "computed_metrics.loud_spike_count",
+        "computed_metrics.uptalk_count",
+        "computed_metrics.uptalk_per_min",
+        "computed_metrics.median_pitch_hz",
+        "voice_quality.pitch_median_hz",
+        "voice_quality.pitch_variation_hz"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "task_specific_if_available",
+        "progress": "blocked_until_reliability_release",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "Passage visible for twenty seconds before recording; preparation duration is stored.",
+      "repetitions": 1,
+      "accommodations": [
+        "larger_text",
+        "adjustable_text_spacing",
+        "spoken_repetition_alternative",
+        "extra_preparation_time"
+      ],
+      "retry_policy": "Retry only for interruption or technical failure. A user-requested restart is recorded and the earlier attempt is not silently replaced.",
+      "stop_conditions": [
+        "baseline_quality_rejected",
+        "reading_not_accessible",
+        "pain_or_distress",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "standard_reading_en_v1"
+        ],
+        "limitations": "Reading also depends on literacy, familiarity, preparation, and language. It is not comparable to spontaneous speech or the spoken alternative."
+      }
+    },
+    {
+      "task_id": "spoken_repetition_alternative_en_v1",
+      "task_version": "1.0.0",
+      "status": "core_alternative",
+      "kind": "listen_and_repeat",
+      "language": "en",
+      "purpose": "Provide a standard-content option when reading is unsuitable without pretending it is the same task.",
+      "constructs": [
+        "repeated_sentence_delivery"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "Listen to each sentence, then repeat it once in your normal comfortable voice. Take as much time as you need."
+      },
+      "expected_text_asset": "spoken_alternative_en_001",
+      "duration_s": {
+        "target": 90,
+        "minimum": 45,
+        "maximum": 180
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "computed_metrics.talk_time_s",
+        "computed_metrics.words",
+        "computed_metrics.median_pitch_hz",
+        "voice_quality.pitch_median_hz"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "limited_task_specific_if_available",
+        "progress": "blocked_until_reliability_release",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "Each sentence is presented immediately before its repetition.",
+      "repetitions": 1,
+      "accommodations": [
+        "repeat_instruction_audio",
+        "extra_processing_time",
+        "text_alongside_audio"
+      ],
+      "retry_policy": "A sentence can be replayed. Replay count is stored and timed rate comparisons are unavailable after adaptation.",
+      "stop_conditions": [
+        "baseline_quality_rejected",
+        "task_not_accessible",
+        "pain_or_distress",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "spoken_repetition_alternative_en_v1"
+        ],
+        "limitations": "Listen-and-repeat depends on hearing, memory, and prompt playback. It must never be compared directly with fixed reading."
+      }
+    },
+    {
+      "task_id": "spontaneous_explanation_en_v1",
+      "task_version": "1.0.0",
+      "status": "core",
+      "kind": "spontaneous_speech",
+      "language": "en",
+      "purpose": "Sample natural organisation and delivery on a familiar low-risk topic.",
+      "constructs": [
+        "spontaneous_delivery",
+        "idea_organisation",
+        "task_specific_language_patterns"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "Explain something you enjoy, use often, or know well. Tell the listener what it is, why it matters to you, and one example. Avoid names or private details. Speak for about one minute."
+      },
+      "expected_text_asset": null,
+      "duration_s": {
+        "target": 120,
+        "minimum": 60,
+        "maximum": 180
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "computed_metrics.talk_time_s",
+        "computed_metrics.words",
+        "computed_metrics.wpm",
+        "computed_metrics.filler_count",
+        "computed_metrics.fillers_per_min",
+        "computed_metrics.drag_count",
+        "computed_metrics.loud_spike_count",
+        "computed_metrics.uptalk_count",
+        "computed_metrics.uptalk_per_min",
+        "computed_metrics.median_pitch_hz",
+        "computed_metrics.hedge_count",
+        "computed_metrics.hedges_per_min",
+        "computed_metrics.repetition_count",
+        "computed_metrics.repetition_rate",
+        "computed_metrics.vocab_variety",
+        "voice_quality.pitch_median_hz",
+        "voice_quality.pitch_variation_hz"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "task_specific_if_available",
+        "progress": "blocked_until_reliability_release",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "Thirty seconds of optional preparation; actual preparation time is stored.",
+      "repetitions": 1,
+      "accommodations": [
+        "spoken_instructions",
+        "text_instructions",
+        "extra_preparation_time",
+        "topic_change",
+        "pause_and_resume"
+      ],
+      "retry_policy": "Retry for technical failure or an unsuitable topic. Store retry reason and never compare prepared and unprepared attempts silently.",
+      "stop_conditions": [
+        "baseline_quality_rejected",
+        "topic_causes_distress",
+        "pain_or_distress",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "spontaneous_explanation_en_v1"
+        ],
+        "limitations": "Topic knowledge, planning, language, anxiety, fatigue, and context affect the result."
+      }
+    },
+    {
+      "task_id": "goal_specific_response_en_v1",
+      "task_version": "1.0.0",
+      "status": "core",
+      "kind": "goal_specific_speech",
+      "language": "en",
+      "purpose": "Sample communication in the situation the user actually wants to improve.",
+      "constructs": [
+        "functional_goal_performance",
+        "goal_specific_delivery",
+        "goal_specific_structure"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "Complete one prompt matched to your chosen goal. Avoid real names, confidential information, or details you do not want stored.",
+        "goal_options": {
+          "interview": "Describe a time you solved a difficult problem. Explain the situation, what you did, and the result.",
+          "presentation": "Give a short opening that introduces your topic, explains why it matters, and tells the audience what they will learn.",
+          "spoken_exam": "Explain a topic you know well. Define it, give one example, and explain why it matters.",
+          "demonstration": "Teach a beginner how to complete a familiar task. Give the main steps and one common mistake to avoid.",
+          "important_conversation": "Explain what you want to communicate, why it matters, and what outcome you hope for without sharing private details.",
+          "social_confidence": "Tell a short story about something you enjoyed or found surprising and explain why it stayed with you.",
+          "everyday_confidence": "Share an opinion about a familiar everyday topic and support it with two reasons.",
+          "custom": "Describe your intended situation in general terms, then respond as if you were speaking in it."
+        }
+      },
+      "expected_text_asset": null,
+      "duration_s": {
+        "target": 150,
+        "minimum": 60,
+        "maximum": 240
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "computed_metrics.talk_time_s",
+        "computed_metrics.words",
+        "computed_metrics.wpm",
+        "computed_metrics.filler_count",
+        "computed_metrics.fillers_per_min",
+        "computed_metrics.drag_count",
+        "computed_metrics.loud_spike_count",
+        "computed_metrics.uptalk_count",
+        "computed_metrics.uptalk_per_min",
+        "computed_metrics.median_pitch_hz",
+        "computed_metrics.hedge_count",
+        "computed_metrics.hedges_per_min",
+        "computed_metrics.question_count",
+        "computed_metrics.repetition_count",
+        "computed_metrics.repetition_rate",
+        "computed_metrics.vocab_variety",
+        "voice_quality.pitch_median_hz",
+        "voice_quality.pitch_variation_hz"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "goal_specific_if_available",
+        "progress": "blocked_until_reliability_release",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "Up to sixty seconds of preparation; selected prompt, preparation allowance, and actual preparation time are stored.",
+      "repetitions": 1,
+      "accommodations": [
+        "spoken_instructions",
+        "text_instructions",
+        "extra_preparation_time",
+        "goal_prompt_change",
+        "pause_and_resume"
+      ],
+      "retry_policy": "Retry for technical failure or a mismatched prompt. Store every attempt and retry reason; never select only the best attempt silently.",
+      "stop_conditions": [
+        "baseline_quality_rejected",
+        "prompt_causes_distress",
+        "pain_or_distress",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "goal_specific_response_en_v1"
+        ],
+        "limitations": "Only equivalent goal, prompt difficulty, preparation, and context may be compared. Different goal prompts cannot rank people."
+      }
+    },
+    {
+      "task_id": "anchor_repeat_en_v1",
+      "task_version": "1.0.0",
+      "status": "core",
+      "kind": "fixed_repeat",
+      "language": "en",
+      "purpose": "Collect a short separated repeat for within-session consistency only.",
+      "constructs": [
+        "within_session_repeat_consistency"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "Read the short excerpt once in your normal comfortable voice. Do not deliberately copy your first attempt."
+      },
+      "expected_text_asset": "reading_repeat_excerpt_en_001",
+      "duration_s": {
+        "target": 50,
+        "minimum": 20,
+        "maximum": 90
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "computed_metrics.talk_time_s",
+        "computed_metrics.words",
+        "computed_metrics.wpm",
+        "computed_metrics.filler_count",
+        "computed_metrics.drag_count",
+        "computed_metrics.loud_spike_count",
+        "computed_metrics.uptalk_count",
+        "computed_metrics.median_pitch_hz",
+        "voice_quality.pitch_median_hz"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "descriptive_repeat_only",
+        "progress": "blocked_until_reliability_release",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "Ten seconds with the excerpt visible; actual preparation time is stored.",
+      "repetitions": 1,
+      "accommodations": [
+        "larger_text",
+        "adjustable_text_spacing",
+        "extra_preparation_time"
+      ],
+      "retry_policy": "Retry only for technical failure or interruption.",
+      "stop_conditions": [
+        "baseline_quality_rejected",
+        "reading_not_accessible",
+        "pain_or_distress",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "standard_reading_en_v1"
+        ],
+        "source_task_text_asset": "reading_anchor_en_001",
+        "source_segment_asset": "reading_repeat_excerpt_en_001",
+        "limitations": "This is a short excerpt and provides within-session repeat evidence only. It cannot establish day-to-day stability, improvement, retention, or mastery."
+      }
+    },
+    {
+      "task_id": "spoken_anchor_repeat_alternative_en_v1",
+      "task_version": "1.0.0",
+      "status": "core_alternative",
+      "kind": "listen_and_repeat",
+      "language": "en",
+      "purpose": "Provide a separated repeat when the spoken standard-content alternative was selected.",
+      "constructs": [
+        "within_session_repeated_sentence_consistency"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "Listen to each of the two short sentences, then repeat it once in your normal comfortable voice. This is not a memory or speed test."
+      },
+      "expected_text_asset": "spoken_repeat_excerpt_en_001",
+      "duration_s": {
+        "target": 50,
+        "minimum": 20,
+        "maximum": 100
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "computed_metrics.talk_time_s",
+        "computed_metrics.words",
+        "computed_metrics.median_pitch_hz",
+        "voice_quality.pitch_median_hz"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "descriptive_repeat_only",
+        "progress": "blocked_until_reliability_release",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "Each sentence is presented immediately before its repetition.",
+      "repetitions": 1,
+      "accommodations": [
+        "repeat_instruction_audio",
+        "extra_processing_time",
+        "text_alongside_audio"
+      ],
+      "retry_policy": "A sentence can be replayed. Replay count is stored and timing comparisons are unavailable after adaptation.",
+      "stop_conditions": [
+        "baseline_quality_rejected",
+        "task_not_accessible",
+        "pain_or_distress",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "spoken_repetition_alternative_en_v1"
+        ],
+        "source_task_text_asset": "spoken_alternative_en_001",
+        "source_segment_asset": "spoken_repeat_excerpt_en_001",
+        "limitations": "This provides within-session repeat evidence for the spoken alternative only. Hearing, memory and playback remain confounders, and it cannot establish mastery."
+      }
+    },
+    {
+      "task_id": "self_reflection_en_v1",
+      "task_version": "1.0.0",
+      "status": "core",
+      "kind": "self_report",
+      "language": "en",
+      "purpose": "Record how difficult, representative, and comfortable the session felt to the user.",
+      "constructs": [
+        "perceived_difficulty",
+        "representativeness",
+        "self_reported_confidence",
+        "temporary_context"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "How difficult did this feel, how representative was it of your usual communication, and did anything temporary affect you today? You may decline any answer."
+      },
+      "expected_text_asset": null,
+      "duration_s": {
+        "target": 40,
+        "minimum": 20,
+        "maximum": 120
+      },
+      "recording": {
+        "required": false,
+        "quality_policy": null,
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "self_report.difficulty",
+        "self_report.representativeness",
+        "self_report.confidence",
+        "self_report.temporary_context"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "declared_context_only",
+        "progress": "separate_from_speech_measurements",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "not_applicable",
+      "repetitions": 1,
+      "accommodations": [
+        "plain_text",
+        "spoken_instructions",
+        "prefer_not_to_answer",
+        "extra_time"
+      ],
+      "retry_policy": "Answers can be corrected before submission.",
+      "stop_conditions": [
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "self_reflection_en_v1"
+        ],
+        "limitations": "Self report and inferred listener impressions remain separate evidence sources."
+      }
+    },
+    {
+      "task_id": "uncertainty_repeat_en_v1",
+      "task_version": "1.0.0",
+      "status": "adaptive_optional",
+      "kind": "uncertainty_repeat",
+      "language": "en",
+      "purpose": "Repeat a short sample only when technical or measurement uncertainty may be resolved by another attempt.",
+      "constructs": [
+        "measurement_availability"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "One result was unclear. Please repeat this short section in the same comfortable way. This is not a test and the unclear attempt does not lower a score."
+      },
+      "expected_text_asset": "reading_repeat_excerpt_en_001",
+      "duration_s": {
+        "target": 45,
+        "minimum": 20,
+        "maximum": 60
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "audio_quality.*",
+        "computed_metrics.talk_time_s",
+        "computed_metrics.words"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "availability_resolution_only",
+        "progress": "blocked",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "Same preparation allowance as the source task.",
+      "repetitions": 1,
+      "trigger_conditions": [
+        "technical_warning",
+        "transcription_uncertainty",
+        "speaker_uncertainty",
+        "insufficient_sample"
+      ],
+      "accommodations": [
+        "same_as_source_task",
+        "decline_follow_up"
+      ],
+      "retry_policy": "At most one adaptive repeat per session. It cannot be triggered by a low skill interpretation.",
+      "stop_conditions": [
+        "baseline_quality_rejected",
+        "user_declines",
+        "pain_or_distress",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [],
+        "limitations": "This resolves uncertainty only and cannot be selected because the system dislikes a user's speaking style."
+      }
+    },
+    {
+      "task_id": "comfortable_vowel_research_en_v1",
+      "task_version": "1.0.0",
+      "status": "optional_research",
+      "kind": "comfortable_sustained_vowel",
+      "language": "en",
+      "purpose": "Collect a small comfortable sustained voice sample for separately governed future research.",
+      "constructs": [
+        "comfortable_sustained_voice_acoustics"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text_informed_by_asha_voice_protocol",
+        "instruction": "If you choose this optional research task, sustain a comfortable 'ah' for three to five seconds without pushing loudness or pitch. Rest, then repeat three times. Stop immediately if uncomfortable."
+      },
+      "expected_text_asset": null,
+      "duration_s": {
+        "target": 45,
+        "minimum": 20,
+        "maximum": 90
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 5
+      },
+      "measurements_enabled": [
+        "voice_quality.pitch_median_hz",
+        "voice_quality.pitch_variation_hz",
+        "voice_quality.jitter",
+        "voice_quality.shimmer"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "blocked",
+        "progress": "blocked",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "Hear one neutral example; example use is stored.",
+      "repetitions": 3,
+      "required_consent": "research_collection",
+      "accommodations": [
+        "skip_without_penalty",
+        "longer_rest",
+        "spoken_instructions"
+      ],
+      "retry_policy": "No forced retry. Discomfort ends the task.",
+      "stop_conditions": [
+        "pain",
+        "dizziness",
+        "unusual_shortness_of_breath",
+        "distress",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "comfortable_vowel_research_en_v1"
+        ],
+        "limitations": "This is not a lung, laryngeal, voice disorder, or medical assessment. Consumer devices materially affect several acoustic measures."
+      }
+    },
+    {
+      "task_id": "repeated_phrase_research_en_v1",
+      "task_version": "1.0.0",
+      "status": "optional_research",
+      "kind": "comfortable_phrase_repeat",
+      "language": "en",
+      "purpose": "Collect repeated ordinary speech for separately governed within-session consistency research.",
+      "constructs": [
+        "comfortable_phrase_consistency"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "original_repository_text",
+        "instruction": "If you choose this optional research task, say the sentence three times at a comfortable natural pace. This is not a speed test."
+      },
+      "expected_text_asset": "repeated_phrase_en_001",
+      "duration_s": {
+        "target": 35,
+        "minimum": 15,
+        "maximum": 75
+      },
+      "recording": {
+        "required": true,
+        "quality_policy": "baseline",
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [
+        "computed_metrics.talk_time_s",
+        "computed_metrics.words",
+        "computed_metrics.wpm",
+        "computed_metrics.median_pitch_hz"
+      ],
+      "measurement_use": {
+        "single_session_coaching": "blocked",
+        "progress": "blocked",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "Sentence visible throughout.",
+      "repetitions": 3,
+      "required_consent": "research_collection",
+      "accommodations": [
+        "skip_without_penalty",
+        "longer_rest",
+        "spoken_instructions"
+      ],
+      "retry_policy": "No forced retry.",
+      "stop_conditions": [
+        "pain_or_distress",
+        "user_withdraws"
+      ],
+      "comparison": {
+        "comparable_with": [
+          "repeated_phrase_research_en_v1"
+        ],
+        "limitations": "Within-session repetition cannot establish natural day-to-day variation, diagnosis, or mastery."
+      }
+    },
+    {
+      "task_id": "rapid_syllable_sequence_future_en_v1",
+      "task_version": "1.0.0",
+      "status": "future_locked",
+      "kind": "rapid_syllable_sequence",
+      "language": "en",
+      "purpose": "Reserve a future separately validated research task without enabling it in onboarding.",
+      "constructs": [
+        "future_timing_research"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "not_yet_approved",
+        "instruction": "Locked until a language-specific protocol, device study, professional review, and owner approval exist."
+      },
+      "expected_text_asset": null,
+      "duration_s": {
+        "target": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "recording": {
+        "required": false,
+        "quality_policy": null,
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [],
+      "measurement_use": {
+        "single_session_coaching": "blocked",
+        "progress": "blocked",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "not_applicable",
+      "repetitions": 0,
+      "required_consent": "research_collection",
+      "accommodations": [
+        "not_available"
+      ],
+      "retry_policy": "not_available",
+      "stop_conditions": [
+        "task_locked"
+      ],
+      "comparison": {
+        "comparable_with": [],
+        "limitations": "Rapid syllable performance is artificial, language and age sensitive, and vulnerable to device effects."
+      }
+    },
+    {
+      "task_id": "phoneme_word_pack_future_en_v1",
+      "task_version": "1.0.0",
+      "status": "future_locked",
+      "kind": "controlled_pronunciation",
+      "language": "en",
+      "purpose": "Reserve a future independently validated pronunciation task without enabling it in onboarding.",
+      "constructs": [
+        "future_pronunciation_research"
+      ],
+      "prompt": {
+        "version": "1.0.0",
+        "source": "not_yet_approved",
+        "instruction": "Locked until legitimate language and dialect variants, human phonetic truth, professional review, and owner approval exist."
+      },
+      "expected_text_asset": null,
+      "duration_s": {
+        "target": 0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "recording": {
+        "required": false,
+        "quality_policy": null,
+        "silence_lead_s": 0
+      },
+      "measurements_enabled": [],
+      "measurement_use": {
+        "single_session_coaching": "blocked",
+        "progress": "blocked",
+        "ranking": "blocked",
+        "diagnosis": "blocked"
+      },
+      "preparation": "not_applicable",
+      "repetitions": 0,
+      "required_consent": "research_collection",
+      "accommodations": [
+        "not_available"
+      ],
+      "retry_policy": "not_available",
+      "stop_conditions": [
+        "task_locked"
+      ],
+      "comparison": {
+        "comparable_with": [],
+        "limitations": "Accent and dialect differences are not errors. ASR disagreement is not pronunciation truth."
+      }
+    }
+  ]
+}

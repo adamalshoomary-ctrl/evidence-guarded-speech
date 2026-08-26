@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "mfa_english_dictionary_manifest_v1",
+  "source_id": "mfa_english_dictionary",
+  "title": "Montreal Forced Aligner English pronunciation dictionaries v3.1.0",
+  "version": {
+    "label": "v3.1.0, files english_uk_mfa.dict, english_us_mfa.dict and english_mfa.dict",
+    "release_date": "2024-06-16",
+    "immutable_id": "mfa_models_english_dictionary_v3_1_0"
+  },
+  "citation": "McAuliffe, Michael and Sonderegger, Morgan. English MFA dictionaries v3.1.0. Montreal Forced Aligner published models, 2024.",
+  "canonical_source": {
+    "landing_page": "https://mfa-models.readthedocs.io/en/latest/dictionary/English/index.html",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-29",
+    "account_required": false,
+    "terms_state": "not_required",
+    "terms_url": "https://mfa-models.readthedocs.io/en/latest/dictionary/English/index.html",
+    "terms_version": "v3.1.0",
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC-BY-4.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-29",
+    "attribution_required": true,
+    "attribution_text": "Montreal Forced Aligner English pronunciation dictionaries v3.1.0 by McAuliffe and Sonderegger, reused under CC BY 4.0."
+  },
+  "governance": {
+    "permitted_roles": [
+      "british_referenced_expected_phone_path",
+      "american_referenced_expected_phone_path"
+    ],
+    "prohibited_roles": [
+      "accent_quality_judgment",
+      "accepted_variant_truth",
+      "australian_variety_truth",
+      "clinical_inference",
+      "product_release_truth",
+      "scientific_release_truth"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/mfa_english_dictionary",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Attribution is required wherever a derived pronunciation is published or shipped. Nothing is rehosted."
+  },
+  "population": {
+    "description": "Aligner ready English pronunciation dictionaries published beside the Montreal Forced Aligner acoustic models, in one shared phone alphabet across varieties.",
+    "known_strata": [
+      "english_uk_mfa",
+      "english_us_mfa",
+      "english_mfa"
+    ],
+    "limitations": [
+      "There is no Australian English dictionary in the published set, so this cannot supply an Australian reference on its own.",
+      "A dictionary describes a documented variety, not any individual speaker, and it can never accept or reject what a speaker produced.",
+      "The generic English dictionary mixes varieties and is retained only as the recorded alternative that was not chosen."
+    ]
+  },
+  "annotation": {
+    "truth_class": "unavailable",
+    "provenance": "Published word and phone dictionaries with pronunciation and silence probabilities. There is no recording, no speaker and no observation of a production.",
+    "fields_retained": [
+      "word",
+      "pronunciation_probabilities",
+      "phones"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "A lexicon proposes how a word may be said and can never establish how anybody said it, so no truth class applies to it.",
+      "The probability columns describe pronunciation frequency inside the aligner and are not confidence in a speaker's production."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "All three acquired dictionary files, read in full and recounted on 2026-07-29.",
+      "english_mfa_v3_1_0.html captured 2026-07-29 from https://mfa-models.readthedocs.io/en/latest/dictionary/English/English%20MFA%20dictionary%20v3_1_0.html, SHA256 41f44c17b2964432bc81871fd12d3c6fb07e584ef4f1d298333fc62f840d02de.",
+      "english_uk_mfa_v3_1_0.html captured 2026-07-29 from https://mfa-models.readthedocs.io/en/latest/dictionary/English/English%20(UK)%20MFA%20dictionary%20v3_1_0.html, SHA256 cbe926b8e16a29f46d25c6651a9a64fb844cbc7ba316a2b130b923650d818b8e.",
+      "english_us_mfa_v3_1_0.html captured 2026-07-29 from https://mfa-models.readthedocs.io/en/latest/dictionary/English/English%20(US)%20MFA%20dictionary%20v3_1_0.html, SHA256 258d07cb9afd1cbba4f09c2dc0e811dc26f4e5b2dc4c2c8bd110ecfbedf64d62."
+    ],
+    "findings": [
+      "English (UK) holds 51770 entries over 46167 head words with 78 distinct phones. English (US) holds 69338 entries over 61061 head words with 79 distinct phones. Generic English holds 42353 entries over 42353 head words with 92 distinct phones.",
+      "Those counts each exceed the published figures by exactly the aligner's own special tokens. English (UK) adds <unk>, <cutoff>, [bracketed] and [laughter] to the documented 46,163 words, generic English adds <unk> to the documented 42,352, and both add the spoken noise phone spn to the documented phone list. The earlier recorded inventories of 99 and 103 phones for generic English were both wrong; the page lists 91 and the file carries 92 including spn.",
+      "Post-vocalic rhotics separate the two varieties exactly as a real British and American pair should: 0.01 percent of English (UK) entries against 23.58 percent of English (US) entries.",
+      "Generic English sits between them at 7.42 percent, which is the measurable sense in which it is not one variety.",
+      "Checkpoint 22E7 therefore chooses English (UK) as the British referenced expected-phone path and English (US) as its American counterpart, because the pair shares one phone alphabet. Two reference paths that differed in alphabet as well as in variety could not produce an interpretable difference at checkpoint 22E8."
+    ]
+  },
+  "participant_split": {
+    "status": "not_applicable",
+    "unit": null,
+    "source_split_provenance": "A pronunciation lexicon has no speakers, so there is no participant split to make.",
+    "project_strategy": "lexicon_has_no_participants",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {}
+  },
+  "lineage": {
+    "lineage_group": "montreal_forced_aligner",
+    "derived_from": [],
+    "independence_claim": "no_evidence_claim_permitted",
+    "duplicate_detection": "The aligner pinned at checkpoint 22C carries its own American ARPA dictionary in a different phone alphabet, and the two must never be mixed in one comparison.",
+    "candidate_model_overlap_status": "not_applicable"
+  },
+  "archives": [
+    {
+      "filename": "english_mfa.dict",
+      "size_bytes": 1078195,
+      "canonical_download_url": "https://github.com/MontrealCorpusTools/mfa-models/releases/download/dictionary-english_mfa-v3.1.0/english_mfa.dict",
+      "upstream_checksum": {
+        "algorithm": "none",
+        "value": null
+      },
+      "local_sha256": "975bf9c7791535c5aec57995e0bd2b77eb7ca364d1d974c2134e07bb0f16b079",
+      "local_verification_status": "verified"
+    },
+    {
+      "filename": "english_uk_mfa.dict",
+      "size_bytes": 2310199,
+      "canonical_download_url": "https://github.com/MontrealCorpusTools/mfa-models/releases/download/dictionary-english_uk_mfa-v3.1.0/english_uk_mfa.dict",
+      "upstream_checksum": {
+        "algorithm": "none",
+        "value": null
+      },
+      "local_sha256": "a4104e3ef5f98eb86baa11b032da77059dc6180227ddbca31a0c6fa3d5c1802c",
+      "local_verification_status": "verified"
+    },
+    {
+      "filename": "english_us_mfa.dict",
+      "size_bytes": 3113506,
+      "canonical_download_url": "https://github.com/MontrealCorpusTools/mfa-models/releases/download/dictionary-english_us_mfa-v3.1.0/english_us_mfa.dict",
+      "upstream_checksum": {
+        "algorithm": "none",
+        "value": null
+      },
+      "local_sha256": "cbf4ed8cee1338e009b9b387bcb9ee789ce70b98c61ca9bc6ed4f4e63d4812d5",
+      "local_verification_status": "verified"
+    }
+  ]
+}

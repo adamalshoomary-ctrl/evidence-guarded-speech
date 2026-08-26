@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "isle_elra_s0083_manifest_v1",
+  "source_id": "isle_elra_s0083",
+  "title": "ISLE Speech Corpus",
+  "version": {
+    "label": "ELRA-S0083",
+    "release_date": "2000",
+    "immutable_id": "elra_catalogue_ELRA_S0083"
+  },
+  "citation": "Menzel, Wolfgang et al. The ISLE Corpus of Non-Native Spoken English. LREC 2000.",
+  "canonical_source": {
+    "landing_page": "https://catalogue.elra.info/en-us/repository/browse/ELRA-S0083/",
+    "licence_url": "https://catalogue.elra.info/en-us/repository/browse/ELRA-S0083/"
+  },
+  "access": {
+    "state": "rejected",
+    "retrieved_at": null,
+    "account_required": false,
+    "terms_state": "rejected",
+    "terms_url": "https://catalogue.elra.info/en-us/repository/browse/ELRA-S0083/",
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "restricted_role_only",
+    "spdx_id": null,
+    "commercial_use_permitted": false,
+    "verified_at": "2026-07-29",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "manifest_only"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "use_without_a_purchased_commercial_licence",
+      "treating_a_declined_purchase_as_an_unknown"
+    ],
+    "raw_data_committed": false,
+    "local_storage": null,
+    "rehosting_permitted": null,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Do not acquire, retain, upload or process source data while the recorded rights state blocks use."
+  },
+  "population": {
+    "description": "Twenty three German and twenty three Italian intermediate learners of English, about twenty minutes of speech each.",
+    "known_strata": [],
+    "limitations": [
+      "Its speakers are learners, so it describes second language English and never Australian variety.",
+      "No rights exist without the purchased commercial licence, which the owner declined on cost grounds."
+    ]
+  },
+  "annotation": {
+    "truth_class": "unavailable",
+    "provenance": "No annotations acquired; the catalogue record and published corpus description were read.",
+    "fields_retained": [],
+    "original_records_retained": false,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "No source record may enter engineering while access or rights remain blocked."
+    ]
+  },
+  "capability_audit": {
+    "status": "blocked_or_pending",
+    "inspected_materials": [
+      "ELRA catalogue record ELRA-S0083, read 2026-07-29.",
+      "The published corpus description and its annotation procedure."
+    ],
+    "findings": [
+      "About two thirds of each speaker's data was annotated by linguists, corrected at word level and then re annotated for phone and stress errors including substitutions, insertions and deletions. That is the truth class this project needs.",
+      "Its German and Italian speakers would have been maximally independent of SpeechOcean762's Mandarin speakers, which is the single largest limitation of the current evidence base.",
+      "It publishes its own inter annotator agreement, about 55 percent on error identity and 70 percent on error localisation, which would have supplied a human ceiling from an independent team.",
+      "ELRA lists it at EUR 1,500 for non members under a standing commercial agreement template. Adam declined the purchase on 2026-07-28 on cost grounds, and only a new explicit owner decision reopens it."
+    ]
+  },
+  "participant_split": {
+    "status": "not_applicable",
+    "unit": null,
+    "source_split_provenance": "No source participant data is acquired or approved.",
+    "project_strategy": "no_data_use_until_rights_change",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {}
+  },
+  "lineage": {
+    "lineage_group": "isle",
+    "derived_from": [],
+    "independence_claim": "no_evidence_claim_permitted",
+    "duplicate_detection": "Required if rights later permit acquisition.",
+    "candidate_model_overlap_status": "not_applicable"
+  },
+  "archives": []
+}

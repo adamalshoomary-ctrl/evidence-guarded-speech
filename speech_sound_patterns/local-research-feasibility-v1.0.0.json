@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "speech_sound_local_research_feasibility",
+  "report_version": "1.0.0",
+  "checkpoint": "22E2",
+  "completed": "2026-07-24",
+  "scope_statement": "Label-blind local feasibility only: output shape, licensing, serialization safety, repeatability, runtime and peak memory on frozen development clips. No accuracy claim, no threshold, no selection, no held-out access, no audio sent off this machine.",
+  "expected_only_manifest_sha256": "c918feffa7c0a3a3fa99ce7a9e028621e8fb002980777297f30088e5975331da",
+  "candidates": {
+    "segmentation_free_gop": {
+      "status": "feasible",
+      "role": "core_local_repair",
+      "implementation": "independent implementation of the published CC BY 4.0 equations (arXiv 2507.16838) in speech_sound_patterns/sfgop.py; no unlicensed repository code; no SpeechOcean-trained scoring head",
+      "contract_sha256": "229f811fb16eca666248377b62c1cbcf2d5f8bd8d0d85517f643e3947a87f6d2",
+      "model": "frozen Meta ONNX wav2vec2 espeak model, revision c69750f5043e5e1f8a71ab95dd3b98338c280c92, verified via benchmark-repair-meta-contract-v1.0.0.json",
+      "correctness_evidence": "junction likelihoods proven equal to brute-force CTC path enumeration at nine decimal places in tests, including repeated-label, multi-token, whole-sequence and deletion edge cases; per-target junction self-checks and forward-backward consistency checks passed with zero absolute difference on all real clips",
+      "clips": 24,
+      "scored_targets": 283,
+      "unscorable_targets": 184,
+      "same_input_repeats": 2,
+      "all_repeats_exact": true,
+      "total_audio_seconds": 91.127,
+      "total_processing_seconds_two_repeats": 127.611564,
+      "real_time_factor_two_repeats": 1.400371,
+      "peak_maxrss_bytes": 1799569408,
+      "private_evidence": ".research_data/speech_sound_patterns/benchmark/repair-v1/evidence/sfgop-feasibility/",
+      "output_semantics": "per scorable consonant span: GOP-AF and GOP-AF-SD log posteriors, deletion posterior and top alternative candidate phones; concern and alternative-candidate evidence only, never truth"
+    },
+    "powsm": {
+      "status": "feasible",
+      "role": "core_local_free_phone_comparator",
+      "model_id": "espnet/powsm",
+      "model_revision": "21ffa410432ace159f3c1fdeed304c70eddf7d34",
+      "weights_licence": "cc-by-4.0",
+      "environment": "isolated venv pinned in environments/powsm-21ffa41-pip.txt (espnet 202511, torch 2.8.0, cpu)",
+      "serialization_audit": "checkpoint pickle audited opcode by opcode before load; observed globals limited to collections OrderedDict, torch FloatStorage and torch._utils._rebuild_tensor_v2; anything else fails closed",
+      "model_files_sha256": {
+        "config.yaml": "f29993179ff12d9f082052c8e1ccbe192c26f6bfe116cc53d6422c5c8012787b",
+        "weights.pth": "a91a03bcfd59a956319939891c4098e8f7e8c9ea568d7ec2bcbc1131b32d1197",
+        "bpe.model": "9b9a8b76353430d41a1b8f7f2ec0f40fa8c4e75567eaef6887bdbb893c55236a"
+      },
+      "inference_settings": "task <pr>, lang <eng>, beam size 1, cpu, 20 second window, text_prev <na>",
+      "clips": 4,
+      "same_input_repeats": 2,
+      "all_repeats_exact": true,
+      "total_audio_seconds": 11.96,
+      "total_processing_seconds_two_repeats": 16.218517,
+      "real_time_factor_two_repeats": 1.356063,
+      "model_load_seconds": 6.30269,
+      "peak_maxrss_bytes": 3068035072,
+      "private_evidence": ".research_data/speech_sound_patterns/feasibility/powsm-21ffa41-probe.json",
+      "lineage_limits": "IPAPack++ training with G2P-derived labels; SpeechOcean762 and L2-ARCTIC are evaluation-only for this model; agreement with ZIPA can never be treated as independent confirmation",
+      "environment_notes": "espnet package import fetched nltk tagger data once during environment setup; inference runs with SPEECH_SOUND_OFFLINE and HF_HUB_OFFLINE enforced"
+    },
+    "wav2vec2_commonphone": {
+      "status": "feasible_supporting_only",
+      "role": "supporting_only_local_comparator",
+      "model_id": "pklumpp/Wav2Vec2_CommonPhone",
+      "model_revision": "e856cb96ef8fc5972ba43310d61cb4b3d6bc1e87",
+      "weights_licence": "cc0-1.0",
+      "harness_provenance": "architecture and IPA symbol table adapted from the CC0-1.0 repository github.com/PKlumpp/phd_model at commit dfff4848baf1a6698c245e83f8768a577c353558",
+      "serialization_audit": "safetensors only; the repository's pickle weights file was never downloaded or loaded; safetensors header parsed without tensor loading and the 102 by 1024 head verified before use",
+      "model_files_sha256": {
+        "model.safetensors": "6242387e9e910e094f8b7c3577bda857834593ae0519cab76ee414f8030fc799",
+        "config.json": "a5b573282969e5747fd754d28f1196e8b19185e3228456f06aa2c41fd5ebdc07",
+        "xlsr53-config.json": "48576e4a1b0f02c7770f57e236747169459db9a8b9a529bbd7a58bbbf52c45b5"
+      },
+      "environment": "isolated venv pinned in environments/commonphone-e856cb9-pip.txt (torch 2.8.0, transformers 4.57.6, cpu)",
+      "clips": 4,
+      "same_input_repeats": 2,
+      "all_repeats_exact": true,
+      "total_audio_seconds": 11.96,
+      "total_processing_seconds_two_repeats": 4.413887,
+      "real_time_factor_two_repeats": 0.369054,
+      "peak_maxrss_bytes": 2945826816,
+      "private_evidence": ".research_data/speech_sound_patterns/feasibility/commonphone-e856cb9-probe.json",
+      "independence_limits": "trained on Common Phone, derived from Common Voice; this project's Common Phone and Australian Common Voice evidence are non-independent of the model and can never count toward its selection gates, headline results or corroboration"
+    },
+    "zipa": {
+      "status": "not_run_blocked",
+      "reason": "model weight licence and provenance confirmation from the authors is still pending; the fail-closed provider register refuses the lane until it is resolved"
+    },
+    "unsw_speech_attributes": {
+      "status": "not_run_blocked",
+      "reason": "checkpoint licence and training-data rights are unresolved pending the combined UNSW enquiry; no checkpoint was downloaded or loaded"
+    },
+    "child_phoneme_model": {
+      "status": "not_run_blocked",
+      "reason": "exact OpenRAIL conditions and MyST and Providence derived-weight rights are unreviewed; no checkpoint was downloaded or loaded"
+    }
+  },
+  "evidence_class_separation": "segmentation-free GOP expected-phone concern evidence, unconstrained free-phone recognition evidence and articulatory attribute evidence remain separate classes; none is truth and agreement between classes is not confirmation",
+  "no_selection_notice": "feasibility establishes only that admitted candidates run, repeat and are legally usable for their declared roles on this machine; the frozen development and tuning comparison and its unchanged gates remain the only path to any selection"
+}

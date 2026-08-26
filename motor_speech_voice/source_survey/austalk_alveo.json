@@ -1,0 +1,96 @@
+{
+  "source_id": "austalk_alveo",
+  "title": "AusTalk, the Big Australian Speech Corpus, and the Alveo Virtual Laboratory",
+  "citation": "Burnham, D. et al. AusTalk: an audio-visual corpus of Australian English. LREC 2014.",
+  "canonical_source": {
+    "landing_page": "https://bigasc.edu.au/",
+    "terms_or_licence_url": null
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "Australian English",
+    "covers_australian_english": true
+  },
+  "population": {
+    "description": "About one thousand speakers of Australian English across scripted, spontaneous and dialogue tasks.",
+    "age_band": "adults",
+    "clinical_status": "healthy",
+    "limitations": [
+      "No access route exists, so what it contains cannot be inspected.",
+      "Audio visual recordings of identifiable participants would need their own privacy review if a route ever reopened."
+    ]
+  },
+  "tasks_present": [
+    "scripted_speech",
+    "spontaneous_speech",
+    "dialogue"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "unresolved",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "unresolved",
+    "failure_reasons": [
+      "Unreachable, so its annotation content fails closed.",
+      "No published description suggests rapid syllable, perceptual voice or multi listener intelligibility material in any case."
+    ]
+  },
+  "access": {
+    "route": "host_unreachable",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "unobtainable",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "DNS and HTTP checks on alveo.edu.au, app.alveo.edu.au, austalk.edu.au and bigasc.edu.au, run 2026-08-19."
+    ],
+    "findings": [
+      "All four names still fail to resolve and all HTTP attempts returned no status, which reproduces exactly what item 22 recorded on 2026-07-29.",
+      "A discovery sweep during this checkpoint reported these hosts as live with working corpus and licence pages. That report was wrong and was rejected after direct checking. It is recorded here because an unverified availability claim about the one Australian corpus this project would most want is exactly the kind of error that wastes weeks."
+    ],
+    "conflicting_claims": [
+      "A discovery sweep on 2026-08-19 reported bigasc.edu.au and alveo.edu.au as accessible. Direct DNS and HTTP checks on the same date contradict that, and the direct checks are authoritative."
+    ]
+  },
+  "eligibility": {
+    "decision": "blocked_host_unreachable",
+    "reasons": [
+      "Unobtainable, confirming the item 22 finding rather than reopening it."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "austalk_alveo_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

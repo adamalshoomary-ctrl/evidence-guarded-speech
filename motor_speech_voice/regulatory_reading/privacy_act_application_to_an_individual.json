@@ -1,0 +1,67 @@
+{
+  "question_id": "privacy_act_application_to_an_individual",
+  "domain": "privacy",
+  "question": "Does the Privacy Act apply to a solo researcher with no company, and does the absence of a legal entity help or hurt?",
+  "applies_to_purposes": [
+    "developer_research_only"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Privacy Act 1988 (Cth), section 7B(1), Individuals in non-business capacity",
+      "url": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "An act done, or practice engaged in, by an organisation that is an individual is exempt for the purposes of paragraph 7(1)(ee) if the act is done, or the practice is engaged in, other than in the course of a business carried on by the individual."
+    },
+    {
+      "citation": "Privacy Act 1988 (Cth), section 16",
+      "url": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Nothing in the Australian Privacy Principles applies to: (a) the collection, holding, use or disclosure of personal information by an individual; or (b) personal information held by an individual; only for the purposes of, or in connection with, his or her personal, family or household affairs."
+    },
+    {
+      "citation": "Privacy Act 1988 (Cth), section 6D(4)",
+      "url": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "However, an individual, body corporate, partnership, unincorporated association or trust is not a small business operator if he, she or it: ... (b) provides a health service to another individual and holds any health information except in an employee record; or (c) discloses personal information about another individual to anyone else for a benefit, service or advantage ..."
+    }
+  ],
+  "reading": [
+    "The protection an unincorporated individual actually has is section 7B(1), which exempts acts done other than in the course of a business carried on by the individual. It is not the small business exemption and not the personal affairs carve out.",
+    "Section 16 is narrower and probably does not help. It applies only where the purpose is solely personal, family or household, and building a research corpus is not that.",
+    "The absence of a legal entity is therefore not a safe harbour. It changes which provision does the work. Section 7B(1) holds only for as long as no business is carried on, and it would stop covering the research the moment the work became commercial in any way.",
+    "The health service limb in section 6D(4)(b) removes small business operator status at any turnover including zero, so it matters as soon as any business exists. Whether a speech research study is a health service is itself unresolved."
+  ],
+  "confidence": "reading_with_material_uncertainty",
+  "unresolved": [
+    {
+      "question": "Whether a speech research study is a health service within section 6FB, whose test turns on what either the participant or the researcher intends or claims.",
+      "why_it_cannot_be_settled_here": "The definition contains no research carve out and no published guidance addresses research. A participant who believes the session tells them something about their speech health could bring it inside on the participant's intention alone.",
+      "who_must_settle_it": "An Australian privacy lawyer."
+    },
+    {
+      "question": "Whether the privacy policy obligations in Australian Privacy Principle 1 survive the section 7B(1) exemption, given that the exemption operates on acts and practices while a policy obligation is closer to a standing state of affairs.",
+      "why_it_cannot_be_settled_here": "No guidance or case law addressing the point was located.",
+      "who_must_settle_it": "An Australian privacy lawyer."
+    }
+  ],
+  "consequences": [
+    "Any move toward commercial activity changes the privacy analysis before it changes anything else, and it does so silently.",
+    "The engineering plan's requirement that qualified review name every entity and determine Australian Privacy Principle coverage is therefore not boilerplate. The coverage question genuinely turns on facts only the owner knows."
+  ],
+  "decided_by": [
+    "australian_privacy_lawyer",
+    "owner"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "privacy_act_application_to_an_individual_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

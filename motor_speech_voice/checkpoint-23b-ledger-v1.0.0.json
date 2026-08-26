@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "motor_speech_voice_checkpoint_23b_ledger_v1",
+  "checkpoint": "23B",
+  "checkpoint_status": "in_progress",
+  "prepared_at": "2026-08-19",
+  "deliverable_count": 13,
+  "deliverables": [
+    {
+      "number": "one",
+      "title": "Signed intended use, population, user, action and prohibited use statement",
+      "status": "blocked_requires_named_human",
+      "evidence": [],
+      "what_remains": "A signature, and before that a benefit concrete enough to be worth signing. The draft in the governance review package records that it does not yet identify a sufficiently concrete benefit or eventual human action.",
+      "who_supplies_it": [
+        "owner",
+        "independent_professional_governance_group",
+        "paid_lived_experience_governance_group"
+      ],
+      "note": "The draft exists and is deliberately unsigned. A draft is not a deliverable here."
+    },
+    {
+      "number": "two",
+      "title": "Recorded adults first research scope and a separate prohibition on child inclusion",
+      "status": "public_research_complete",
+      "evidence": [
+        "motor_speech_voice/governance-contract-v1.0.0.json"
+      ],
+      "what_remains": "Nothing. Adam approved adults first on 2026-08-14 and the contract records it.",
+      "who_supplies_it": [],
+      "note": "This is the only deliverable an owner decision alone could complete, and it is complete. It sets a research eligibility floor of eighteen and creates no product age gate."
+    },
+    {
+      "number": "three",
+      "title": "Named paid lived experience governance and independent professional roles",
+      "status": "blocked_requires_named_human",
+      "evidence": [],
+      "what_remains": "Real people, appointed and paid. Public identification routes exist in the governance review package; a name on a shortlist is not an appointment.",
+      "who_supplies_it": [
+        "owner",
+        "paid_lived_experience_governance_group",
+        "independent_professional_governance_group"
+      ],
+      "note": "This one also needs a budget, which does not exist."
+    },
+    {
+      "number": "four",
+      "title": "Conflict register and decision rights matrix separating vendor, truth and release authority",
+      "status": "blocked_requires_named_human",
+      "evidence": [],
+      "what_remains": "Named parties. A conflict register with nobody in it records nothing.",
+      "who_supplies_it": [
+        "owner",
+        "independent_professional_governance_group"
+      ],
+      "note": "The machine readable shape for this exists in final_decision.py and is waiting for content."
+    },
+    {
+      "number": "five",
+      "title": "Professionally reviewed task, burden, access, stop and safety protocol",
+      "status": "blocked_requires_named_human",
+      "evidence": [],
+      "what_remains": "Professional review. The task itself is locked and no prompt, syllable sequence, effort instruction or trial count has been selected.",
+      "who_supplies_it": [
+        "independent_professional_governance_group",
+        "paid_lived_experience_governance_group"
+      ],
+      "note": "The measurement input package records what a protocol would have to fix, which is not the same as fixing it."
+    },
+    {
+      "number": "six",
+      "title": "Construct specific annotation, listener and clinical reference manuals",
+      "status": "blocked_requires_named_human",
+      "evidence": [],
+      "what_remains": "The relevant professionals, writing them. Manuals decide what the reference means, so they cannot be drafted by the party being checked.",
+      "who_supplies_it": [
+        "independent_professional_governance_group"
+      ],
+      "note": "The source survey established there is no public annotation to imitate for the motor lane, so these would be written from nothing."
+    },
+    {
+      "number": "seven",
+      "title": "Prospective acquisition, sample size, representation, split and statistical plan",
+      "status": "public_research_partial",
+      "evidence": [
+        "motor_speech_voice/measurement_plan/",
+        "motor_speech_voice/measurement_plan/measurement-plan-registry-v1.0.0.json"
+      ],
+      "what_remains": "An independent statistician, a selected construct and pilot variance. Every recognised sizing method needs an anticipated reliability or prior variance components, and none of them can produce that from nothing.",
+      "who_supplies_it": [
+        "owner"
+      ],
+      "note": "Public research produced the inputs a statistician would need, once per provisional construct, and structurally cannot produce a sample size. That is the whole distinction this deliverable turns on."
+    },
+    {
+      "number": "eight",
+      "title": "Institution pathway determined and required prospective ethics review completed",
+      "status": "blocked_requires_named_human",
+      "evidence": [],
+      "what_remains": "An institution, and an ethics review body willing to review an unaffiliated individual. No Australian body is obliged to provide one, and two Queensland universities checked directly will not.",
+      "who_supplies_it": [
+        "responsible_institution",
+        "human_research_ethics_committee_or_review_body",
+        "owner"
+      ],
+      "note": "The regulatory reading records the routes that exist and the decisive unknown, which is whether any registered committee accepts an applicant with no organisation. Settling that needs contact, which the approved research only route prohibits."
+    },
+    {
+      "number": "nine",
+      "title": "Privacy impact assessment, responsible entity and data role matrix, applicable law, notices, controls, consent, retention and incident design",
+      "status": "public_research_partial",
+      "evidence": [
+        "motor_speech_voice/regulatory_reading/",
+        "motor_speech_voice/regulatory_reading/regulatory-reading-registry-v1.0.0.json"
+      ],
+      "what_remains": "A legal entity to be the responsible entity, and a privacy lawyer. An assessment names who is accountable, and there is nobody to name.",
+      "who_supplies_it": [
+        "owner",
+        "australian_privacy_lawyer"
+      ],
+      "note": "Public research mapped which law applies and found one exposure the repository had not recorded at all: a statutory tort that applies to an individual regardless of entity status, turnover or privacy principle coverage, with no research exemption."
+    },
+    {
+      "number": "ten",
+      "title": "Source and commercial rights review, including every proposed vendor and transfer",
+      "status": "public_research_complete",
+      "evidence": [
+        "motor_speech_voice/source_survey/",
+        "motor_speech_voice/source_survey/source-survey-registry-v1.0.0.json"
+      ],
+      "what_remains": "Nothing for this deliverable. Twenty seven sources were surveyed with their licence, access route and rights state, nothing was selected and no acquisition was authorised.",
+      "who_supplies_it": [],
+      "note": "Complete does not mean favourable. The review's finding is that the motor lane has no qualifying public source at any licence and at any price."
+    },
+    {
+      "number": "eleven",
+      "title": "Versioned split allocation method and overlap register before pilot access",
+      "status": "blocked_requires_named_human",
+      "evidence": [],
+      "what_remains": "A pilot to allocate. There is no participant, no recording and no split to freeze.",
+      "who_supplies_it": [
+        "owner",
+        "responsible_institution"
+      ],
+      "note": "The rules that would govern the allocation are recorded in the measurement input package. The allocation itself has no subject."
+    },
+    {
+      "number": "twelve",
+      "title": "Documented preliminary Australian classification and clinical trial pathway assessment",
+      "status": "public_research_partial",
+      "evidence": [
+        "motor_speech_voice/regulatory_reading/",
+        "motor_speech_voice/regulatory_reading/regulatory-reading-registry-v1.0.0.json"
+      ],
+      "what_remains": "A qualified Australian regulatory specialist, documenting the assessment. A careful reading by a non lawyer is not a determination and the checkpoint asks for a determination.",
+      "who_supplies_it": [
+        "australian_regulatory_specialist",
+        "human_research_ethics_committee_or_review_body"
+      ],
+      "note": "Public research located the point at which the answer changes, which is the useful part. It also found that the clinical trial question is one the regulator expressly declines to answer and assigns to an ethics committee, so it is unanswerable here for a structural reason rather than for want of effort."
+    },
+    {
+      "number": "thirteen",
+      "title": "Recorded selection or no selection decision with reasons",
+      "status": "blocked_requires_named_human",
+      "evidence": [],
+      "what_remains": "Every review above. A decision recorded before the reviews that inform it would be a decision about nothing.",
+      "who_supplies_it": [
+        "owner",
+        "independent_professional_governance_group"
+      ],
+      "note": "A documented no selection would be a valid completed result. It is not available yet, because the reasons that would justify it have not been reviewed by anybody accountable."
+    }
+  ],
+  "counts": {
+    "blocked_requires_named_human": 8,
+    "public_research_complete": 2,
+    "public_research_partial": 3
+  },
+  "acceptance_rule": "Checkpoint 23B acceptance is written review from the accountable roles, not an agent's interpretation of public guidance and not a count of finished deliverables. Two of thirteen are complete and both were completable without any external party. Nothing in this ledger, and no amount of further public research, can move a blocked deliverable, because each is blocked on a person rather than on information.",
+  "what_public_research_changed": [
+    "It established that the motor lane has no qualifying public reference source at any licence and at any price, so any rapid syllable claim depends on prospective collection rather than on data anyone can obtain.",
+    "It established that the absent legal entity is a demonstrated blocker in three separate places: the data use agreement countersignature that gates the largest relevant intelligibility corpus, the Australian sponsor a clinical trial notification requires, and the Australian legal entity a medical device sponsor must be.",
+    "It located the point on the intended purpose ladder where Australian medical device regulation engages, and found that checkpoint 23E's own described action sits close to the regulator's definition of screening.",
+    "It found a personal legal exposure the repository had not recorded: a statutory tort of serious invasion of privacy, in force since 10 June 2025, which applies to an individual with no entity and has no research exemption.",
+    "It found that Queensland law treats recording and later sharing as separate questions, and that sharing recordings or transcripts with annotators is the one that needs consent from every party.",
+    "It recorded the inputs an independent statistician would need for each of the twelve provisional constructs, and made it structurally impossible for that package to contain a sample size."
+  ],
+  "selection_recorded": false,
+  "external_party_contacted": false,
+  "money_spent": false,
+  "data_acquired": false
+}

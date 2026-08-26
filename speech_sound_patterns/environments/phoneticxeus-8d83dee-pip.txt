@@ -1,0 +1,8 @@
+# Install after the exact conda lock with:
+# python -m pip install --require-hashes -r phoneticxeus-8d83dee-pip.txt
+panphon==0.22.2 \
+    --hash=sha256:a4c65113430d0699054cb00df978c02712d3c80913a1ef67697f888d96f3a00a
+editdistance==0.8.1 \
+    --hash=sha256:5e88efb052d45e924606c305cb833a80579dca3e8e4ff01309d50ba2c1c0bbd5
+unicodecsv==0.14.1 \
+    --hash=sha256:018c08037d48649a0412063ff4eda26eaa81eff1546dbffa51fa5293276ff7fc

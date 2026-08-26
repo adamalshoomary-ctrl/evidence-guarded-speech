@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "speech_sound_sfgop_feasibility",
+  "contract_version": "1.0.0",
+  "status": "method_frozen_before_feasibility",
+  "checkpoint": "22E2",
+  "method": {
+    "name": "segmentation_free_gop",
+    "published_source": "https://arxiv.org/abs/2507.16838",
+    "published_licence": "CC BY 4.0",
+    "implementation_provenance": "independent implementation of the published equations only",
+    "unlicensed_repository_code_allowed": false,
+    "speechocean_trained_scoring_heads_allowed": false,
+    "variants": {
+      "gop_af_substitution": true,
+      "gop_af_substitution_deletion": true,
+      "insertion_variant": "deferred_not_implemented",
+      "expected_length_normalisation": "deferred_not_implemented"
+    },
+    "candidate_policy": {
+      "substitution_candidates": "all non-blank, non-special vocabulary tokens",
+      "deletion_candidate": true,
+      "single_token_expected_spans_self_checked_against_canonical_likelihood": true
+    }
+  },
+  "model": {
+    "reference_contract": "benchmark-repair-meta-contract-v1.0.0.json",
+    "reference_contract_sha256": "f3f7fcf0b49e7b3ae84fb0578856f4c7bbd59e8305c985cd78905da26f37f446",
+    "format": "ONNX",
+    "backend": "onnxruntime_cpu_single_thread",
+    "network_access_during_inference": false,
+    "executable_or_pickle_weights_allowed": false
+  },
+  "input_policy": {
+    "expected_only_manifest_sha256": "c918feffa7c0a3a3fa99ce7a9e028621e8fb002980777297f30088e5975331da",
+    "expert_outcomes_included": false,
+    "held_out_participants_allowed": false,
+    "feasibility_subset": {
+      "project_split": "development",
+      "selection_rule": "first_by_manifest_order",
+      "clip_count": 24
+    }
+  },
+  "extractor_policy": {
+    "same_input_repeats": 2,
+    "log_domain": "float64",
+    "rounding_decimal_places": 7,
+    "offline_environment_variable_required": "SPEECH_SOUND_OFFLINE",
+    "forward_backward_consistency_checked": true
+  },
+  "output_policy": {
+    "evidence_class": "expected_phone_concern_and_alternative_candidate_evidence",
+    "is_reference_truth": false,
+    "vowel_and_unsupported_targets": "unscorable",
+    "threshold_or_selection_permitted": false,
+    "alternatives_reported": 5
+  }
+}

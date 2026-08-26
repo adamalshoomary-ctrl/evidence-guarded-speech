@@ -1,0 +1,91 @@
+{
+  "source_id": "ddk_development_measures",
+  "title": "Supplementary material, diadochokinetic tasks from childhood to adulthood",
+  "citation": "Lancheros, M., Friedrichs, D. & Laganaro, M. What do differences between alternating and sequential diadochokinetic tasks tell us about the development of oromotor skills? 2023.",
+  "canonical_source": {
+    "landing_page": "https://zenodo.org/records/10018228",
+    "terms_or_licence_url": "https://zenodo.org/records/10018228"
+  },
+  "language_and_variety": {
+    "language": "not stated on the record",
+    "variety": null,
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "Participants across childhood, adolescence and adulthood; counts are not stated on the record.",
+    "age_band": "unknown",
+    "clinical_status": "unknown",
+    "limitations": [
+      "The deposit contains derived measurements only. There is no audio."
+    ]
+  },
+  "tasks_present": [
+    "diadochokinesis"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "derived_measures_without_audio",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "Without audio there is nothing for a candidate implementation to be run against, so this cannot serve as a reference for any computational or analytical validation.",
+      "Published summary values from another protocol are not a reference range for a different task, population or capture path."
+    ]
+  },
+  "access": {
+    "route": "open_direct_download",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_without_contact",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Creative Commons Attribution 4.0 International",
+    "spdx_id": "CC-BY-4.0",
+    "commercial_use_permitted": true,
+    "source_of_licence_string": "repository_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Zenodo API record, queried 2026-08-19."
+    ],
+    "findings": [
+      "One spreadsheet of syllabic rate and articulatory execution measures for alternating and sequential tasks.",
+      "Open access under CC BY 4.0 with a single file and no recordings."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_truth_class",
+    "reasons": [
+      "Openly licensed and freely obtainable, and still not a reference source, because it holds numbers rather than speech."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "ddk_development_measures_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

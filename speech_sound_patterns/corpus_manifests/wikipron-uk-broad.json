@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "wikipron_eng_latn_uk_broad_manifest_v1",
+  "source_id": "wikipron_eng_latn_uk_broad",
+  "title": "WikiPron British English broad pronunciations",
+  "version": {
+    "label": "repository commit d282e848a211ea31cfd730f0ced8bc8cdab9e83d, file eng_latn_uk_broad.tsv",
+    "release_date": "2026-07-23",
+    "immutable_id": "wikipron_d282e848a211ea31cfd730f0ced8bc8cdab9e83d_eng_latn_uk_broad.tsv"
+  },
+  "citation": "Lee, Jackson L. et al. Massively Multilingual Pronunciation Mining with WikiPron. LREC 2020.",
+  "canonical_source": {
+    "landing_page": "https://github.com/CUNY-CL/wikipron",
+    "licence_url": "https://en.wiktionary.org/wiki/Wiktionary:Copyrights"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-29",
+    "account_required": false,
+    "terms_state": "not_required",
+    "terms_url": "https://en.wiktionary.org/wiki/Wiktionary:Copyrights",
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC-BY-SA-4.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-29",
+    "attribution_required": true,
+    "attribution_text": "Pronunciations mined from English Wiktionary by WikiPron and reused under Wiktionary's CC BY SA terms."
+  },
+  "governance": {
+    "permitted_roles": [
+      "british_reference_variant_supplement"
+    ],
+    "prohibited_roles": [
+      "accent_quality_judgment",
+      "accepted_variant_truth",
+      "australian_variety_truth",
+      "clinical_inference",
+      "distribution_of_a_derived_lexicon_without_meeting_sharealike",
+      "primary_british_reference_without_an_inventory_repair",
+      "product_release_truth",
+      "scientific_release_truth"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/wikipron_eng_latn_uk_broad",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Share alike attaches when adapted material is distributed, not when it is used internally. A derived lexicon stays on the server. Shipping one inside a mobile application is distribution and would trigger the licence."
+  },
+  "population": {
+    "description": "British English pronunciation entries mined from Wiktionary in broad IPA.",
+    "known_strata": [],
+    "limitations": [
+      "Wiktionary entries are contributed by volunteers rather than by a documented expert panel, so this is a reference lexicon and never a description of what a speaker produced.",
+      "The scrape carries 239 distinct symbols, which is far more than any single English variety uses. Loanwords, narrow transcriptions and non English sounds are present and must be filtered before use.",
+      "The branch tip is not a version. This manifest pins the exact commit, because the commit pinned here is itself the one that changed the English dialect selectors.",
+      "Share alike attaches when adapted material is distributed, so a derived lexicon stays server side."
+    ]
+  },
+  "annotation": {
+    "truth_class": "unavailable",
+    "provenance": "Word and broad IPA pairs mined from English Wiktionary. There is no recording, no speaker and no observation of a production.",
+    "fields_retained": [
+      "word",
+      "broad_ipa"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "A lexicon proposes how a word may be said and can never establish how anybody said it, so no truth class applies to it.",
+      "A volunteer variety tag is an editorial label, not a measured property of the transcription it carries."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "The acquired file eng_latn_uk_broad.tsv, read in full and recounted on 2026-07-29.",
+      "wikipron_license.txt captured 2026-07-29 from https://raw.githubusercontent.com/CUNY-CL/wikipron/d282e848a211ea31cfd730f0ced8bc8cdab9e83d/LICENSE.txt, SHA256 217366db93969e4443ed07cdf68072a7592b4c972fba0a4c0ab7bcf8cb92a2fe.",
+      "wikipron_readme.md captured 2026-07-29 from https://raw.githubusercontent.com/CUNY-CL/wikipron/d282e848a211ea31cfd730f0ced8bc8cdab9e83d/README.md, SHA256 cb21439dab16f16d0dfb98f7630d3d2d8cb7fac46e9af98f5fdd83b84c523aad.",
+      "wiktionary_copyrights.html captured 2026-07-29 from https://en.wiktionary.org/wiki/Wiktionary:Copyrights, SHA256 3c387a95b50e6c3dfa7819ddc65307e33da3b31fe482d9249f4daa71cd210786."
+    ],
+    "findings": [
+      "The file holds 106688 entries over 81545 distinct words, of which 18379 carry more than one pronunciation.",
+      "Its recomputed phone inventory is 239 distinct symbols.",
+      "7309 entries, 6.85 percent, place a rhotic after a vowel and not before one. Post-vocalic rhotics were counted rather than all rhotics, because a non-rhotic variety still has an onset r in red.",
+      "Measured against the matched American scrape from the same commit, this file is markedly less rhotic, so its British tag carries real signal.",
+      "It is still far more rhotic than the Montreal Forced Aligner British dictionary and its inventory is three times larger, so checkpoint 22E7 records it as a supplement to the British reference rather than as the British reference itself."
+    ]
+  },
+  "participant_split": {
+    "status": "not_applicable",
+    "unit": null,
+    "source_split_provenance": "A pronunciation lexicon has no speakers, so there is no participant split to make.",
+    "project_strategy": "lexicon_has_no_participants",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {}
+  },
+  "lineage": {
+    "lineage_group": "wiktionary",
+    "derived_from": [
+      "english_wiktionary"
+    ],
+    "independence_claim": "no_evidence_claim_permitted",
+    "duplicate_detection": "Overlap with the Australian tagged Wiktionary entries is expected and recorded, because both derive from the same dictionary and neither is independent evidence of the other.",
+    "candidate_model_overlap_status": "unknown_requires_model_specific_audit"
+  },
+  "archives": [
+    {
+      "filename": "eng_latn_uk_broad.tsv",
+      "size_bytes": 2915740,
+      "canonical_download_url": "https://raw.githubusercontent.com/CUNY-CL/wikipron/d282e848a211ea31cfd730f0ced8bc8cdab9e83d/data/scrape/tsv/eng_latn_uk_broad.tsv",
+      "upstream_checksum": {
+        "algorithm": "none",
+        "value": null
+      },
+      "local_sha256": "f8ca476aa2e96cb22cafbf9099d689b5902a9d321579055081909b2eeafa1b8d",
+      "local_verification_status": "verified"
+    }
+  ]
+}

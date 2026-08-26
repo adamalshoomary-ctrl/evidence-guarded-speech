@@ -1,0 +1,363 @@
+{
+  "schema_version": "1.0.0",
+  "protocol_id": "controlled_pronunciation_and_intelligibility_research_en",
+  "protocol_version": "1.0.0",
+  "status": "research_only_not_validated",
+  "language": "en",
+  "purpose": "Develop an English controlled-word method that separates listener understanding from phonetic observations without judging accent or diagnosing a disorder.",
+  "claim_boundaries": {
+    "allowed_claim_levels": [
+      "measured_observation"
+    ],
+    "forbidden_outputs": [
+      "overall_pronunciation_score",
+      "native_likeness",
+      "prestige_accent_similarity",
+      "accent_quality",
+      "diagnosis",
+      "screening_result",
+      "ranking_between_people",
+      "individual_progress",
+      "personality_or_professionalism"
+    ],
+    "provider_agreement_is_truth": false,
+    "automatic_transcription_is_phonetic_truth": false
+  },
+  "task": {
+    "task_id": "controlled_word_research_en_v1",
+    "task_version": "1.0.0",
+    "status": "research_protocol_only",
+    "recording_mode": "solo",
+    "expected_duration_s": {
+      "minimum": 90,
+      "target": 120,
+      "maximum": 180
+    },
+    "quality_policy": "baseline",
+    "elicitation_modes": [
+      {
+        "id": "written_word",
+        "description": "Show one familiar written word at a time.",
+        "confounders": [
+          "reading ability",
+          "word familiarity"
+        ]
+      },
+      {
+        "id": "recorded_prompt_alternative",
+        "description": "Play one word, then record the participant repeating it after the prompt has ended.",
+        "confounders": [
+          "hearing",
+          "memory",
+          "prompt imitation"
+        ]
+      }
+    ],
+    "elicitation_modes_are_comparable": false,
+    "listener_can_see_expected_word": false,
+    "prompt_audio_must_be_excluded_from_trial_audio": true,
+    "required_consents": [
+      "research_collection",
+      "human_review",
+      "raw_audio_retention"
+    ],
+    "skipping_affects_normal_coaching": false,
+    "stop_conditions": [
+      "participant_stops",
+      "fatigue_or_distress",
+      "unsupported_task_language",
+      "repeated_audio_quality_failure"
+    ]
+  },
+  "word_pack": {
+    "pack_id": "controlled_word_candidates_en_v1",
+    "pack_version": "1.0.0",
+    "status": "awaiting_professional_review",
+    "target_word_count": {
+      "minimum": 20,
+      "maximum": 40
+    },
+    "stimuli": [],
+    "activation_requirements": [
+      "qualified_phonetic_or_speech_pathology_review",
+      "review_by_people_familiar_with_supported_english_varieties",
+      "versioned_acceptable_pronunciation_variants",
+      "familiarity_and_cultural_review",
+      "recording_prompt_review",
+      "owner_approval"
+    ],
+    "selection_rules": [
+      "Use familiar words that can be represented without culturally specific pictures.",
+      "Cover sounds in more than one phonetic context when the pack length permits.",
+      "Record the sound and word position each item is intended to probe.",
+      "Avoid treating one American, British, Australian, or other English variety as universal.",
+      "Keep words with unresolved legitimate variants unscorable until reviewed.",
+      "Do not infer a disorder from an error pattern."
+    ]
+  },
+  "variant_policy": {
+    "unit": "word_specific_versioned_variant_set",
+    "sources_required": [
+      "qualified_human_review",
+      "documented_language_variety references"
+    ],
+    "self_reported_variety_is_context_not_truth": true,
+    "unrepresented_or_disputed_variant_behavior": "uncertain",
+    "acceptable_variant_is_error": false,
+    "single_canonical_native_target_allowed": false
+  },
+  "observation_model": {
+    "word_outcomes": [
+      "understood_as_intended",
+      "different_word_heard",
+      "omission",
+      "addition",
+      "uncertain",
+      "unscorable"
+    ],
+    "phone_outcomes": [
+      "accepted_variant",
+      "substitution",
+      "deletion",
+      "insertion",
+      "break",
+      "uncertain",
+      "unscorable"
+    ],
+    "primitive_evidence_fields": [
+      "trial_id",
+      "stimulus_id",
+      "elicitation_mode",
+      "audio_segment_reference",
+      "audio_quality_status",
+      "expected_variant_set_version",
+      "blind_listener_transcriptions",
+      "expert_phone_transcriptions",
+      "adjudication_status",
+      "system_outputs",
+      "provenance"
+    ],
+    "denominators": {
+      "expected_word_opportunities": "Every presented target word, including an omission, before quality exclusions.",
+      "scorable_word_opportunities": "Expected word opportunities remaining after documented technical and evidence exclusions.",
+      "expected_phone_opportunities": "Every reviewed target-phone opportunity in the accepted word variants before quality exclusions.",
+      "scorable_phone_opportunities": "Expected phone opportunities remaining after documented technical, variant, and evidence exclusions.",
+      "insertions": "Reported as a separate count and never hidden by changing an expected-opportunity denominator.",
+      "additions": "Reported as a separate word count and never hidden by changing an expected-opportunity denominator."
+    },
+    "combined_score_allowed": false,
+    "missing_evidence_is_zero": false
+  },
+  "reference_truth": {
+    "listener_intelligibility": {
+      "construct": "The word an independent listener actually understands.",
+      "method": "Blind orthographic transcription without the prompt, expected word, system output, or speaker identity.",
+      "listener_population": "Multiple listeners with recorded English variety and familiarity context, selected by a prespecified sampling plan.",
+      "normalisation": "Versioned spelling, inflection, and homophone rules fixed before system evaluation.",
+      "disagreement_behavior": "Retain every response and report uncertainty; do not force consensus when the prespecified rule is not met.",
+      "automatic_system_allowed_as_truth": false
+    },
+    "phonetic_reference": {
+      "construct": "The speech sounds produced in the controlled word attempt.",
+      "method": "Independent broad IPA transcription by at least two qualified reviewers, followed by documented adjudication.",
+      "reviewers_blind_to_system_outputs": true,
+      "disagreements_retained": true,
+      "accent_and_dialect_variants_considered_before_error_labels": true,
+      "automatic_system_allowed_as_truth": false
+    },
+    "listener_intelligibility_and_phonetic_reference_are_separate": true
+  },
+  "candidate_systems": {
+    "selected_provider": null,
+    "comparison_status": "not_run_no_independent_labelled_corpus",
+    "systems": [
+      {
+        "id": "azure_pronunciation_assessment",
+        "type": "commercial_api",
+        "status": "candidate_research_only",
+        "outputs_to_capture": [
+          "raw_response",
+          "word_and_phone_results",
+          "omission_and_insertion_results",
+          "locale",
+          "service_and_sdk_version"
+        ],
+        "known_risks": [
+          "native-speaker similarity construct",
+          "locale-dependent behavior",
+          "black-box model changes",
+          "ASR and audio-quality dependence"
+        ]
+      },
+      {
+        "id": "speechace_scripted_assessment",
+        "type": "commercial_api",
+        "status": "candidate_research_only",
+        "outputs_to_capture": [
+          "raw_response",
+          "word_syllable_and_phone_results",
+          "sound_most_like",
+          "dialect",
+          "api_version"
+        ],
+        "known_risks": [
+          "native-speaker similarity construct",
+          "limited documented English dialect choices",
+          "proprietary scoring model",
+          "provider validation is not local truth"
+        ]
+      },
+      {
+        "id": "speechsuper_scripted_assessment",
+        "type": "commercial_api",
+        "status": "candidate_research_only",
+        "outputs_to_capture": [
+          "raw_response",
+          "word_and_phone_results",
+          "insertion_deletion_and_substitution_results",
+          "api_version"
+        ],
+        "known_risks": [
+          "native-pattern similarity construct",
+          "proprietary scoring model",
+          "unclear local subgroup performance",
+          "provider validation is not local truth"
+        ]
+      },
+      {
+        "id": "local_alignment_and_phone_recognition_baseline",
+        "type": "inspectable_local_baseline",
+        "status": "candidate_research_only",
+        "outputs_to_capture": [
+          "alignment",
+          "phone_hypotheses",
+          "model_dictionary_and_code_versions",
+          "raw_confidence_values"
+        ],
+        "known_risks": [
+          "forced alignment can hide a different production",
+          "a phone recognizer is not a validated assessment",
+          "dictionary variants can encode accent bias",
+          "model performance can vary by speaker and device"
+        ]
+      },
+      {
+        "id": "current_asr_word_baseline",
+        "type": "word_recognition_baseline",
+        "status": "candidate_research_only",
+        "outputs_to_capture": [
+          "raw_transcript",
+          "word_confidence",
+          "provider_model_version"
+        ],
+        "known_risks": [
+          "ASR disagreement is not phonetic truth",
+          "expected-text prompting can conceal errors",
+          "accent and speech differences affect recognition"
+        ]
+      }
+    ]
+  },
+  "evaluation_plan": {
+    "data_splits": [
+      "development",
+      "threshold_tuning",
+      "held_out_evaluation"
+    ],
+    "participant_exclusive_splits": true,
+    "thresholds_fixed_before_held_out_evaluation": true,
+    "same_recording_sent_to_every_candidate": true,
+    "provider_outputs_hidden_from_human_annotators": true,
+    "required_metrics": [
+      "word_identification_agreement_with_listener_reference",
+      "phone_issue_precision",
+      "phone_issue_recall",
+      "phone_issue_f1",
+      "acceptable_variant_false_concern_rate",
+      "abstention_coverage",
+      "calibration",
+      "exact_same_input_repeatability",
+      "repeated_human_production_reliability",
+      "subgroup_results_with_uncertainty"
+    ],
+    "required_evaluation_dimensions": [
+      "English variety and accent",
+      "first-language background",
+      "voice range",
+      "device",
+      "audio quality",
+      "speech difference",
+      "elicitation mode"
+    ],
+    "sample_size_rule": "Set and document a justified participant and listener sampling plan before collection; Adam's recordings cannot establish population performance.",
+    "provider_agreement_counts_as_reference_truth": false
+  },
+  "failure_policy": {
+    "poor_audio": "unavailable",
+    "unsupported_language": "unavailable",
+    "unsupported_or_unrepresented_variety": "unavailable",
+    "asr_or_alignment_conflict": "unavailable",
+    "insufficient_word_opportunities": "unavailable",
+    "insufficient_phone_opportunities": "unavailable",
+    "unresolved_human_disagreement": "unavailable",
+    "remote_provider_failure": "unavailable",
+    "missing_provider_version": "unavailable",
+    "retry_policy": "Retry one resolvable technical failure once, then retain an explicit unavailable result.",
+    "fallback_to_zero": false,
+    "fallback_to_llm_judgment": false
+  },
+  "release_policy": {
+    "normal_coaching": "blocked",
+    "individual_progress": "blocked",
+    "ranking": "blocked",
+    "screening": "blocked",
+    "diagnosis": "blocked",
+    "research_storage": "raw primitive evidence with consent and versioned provenance",
+    "future_normal_coaching_limit": "At most a high-confidence word-specific observation supported by listener and phonetic evidence, linked to audio and presented without an accent judgment.",
+    "unlock_requirements": [
+      "professional word-pack and variant review",
+      "independent human-labelled development and held-out data",
+      "predeclared accuracy calibration abstention reliability and subgroup gates",
+      "acceptable performance on held-out participants",
+      "privacy and provider review",
+      "separate owner approval"
+    ]
+  },
+  "sources": [
+    {
+      "id": "microsoft_pronunciation_assessment",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment",
+      "relevance": "Current API outputs, granularity, locale limits, and native-speaker similarity construct."
+    },
+    {
+      "id": "microsoft_responsible_ai",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/speech-service/pronunciation-assessment/characteristics-and-limitations-pronunciation-assessment",
+      "relevance": "Dependence on transcription, audio conditions, and human agreement."
+    },
+    {
+      "id": "speechace_api",
+      "url": "https://docs.speechace.com/",
+      "relevance": "Current scripted word, syllable, and phone outputs and custom pronunciation input."
+    },
+    {
+      "id": "speechsuper_api",
+      "url": "https://docs.speechsuper.com/",
+      "relevance": "Current scripted assessment outputs and supported languages."
+    },
+    {
+      "id": "montreal_forced_aligner",
+      "url": "https://montreal-forced-aligner.readthedocs.io/en/v3.4.1/user_guide/index.html",
+      "relevance": "Inspectable alignment primitive and pronunciation dictionary behavior."
+    },
+    {
+      "id": "munro_derwing_1995",
+      "url": "https://doi.org/10.1111/j.1467-1770.1995.tb00963.x",
+      "relevance": "Listener transcription separates intelligibility from accentedness and comprehensibility."
+    },
+    {
+      "id": "asha_speech_sound_guidance",
+      "url": "https://www.asha.org/practice-portal/clinical-topics/articulation-and-phonology/",
+      "relevance": "Accent, dialect, language, phonetic context, and professional assessment boundaries."
+    }
+  ]
+}

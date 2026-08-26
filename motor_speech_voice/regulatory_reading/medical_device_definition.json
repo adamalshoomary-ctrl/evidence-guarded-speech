@@ -1,0 +1,71 @@
+{
+  "question_id": "medical_device_definition",
+  "domain": "medical_device_regulation",
+  "question": "Does software that measures a person's speech meet the definition of a medical device in Australia, and what decides it?",
+  "applies_to_purposes": [
+    "developer_research_only",
+    "consumer_communication_coaching",
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Therapeutic Goods Act 1989 (Cth), section 41BD, What is a medical device",
+      "url": "https://www.legislation.gov.au/C2004A03952/latest/text",
+      "currency": "Compilation in force 5 September 2025",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "A medical device is: (a) any instrument, apparatus, appliance, software, implant, reagent, material or other article (whether used alone or in combination, and including the software necessary for its proper application) intended, by the person under whose name it is or is to be supplied, to be used for human beings for the purpose of one or more of the following: (i) diagnosis, prevention, monitoring, prediction, prognosis, treatment or alleviation of disease; (ii) diagnosis, monitoring, treatment, alleviation of or compensation for an injury or disability; (iii) investigation, replacement or modification of the anatomy or of a physiological or pathological process or state ..."
+    },
+    {
+      "citation": "Therapeutic Goods Act 1989 (Cth), section 41BD(2)",
+      "url": "https://www.legislation.gov.au/C2004A03952/latest/text",
+      "currency": "Compilation in force 5 September 2025",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "For the purposes of paragraph (1)(a), the purpose for which an instrument, apparatus, appliance, software, implant, reagent, material or other article (the main equipment) is to be used is to be ascertained from the information supplied, by the person under whose name the main equipment is or is to be supplied, on or in any one or more of the following: (a) the labelling on the main equipment; (b) the instructions for using the main equipment; (c) any advertising material relating to the main equipment; (d) technical documentation describing the mechanism of action of the main equipment."
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Understanding how we regulate software-based medical devices",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-how-we-regulate-software-based-medical-devices",
+      "currency": "Published and last updated 24 February 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Some software products and mobile apps are sources of information or tools to manage a healthy lifestyle. We do not regulate health and lifestyle apps, unless they meet the definition of a medical device."
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Understanding how we regulate software-based medical devices, The importance of intended purpose",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-how-we-regulate-software-based-medical-devices",
+      "currency": "Published and last updated 24 February 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "We regulate software based on the manufacturer's intended purpose and how it is supplied. The manufacturer defines how they intend the device to be used, not all possible uses. For instance, 2 apps may present with similar functionalities but have different intended purposes based on the features or information that is made available to the user, for example: an app designed only to measure and display a person's heart rate for fitness purposes; an app intended to measure and display a person's heart rate that detects conditions such as bradycardia or tachycardia."
+    }
+  ],
+  "reading": [
+    "Nothing about measuring speech makes software a medical device or keeps it out. The definition turns on the purpose the supplier states, and section 41BD(2) says that purpose is read off the labelling, the instructions, the advertising and the technical documentation. A claim made on a marketing page counts.",
+    "The regulator's own worked example is almost exactly this project's ladder in another organ system. An app that measures and displays heart rate for fitness is not a device; the same app that detects bradycardia or tachycardia is. The measurement did not change, the claim did.",
+    "Two limbs of the definition are the live ones here. Limb (a)(ii) covers diagnosis, monitoring, treatment or alleviation of an injury or disability, and a motor speech difficulty is plausibly a disability. Limb (a)(iii) covers investigation of a physiological process or state, and speech production is a physiological process. Limb (a)(iii) read at its widest would capture a great deal, and the regulator's guidance in practice reads it more narrowly than its words allow."
+  ],
+  "confidence": "clear_on_the_face_of_the_source",
+  "unresolved": [
+    {
+      "question": "How far limb (a)(iii), investigation of a physiological process or state, reaches for software that measures speech timing and makes no health claim.",
+      "why_it_cannot_be_settled_here": "The statutory words are broader than the regulator's published examples, and reconciling them is an exercise in regulatory interpretation rather than reading.",
+      "who_must_settle_it": "An Australian regulatory specialist, documenting the assessment the plan already requires before participant recruitment or candidate software use."
+    }
+  ],
+  "consequences": [
+    "The wording used to describe this project is a regulatory act, not marketing. A sentence such as may indicate a speech problem placed on a public page would be evidence of intended purpose.",
+    "The product vision's stated ambition to support people with speech differences and difficulties sits on the far side of this line and cannot be reached by improving the measurement alone."
+  ],
+  "decided_by": [
+    "australian_regulatory_specialist",
+    "owner"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "medical_device_definition_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

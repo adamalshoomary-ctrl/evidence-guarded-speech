@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.6.0",
+  "protocol_id": "speech_sound_patterns_research_contract",
+  "protocol_version": "1.6.0",
+  "status": "developer_candidate_artifact_implemented_no_relation_or_repeated_rule_selected_release_locked",
+  "base_contract": {
+    "path": "research-contract-v1.5.0.json",
+    "sha256": "d3201a24c9bac7211aef96f8f4b9a1850e0c4bd9c2161d24de0cf879b80197ac",
+    "protocol_version": "1.5.0",
+    "unchanged_historical_contract": true
+  },
+  "updates": {
+    "engineering_implementation_status": "developer_candidate_artifact_implemented_release_locked",
+    "planned_artifact_status": "implemented_private_developer_only",
+    "developer_research_task_status": "evidence_assembly_implemented_no_candidate_rule_selected",
+    "generic_repeated_relation_status": "structure_implemented_emission_disabled_no_rule_selected",
+    "pattern_threshold_status": "not_selected_task_matched_evidence_unavailable",
+    "candidate_comparison_status": "candidate_evidence_adequacy_failed_no_system_selected",
+    "engineering_evaluation_status": "candidate_evidence_adequacy_failed_before_rule_search",
+    "developer_release_status": "approved_candidate_artifact_implemented_private_release_locked"
+  },
+  "developer_candidate_extractor": {
+    "checkpoint": "22G",
+    "status": "implemented_private_release_locked",
+    "candidate_artifact_contract": {
+      "path": "candidate-artifact-contract-v1.0.0.json",
+      "sha256": "20ece314254cbbe7eea8c2a175e8ca177a5d85bd8fa2150d18620f0104c26791",
+      "status": "rules_frozen_before_candidate_extractor_implementation"
+    },
+    "candidate_evidence_report": {
+      "path": "candidate-evidence-v1.0.0.json",
+      "sha256": "4f2a68eb2492679d50c828aef99c422d5536555b522ee55ec61ebf0311f5068d",
+      "status": "adequacy_failed_before_any_rule_search",
+      "decision": "no_rule_selected_task_matched_evidence_unavailable"
+    },
+    "prompt_pack": {
+      "path": "research-prompt-pack-v1.0.0.json",
+      "sha256": "c53522ee155628d6266c5494d7e9c45d9d06f4dc550abac82f9816e00f5b7d72",
+      "status": "unreviewed_inactive_developer_research_only"
+    },
+    "selection_record": {
+      "path": "selection-record-v1.1.0.json",
+      "sha256": "528e2a07c733bb4f456f422765589d362f3fe242f08909b011f30ce8bc6dbe66",
+      "decision": "no_selection"
+    },
+    "artifact": {
+      "filename": "speech_sound_candidates.json",
+      "committed": false,
+      "private_gitignored_output_only": true,
+      "normal_pipeline_artifact": false,
+      "review_state": "unreviewed",
+      "automatic_error_or_correctness_output": false
+    },
+    "offline_command": "SPEECH_SOUND_OFFLINE=1 python3 -m speech_sound_patterns.extract_candidates --manifest MANIFEST --output-dir OUTPUT --acknowledge-developer-only",
+    "allowed_automatic_states": [
+      "possible_relation_candidate",
+      "asr_only_disagreement",
+      "candidate_system_conflict",
+      "known_reference_variant",
+      "insufficient_evidence",
+      "unsupported",
+      "unavailable"
+    ],
+    "candidate_rule": {
+      "system": null,
+      "threshold": null,
+      "mapping": null,
+      "feature_relation": null,
+      "provider_configuration": null,
+      "possible_relation_candidate_emission_enabled": false
+    },
+    "generic_repeated_relation": {
+      "structure_implemented": true,
+      "minimum_rule": null,
+      "candidate_emission_enabled": false,
+      "named_pattern": false,
+      "one_token_can_qualify": false,
+      "one_word_can_qualify": false
+    },
+    "evidence_boundaries": {
+      "threshold_search_after_failed_adequacy": false,
+      "held_out_accessed": false,
+      "owner_recordings_used_for_selection": false,
+      "synthetic_fixtures_used_for_selection": false,
+      "network_requests_allowed": false,
+      "provider_request_made": false,
+      "raw_or_row_level_evidence_committed": false
+    },
+    "downstream_boundaries": {
+      "normal_pipeline": false,
+      "listener": false,
+      "evaluator": false,
+      "claim_ledger": false,
+      "coaching": false,
+      "history": false,
+      "progress": false,
+      "screening": false,
+      "diagnosis": false
+    },
+    "next_checkpoint": "22H_after_owner_commit_and_explicit_instruction"
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "speech_sound_patterns_reference_variety_probe_uncertainty_v1",
+  "item": "R2",
+  "supersedes": null,
+  "parent_contract": "speech_sound_patterns_reference_variety_probe_v1",
+  "status": "frozen_before_any_interval_p_value_or_correction_is_computed",
+  "frozen_on": "2026-08-23",
+  "purpose": "Attach honest uncertainty to every quantity the checkpoint 22E8 reference variety probe reports, and decide, under a family declared in advance, whether any per consonant differential survives correction for having tested many consonants at once. It computes uncertainty for an existing measurement. It selects nothing, moves no gate, opens no held out participant, and makes no accuracy or clinical claim.",
+  "why_this_contract_exists_before_the_code": {
+    "statement": "The multiple comparison family and the consonant inclusion rule are declared here, before any interval, p value or correction is computed, because choosing either after seeing the answers is the same failure mode as choosing a threshold after seeing the scores. Both choices materially change the result and neither may be revisited to rescue a finding.",
+    "what_was_inspected_before_freezing": "Denominators only: the per consonant opportunity counts and the number of speakers contributing at least one opportunity, per group. These are counts of scoring chances, they were already published in variety-probe-v1.1.0.json, and they are independent of any flag rate, differential or interval.",
+    "what_was_not_inspected_before_freezing": "No flag rate, no differential, no interval, no p value and no correction outcome. The only per consonant differentials known to the author at freezing time are t and v, which the superseded and current reports already publish as findings and which are the reason this item exists."
+  },
+  "inputs": {
+    "evidence": ".research_data/speech_sound_patterns/variety-probe/evidence/, one JSON file per clip, hashed participant identifier, every target scored under both references from the same posteriors",
+    "phone_mapping_version": "1.2.0",
+    "clips": 2400,
+    "speakers_per_source": 300,
+    "sources": [
+      "common_voice_26_australian_english",
+      "common_voice_26_british_english",
+      "common_voice_26_american_english_male",
+      "common_voice_26_american_english_female"
+    ],
+    "re_inference": "none. No audio is read, no model is loaded, no external provider is called, and no acquisition is performed. Every figure derives from stored per target scores.",
+    "held_out_access": false,
+    "threshold_tuning_access": false
+  },
+  "aggregation": {
+    "unit_of_analysis": "the speaker",
+    "cluster_definition": "the pair (source_id, participant). Two clips by one contributor are one cluster and never two independent observations.",
+    "group_level_statistic": "unchanged from the parent contract: a per speaker flag rate, then the unweighted mean across speakers in the reporting group.",
+    "per_consonant_statistic_change": {
+      "before": "pooled token counts across the whole group, with no speaker clustering at all",
+      "after": "a per speaker rate for that consonant, then the unweighted mean across the speakers who had at least one opportunity for it",
+      "why": "The group level analysis already refuses to let a contributor with more clips pull a group toward their own voice. The per consonant analysis did not, and it is where the only surviving finding lives. The two must be aggregated the same way or the headline number is computed by a different rule from the number it is quoted beside.",
+      "consequence": "Reported per consonant rates will move slightly against the version 1.1.0 report even with identical evidence. That movement is the correction, not a defect, and both values are reported."
+    },
+    "speakers_with_no_opportunity": "excluded from that consonant's mean and never counted as a zero. A speaker who was never given the chance to be flagged is missing evidence, not a clean production."
+  },
+  "confidence_intervals": {
+    "method": "speaker clustered nonparametric bootstrap",
+    "interval_type": "bias corrected and accelerated, with the percentile interval reported beside it",
+    "why_bca": "The statistic is a mean of bounded rates near 0.08, so its resampling distribution is mildly skewed. BCa corrects for that skew and for median bias; the percentile interval is reported alongside so a reader can see that the choice did not manufacture the answer.",
+    "acceleration_estimate": "jackknife over speakers, leaving out one cluster at a time",
+    "resamples": 10000,
+    "level": 0.95,
+    "resampling_unit": "the speaker cluster, drawn with replacement",
+    "stratification": "within source_id, at the observed 300 speakers per source",
+    "why_stratified": "Group sizes and the American group's male and female balance are design decisions of the parent contract, not observations. Resampling across sources would let a resample carry 340 male and 260 female American speakers, which varies accent with gender, the exact confound the parent contract pooled the two subsets to avoid.",
+    "pairing": "one resample of speakers is used to recompute every quantity: both references, all five thresholds and every consonant. Differences between references are therefore paired within speaker, matching the design, and are not treated as two independent samples.",
+    "seed": "speech_sound_patterns_variety_probe_uncertainty_v1",
+    "determinism": "the seed is fixed and declared, so every interval in the report is reproducible from the stored evidence alone"
+  },
+  "significance_tests": {
+    "why_tests_as_well_as_intervals": "A correction for testing many consonants at once needs p values. The interval says how large the effect might be; the test says how easily this data could have arisen with no group difference at all. Both are reported and neither is presented as the other.",
+    "between_group_contrasts": {
+      "method": "speaker label permutation test",
+      "procedure": "the speakers of the two contrasted groups are pooled and randomly relabelled into groups of the observed sizes, whole speakers at a time, and the statistic is recomputed",
+      "permutations": 10000,
+      "sided": "two sided",
+      "null_hypothesis": "a speaker's flag rate is unrelated to which variety group they belong to",
+      "why_permutation": "It respects the clustering exactly, needs no distributional assumption, and tests the null this comparison actually asks about."
+    },
+    "within_group_reference_change": {
+      "method": "paired sign flip permutation test",
+      "procedure": "each speaker's two reference labels are randomly swapped, independently per speaker, and the mean within speaker difference is recomputed",
+      "permutations": 10000,
+      "sided": "two sided",
+      "null_hypothesis": "for a given speaker, swapping the American reference for the British one changes nothing",
+      "why_paired": "The same speakers, the same clips and the same posteriors are scored under both references. Treating the two conditions as independent samples would discard the design's greatest strength."
+    },
+    "p_value_floor": "reported as less than one over the number of permutations rather than as zero, because a permutation test cannot produce a p value of zero"
+  },
+  "multiple_comparison_families": {
+    "declared_before_computing": true,
+    "rule": "Every family below is fixed by this contract. A p value may not be moved between families, and no family may be split or merged after an outcome is seen.",
+    "family_G_pre_registered_group_level": {
+      "members": 5,
+      "content": [
+        "australian minus american under the american reference",
+        "british minus american under the american reference",
+        "australian change under the repair",
+        "british change under the repair",
+        "american control change under the repair"
+      ],
+      "threshold": -1.0,
+      "why_these_five": "They are exactly the two directional predictions the parent contract declared before any speaker was scored: that both non American groups are flagged more under the American reference, and that under the British reference both non American groups fall while the American control stays roughly in place.",
+      "why_a_separate_family_from_the_consonants": "These hypotheses were pre registered before the run. The per consonant analysis was not, and its headline consonant was chosen after seeing which one was largest. Pooling a pre registered test with an exploratory selection would penalise the pre registered one for the other's freedom, and would let the exploratory one hide inside it."
+    },
+    "family_A_primary_per_consonant": {
+      "content": "the australian minus american differential, per consonant, under the american reference, at threshold minus one",
+      "why_this_is_the_family_that_matters": "This is the exact comparison in which t was selected as the largest per consonant differential. The multiplicity risk was created by choosing one consonant out of the set after seeing all of them, so the set is the family that must control it.",
+      "why_threshold_minus_one": "The parent report already designates threshold minus one as the per consonant reporting threshold, in the field per_consonant_rates_at_threshold_minus_one. It is inherited, not chosen now."
+    },
+    "family_B_secondary_per_consonant": {
+      "content": "the british minus american differential, per consonant, under the american reference, at threshold minus one",
+      "why_separate_from_family_A": "It is a distinct pre declared contrast with its own directional prediction in the parent contract, and it is the informative middle case rather than the target of the probe. Correcting it inside family A would let the two contrasts borrow evidence from each other."
+    },
+    "not_family_members": {
+      "the_five_thresholds": "A sensitivity analysis of one hypothesis at nested cutoffs on the same evidence, reported as a curve. They are not five independent chances to find an effect, and no consonant was chosen by looking across them.",
+      "the_british_reference_condition": "The paired second condition of a single design, not a second hunt. Its job is to show whether a differential shrinks when the reference variety is repaired.",
+      "the_honest_caveat": "Both exclusions are judgements. They are declared here so that a reader can disagree with them, and the sensitivity family below reports what a reader who does disagree would see."
+    },
+    "family_S_sceptical_sensitivity": {
+      "content": "every per consonant differential in the full grid: included consonants times two contrasts times two references times five thresholds",
+      "why_it_is_reported_regardless_of_outcome": "A reader who rejects the argument that thresholds and references are sensitivity dimensions should not have to take this contract's word for it. The harshest defensible family is computed and published whatever it shows, so that declaring the primary family cannot be mistaken for choosing the lenient answer.",
+      "status": "reported, never used to promote a finding that failed family A"
+    }
+  },
+  "corrections": {
+    "always_reported_together": [
+      "uncorrected",
+      "benjamini_hochberg",
+      "bonferroni"
+    ],
+    "why_all_three": "The uncorrected value shows what the data said before any adjustment. Benjamini Hochberg controls the false discovery rate and is the honest fit for a screening comparison across a consonant inventory. Bonferroni controls the family wise error rate and is the strictest reading. Publishing all three means no reader has to trust that the flattering one was not selected.",
+    "primary_for_interpretation": "benjamini_hochberg within the declared family",
+    "level": 0.05,
+    "prohibition": "A finding that fails correction is reported as having failed. It may not be rescued by moving family, by changing threshold, by switching reference, or by quoting its uncorrected p value as though it were the result."
+  },
+  "consonant_inclusion_rule": {
+    "declared_before_computing": true,
+    "rule": "A consonant enters a per consonant family only if, in each of the two groups being contrasted, it has at least 100 scoring opportunities and at least 50 speakers with at least one opportunity.",
+    "why_100_opportunities": "Below one hundred chances the group rate cannot resolve anything finer than a percentage point, which is coarser than every differential this probe is trying to measure.",
+    "why_50_speakers": "The statistic is now a mean across speakers and its interval is a bootstrap over speakers. Under fifty clusters the interval is estimating its own instability more than the effect.",
+    "why_a_rule_rather_than_a_judgement": "Set from denominators alone and fixed before any differential is computed, so no consonant can be admitted or removed because of the answer it gave.",
+    "reporting_of_untested_consonants": "reported with their counts and explicitly marked as not tested for want of denominator. They are never silently dropped and their rates are never quoted as results.",
+    "a_consequence_worth_stating_plainly": "The excluded flap is the phone that carries American t flapping, which is a genuine and well documented variety difference. This design cannot test it, because the prompts did not supply enough chances in enough speakers. That is a limit of this probe rather than evidence about flapping, and it belongs in the report beside rhoticity as a second thing this method cannot see.",
+    "consonants_admitted": {
+      "family_A_australian_minus_american": 22,
+      "family_B_british_minus_american": 21
+    },
+    "consonants_not_tested": {
+      "family_A_australian_minus_american": {
+        "ʒ": "20 opportunities in 20 australian speakers, 27 in 25 american speakers",
+        "θ": "48 opportunities in 45 australian speakers, 94 in 84 american speakers",
+        "ɾ": "76 opportunities in 66 australian speakers, 151 in 135 american speakers"
+      },
+      "family_B_british_minus_american": {
+        "ʒ": "12 opportunities in 11 british speakers, 27 in 25 american speakers",
+        "θ": "53 opportunities in 50 british speakers, 94 in 84 american speakers",
+        "ɾ": "90 opportunities in 77 british speakers, 151 in 135 american speakers",
+        "j": "98 opportunities in 79 british speakers, 193 in 158 american speakers"
+      }
+    },
+    "a_correction_to_this_contract_recorded_rather_than_hidden": "At freezing the author stated that both families would admit the same 22 consonants. That was wrong. The British group has 98 opportunities for j, two short of the declared floor, so family B admits 21. The rule itself is unchanged and was not touched after any differential was computed; only a count derived from it was miscopied, and it is corrected here in the open because a contract that quietly repairs its own arithmetic is worth nothing."
+  },
+  "threshold_sensitivity_curve": {
+    "replaces": "five point estimates quoted as though each were a separate result",
+    "with": "the differential across all five thresholds with its 95 percent band at each, per contrast and per reference",
+    "why": "A real differential holds its sign and rough size across the range. One that appears at a single cutoff is an artefact of the cutoff. A band shows which of the two a reader is looking at; five bare numbers do not."
+  },
+  "training_lineage_declaration": {
+    "resolution": "declared, not resolved",
+    "the_overlap": "The scoring model facebook/wav2vec2-lv-60-espeak-cv-ft is fine tuned on Common Voice, and this probe evaluates entirely on Common Voice release 26 speakers. speech_sound_patterns/engineering-plan.md disqualifies Wav2Vec2 CommonPhone from counting toward a selection gate for precisely this reason, and the rule was never applied to the probe's own scoring model.",
+    "why_the_same_model_scoring_all_groups_does_not_settle_it": "It does not. Common Voice English is heavily skewed toward American and British contributors, so a model fine tuned on it has plausibly been exposed to far more of the control group's speech than of the Australian group's. That would fit the control better and flag it less, which is a group dependent effect and not a uniform one. Any claim that the overlap cancels because one model scored everybody is wrong and is not made here.",
+    "what_actually_protects_the_finding": "The direction. At threshold minus one under the American reference the American control is flagged more often than the Australian group, 0.0863 against 0.0823, which is the opposite of what lineage bias predicts. If the bias is present it works against the observed result rather than producing it.",
+    "the_declaration_in_one_line": "Direction unknown, plausibly favours the control group, and the observed result runs against it. The null result is therefore conservative rather than suspect.",
+    "what_this_does_not_license": "It does not make the evidence independent, it does not let this probe count toward any selection gate, and it does not transfer to a future result that runs the other way. A differential in the direction lineage bias predicts would be uninterpretable under this same reasoning.",
+    "how_it_would_actually_be_resolved": "A second phone recognition model with no Common Voice lineage, rescoring the same 2,400 clips, so the differential can be compared across two models that do not share the evaluation data. That is a fresh inference pass and a new model manifest, so it is recorded as a deferred item rather than performed inside R2."
+  },
+  "detectable_effect_statement": {
+    "required": true,
+    "content": "What differential this design could and could not have detected at 300 speakers per group and 2 clips per speaker, computed from the observed speaker level variance rather than assumed, stated for the group level contrast and for a typical consonant.",
+    "why": "A reader is entitled to know whether a null result means no effect or means an underpowered look. Those are different findings and this report has so far distinguished neither.",
+    "standing_limit": "The Australian eligible pool is 674 speakers, so the probe already samples about 45 percent of it. More Australian speakers are not cheaply available and this is not fixable by collecting more."
+  },
+  "deliverables": {
+    "report": "variety-probe-v1.2.0.json, at schema version 1.2.0",
+    "supersedes": "variety-probe-v1.1.0.json, retained as the superseded record",
+    "uncertainty_state_field": "lifted from not_computed to what was actually established, per finding, and never to a bare claim of significance",
+    "validator": "variety_probe_validate.py, changed deliberately. It currently requires uncertainty_state to remain not_computed. After R2 it must require the opposite: that uncertainty is present, that a finding failing correction is recorded as failing, and that an interval crossing zero is not described as an effect.",
+    "tests": "extended in tests/test_speech_sound_variety_probe.py"
+  },
+  "release_boundaries": {
+    "selects_a_system": false,
+    "selects_a_threshold": false,
+    "selects_a_reference": false,
+    "moves_a_gate": false,
+    "opens_held_out_participants": false,
+    "claims_detection_accuracy": false,
+    "claims_a_clinical_or_screening_conclusion": false,
+    "enters_the_pipeline": false
+  },
+  "what_this_cannot_establish": [
+    "That the system correctly detects a genuine Australian mispronunciation. There is still no expert produced Australian phone truth, at any licence and at any price.",
+    "Any accuracy, sensitivity or specificity figure, because there is still no truth to measure against.",
+    "That a differential surviving correction is a real property of Australian English rather than of these prompts, this corpus, this model or this GOP formulation.",
+    "That an interval excluding zero means an effect worth acting on. Nothing here selects, gates or releases anything."
+  ]
+}

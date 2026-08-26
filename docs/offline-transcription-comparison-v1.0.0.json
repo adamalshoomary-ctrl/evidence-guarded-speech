@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "offline_transcription_comparison_v1",
+  "item": "R3",
+  "measured_on": "2026-08-23",
+  "why": "The local transcription path exists so the pipeline runs with no paid credentials. Whether it costs measurement quality is a question about evidence, not about intent, so it was measured before the model and the decoding options were chosen.",
+  "recordings": {
+    "solo": "audio/solo, 141 seconds, one speaker, contains disfluencies",
+    "conversation": "audio root, 108 seconds, two speakers"
+  },
+  "reference": {
+    "what_it_is": "the AssemblyAI transcript of the same audio",
+    "what_it_is_not": "truth. Neither transcriber is a reference standard, and no expert verbatim transcript of these recordings exists. Every figure below is agreement between two systems, which this project does not treat as evidence of correctness."
+  },
+  "model_and_prompt_trials_on_the_solo_recording": {
+    "assemblyai_reference": {
+      "words": 278,
+      "disfluencies": 5
+    },
+    "trials": [
+      {
+        "model": "small",
+        "initial_prompt": false,
+        "seconds": 32.1,
+        "words": 269,
+        "fillers": 0,
+        "filler_types": []
+      },
+      {
+        "model": "small",
+        "initial_prompt": true,
+        "seconds": 21.5,
+        "words": 282,
+        "fillers": 8,
+        "filler_types": [
+          "hmm",
+          "uh",
+          "um"
+        ]
+      },
+      {
+        "model": "large-v3",
+        "initial_prompt": false,
+        "seconds": 173.7,
+        "words": 270,
+        "fillers": 1,
+        "filler_types": [
+          "um"
+        ]
+      },
+      {
+        "model": "large-v3",
+        "initial_prompt": true,
+        "seconds": 115.6,
+        "words": 277,
+        "fillers": 8,
+        "filler_types": [
+          "hmm",
+          "uh",
+          "um"
+        ]
+      }
+    ],
+    "what_decided_it": "Disfluency retention is set by the decoding prompt, not by model size. Unprimed, both models returned zero of the reference's five filled pauses; primed, both returned all five. The large model cost five times the runtime and a three gigabyte download for a word agreement difference of about half a percentage point.",
+    "chosen": "small with disfluency priming",
+    "timings_caveat": "single runs on one machine, not a benchmark. The primed small run being faster than the unprimed one is model caching, not a real speedup."
+  },
+  "release_boundaries": {
+    "claims_transcription_accuracy": false,
+    "treats_provider_agreement_as_truth": false,
+    "changes_any_fluency_threshold": false,
+    "changes_any_protected_renderer_constant": false
+  }
+}

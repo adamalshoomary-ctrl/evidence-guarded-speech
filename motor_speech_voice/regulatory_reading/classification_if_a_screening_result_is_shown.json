@@ -1,0 +1,67 @@
+{
+  "question_id": "classification_if_a_screening_result_is_shown",
+  "domain": "medical_device_regulation",
+  "question": "If a consumer facing feature told a person their speech may indicate a condition worth professional assessment, what device classification would that attract?",
+  "applies_to_purposes": [
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Therapeutic Goods Administration, Classifying active medical devices in Australia (including software-based medical devices), Rule 4.5",
+      "url": "https://www.tga.gov.au/resources/guidance/classifying-active-medical-devices-australia-including-software-based-medical-devices",
+      "currency": "Retrieved 2026-08-19; page states no separate last updated date in the extracted text",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Rule 4.5 applies to active medical devices intended to be used to process data or information in order to: provide a diagnosis of a disease or condition. or screen for the potential presence of a disease or condition. Screening is the detection of potential disease indicators in otherwise healthy, asymptomatic but at-risk individuals, in order to determine whether a confirmatory diagnostic test is warranted."
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Classifying active medical devices in Australia (including software-based medical devices), Rule 4.5",
+      "url": "https://www.tga.gov.au/resources/guidance/classifying-active-medical-devices-australia-including-software-based-medical-devices",
+      "currency": "Retrieved 2026-08-19; page states no separate last updated date in the extracted text",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Provide diagnosis or screening result to a user: Disease or condition may lead to death/severe deterioration without urgent treatment/pose a high public health risk: Class III, Rule 4.5 (1) (c); Disease or condition is serious/may pose a moderate public health risk: Class IIb, Rule 4.5 (1) (d); Any other case: Class IIa, Rule 4.5 (1) (e). Information to relevant health professional to support diagnostic/screening decision making: ... Disease or condition is serious/pose a moderate public health risk: Class IIa, Rule 4.5 (2) (b); Any other case: Class I, Rule 4.5 (2) (c)."
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Classifying active medical devices in Australia (including software-based medical devices), Rule 4.5",
+      "url": "https://www.tga.gov.au/resources/guidance/classifying-active-medical-devices-australia-including-software-based-medical-devices",
+      "currency": "Retrieved 2026-08-19; page states no separate last updated date in the extracted text",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "A higher classification applies if the device performs all the decision-making itself and provides a diagnosis or a screening result to the user, who may be either a layperson or a health professional. A lower classification may apply if the device only provides information to a relevant health professional to assist them in diagnosing or screening for a disease or condition, and the health professional is responsible for the final diagnostic decision-making."
+    }
+  ],
+  "reading": [
+    "The regulator's definition of screening is close to verbatim what checkpoint 23E contemplates. Its stated action is to indicate whether a professional assessment route should be studied, and the rule defines screening as detecting potential disease indicators in otherwise healthy, asymptomatic individuals in order to determine whether a confirmatory diagnostic test is warranted. That is not a distant analogy; it is the same sentence in different words.",
+    "If the result goes to the person and the condition is serious, the reading is Rule 4.5(1)(d), Class IIb. That is the same class the regulator's own examples give to diagnosing emphysema from a CT scan.",
+    "If instead the information goes to a relevant health professional who makes the decision, the reading drops one class to Rule 4.5(2)(b), Class IIa. Whether that reduction is available here depends on whether a speech pathologist is a health professional under the Regulations, which is a separate question and is not obviously yes.",
+    "Class IIb is not a paperwork tier. It requires conformity assessment evidence from a recognised independent body, ARTG inclusion, and an Australian sponsor."
+  ],
+  "confidence": "reading_with_material_uncertainty",
+  "unresolved": [
+    {
+      "question": "Whether a motor speech condition is a serious condition, which decides between Class IIb and Class IIa on the consumer facing path.",
+      "why_it_cannot_be_settled_here": "It requires applying the statutory seriousness test to a named condition, and no condition has been named because checkpoint 23A prohibits naming one.",
+      "who_must_settle_it": "An Australian regulatory specialist."
+    },
+    {
+      "question": "Whether the lower classification path is available at all when the recipient is a speech pathologist.",
+      "why_it_cannot_be_settled_here": "It depends on the Regulations' definition of health professional, which is examined in its own record and does not name speech pathology.",
+      "who_must_settle_it": "An Australian regulatory specialist."
+    }
+  ],
+  "consequences": [
+    "The cheapest looking product feature in this whole programme, a line of text suggesting the person see someone, is the single most expensive one in regulatory terms.",
+    "A design that routes information to a professional rather than to the person is materially lower risk under this rule, but only if the professional qualifies, which is unresolved."
+  ],
+  "decided_by": [
+    "australian_regulatory_specialist",
+    "owner"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "classification_if_a_screening_result_is_shown_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

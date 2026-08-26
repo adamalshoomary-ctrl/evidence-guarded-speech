@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0.0",
+  "repair_id": "speech_sound_patterns_meta_exact_threshold_resolution_v1",
+  "status": "rules_frozen_before_exact_threshold_scoring",
+  "purpose": "Determine whether the frozen 0.01 threshold grid skipped a valid operating point for the already selected Meta development model. This resolution repair cannot change the model, features, probabilities, labels, gates or release boundaries.",
+  "prior_result": {
+    "meta_contract_sha256": "f3f7fcf0b49e7b3ae84fb0578856f4c7bbd59e8305c985cd78905da26f37f446",
+    "meta_ctc_process_sha256": "d77b7600640e42e0d4811e02687cdc5090d9dd77a6a2e6c25399f431bb605014",
+    "meta_calibration_sha256": "df09534559b94147fd0439cb4252edf396c6c4c8db6f6ba1d164e796b0b63084",
+    "decision": "no_system_or_threshold_selected",
+    "development_selected_model_family": "l2_logistic_regression",
+    "development_selected_model_c": 0.01,
+    "development_grouped_average_precision": 0.580833349,
+    "failed_result_may_be_rewritten": false
+  },
+  "input_policy": {
+    "authoritative_probabilities": "private_adult_rows_probability_rounded_to_nine_decimal_places",
+    "allowed_partitions": [
+      "development_out_of_fold",
+      "threshold_tuning"
+    ],
+    "allowed_populations": [
+      "source_adults_only"
+    ],
+    "held_out_access_allowed": false,
+    "child_rows_allowed": false,
+    "probabilities_may_be_recomputed": false,
+    "model_or_preprocessor_may_be_refit": false,
+    "features_or_categories_may_change": false
+  },
+  "threshold_policy": {
+    "candidate_thresholds": "zero_one_and_every_distinct_authoritative_probability_across_the_two_allowed_partitions",
+    "candidate_thresholds_use_labels": false,
+    "positive_comparison": "probability_greater_than_or_equal_to_threshold",
+    "selection": "highest_tuning_recall_meeting_every_development_out_of_fold_and_tuning_gate_then_highest_tuning_precision_then_highest_threshold",
+    "development_and_tuning_both_must_pass": true,
+    "probability_order_may_be_changed": false,
+    "tuning_may_change_model_or_features": false,
+    "held_out_labels_or_outputs_used": false
+  },
+  "selection_gates": {
+    "minimum_precision_point_estimate": 0.75,
+    "minimum_precision_wilson_95_lower": 0.5,
+    "maximum_false_concerns_per_scorable_opportunity": 0.01,
+    "minimum_recall": 0.2,
+    "minimum_true_positives": 7,
+    "every_tuning_participant_reported": true,
+    "system_selection_if_all_gates_pass": "adult_developer_review_candidate_only",
+    "failure_behavior": "no_system_or_threshold_selected"
+  },
+  "report_policy": {
+    "failed_coarse_grid_result_retained": true,
+    "candidate_threshold_count_reported": true,
+    "selected_threshold_interval_reported": true,
+    "development_and_tuning_denominators_visible": true,
+    "private_rows_committed": false,
+    "held_out_fields_allowed": false
+  },
+  "release_boundaries": {
+    "normal_pipeline": false,
+    "candidate_artifact": false,
+    "coaching": false,
+    "personal_progress": false,
+    "scientific_release": false,
+    "product_release": false,
+    "screening": false,
+    "diagnosis": false,
+    "severity": false,
+    "cause": false,
+    "treatment": false
+  }
+}

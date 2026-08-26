@@ -1,0 +1,90 @@
+{
+  "source_id": "alois_db",
+  "title": "ALOIS-DB, speech and language affected by mild cognitive impairment",
+  "citation": "ALOIS-DB Zenodo deposit 17037153, 2025.",
+  "canonical_source": {
+    "landing_page": "https://zenodo.org/records/17037153",
+    "terms_or_licence_url": "https://zenodo.org/records/17037153"
+  },
+  "language_and_variety": {
+    "language": "Slovak",
+    "variety": null,
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "258 speakers with mild cognitive impairment and healthy controls.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Slovak, and a single cognitive condition focus."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel",
+    "diadochokinesis"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "unresolved",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "unresolved",
+    "failure_reasons": [
+      "The deposit is access restricted, so what annotation it carries cannot be inspected and must fail closed."
+    ]
+  },
+  "access": {
+    "route": "application_and_review",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": false,
+    "account_required": true,
+    "agreement_signature_required": true,
+    "fee": null,
+    "state": "restricted",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Zenodo API record 17037153, queried 2026-08-19."
+    ],
+    "findings": [
+      "Access is restricted, no licence is recorded and no files are listed, so both the rights and the content questions are open."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_access_restricted",
+    "reasons": [
+      "Restricted access with no stated licence fails closed on both rights and content."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "alois_db_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

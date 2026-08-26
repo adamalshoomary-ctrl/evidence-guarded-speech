@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "public_snapshot_provenance_v1",
+  "contract": "release/snapshot-contract-v1.0.0.json",
+  "contract_sha256": "71ee0d53f4a90ffa8b4aad7e680a5af3c6fb12e3956170b60ff71e44daba236c",
+  "source_commit": "c8838395f147234dc5d49d102f1cbf4a73ab6907",
+  "source_working_tree_clean": false,
+  "files_published": 2803,
+  "files_withheld": 41,
+  "withheld": [
+    "audio/owner-conversation-recording.m4a",
+    "audio/accent-contrast-script.md",
+    "audio/accent/owner-accent-contrast-recording.m4a",
+    "regression/fixtures/solo.wav",
+    "history.json",
+    "output/a-whole-run.zip",
+    "output/a-whole-run/acoustics.json",
+    "output/a-whole-run/alignment.json",
+    "output/a-whole-run/audio_quality.json",
+    "output/a-whole-run/audit.md",
+    "output/a-whole-run/diarization.json",
+    "output/a-whole-run/evaluation.md",
+    "output/a-whole-run/evaluation_claims.json",
+    "output/a-whole-run/fluency_events.json",
+    "output/a-whole-run/listener.json",
+    "output/a-whole-run/master.json",
+    "output/a-whole-run/master_preview.txt",
+    "output/a-whole-run/run_manifest.json",
+    "output/a-whole-run/transcript.json",
+    "output/a-whole-run/vad.json",
+    "output/a-whole-run/verification.json",
+    "output/a-whole-run/verification.md",
+    "output/a-whole-run/words_attributed.json",
+    "output/acoustics.json",
+    "output/alignment.json",
+    "output/audit.md",
+    "output/diarization.json",
+    "output/evaluation.md",
+    "output/listener.json",
+    "output/master.json",
+    "output/master_preview.txt",
+    "output/run_manifest.json",
+    "output/transcript.json",
+    "output/vad.json",
+    "output/verification.md",
+    "output/words_attributed.json",
+    "progress.md",
+    "regression/truth/real_conversation.json",
+    "regression/truth/real_solo.json",
+    "release/overlay/AGENTS.md",
+    "release/snapshot-contract-v1.0.0.json"
+  ],
+  "why_the_withheld_names_are_rewritten": "The withheld list names the files that were held back, and some of those filenames are themselves private: one names the place a private conversation was recorded. The same substitution table that cleans the published files is applied to the list, so the shape of what was withheld is visible without the names being republished.",
+  "substitutions_applied": [
+    {
+      "id": "conversation_recording_name",
+      "reason": "The filename names the suburb and shopping centre where a private conversation was recorded. The recording is excluded; its location should not travel in prose.",
+      "occurrences": 2,
+      "restricted_to": null
+    },
+    {
+      "id": "conversation_recording_name_bare",
+      "reason": "The same place name where the prose does not carry the file extension.",
+      "occurrences": 2,
+      "restricted_to": null
+    },
+    {
+      "id": "solo_recording_path",
+      "reason": "Every runnable command in the documentation should work in the published repository, and the fixture is the recording that ships.",
+      "occurrences": 3,
+      "restricted_to": null
+    },
+    {
+      "id": "solo_recording_name",
+      "reason": "A personal filename in prose about an excluded recording.",
+      "occurrences": 1,
+      "restricted_to": null
+    },
+    {
+      "id": "accent_recording_path",
+      "reason": "The recording is excluded and the module refuses to run without it. The path stays visible so the frozen evidence remains readable, with the personal filename removed.",
+      "occurrences": 2,
+      "restricted_to": null
+    },
+    {
+      "id": "accent_recording_name",
+      "reason": "The module builds the path from separate components, so the joined path rule never matched the filename in the source. The verifier caught it.",
+      "occurrences": 1,
+      "restricted_to": null
+    },
+    {
+      "id": "home_directory",
+      "reason": "A machine local path, appearing in two remediation notes that quote the string they instruct someone to strip.",
+      "occurrences": 2,
+      "restricted_to": null
+    },
+    {
+      "id": "azure_resource",
+      "reason": "An account scoped cloud resource name. The finding it supports does not depend on the name.",
+      "occurrences": 2,
+      "restricted_to": null
+    },
+    {
+      "id": "azure_resource_group",
+      "reason": "The same, for the resource group it sits in.",
+      "occurrences": 1,
+      "restricted_to": null
+    },
+    {
+      "id": "run_identifier",
+      "reason": "A run identifier for a pipeline run over the owner's own recording.",
+      "occurrences": 1,
+      "restricted_to": null
+    },
+    {
+      "id": "local_temp_path",
+      "reason": "A machine local path from the same run.",
+      "occurrences": 1,
+      "restricted_to": null
+    },
+    {
+      "id": "acceptance_audio_constant",
+      "reason": "The acceptance run has to point at a recording that exists in this repository. Applied after the filename substitution, which is why the literal reads in its already substituted form.",
+      "occurrences": 1,
+      "restricted_to": [
+        "speech_sound_patterns/run_final_acceptance.py"
+      ]
+    },
+    {
+      "id": "acceptance_fixture_constant",
+      "reason": "The truth record it checks against is the fixture record, because the real recording record is excluded.",
+      "occurrences": 1,
+      "restricted_to": [
+        "speech_sound_patterns/run_final_acceptance.py"
+      ]
+    },
+    {
+      "id": "researcher_emails",
+      "reason": "Named third parties' email addresses, sitting beside draft enquiry text. They are publicly listed academics, so this is not a disclosure so much as a refusal to build them a spam target. No enquiry was ever sent.",
+      "occurrences": 5,
+      "restricted_to": null
+    },
+    {
+      "id": "run_archive_directory",
+      "reason": "The committed run directory name pairs an institution acronym with a date and the owner's recordings. It survives only in the withheld file list, which names what was held back.",
+      "occurrences": 1,
+      "restricted_to": null
+    }
+  ],
+  "substitution_rules_that_did_not_fire": [
+    "run_archive_name"
+  ],
+  "why_the_replaced_strings_are_not_listed_here": "The rule table names, as literal strings, the private material it removes. Publishing it would republish all of it. The identifiers and reasons carry the transparency; the strings stay behind.",
+  "checksum_pinned_files_copied_unmodified": 68,
+  "substitutions_withheld_from_pinned_files": {
+    "speech_sound_patterns/corpus_manifests/provider-transfer-review-v1.2.0.json": [
+      {
+        "id": "accent_recording_path",
+        "occurrences": 1
+      }
+    ],
+    "speech_sound_patterns/provider_register/provider-register-v1.1.0.json": [
+      {
+        "id": "azure_resource",
+        "occurrences": 1
+      },
+      {
+        "id": "azure_resource_group",
+        "occurrences": 1
+      }
+    ],
+    "speech_sound_patterns/provider_register/provider-register-v1.2.0.json": [
+      {
+        "id": "azure_resource",
+        "occurrences": 1
+      },
+      {
+        "id": "azure_resource_group",
+        "occurrences": 1
+      }
+    ]
+  },
+  "why_pinned_files_are_not_substituted": "These records carry each other's checksums. Editing one breaks every record that pins it, and a published repository whose own integrity checks fail would be worse than one carrying a cloud resource name or the filename of a recording that is not published. They are copied byte for byte and the withheld substitutions are listed above so the decision is visible rather than silent.",
+  "note": "source_working_tree_clean records whether the private repository had uncommitted changes when this snapshot was built. A snapshot built from a dirty tree cannot be traced back to a commit, so it should not be published."
+}

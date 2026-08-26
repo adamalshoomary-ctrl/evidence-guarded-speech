@@ -1,0 +1,93 @@
+{
+  "source_id": "hupa",
+  "title": "HUPA, Castilian Spanish corpus of voice disorders",
+  "citation": "HUPA corpus, Zenodo deposit 17704572, with an associated Data in Brief article.",
+  "canonical_source": {
+    "landing_page": "https://zenodo.org/records/17704572",
+    "terms_or_licence_url": "https://zenodo.org/records/17704572"
+  },
+  "language_and_variety": {
+    "language": "Spanish",
+    "variety": "Castilian Spanish",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "440 speakers, 239 healthy controls and 201 with diagnosed voice disorders.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Spanish, sustained vowel only."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel_a"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "unresolved",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "unresolved",
+    "failure_reasons": [
+      "The deposit is access restricted with no licence recorded, so its annotation cannot be inspected and fails closed.",
+      "Published descriptions of how many raters assessed the recordings disagree with each other, so rater multiplicity is unresolved."
+    ]
+  },
+  "access": {
+    "route": "application_and_review",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": false,
+    "account_required": true,
+    "agreement_signature_required": true,
+    "fee": null,
+    "state": "restricted",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Zenodo API record 17704572, queried 2026-08-19."
+    ],
+    "findings": [
+      "Access restricted, no licence recorded, no files listed."
+    ],
+    "conflicting_claims": [
+      "The associated article text has been reported to state a CC BY licence while the Zenodo deposit records none and restricts access. The repository page is treated as authoritative and the conflict is recorded rather than resolved.",
+      "One published description reports three expert raters and another reports rating in situ by a single otolaryngologist. Neither was confirmed at source."
+    ]
+  },
+  "eligibility": {
+    "decision": "blocked_licence_unresolved",
+    "reasons": [
+      "No licence and restricted access is a fail closed state on rights."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "hupa_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

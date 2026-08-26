@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "mitchell_delbridge_manifest_v1",
+  "source_id": "mitchell_delbridge",
+  "title": "Mitchell and Delbridge survey of the speech of Australian adolescents",
+  "version": {
+    "label": "digitised survey recordings and database",
+    "release_date": "1959 to 1960, digitised later",
+    "immutable_id": "mitchell_delbridge_survey_1959_1960"
+  },
+  "citation": "Mitchell, A. G. and Delbridge, Arthur. The Speech of Australian Adolescents: A Survey. 1965.",
+  "canonical_source": {
+    "landing_page": "https://researchdata.edu.au/mitchell-delbridge-database/2014",
+    "licence_url": "https://creativecommons.org/licenses/by-nc/4.0/"
+  },
+  "access": {
+    "state": "rejected",
+    "retrieved_at": null,
+    "account_required": false,
+    "terms_state": "rejected",
+    "terms_url": "https://researchdata.edu.au/mitchell-delbridge-database/2014",
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "restricted_role_only",
+    "spdx_id": "CC-BY-NC-4.0",
+    "commercial_use_permitted": false,
+    "verified_at": "2026-07-28",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "manifest_only"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "commercial_product_engineering",
+      "non_commercial_source_in_a_commercial_product"
+    ],
+    "raw_data_committed": false,
+    "local_storage": null,
+    "rehosting_permitted": null,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Do not acquire, retain, upload or process source data while the recorded rights state blocks use."
+  },
+  "population": {
+    "description": "7,736 students recorded at 330 schools across every Australian state and territory in 1959 and 1960, each reading two fixed consonant rich sentences.",
+    "known_strata": [],
+    "limitations": [
+      "The non commercial licence excludes it from this project entirely, under the same rule that already excluded TIMIT and L2-ARCTIC.",
+      "The recordings are from 1959 and 1960, so they describe the Australian English of that period rather than current speech.",
+      "This is the largest Australian speech resource this project cannot use, and it is recorded as a loss rather than an omission."
+    ]
+  },
+  "annotation": {
+    "truth_class": "unavailable",
+    "provenance": "No annotations acquired; public collection records were read.",
+    "fields_retained": [],
+    "original_records_retained": false,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "No source record may enter engineering while access or rights remain blocked."
+    ]
+  },
+  "capability_audit": {
+    "status": "blocked_or_pending",
+    "inspected_materials": [
+      "Public collection records for the digitised survey, read 2026-07-29."
+    ],
+    "findings": [
+      "The collection is anonymously downloadable, so its exclusion rests on the licence rather than on access.",
+      "The University of Sydney repository record refuses automated requests, so the non commercial licence recorded by the 2026-07-28 search was not independently re verified here. A non commercial licence and an unverified licence both fail closed, so the verdict does not depend on which is true."
+    ]
+  },
+  "participant_split": {
+    "status": "not_applicable",
+    "unit": null,
+    "source_split_provenance": "No source participant data is acquired or approved.",
+    "project_strategy": "no_data_use_until_rights_change",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {}
+  },
+  "lineage": {
+    "lineage_group": "mitchell_delbridge",
+    "derived_from": [],
+    "independence_claim": "no_evidence_claim_permitted",
+    "duplicate_detection": "Required if rights later permit acquisition.",
+    "candidate_model_overlap_status": "not_applicable"
+  },
+  "archives": []
+}

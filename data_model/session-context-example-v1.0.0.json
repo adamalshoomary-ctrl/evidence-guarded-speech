@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0.0",
+  "account": {
+    "account_id": "acct_example001",
+    "status": "active"
+  },
+  "session": {
+    "session_id": "sess_example001",
+    "account_id": "acct_example001",
+    "context_id": "ctx_example001",
+    "language": "en",
+    "recording_mode": "solo",
+    "started_at_utc": "2026-07-19T10:01:00+10:00"
+  },
+  "context": {
+    "context_id": "ctx_example001",
+    "account_id": "acct_example001",
+    "category": "interview",
+    "declared_goal": "Practise a clear answer for a fictional interview.",
+    "audience": "interviewer",
+    "environment": {
+      "setting": "home",
+      "noise": "quiet",
+      "source": "user_declared"
+    }
+  },
+  "task": {
+    "task_id": "goal_specific_response_en_v1",
+    "task_version": "1.0.0",
+    "prompt_id": "interview_problem_example",
+    "prompt_version": "1.0.0",
+    "language": "en",
+    "preparation": {
+      "allowed_s": 60,
+      "actual_s": 42
+    },
+    "accommodations": []
+  },
+  "attempt": {
+    "attempt_id": "attempt_example001",
+    "account_id": "acct_example001",
+    "session_id": "sess_example001",
+    "context_id": "ctx_example001",
+    "attempt_role": "first",
+    "progress_intent": "baseline_observation",
+    "sequence_index": 1,
+    "parent_attempt_id": null,
+    "exercise_id": null,
+    "recording_id": "recording_example001"
+  },
+  "participants": [
+    {
+      "participant_id": "participant_example001",
+      "role": "account_holder",
+      "account_id": "acct_example001",
+      "speaker_label": "SPEAKER_00"
+    }
+  ],
+  "capture": {
+    "recording_id": "recording_example001",
+    "device": {
+      "device_class": "phone",
+      "platform": "unknown",
+      "microphone": "built_in",
+      "source": "user_declared"
+    },
+    "environment": {
+      "source": "technical_observation",
+      "observations": []
+    },
+    "quality_policy": "baseline",
+    "speaker_mapping_source": "account_holder_only_capture"
+  },
+  "self_report": {
+    "source": "user_declared",
+    "representativeness": "typical",
+    "difficulty": "moderate",
+    "confidence": "prefer_not_to_answer",
+    "temporary_context": [],
+    "usefulness": "not_yet_known"
+  },
+  "outcome_report": {
+    "source": "user_declared",
+    "question_version": "1.0.0",
+    "real_world_outcome": "not_yet_attempted"
+  },
+  "consent_snapshot": {
+    "as_of_utc": "2026-07-19T10:01:00+10:00",
+    "decisions": [
+      {
+        "consent_event_id": "consent_example001",
+        "participant_id": "participant_example001",
+        "purpose": "coaching_processing",
+        "decision": "granted",
+        "notice_version": "1.0.0",
+        "recorded_at_utc": "2026-07-19T10:00:00+10:00",
+        "source": "user_explicit"
+      },
+      {
+        "consent_event_id": "consent_example002",
+        "participant_id": "participant_example001",
+        "purpose": "raw_audio_retention",
+        "decision": "declined",
+        "notice_version": "1.0.0",
+        "recorded_at_utc": "2026-07-19T10:00:00+10:00",
+        "source": "user_explicit"
+      },
+      {
+        "consent_event_id": "consent_example003",
+        "participant_id": "participant_example001",
+        "purpose": "human_review",
+        "decision": "declined",
+        "notice_version": "1.0.0",
+        "recorded_at_utc": "2026-07-19T10:00:00+10:00",
+        "source": "user_explicit"
+      },
+      {
+        "consent_event_id": "consent_example004",
+        "participant_id": "participant_example001",
+        "purpose": "research_collection",
+        "decision": "declined",
+        "notice_version": "1.0.0",
+        "recorded_at_utc": "2026-07-19T10:00:00+10:00",
+        "source": "user_explicit"
+      },
+      {
+        "consent_event_id": "consent_example005",
+        "participant_id": "participant_example001",
+        "purpose": "model_improvement",
+        "decision": "declined",
+        "notice_version": "1.0.0",
+        "recorded_at_utc": "2026-07-19T10:00:00+10:00",
+        "source": "user_explicit"
+      },
+      {
+        "consent_event_id": "consent_example006",
+        "participant_id": "participant_example001",
+        "purpose": "fairness_metadata",
+        "decision": "declined",
+        "notice_version": "1.0.0",
+        "recorded_at_utc": "2026-07-19T10:00:00+10:00",
+        "source": "user_explicit"
+      }
+    ]
+  }
+}

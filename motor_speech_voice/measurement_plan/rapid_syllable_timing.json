@@ -1,0 +1,219 @@
+{
+  "candidate_id": "rapid_syllable_timing",
+  "title": "Rapid syllable timing",
+  "register_lane": "motor_task",
+  "governance_lane": "motor_speech",
+  "related_governance_lanes": [
+    "general_speech"
+  ],
+  "register_row": {
+    "candidate": "Rapid syllable timing",
+    "narrowest_defensible_observation": "Rate, valid repetition count, inter-onset timing, within-run change and temporal regularity during one frozen task",
+    "required_reference": "Two blinded trained annotators marking cycles and errors, with adjudication",
+    "disposition_23a": "Priority for professional review; task remains locked"
+  },
+  "observation": {
+    "what_would_be_measured": "How regularly and how quickly a person repeats a fixed syllable sequence during one frozen task, expressed as timing between syllable onsets rather than as a judgement about the person.",
+    "why_it_is_not_yet_a_measure": [
+      "The task is locked. Checkpoint 23A left a rapid syllable question open for independent professionals and people with lived experience to accept or reject, and it selected no prompt, no syllable sequence, no effort instruction and no trial count.",
+      "Checkpoint 23A recorded that rapid syllable tasks are heterogeneous across the published literature, so a result obtained under one protocol does not transfer to another.",
+      "A maximum performance task is a proxy for ordinary speech rather than a sample of it, and the strength of that proxy is itself unestablished here."
+    ],
+    "claim_level": "measured_observation_candidate_not_selected"
+  },
+  "reference_requirement": {
+    "truth_class": "timing_and_boundary_truth",
+    "substitutions_refused": [
+      "The candidate system's own segmentation cannot check the candidate system's own segmentation.",
+      "A diagnosis attached to a recording describes the population it was drawn from and is not the numeric ground truth for a timing primitive.",
+      "A clinical rating scale score is a different truth class and cannot be regressed onto syllable onsets.",
+      "A published table of rate measures from another protocol has no recording to check an implementation against."
+    ],
+    "public_availability": "no_qualifying_public_source",
+    "source_survey_basis": [
+      "ewa_db",
+      "alois_db",
+      "neurovoz",
+      "voc_als",
+      "pc_gita",
+      "younger_nt_adults",
+      "ondri_speech",
+      "ddk_development_measures",
+      "ddk_post_stroke_rate_measures"
+    ],
+    "consequence": "The source survey established that no public source supplies two blinded annotators marking cycles and errors on rapid syllable material, at any licence and at any price. Every input below therefore depends on prospective collection with recruited participants and paid trained annotators. There is no cheaper path and no partial one."
+  },
+  "estimand_shape": {
+    "question": "How much of the variation in a timing quantity is between people rather than within the same person across attempts and sessions, and how far two trained annotators marking the same recording differ from each other and from the algorithm.",
+    "unit_of_analysis": "participant_by_attempt",
+    "comparison": "Algorithm against adjudicated human annotation on the same recording, and the same person against themselves across repeated attempts and separate sessions.",
+    "status": "candidate_shape_not_selected"
+  },
+  "variance_components_to_separate": [
+    "between_participant",
+    "within_participant_between_session",
+    "within_session_between_attempt",
+    "between_rater",
+    "rater_by_participant_interaction",
+    "between_device",
+    "between_room_or_environment",
+    "practice_or_order_effect",
+    "current_state_fatigue_or_voice_use",
+    "algorithm_or_model_version",
+    "residual_unexplained"
+  ],
+  "required_statistician_inputs": [
+    {
+      "input": "How many repeated performances of the task each participant provides, and how many separate sessions those performances are spread across.",
+      "why_public_research_cannot_supply_it": "Repetition count is a protocol decision with a burden cost, and the protocol is unreviewed. A maximum effort task cannot be repeated freely."
+    },
+    {
+      "input": "How many trained annotators mark each recording, whether every recording is double marked or only a sample, and how disagreements are adjudicated.",
+      "why_public_research_cannot_supply_it": "Annotation load is the dominant cost of this lane and there is no budget, no annotation manual and nobody trained to the manual."
+    },
+    {
+      "input": "Whether a within-run change quantity is treated as one number per attempt or as a trajectory, because the two need different models.",
+      "why_public_research_cannot_supply_it": "This follows from the selected estimand, and none is selected."
+    },
+    {
+      "input": "The valid cycle rule and the minimum usable material threshold, since both decide which attempts enter the analysis at all.",
+      "why_public_research_cannot_supply_it": "The plan lists the valid cycle rule and minimum usable material among task factors that the reviewed protocol must fix. Choosing them here would be choosing the task."
+    },
+    {
+      "input": "The one primary estimand for the question, stated before any data exists, together with the secondary quantities that may be reported beside it.",
+      "why_public_research_cannot_supply_it": "An estimand follows from an intended benefit and an intended claim. Checkpoint 23B has neither: the draft intended use records that it does not yet identify a sufficiently concrete benefit or eventual human action."
+    },
+    {
+      "input": "Expected between-person and within-person variance for the quantity, from a pilot run under the same task and capture path.",
+      "why_public_research_cannot_supply_it": "No task is selected and no pilot has been run, so there is no variance to expect. Published variance from another protocol, population or capture path describes that study rather than this one."
+    },
+    {
+      "input": "The precision the study must reach, expressed as an acceptable confidence interval width for each reported quantity rather than as a target point estimate.",
+      "why_public_research_cannot_supply_it": "Acceptable precision is a consequence of the claim being made and the harm of being wrong. Both belong to the accountable governance roles."
+    },
+    {
+      "input": "The number of candidate questions being carried, and how multiplicity across them will be handled.",
+      "why_public_research_cannot_supply_it": "The construct register may be narrowed or rejected entirely by the governance group, so the count of questions is not yet fixed."
+    },
+    {
+      "input": "Expected withdrawal, partial task completion, unusable recordings and missing reference, as rates rather than as a contingency.",
+      "why_public_research_cannot_supply_it": "These depend on the recruited population, the burden of the final protocol and the capture path, none of which exist."
+    },
+    {
+      "input": "Recruitment feasibility, participant burden and the cost of each additional participant, rater or listener.",
+      "why_public_research_cannot_supply_it": "There is no sponsor, no budget ceiling and no recruitment route, so feasibility cannot be estimated."
+    }
+  ],
+  "agreement_and_reliability": {
+    "statistic_family": "continuous_agreement",
+    "form_selection_inputs": [
+      "Whether annotators are a fixed set used for every recording or a sample drawn from a larger pool, which decides between the available intraclass correlation models.",
+      "Whether the reported unit is one annotator's marking or the mean of several, which decides between single and average measures.",
+      "Whether systematic difference between annotators matters, which decides between absolute agreement and consistency.",
+      "The confidence interval on the agreement estimate, which must be reported rather than the point estimate alone."
+    ],
+    "reporting_standards": [
+      "grras_reliability_and_agreement_reporting",
+      "icc_form_selection_guidance",
+      "limits_of_agreement",
+      "generalisability_theory_multi_facet",
+      "cosmin_measurement_property_guidance"
+    ],
+    "notes": [
+      "Reliability and accuracy are different. A timing algorithm can repeat itself perfectly and still mark the wrong onsets.",
+      "Measurement error in milliseconds and the smallest change distinguishable from it must both be reported, because without them no future change can be called real.",
+      "A design with annotators crossed with participants has more than one facet, and a single intraclass correlation collapses them. Generalisability theory keeps them separate."
+    ],
+    "measurement_error_required": true
+  },
+  "missingness_and_abstention": {
+    "categories": [
+      "participant_withdrew",
+      "task_not_attempted",
+      "task_attempted_but_invalid",
+      "recording_quality_invalid",
+      "unsupported_context_or_variety",
+      "reference_missing_or_unresolved",
+      "reference_raters_disagreed_beyond_adjudication",
+      "algorithm_abstained",
+      "consent_withdrawn_after_collection"
+    ],
+    "note": "Selective abstention is itself an access and fairness outcome. A system that declines to score the people it serves worst will look accurate while failing them, so abstention is reported by subgroup rather than pooled into a missing data total.",
+    "reported_separately": true
+  },
+  "split_and_clustering": {
+    "cluster_units": [
+      "site",
+      "device",
+      "repeated_session",
+      "rater",
+      "prompt_or_stimulus"
+    ],
+    "leakage_risks": [
+      "Annotators who mark development recordings learn the task and the population, so annotator assignment is part of the split rather than an administrative detail.",
+      "A participant's sessions, attempts and recordings must move together. Splitting them puts the same person on both sides of a comparison and makes a memorised speaker look like a general result.",
+      "Anything inspected during checkpoint 23C feasibility work is permanently pilot and development evidence for that participant and their related household, session and repeated recordings.",
+      "Item 22 material is not reusable by default. Even development use needs a new lawful purpose, consent, rights and ethics decision, and an overlap register covering every repository source and participant."
+    ],
+    "minimum_split_unit": "participant"
+  },
+  "subgroup_and_representation": [
+    "adults with and without any self-identified speech concern, kept as separate frames rather than pooled",
+    "Australian English varieties the claim includes, including Aboriginal Englishes",
+    "multilingual adults and adults who speak English as an additional language",
+    "adults who cannot read the prompt, where a spoken alternative applies",
+    "disability, communication difference and assisted communication",
+    "gender-diverse voices and professional voice users",
+    "regional and remote participants and their capture conditions",
+    "device and capture-path strata the claim includes"
+  ],
+  "blockers": [
+    {
+      "blocker": "No public source supplies the two blinded annotator reference this question requires, so nothing can be checked against anything until participants and annotators are recruited.",
+      "blocker_class": "no_reference_evidence_exists"
+    },
+    {
+      "blocker": "No construct, task or measure is selected. Every lane in the checkpoint 23B governance contract remains unselected, and the register may be rejected in full.",
+      "blocker_class": "no_task_or_construct_selected"
+    },
+    {
+      "blocker": "No independent statistician is engaged, and the checkpoint requires the statistical plan to be prospectively received and reviewed by one.",
+      "blocker_class": "statistician_absent"
+    },
+    {
+      "blocker": "No pilot has been run, so no variance estimate exists to size anything against.",
+      "blocker_class": "no_pilot_variance"
+    },
+    {
+      "blocker": "The accountable professional and paid lived-experience governance roles are unfilled, and no external authority has been approached.",
+      "blocker_class": "professional_governance_absent"
+    },
+    {
+      "blocker": "There is no legal entity to sponsor collection, hold the data or sign an agreement, which the source survey already demonstrated as a concrete rather than formal obstacle.",
+      "blocker_class": "no_legal_entity"
+    },
+    {
+      "blocker": "No institution pathway or ethics review exists, and participant recording is prohibited until one does.",
+      "blocker_class": "ethics_review_absent"
+    }
+  ],
+  "sample_size": {
+    "method_candidates": [
+      "Walter, S. D., Eliasziw, M. and Donner, A. Sample size and optimal designs for reliability studies. Statistics in Medicine, 1998, doi:10.1002/(SICI)1097-0258(19980115)17:1<101::AID-SIM727>3.0.CO;2-E. A hypothesis testing approach. Its inputs are the minimum acceptable intraclass correlation, the expected intraclass correlation, the significance level, the power, and the number of raters or repetitions per participant. Primary text not opened here; its inputs are reported from an open access implementation and its notation for the number of subjects and the number of replicates is the reverse of most modern restatements.",
+      "Bonett, D. G. Sample size requirements for estimating intraclass correlations with desired precision. Statistics in Medicine, 2002, doi:10.1002/sim.1108. A precision approach. Its inputs are the expected intraclass correlation, the desired confidence interval width, the confidence level, and the number of raters or repetitions. Primary text not opened here.",
+      "Zou, G. Y. Sample size formulas for estimating intraclass correlation coefficients with precision and assurance. Statistics in Medicine, 2012, doi:10.1002/sim.5466. Adds an assurance probability, because the width of a confidence interval is itself random and a precision calculation without assurance can miss its target about half the time. Primary text not opened here.",
+      "Bland, J. M. Deciding the sample size for a study of agreement between two methods of measurement, at https://www-users.york.ac.uk/~mb55/meas/sizemeth.htm, read 2026-08-19. Sizes a study by the precision required on the limits of agreement themselves, expressed as a multiple of the standard deviation of the differences, so it does not require that standard deviation to be known in advance."
+    ],
+    "prerequisites": [
+      "A selected task, prompt and valid cycle rule.",
+      "A pilot estimate of between-person and within-person variance under that exact task and capture path.",
+      "A decision on how many annotators mark how many recordings.",
+      "An acceptable confidence interval width, set by the claim and by the harm of being wrong."
+    ],
+    "state": "not_computable_without_the_inputs_above",
+    "computed_value": null
+  },
+  "schema_version": "1.0.0",
+  "record_id": "rapid_syllable_timing_measurement_inputs_v1",
+  "selected": false
+}

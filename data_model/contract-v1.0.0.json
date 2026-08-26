@@ -1,0 +1,327 @@
+{
+  "schema_version": "1.0.0",
+  "model_version": "1.0.0",
+  "status": "backend_contract_not_database",
+  "purpose": "Define stable user, session, context, task, attempt, consent, export, and deletion records for the future communication coaching application.",
+  "identity": {
+    "durable_account_id_prefix": "acct_",
+    "session_id_prefix": "sess_",
+    "context_id_prefix": "ctx_",
+    "attempt_id_prefix": "attempt_",
+    "recording_id_prefix": "recording_",
+    "participant_id_prefix": "participant_",
+    "consent_event_id_prefix": "consent_",
+    "identifiers_are_opaque": true,
+    "identifiers_must_not_contain_personal_information": true,
+    "run_id_is_session_id": false,
+    "speaker_label_is_durable_identity": false,
+    "account_holder_local_speaker_label": "SPEAKER_00",
+    "other_participant_identity_scope": "session_only_unless_separately_authenticated_and_consented"
+  },
+  "entities": {
+    "account": {
+      "ownership": "account_holder",
+      "immutable_fields": [
+        "account_id",
+        "created_at_utc"
+      ],
+      "required_fields": [
+        "account_id",
+        "created_at_utc",
+        "status"
+      ]
+    },
+    "session": {
+      "ownership": "account_holder",
+      "required_fields": [
+        "session_id",
+        "account_id",
+        "context_id",
+        "language",
+        "recording_mode",
+        "started_at_utc"
+      ]
+    },
+    "communication_context": {
+      "ownership": "account_holder",
+      "required_fields": [
+        "context_id",
+        "account_id",
+        "category",
+        "declared_goal",
+        "audience",
+        "environment"
+      ]
+    },
+    "task_definition": {
+      "ownership": "shared_versioned_content",
+      "required_fields": [
+        "task_id",
+        "task_version",
+        "prompt_id",
+        "prompt_version",
+        "language"
+      ]
+    },
+    "task_attempt": {
+      "ownership": "account_holder",
+      "immutable": true,
+      "required_fields": [
+        "attempt_id",
+        "account_id",
+        "session_id",
+        "context_id",
+        "task_id",
+        "task_version",
+        "prompt_id",
+        "prompt_version",
+        "attempt_role",
+        "sequence_index",
+        "recording_id"
+      ]
+    },
+    "exercise_assignment": {
+      "ownership": "account_holder",
+      "immutable": true,
+      "required_fields": [
+        "exercise_id",
+        "exercise_version",
+        "account_id",
+        "source_attempt_id",
+        "assigned_at_utc"
+      ]
+    },
+    "recording_asset": {
+      "ownership": "account_holder_and_recorded_participants",
+      "required_fields": [
+        "recording_id",
+        "account_id",
+        "session_id",
+        "attempt_id",
+        "participant_ids",
+        "retention_consent_state",
+        "storage_state"
+      ]
+    },
+    "analysis_run": {
+      "ownership": "account_holder",
+      "immutable": true,
+      "required_fields": [
+        "run_id",
+        "account_id",
+        "session_id",
+        "attempt_id",
+        "pipeline_version",
+        "provenance"
+      ]
+    },
+    "consent_event": {
+      "ownership": "consent_subject",
+      "immutable": true,
+      "required_fields": [
+        "consent_event_id",
+        "participant_id",
+        "purpose",
+        "decision",
+        "notice_version",
+        "recorded_at_utc",
+        "source"
+      ]
+    },
+    "data_request": {
+      "ownership": "account_holder",
+      "immutable_event_history": true,
+      "required_fields": [
+        "request_id",
+        "account_id",
+        "request_type",
+        "status",
+        "requested_at_utc"
+      ]
+    }
+  },
+  "relationships": [
+    "An account has many sessions and communication contexts.",
+    "A session belongs to one account and one declared communication context.",
+    "A session contains one or more immutable task attempts.",
+    "A task attempt references one versioned task and prompt.",
+    "A repeat, retention, or transfer attempt links to an earlier attempt without replacing it.",
+    "A post exercise repeat also references the versioned exercise assignment.",
+    "An analysis run belongs to one recording and task attempt but has its own pipeline run identifier.",
+    "Every user owned record is discoverable from account_id for export and deletion.",
+    "A local speaker label maps to a session participant and never replaces account_id."
+  ],
+  "context_categories": [
+    "interview",
+    "spoken_exam",
+    "presentation",
+    "demonstration",
+    "important_conversation",
+    "social_practice",
+    "everyday_confidence",
+    "conversation",
+    "custom"
+  ],
+  "attempt_model": {
+    "roles": [
+      "first",
+      "matched_repeat",
+      "post_exercise_repeat",
+      "retention",
+      "transfer"
+    ],
+    "first_attempt_has_parent": false,
+    "later_attempt_requires_parent": true,
+    "post_exercise_repeat_requires_exercise": true,
+    "attempts_are_overwritten": false,
+    "same_day_success_means_mastery": false,
+    "retention_and_transfer_are_distinct": true
+  },
+  "consent": {
+    "purposes": [
+      "coaching_processing",
+      "raw_audio_retention",
+      "human_review",
+      "research_collection",
+      "model_improvement",
+      "fairness_metadata"
+    ],
+    "decisions": [
+      "granted",
+      "declined",
+      "withdrawn"
+    ],
+    "optional_purposes": [
+      "raw_audio_retention",
+      "human_review",
+      "research_collection",
+      "model_improvement",
+      "fairness_metadata"
+    ],
+    "every_choice_separate": true,
+    "optional_choices_default": "declined",
+    "declining_optional_use_reduces_coaching_access": false,
+    "events_are_immutable": true,
+    "withdrawal_changes_future_use": true,
+    "notice_version_required": true,
+    "consent_may_be_inferred_from_audio": false
+  },
+  "context_and_evidence_boundaries": {
+    "goal_is_user_declared": true,
+    "self_report_is_user_declared": true,
+    "environment_may_combine_declared_and_technical_observations": true,
+    "declared_and_inferred_values_are_separate": true,
+    "exact_age_collected": false,
+    "fairness_metadata_requires_separate_consent": true,
+    "device_hardware_fingerprint_allowed": false,
+    "different_context_ids_are_progress_comparable": false
+  },
+  "export_model": {
+    "format": "versioned_machine_readable_bundle",
+    "account_scoped": true,
+    "includes": [
+      "account",
+      "sessions",
+      "communication_contexts",
+      "task_attempts",
+      "exercise_assignments",
+      "recording_asset_metadata",
+      "analysis_runs_and_provenance",
+      "measurement_and_coaching_artifacts",
+      "self_reports",
+      "consent_events",
+      "correction_statements",
+      "data_request_history"
+    ],
+    "includes_shared_task_content_by_reference": true,
+    "identity_verification_required_before_release": true
+  },
+  "deletion_model": {
+    "account_scoped_discovery": true,
+    "request_statuses": [
+      "requested",
+      "identity_verified",
+      "in_progress",
+      "completed",
+      "partially_blocked",
+      "failed"
+    ],
+    "targets": [
+      "sessions",
+      "communication_contexts",
+      "task_attempts",
+      "exercise_assignments",
+      "recording_assets",
+      "analysis_artifacts",
+      "derived_measurements",
+      "provider_copies",
+      "research_copies_when_withdrawal_applies",
+      "backup_expiry_tracking"
+    ],
+    "shared_task_definitions_deleted": false,
+    "legal_or_operational_retention_exception_is_explicit": true,
+    "retention_periods_defined_here": false,
+    "completion_requires_target_statuses": true
+  },
+  "correction_model": {
+    "facts_can_be_corrected": true,
+    "historical_attempt_evidence_is_silently_rewritten": false,
+    "correction_statement_can_be_linked": true,
+    "original_and_corrected_provenance_retained_when_lawful": true
+  },
+  "runtime_session_context": {
+    "artifact_name": "session_context.json",
+    "optional_for_developer_runs": true,
+    "required_before_durable_history_write": true,
+    "stored_in_run_provenance": "validated_reference_and_sha256",
+    "required_sections": [
+      "account",
+      "session",
+      "context",
+      "task",
+      "attempt",
+      "participants",
+      "capture",
+      "self_report",
+      "consent_snapshot"
+    ]
+  },
+  "forbidden_shortcuts": [
+    "durable_identity_from_speaker_label",
+    "best_attempt_only_storage",
+    "bundled_consent",
+    "inferred_consent",
+    "cross_context_progress",
+    "silent_attempt_overwrite",
+    "exact_age_collection",
+    "device_fingerprinting",
+    "deletion_without_target_audit"
+  ],
+  "sources": [
+    {
+      "id": "oaic_app_3",
+      "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-3-app-3-collection-of-solicited-personal-information",
+      "relevance": "Necessary and proportionate collection and data minimisation."
+    },
+    {
+      "id": "oaic_consent",
+      "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-b-key-concepts",
+      "relevance": "Consent should be informed, voluntary, current, specific, and withdrawable."
+    },
+    {
+      "id": "oaic_app_6",
+      "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-6-app-6-use-or-disclosure-of-personal-information",
+      "relevance": "Primary and secondary purposes must remain explicit."
+    },
+    {
+      "id": "oaic_app_11",
+      "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-11-app-11-security-of-personal-information",
+      "relevance": "Security and destruction or de-identification when information is no longer needed."
+    },
+    {
+      "id": "oaic_app_13",
+      "url": "https://www.oaic.gov.au/privacy/australian-privacy-principles/australian-privacy-principles-guidelines/chapter-13-app-13-correction-of-personal-information",
+      "relevance": "Correction, linked statements, and retained context for opinions and historical records."
+    }
+  ]
+}

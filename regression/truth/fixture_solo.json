@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.1.0",
+  "fixture_id": "fixture_solo",
+  "fixture_kind": "assembled_human_recording",
+  "audio": {
+    "path": "regression/fixtures/solo.wav",
+    "sha256": "b986c5cb854a6c6e8a259ed0a778500cd5ef620374f8bb8dd55bee7c59ea9eed"
+  },
+  "reference": {
+    "source": "LibriSpeech dev-clean corpus metadata for speaker 3576 (JudyGibson), the deterministic assembly recorded in regression/fixtures/solo-manifest.json, and an independent FFprobe container duration",
+    "annotator_role": "source corpus maintainers, whose speaker identities are carried through an assembly that adds no labels of its own",
+    "guide_version": "1.0.0",
+    "date": "2026-08-24",
+    "adjudication_status": "corpus_metadata_derived",
+    "independent_from_pipeline": true
+  },
+  "coverage": [
+    "recording identity by exact byte hash",
+    "solo mode",
+    "one audible speaker",
+    "container duration"
+  ],
+  "limitations": [
+    "The recording is assembled from read audiobook utterances, so it carries no filled pauses, repetitions, false starts or repairs, and no measurement of those may be validated against it.",
+    "A single reader working from prepared text is not spontaneous speech, and nothing about spontaneous production follows from it.",
+    "No exhaustive human word, pause, overlap or renderer event annotation exists for it. Those dimensions are evaluated against synthetic ground truth only.",
+    "It represents no population, and specifically not Australian English."
+  ],
+  "expectations": {
+    "artifact_checks": [
+      {
+        "artifact": "master.json",
+        "path": "meta.recording_type",
+        "value": "solo"
+      },
+      {
+        "artifact": "master.json",
+        "path": "meta.num_speakers",
+        "value": 1
+      },
+      {
+        "artifact": "master.json",
+        "path": "meta.account_holder_speaker",
+        "value": "SPEAKER_00"
+      },
+      {
+        "artifact": "master.json",
+        "path": "meta.audio_duration_s",
+        "value": 150.175,
+        "tolerance": 0.05
+      },
+      {
+        "artifact": "audio_quality.json",
+        "path": "audio.byte_sha256",
+        "value": "b986c5cb854a6c6e8a259ed0a778500cd5ef620374f8bb8dd55bee7c59ea9eed"
+      }
+    ]
+  }
+}

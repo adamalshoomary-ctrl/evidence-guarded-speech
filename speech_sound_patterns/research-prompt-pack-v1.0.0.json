@@ -1,0 +1,1043 @@
+{
+  "checkpoint": "22F",
+  "content_screen": {
+    "categories_screened_out": [
+      "bodily functions",
+      "illness, injury and death",
+      "violence and crime",
+      "sex and intimacy",
+      "religion",
+      "ethnicity, nationality and politics",
+      "money trouble, debt and poverty",
+      "alcohol and drugs",
+      "body shape and appearance"
+    ],
+    "performed_by": "the repository's engineering work, not a cultural or clinical reviewer",
+    "this_is_not_the_review_the_protocol_requires": "Familiarity and cultural review by qualified people familiar with the supported English varieties remains an unmet activation requirement. This screen is a floor, not that review."
+  },
+  "contract_id": "speech_sound_patterns_research_prompt_pack_v1",
+  "coverage": {
+    "b": [
+      "initial",
+      "medial"
+    ],
+    "d": [
+      "final",
+      "initial",
+      "medial"
+    ],
+    "dʒ": [
+      "final",
+      "initial"
+    ],
+    "f": [
+      "final",
+      "initial"
+    ],
+    "h": [
+      "initial"
+    ],
+    "j": [
+      "initial",
+      "medial"
+    ],
+    "k": [
+      "final",
+      "initial",
+      "medial"
+    ],
+    "l": [
+      "initial",
+      "medial"
+    ],
+    "m": [
+      "final",
+      "initial",
+      "medial"
+    ],
+    "n": [
+      "final",
+      "initial",
+      "medial"
+    ],
+    "p": [
+      "final",
+      "initial",
+      "medial"
+    ],
+    "s": [
+      "final",
+      "initial",
+      "medial"
+    ],
+    "t": [
+      "initial",
+      "medial"
+    ],
+    "tʃ": [
+      "final",
+      "initial"
+    ],
+    "v": [
+      "final",
+      "medial"
+    ],
+    "w": [
+      "initial",
+      "medial"
+    ],
+    "z": [
+      "initial",
+      "medial"
+    ],
+    "ŋ": [
+      "final",
+      "medial"
+    ],
+    "ɡ": [
+      "final",
+      "initial",
+      "medial"
+    ],
+    "ɹ": [
+      "initial",
+      "medial"
+    ],
+    "ʃ": [
+      "final",
+      "initial"
+    ]
+  },
+  "declared_shortfalls": [
+    {
+      "phoneme": "h",
+      "positions_achieved": 1,
+      "reason": "English /h/ occurs only in syllable onsets, and the eligible pool offers a single word-medial candidate, adhere, which is not an ordinary everyday prompt. One position is reported rather than forced."
+    },
+    {
+      "phoneme": "ʒ",
+      "positions_achieved": 0,
+      "reason": "Not probed at all. The eligible pool carries it word-medially in three words and nowhere else, so it cannot meet the two position rule and is excluded rather than reported at one."
+    }
+  ],
+  "distribution_boundary": {
+    "attribution_required": [
+      "Montreal Forced Aligner English pronunciation dictionaries v3.1.0 by McAuliffe and Sonderegger, reused under CC BY 4.0.",
+      "Entries extracted from English Wiktionary by Wiktextract and reused under Wiktionary's CC BY SA terms."
+    ],
+    "derived_lexicon_stays_server_side": true,
+    "what_stays_private": [
+      "the full expected phone sequences, vowels included",
+      "every documented British and Australian form, verbatim",
+      "the eligible word pool"
+    ]
+  },
+  "elicitation_modes": {
+    "modes_are_comparable": false,
+    "recorded_prompt_alternative": "not_built",
+    "written_word": "built"
+  },
+  "eligible_pool": {
+    "opportunity_refusals_across_the_pool": {
+      "scorable": 7709,
+      "unscorable_by_reason": {
+        "coda_l_vocalisation": 271,
+        "coda_t_glottalling": 417,
+        "dental_fricative_variation": 70,
+        "documented_variant_disagreement": 377,
+        "intervocalic_flapping_context": 367,
+        "post_vocalic_rhotic": 0,
+        "syllabic_consonant_reduction": 0
+      }
+    },
+    "refusals_by_reason": {
+      "absent_from_the_british_reference": 0,
+      "documented_readings_disagree_on_consonant_count": 272,
+      "narrow_quality_mark_on_a_consonant": 0,
+      "no_australian_tagged_pronunciation": 42735,
+      "no_consonant_opportunity": 6,
+      "not_an_ordinary_word": 278,
+      "refused_symbol_in_a_documented_form": 95,
+      "unreadable_symbol_in_a_documented_form": 203
+    },
+    "why_this_is_reported": "The twenty words are a human choice. Reporting the size and shape of the pool they were chosen from is how that choice stays auditable.",
+    "words": 2578
+  },
+  "limitations": [
+    "A lexicon proposes how a word may be said and never observes how anybody said it, so nothing in this pack is truth about a pronunciation.",
+    "The pack is not professionally reviewed. Familiarity, cultural suitability and the phonetic content of every item all still require qualified review.",
+    "The variety sensitive exclusion list is this project's own construction, built from evidence recorded in this repository, and is not claimed to be complete. A consonant marked scorable here may still carry variety sensitivity nobody has measured.",
+    "Australian tagged Wiktionary entries are volunteer annotations, and many carry other variety tags beside the Australian one, so they are shared pronunciations rather than distinctively Australian ones.",
+    "The union rule has almost nothing to union inside this pack, because requiring every documented form to agree tends to select words that have only one. The rule's real effect is visible in the eligible pool rather than in the twenty, and this limitation exists so the safeguard is not mistaken for work it did not do here.",
+    "Opportunities are counted under a non-rhotic British reference. An American reference would create post-vocalic rhotic opportunities this pack deliberately does not carry, which is the mechanism checkpoint 22E8 recorded: the repair works by declining to ask rather than by fitting better.",
+    "Only the written word mode is built. The recorded prompt alternative is a different task with different confounders and is not equivalent to it.",
+    "Twenty words cannot establish that any consonant is produced typically or atypically by anybody. The pack creates opportunities; it measures nothing."
+  ],
+  "pack_id": "speech_sound_patterns_research_prompt_pack_v1",
+  "pack_version": "1.0.0",
+  "references": {
+    "australian_overlay": {
+      "source_id": "wiktionary_australian_kaikki",
+      "transcriptions_used": "phonemic only"
+    },
+    "british": {
+      "file": "english_uk_mfa.dict",
+      "source_id": "mfa_english_dictionary"
+    },
+    "machine_generated_targets": false
+  },
+  "release_boundaries": {
+    "any_speaker_scored": false,
+    "artifact_produced": false,
+    "coaching_progress_screening_or_diagnosis_output": false,
+    "extractor_implemented": false,
+    "frozen_benchmark_touched": false,
+    "gates_applied": false,
+    "held_out_read": false,
+    "machine_generated_targets": false,
+    "onboarding_word_pack_filled": false,
+    "pipeline_behaviour_changed": false,
+    "selection_record_touched": false,
+    "system_selected": false,
+    "task_activated": false,
+    "threshold_selected": false
+  },
+  "schema_version": "1.0.0",
+  "status": "developer_research_pack_not_reviewed_not_active",
+  "totals": {
+    "opportunities": 62,
+    "scorable_opportunities": 61,
+    "unscorable_opportunities": 1,
+    "words": 20,
+    "words_with_more_than_one_documented_form": 1
+  },
+  "unmet_activation_requirements": [
+    "qualified_phonetic_or_speech_pathology_review",
+    "review_by_people_familiar_with_supported_english_varieties",
+    "familiarity_and_cultural_review",
+    "recording_prompt_review",
+    "owner_approval"
+  ],
+  "words": [
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "p",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "m",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "p",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 3,
+          "phoneme": "k",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 4,
+          "phoneme": "n",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 5,
+      "selection_reason": "Four scorable opportunities in one short concrete noun, carrying p in two positions and the only medial m in the pack.",
+      "word": "pumpkin",
+      "written_prompt": "pumpkin"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "h",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "n",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "d",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 3,
+          "phoneme": "b",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 4,
+          "phoneme": "k",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 5,
+      "selection_reason": "The pack's only word-initial h, plus medial d and the medial b that keeps b from resting on one word.",
+      "word": "handbook",
+      "written_prompt": "handbook"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "m",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "ŋ",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "ɡ",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 3,
+          "phoneme": "ɹ",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 4,
+          "phoneme": "v",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 5,
+      "selection_reason": "Five opportunities including the medial velar nasal, and a concrete noun that is ordinary in Australia.",
+      "word": "mangrove",
+      "written_prompt": "mangrove"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "n",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "n",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "s",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 3,
+          "phoneme": "t",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 4,
+          "phoneme": "p",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 5,
+      "selection_reason": "Carries the pack's only medial t, in a cluster where flapping cannot apply, plus initial n and final p.",
+      "word": "nonstop",
+      "written_prompt": "nonstop"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "dʒ",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "k",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "b",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 3,
+          "phoneme": "k",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 4,
+          "phoneme": "s",
+          "position": "final",
+          "postvocalic": false,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 5,
+      "selection_reason": "Initial affricate and final s in one everyday compound noun.",
+      "word": "jukebox",
+      "written_prompt": "jukebox"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "f",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "w",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "d",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 3,
+      "selection_reason": "The medial w, which English allows in very few places, alongside initial f.",
+      "word": "forward",
+      "written_prompt": "forward"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "b",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "j",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "n",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 3,
+          "phoneme": "d",
+          "position": "final",
+          "postvocalic": false,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 4,
+      "selection_reason": "The medial j, which is similarly restricted, in an ordinary everyday word.",
+      "word": "beyond",
+      "written_prompt": "beyond"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "j",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "l",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "Initial j and medial l, both in a familiar colour term.",
+      "word": "yellow",
+      "written_prompt": "yellow"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "l",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "ɡ",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "Initial l and final velar stop in a short concrete noun.",
+      "word": "leg",
+      "written_prompt": "leg"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "ɹ",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "n",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "dʒ",
+          "position": "final",
+          "postvocalic": false,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 3,
+      "selection_reason": "Initial rhotic in prevocalic position, which is the only rhotic context this pack scores, with a final affricate.",
+      "word": "range",
+      "written_prompt": "range"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "t",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "tʃ",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "Initial t and final affricate. An everyday Australian noun.",
+      "word": "torch",
+      "written_prompt": "torch"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "w",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "z",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "d",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 3,
+      "selection_reason": "Initial w and the medial z that keeps z off one word alone.",
+      "word": "wizard",
+      "written_prompt": "wizard"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "k",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "ʃ",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "Initial k and final postalveolar fricative in a short familiar noun.",
+      "word": "cash",
+      "written_prompt": "cash"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "s",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "f",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "Initial s and the pack's only final f.",
+      "word": "safe",
+      "written_prompt": "safe"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "ɡ",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "ɹ",
+          "position": "medial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "v",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 3,
+      "selection_reason": "Initial velar stop, medial rhotic and medial v in one short familiar noun.",
+      "word": "gravy",
+      "written_prompt": "gravy"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "ʃ",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "ɡ",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "Initial postalveolar fricative, which few English words carry, plus a medial velar stop.",
+      "word": "sugar",
+      "written_prompt": "sugar"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "s",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "ŋ",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "Initial s and the final velar nasal.",
+      "word": "song",
+      "written_prompt": "song"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "z",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "ɹ",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "The pack's only initial z. The eligible pool offers almost no alternative, because English has very few z initial words.",
+      "word": "zero",
+      "written_prompt": "zero"
+    },
+    {
+      "australian_forms": 2,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "tʃ",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "l",
+          "position": "medial",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": "coda_l_vocalisation",
+          "state": "unscorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 2,
+          "phoneme": "d",
+          "position": "final",
+          "postvocalic": false,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "Initial affricate and final d, and it demonstrates a refusal inside the pack rather than only in the tests: its l is postvocalic and therefore unscorable.",
+      "word": "child",
+      "written_prompt": "child"
+    },
+    {
+      "australian_forms": 1,
+      "british_forms": 1,
+      "opportunities": [
+        {
+          "opportunity": 0,
+          "phoneme": "d",
+          "position": "initial",
+          "postvocalic": false,
+          "prevocalic": true,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        },
+        {
+          "opportunity": 1,
+          "phoneme": "m",
+          "position": "final",
+          "postvocalic": true,
+          "prevocalic": false,
+          "reason": null,
+          "state": "scorable",
+          "syllabic": false
+        }
+      ],
+      "scorable_opportunities": 2,
+      "selection_reason": "Initial d and final m in a short concrete noun that is ordinary in Australia.",
+      "word": "dam",
+      "written_prompt": "dam"
+    }
+  ]
+}

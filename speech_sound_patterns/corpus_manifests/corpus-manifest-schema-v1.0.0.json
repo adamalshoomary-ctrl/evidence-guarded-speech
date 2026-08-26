@@ -1,0 +1,291 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/speech-sound-patterns/corpus-manifest-schema-v1.0.0.json",
+  "title": "Speech sound corpus provenance and licence manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "manifest_id",
+    "source_id",
+    "title",
+    "version",
+    "citation",
+    "canonical_source",
+    "access",
+    "licence",
+    "governance",
+    "population",
+    "annotation",
+    "capability_audit",
+    "participant_split",
+    "lineage",
+    "archives"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "manifest_id": {"type": "string", "minLength": 1},
+    "source_id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "version": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "release_date", "immutable_id"],
+      "properties": {
+        "label": {"type": "string", "minLength": 1},
+        "release_date": {"type": "string", "minLength": 1},
+        "immutable_id": {"type": "string", "minLength": 1}
+      }
+    },
+    "citation": {"type": "string", "minLength": 1},
+    "canonical_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["landing_page", "licence_url"],
+      "properties": {
+        "landing_page": {"type": "string", "format": "uri"},
+        "licence_url": {"type": "string", "format": "uri"}
+      }
+    },
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "retrieved_at",
+        "account_required",
+        "terms_state",
+        "terms_url",
+        "terms_version",
+        "terms_snapshot_sha256"
+      ],
+      "properties": {
+        "state": {
+          "enum": ["available", "access_pending", "rejected", "unavailable"]
+        },
+        "retrieved_at": {"type": ["string", "null"]},
+        "account_required": {"type": "boolean"},
+        "terms_state": {
+          "enum": ["accepted", "not_required", "pending", "rejected"]
+        },
+        "terms_url": {"type": ["string", "null"]},
+        "terms_version": {"type": ["string", "null"]},
+        "terms_snapshot_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "licence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "spdx_id",
+        "commercial_use_permitted",
+        "verified_at",
+        "attribution_required",
+        "attribution_text"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "verified_for_declared_role",
+            "pending_review",
+            "restricted_role_only",
+            "rejected"
+          ]
+        },
+        "spdx_id": {"type": ["string", "null"]},
+        "commercial_use_permitted": {"type": ["boolean", "null"]},
+        "verified_at": {"type": ["string", "null"]},
+        "attribution_required": {"type": "boolean"},
+        "attribution_text": {"type": ["string", "null"]}
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "permitted_roles",
+        "prohibited_roles",
+        "raw_data_committed",
+        "local_storage",
+        "rehosting_permitted",
+        "reidentification_prohibited",
+        "provider_transfer",
+        "retention_or_deletion_duties"
+      ],
+      "properties": {
+        "permitted_roles": {"$ref": "#/$defs/nonemptyStrings"},
+        "prohibited_roles": {"$ref": "#/$defs/nonemptyStrings"},
+        "raw_data_committed": {"const": false},
+        "local_storage": {"type": ["string", "null"]},
+        "rehosting_permitted": {"type": ["boolean", "null"]},
+        "reidentification_prohibited": {"const": true},
+        "provider_transfer": {
+          "enum": [
+            "blocked",
+            "requires_separate_provider_terms_review",
+            "permitted_for_declared_role"
+          ]
+        },
+        "retention_or_deletion_duties": {"type": "string", "minLength": 1}
+      }
+    },
+    "population": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "known_strata", "limitations"],
+      "properties": {
+        "description": {"type": "string", "minLength": 1},
+        "known_strata": {"type": "array", "items": {"type": "string"}},
+        "limitations": {"$ref": "#/$defs/nonemptyStrings"}
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "truth_class",
+        "provenance",
+        "fields_retained",
+        "original_records_retained",
+        "scalar_scores_are_relation_truth",
+        "limitations"
+      ],
+      "properties": {
+        "truth_class": {
+          "enum": [
+            "expert_phone_relations",
+            "human_corrected_phone_boundaries",
+            "automatic_forced_alignments",
+            "validated_sentence_audio",
+            "transcript_only_robustness",
+            "functional_integration_only",
+            "unavailable"
+          ]
+        },
+        "provenance": {"type": "string", "minLength": 1},
+        "fields_retained": {"type": "array", "items": {"type": "string"}},
+        "original_records_retained": {"type": "boolean"},
+        "scalar_scores_are_relation_truth": {"const": false},
+        "limitations": {"$ref": "#/$defs/nonemptyStrings"}
+      }
+    },
+    "capability_audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "inspected_materials", "findings"],
+      "properties": {
+        "status": {"enum": ["complete", "blocked_or_pending"]},
+        "inspected_materials": {"$ref": "#/$defs/nonemptyStrings"},
+        "findings": {"$ref": "#/$defs/nonemptyStrings"}
+      }
+    },
+    "participant_split": {"$ref": "#/$defs/participantSplit"},
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lineage_group",
+        "derived_from",
+        "independence_claim",
+        "duplicate_detection",
+        "candidate_model_overlap_status"
+      ],
+      "properties": {
+        "lineage_group": {"type": "string", "minLength": 1},
+        "derived_from": {"type": "array", "items": {"type": "string"}},
+        "independence_claim": {
+          "enum": [
+            "candidate_model_overlap_must_be_audited",
+            "fixture_only_not_population_evidence",
+            "not_independent_of_lineage",
+            "not_independent_of_common_voice_family",
+            "no_evidence_claim_permitted"
+          ]
+        },
+        "duplicate_detection": {"type": "string", "minLength": 1},
+        "candidate_model_overlap_status": {
+          "enum": [
+            "not_applicable",
+            "unknown_requires_model_specific_audit",
+            "audited_no_known_overlap",
+            "known_overlap_not_independent"
+          ]
+        }
+      }
+    },
+    "archives": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/archive"}
+    }
+  },
+  "$defs": {
+    "nonemptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "checksum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "value"],
+      "properties": {
+        "algorithm": {"enum": ["none", "md5", "sha256"]},
+        "value": {"type": ["string", "null"]}
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "size_bytes",
+        "canonical_download_url",
+        "upstream_checksum",
+        "local_sha256",
+        "local_verification_status"
+      ],
+      "properties": {
+        "filename": {"type": "string", "minLength": 1},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "canonical_download_url": {"type": "string", "format": "uri"},
+        "upstream_checksum": {"$ref": "#/$defs/checksum"},
+        "local_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "local_verification_status": {"const": "verified"}
+      }
+    },
+    "participantSplit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "unit",
+        "source_split_provenance",
+        "project_strategy",
+        "frozen_held_out",
+        "assignment_artifact",
+        "assignment_sha256",
+        "participant_counts",
+        "cross_split_overlap_count",
+        "strata"
+      ],
+      "properties": {
+        "status": {
+          "enum": ["audited", "fixture_not_population_split", "not_applicable"]
+        },
+        "unit": {"type": ["string", "null"]},
+        "source_split_provenance": {"type": "string"},
+        "project_strategy": {"type": "string"},
+        "frozen_held_out": {"type": "boolean"},
+        "assignment_artifact": {"type": ["string", "null"]},
+        "assignment_sha256": {"type": ["string", "null"]},
+        "participant_counts": {"type": "object"},
+        "cross_split_overlap_count": {"type": "integer", "minimum": 0},
+        "strata": {"type": "object"}
+      }
+    }
+  }
+}

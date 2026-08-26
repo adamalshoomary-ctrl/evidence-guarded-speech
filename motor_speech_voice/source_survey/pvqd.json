@@ -1,0 +1,104 @@
+{
+  "source_id": "pvqd",
+  "title": "Perceptual Voice Qualities Database",
+  "citation": "Walden, P. R. Perceptual Voice Qualities Database (PVQD): database characteristics. Journal of Voice, 2020. Mendeley Data 9dz247gnyb.",
+  "canonical_source": {
+    "landing_page": "https://data.mendeley.com/datasets/9dz247gnyb/2",
+    "terms_or_licence_url": "https://data.mendeley.com/datasets/9dz247gnyb/2"
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "United States English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "296 audio recordings across a range of voice quality severities, ages and sexes, recorded in a quiet environment with a head mounted condenser microphone at 44.1 kHz and 16 bit resolution.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "United States English throughout, so it carries the same imported reference problem item 22 documented for phone level work.",
+      "The distribution is weighted toward euphonic and mildly impaired voices, with comparatively few severe cases.",
+      "Only 187 of the 296 samples carry a specified diagnosis."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel_a_and_i",
+    "cape_v_sentences"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "perceptual_voice_multi_rater",
+    "independent_rater_or_annotator_count": 19,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "unresolved",
+    "failure_reasons": [
+      "This is the only openly licensed source located that plausibly reaches the multiple qualified rater requirement: 19 expert raters across six blocks, each block rated by three or four listeners, with samples presented twice.",
+      "Whether the distributed ratings file retains individual rater rows or only combined values cannot be resolved without opening the file, and no acquisition is authorised, so this stays unresolved rather than being assumed either way.",
+      "The database provides combined vowel and sentence ratings, so it cannot answer task specific questions, and it omits the CAPE-V consistency judgement entirely.",
+      "Its own published reliability analysis pooled ratings across blocks without accounting for block specific variability, which risks inflating the reported reliability.",
+      "Independent re-rating measured the real ceiling. Eight speech language pathologists rating a curated 30 sample subset produced inter-rater intraclass correlations of 0.79 on vowels and 0.87 on sentences for overall severity, 0.76 and 0.70 for breathiness, 0.60 and 0.56 for roughness, 0.51 and 0.66 for strain, 0.34 and 0.24 for pitch, and 0.47 and 0.47 for loudness. Pitch and loudness are therefore poor, and no candidate may be graded against them.",
+      "On the most reliable feature the median absolute difference between raters was 14.8 points on vowels and 12.5 points on sentences on a 100 point scale. No automatic measure can be shown to be more accurate than that, because there is nothing more accurate to compare it with."
+    ]
+  },
+  "access": {
+    "route": "open_direct_download",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_without_contact",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "CC BY 4.0",
+    "spdx_id": "CC-BY-4.0",
+    "commercial_use_permitted": true,
+    "source_of_licence_string": "repository_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Mendeley Data record 9dz247gnyb version 2, read 2026-08-19, and a reachability check returning HTTP 200 on the same date.",
+      "Open access full text of Pommee, Renaud and Verduyckt, Reliability and task effects in CAPE-V auditory-perceptual voice assessments: insights from the PVQD30 subset, Journal of Voice 2025, doi:10.1016/j.jvoice.2025.02.020, read 2026-08-19."
+    ],
+    "findings": [
+      "The independent re-rating study also records concrete quality problems in the source: some samples are incomplete, some contain reading errors or clinician instructions, and recording conditions and background noise are inconsistent across the set.",
+      "The eight raters in that study were Quebecois clinicians rating United States English material, which is itself a variety mismatch of the kind item 22 measured.",
+      "Deciding whether this source satisfies the item 23 perceptual truth requirement is a governance judgement, not a survey outcome. This record deliberately cannot express that it does."
+    ],
+    "conflicting_claims": [
+      "Secondary descriptions of the database report four raters with one rating only 16 percent of cases. The open access PVQD30 paper reports 19 expert raters across six blocks. Only the second was read at source, and the first is not relied on here."
+    ]
+  },
+  "eligibility": {
+    "decision": "open_but_truth_class_unresolved",
+    "reasons": [
+      "Openly licensed for commercial use and obtainable with no contact, no account and no agreement.",
+      "Whether it can serve as perceptual reference truth remains open on two counts: whether individual rater records are distributed, and whether independent voice governance accepts it at all.",
+      "Its measured agreement ceiling constrains any future claim built on it, and rules out pitch and loudness specifically."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "pvqd_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

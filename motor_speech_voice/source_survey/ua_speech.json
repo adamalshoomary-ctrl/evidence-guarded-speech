@@ -1,0 +1,94 @@
+{
+  "source_id": "ua_speech",
+  "title": "UA-Speech, Universal Access dysarthric speech corpus",
+  "citation": "Kim, H. et al. Dysarthric speech database for universal access research. Interspeech 2008.",
+  "canonical_source": {
+    "landing_page": "http://www.isle.illinois.edu/sst/data/UASpeech/",
+    "terms_or_licence_url": null
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "United States English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "About 29 speakers: 15 to 16 with cerebral palsy and 13 controls, aged 19 to 58.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Isolated word material, so it cannot answer connected speech questions."
+    ]
+  },
+  "tasks_present": [
+    "isolated_word_reading"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "intelligibility_multi_listener_transcription",
+    "independent_rater_or_annotator_count": 5,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "unresolved",
+    "failure_reasons": [
+      "Five naive listeners produced orthographic transcriptions per word, which is the right shape of evidence.",
+      "The published per speaker figure is an average across those five listeners, and whether per listener transcriptions are distributed could not be established.",
+      "The host did not accept a connection, so nothing about the distribution could be checked at source."
+    ]
+  },
+  "access": {
+    "route": "host_unreachable",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": true,
+    "fee": null,
+    "state": "unobtainable",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "reported as available to government and academic research laboratories with no commercial use and no redistribution",
+    "spdx_id": null,
+    "commercial_use_permitted": false,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "DNS and HTTP checks on 2026-08-19."
+    ],
+    "findings": [
+      "isle.illinois.edu and www.isle.illinois.edu both resolve to 130.126.122.239, but connections to the host failed and curl returned no HTTP status on 2026-08-19.",
+      "This is a different failure from AusTalk, which does not resolve at all. The name still exists; the service did not answer.",
+      "Because the terms could not be read at source, the licence string here is recorded as reported and drives no decision."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_host_unreachable",
+    "reasons": [
+      "The distribution host did not answer, so there is no route to check or accept terms.",
+      "Every reported description of the terms excludes commercial use, so a working host would not resolve the rights question either."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "ua_speech_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

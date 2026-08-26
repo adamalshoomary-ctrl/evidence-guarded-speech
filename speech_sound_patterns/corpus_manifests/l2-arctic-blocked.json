@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "l2_arctic_manifest_v1",
+  "source_id": "l2_arctic",
+  "title": "L2 ARCTIC",
+  "version": {
+    "label": "1.0",
+    "release_date": "2018",
+    "immutable_id": "l2_arctic_corpus_v1"
+  },
+  "citation": "Zhao, Guanlong et al. L2-ARCTIC: A Non-native English Speech Corpus. Interspeech 2018.",
+  "canonical_source": {
+    "landing_page": "https://psi.engr.tamu.edu/l2-arctic-corpus/",
+    "licence_url": "https://creativecommons.org/licenses/by-nc/4.0/"
+  },
+  "access": {
+    "state": "unavailable",
+    "retrieved_at": null,
+    "account_required": false,
+    "terms_state": "pending",
+    "terms_url": "https://psi.engr.tamu.edu/l2-arctic-corpus/",
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "restricted_role_only",
+    "spdx_id": "CC-BY-NC-4.0",
+    "commercial_use_permitted": false,
+    "verified_at": "2026-07-21",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "manifest_only"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "commercial_product_engineering",
+      "commercial_training",
+      "download_without_written_commercial_permission"
+    ],
+    "raw_data_committed": false,
+    "local_storage": null,
+    "rehosting_permitted": null,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Do not acquire, retain, upload or process source data while the recorded rights state blocks use."
+  },
+  "population": {
+    "description": "Non native English read speech across six first language groups.",
+    "known_strata": [],
+    "limitations": [
+      "The noncommercial licence is not safe for current commercial product engineering.",
+      "Standard American reference differences cannot automatically become errors."
+    ]
+  },
+  "annotation": {
+    "truth_class": "unavailable",
+    "provenance": "No annotations acquired; official public descriptions reviewed only.",
+    "fields_retained": [],
+    "original_records_retained": false,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "No source record may enter engineering while access or rights remain blocked."
+    ]
+  },
+  "capability_audit": {
+    "status": "blocked_or_pending",
+    "inspected_materials": [
+      "Official landing page and available licence or access description."
+    ],
+    "findings": [
+      "Manual relation labels are potentially useful but rights block current use.",
+      "SpeechOcean762 fills the current expert relation role."
+    ]
+  },
+  "participant_split": {
+    "status": "not_applicable",
+    "unit": null,
+    "source_split_provenance": "No source participant data is acquired or approved.",
+    "project_strategy": "no_data_use_until_rights_change",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {}
+  },
+  "lineage": {
+    "lineage_group": "l2_arctic",
+    "derived_from": [],
+    "independence_claim": "no_evidence_claim_permitted",
+    "duplicate_detection": "Required if rights later permit acquisition.",
+    "candidate_model_overlap_status": "not_applicable"
+  },
+  "archives": []
+}

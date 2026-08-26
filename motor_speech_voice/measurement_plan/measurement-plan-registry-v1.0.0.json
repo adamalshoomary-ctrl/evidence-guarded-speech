@@ -1,0 +1,194 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "motor_speech_voice_measurement_plan_v1",
+  "checkpoint": "23B",
+  "prepared_at": "2026-08-19",
+  "status": "measurement_inputs_recorded_nothing_selected",
+  "record_schema": "measurement-plan-schema-v1.0.0.json",
+  "purpose": "To record, once per provisional construct, the inputs an independent statistician would need before a study could be designed. It selects nothing and computes nothing.",
+  "record_count": 12,
+  "records": [
+    {
+      "candidate_id": "rapid_syllable_timing",
+      "record_id": "rapid_syllable_timing_measurement_inputs_v1",
+      "register_lane": "motor_task",
+      "governance_lane": "motor_speech",
+      "public_availability": "no_qualifying_public_source"
+    },
+    {
+      "candidate_id": "rapid_syllable_task_accuracy",
+      "record_id": "rapid_syllable_task_accuracy_measurement_inputs_v1",
+      "register_lane": "motor_task",
+      "governance_lane": "motor_speech",
+      "public_availability": "no_qualifying_public_source"
+    },
+    {
+      "candidate_id": "articulation_rate",
+      "record_id": "articulation_rate_measurement_inputs_v1",
+      "register_lane": "general_speech",
+      "governance_lane": "general_speech",
+      "public_availability": "not_surveyed_public_availability_unknown"
+    },
+    {
+      "candidate_id": "speech_rate_and_pause_profile",
+      "record_id": "speech_rate_and_pause_profile_measurement_inputs_v1",
+      "register_lane": "general_speech",
+      "governance_lane": "general_speech",
+      "public_availability": "not_surveyed_public_availability_unknown"
+    },
+    {
+      "candidate_id": "controlled_intelligibility",
+      "record_id": "controlled_intelligibility_measurement_inputs_v1",
+      "register_lane": "functional",
+      "governance_lane": "controlled_intelligibility",
+      "public_availability": "sources_exist_none_lawfully_usable"
+    },
+    {
+      "candidate_id": "comprehensibility_or_effort",
+      "record_id": "comprehensibility_or_effort_measurement_inputs_v1",
+      "register_lane": "functional",
+      "governance_lane": "controlled_intelligibility",
+      "public_availability": "sources_exist_none_lawfully_usable"
+    },
+    {
+      "candidate_id": "communication_impact_and_desired_change",
+      "record_id": "communication_impact_and_desired_change_measurement_inputs_v1",
+      "register_lane": "personal",
+      "governance_lane": "participant_report",
+      "public_availability": "not_applicable_participant_is_the_source"
+    },
+    {
+      "candidate_id": "item_20_voice_acoustic_primitives",
+      "record_id": "item_20_voice_acoustic_primitives_measurement_inputs_v1",
+      "register_lane": "voice_acoustic",
+      "governance_lane": "voice",
+      "public_availability": "not_applicable_computational_truth"
+    },
+    {
+      "candidate_id": "voice_perceptual_judgement",
+      "record_id": "voice_perceptual_judgement_measurement_inputs_v1",
+      "register_lane": "voice_perceptual",
+      "governance_lane": "voice",
+      "public_availability": "one_candidate_unresolved"
+    },
+    {
+      "candidate_id": "voice_related_personal_impact",
+      "record_id": "voice_related_personal_impact_measurement_inputs_v1",
+      "register_lane": "voice_functional",
+      "governance_lane": "participant_report",
+      "public_availability": "not_applicable_participant_is_the_source"
+    },
+    {
+      "candidate_id": "maximum_phonation_time",
+      "record_id": "maximum_phonation_time_measurement_inputs_v1",
+      "register_lane": "endurance",
+      "governance_lane": "voice",
+      "public_availability": "not_applicable_computational_truth"
+    },
+    {
+      "candidate_id": "acoustic_articulation_properties",
+      "record_id": "acoustic_articulation_properties_measurement_inputs_v1",
+      "register_lane": "acoustic_articulation",
+      "governance_lane": "unassigned_requires_governance",
+      "public_availability": "not_surveyed_public_availability_unknown"
+    }
+  ],
+  "counts": {
+    "constructs_recorded": 12,
+    "by_governance_lane": {
+      "motor_speech": 2,
+      "general_speech": 2,
+      "controlled_intelligibility": 2,
+      "participant_report": 2,
+      "voice": 3,
+      "unassigned_requires_governance": 1
+    },
+    "by_reference_availability": {
+      "no_qualifying_public_source": 2,
+      "not_surveyed_public_availability_unknown": 3,
+      "sources_exist_none_lawfully_usable": 2,
+      "not_applicable_participant_is_the_source": 2,
+      "not_applicable_computational_truth": 2,
+      "one_candidate_unresolved": 1
+    },
+    "selected": 0,
+    "sample_sizes_computed": 0,
+    "thresholds_recorded": 0
+  },
+  "lane_summaries": {
+    "motor_speech": {
+      "questions": [
+        "rapid_syllable_timing",
+        "rapid_syllable_task_accuracy"
+      ],
+      "reference_position": "No qualifying public source exists at any licence and at any price.",
+      "consequence": "Both questions depend entirely on prospective collection with recruited participants and paid trained annotators. No public shortcut exists and no partial one does either."
+    },
+    "general_speech": {
+      "questions": [
+        "articulation_rate",
+        "speech_rate_and_pause_profile"
+      ],
+      "reference_position": "Not surveyed. Whether human reviewed boundary reference is publicly obtainable is unknown.",
+      "consequence": "The availability question is open rather than answered, and an open question is not an encouraging one."
+    },
+    "voice": {
+      "questions": [
+        "item_20_voice_acoustic_primitives",
+        "voice_perceptual_judgement",
+        "maximum_phonation_time"
+      ],
+      "reference_position": "Exactly one open perceptual candidate, with a measured agreement ceiling and one unresolved question about whether it distributes individual rater rows.",
+      "consequence": "Perceptual work is bounded by ordinary clinician disagreement before any code is written, and pitch and loudness are excluded outright. The acoustic and endurance questions need no external human reference and are limited by the absence of a selected construct rather than by data."
+    },
+    "controlled_intelligibility": {
+      "questions": [
+        "controlled_intelligibility",
+        "comprehensibility_or_effort"
+      ],
+      "reference_position": "Sources of the right shape exist and none is lawfully usable here.",
+      "consequence": "The largest is blocked by a data use agreement needing an organisational countersignature rather than by its commercial terms, which is the missing legal entity blocking a route concretely."
+    },
+    "participant_report": {
+      "questions": [
+        "communication_impact_and_desired_change",
+        "voice_related_personal_impact"
+      ],
+      "reference_position": "Not applicable. The participant is the only valid source.",
+      "consequence": "No dataset can supply this, so it depends on the same ethics and consent route as every other lane and can never be inferred from speech."
+    },
+    "clinical_or_laryngeal_reference": {
+      "questions": [],
+      "reference_position": "Not required, because no clinical or pathology claim is proposed.",
+      "consequence": "It becomes mandatory only if governance ever permits a claim requiring medical or laryngeal evidence, and no question in this package proposes one."
+    },
+    "unassigned_requires_governance": {
+      "questions": [
+        "acoustic_articulation_properties"
+      ],
+      "reference_position": "Not surveyed, and item 22 separately established that English corpora with expert phone level annotation are scarce.",
+      "consequence": "The register row does not map onto exactly one governance lane, so nobody currently owns the decision. An agent may not assign it."
+    }
+  },
+  "method_notes": [
+    "There are two different standard error of measurement formulas in the literature and they are not interchangeable. One is reliability based, computed as the sample standard deviation multiplied by the square root of one minus the reliability, and it moves with how heterogeneous the sample is. The other is agreement based and is the within-subject standard deviation, estimated as the square root of the residual mean square from a one-way analysis of variance, and it is in the units of the measurement. Which one a study uses must be stated as an input, because the same data yields different numbers. de Vet, H. C. W. et al. Minimal changes in health status questionnaires. Health and Quality of Life Outcomes, 2006, doi:10.1186/1477-7525-4-54, and Bland, J. M. and Altman, D. G. Statistics notes: measurement error. BMJ, 1996, doi:10.1136/bmj.312.7047.1654. Both read at source.",
+    "The smallest detectable change is one point nine six multiplied by the square root of two multiplied by the standard error of measurement, where the square root of two appears because a change involves two measurements. Expressed through the within-subject standard deviation the same quantity is two point seven seven times that standard deviation. Reporting a change smaller than this as real is a measurement error, not a finding.",
+    "The familiar intraclass correlation interpretation bands, poor below zero point five, moderate to zero point seven five, good to zero point nine and excellent above it, are a rule of thumb published under a stated design condition of roughly thirty heterogeneous samples and at least three raters. Their authors state that there are no standard values for acceptable reliability, that a low value can reflect a homogeneous sample rather than poor agreement, and that the confidence interval rather than the point estimate should decide the level. Koo, T. K. and Li, M. Y. Journal of Chiropractic Medicine, 2016, doi:10.1016/j.jcm.2016.02.012, read at source. This matters here because the repository already quotes those bands when reporting the one open perceptual voice source's agreement ceiling.",
+    "The reliability and agreement reporting checklist requires a study to explain how its sample size was chosen and to state the number of raters, participants and replicate observations. That requirement is the reason this package exists: the explanation has to be constructible, and today it is not. Kottner, J. et al. Guidelines for Reporting Reliability and Agreement Studies. Journal of Clinical Epidemiology, 2011, doi:10.1016/j.jclinepi.2010.03.002; checklist read at source through the EQUATOR network reproduction of its table, the article itself not opened.",
+    "Diagnostic accuracy reporting applies only if a study frames a measure as a classification test against a reference standard. No item 23 question is framed that way, and none may be without a separate approved checkpoint. Bossuyt, P. M. et al. STARD 2015. BMJ, 2015, doi:10.1136/bmj.h5527.",
+    "A single intraclass correlation computed across raters treats variation that replicates across raters, such as occasion to occasion variation, as true signal. Where a design has more than one facet, generalisability theory estimates the components separately and its decision study is the principled way to ask how many raters or listeners a planned design needs. It requires variance components measured in an earlier study as input, so it does not escape the pilot requirement. Lakes, K. D. and Hoyt, W. T. Journal of Clinical Child and Adolescent Psychology, 2009, doi:10.1080/15374410802575461, read at source."
+  ],
+  "what_this_is_not": [
+    "It is not a statistical plan. A plan is prospectively reviewed by an independent statistician against a selected construct and pilot variance, and none of those exists.",
+    "It is not a selection. No construct, task, estimand, statistic, threshold or design is chosen, and the schema cannot express a choice.",
+    "It is not a sample size calculation, and no record can contain one.",
+    "It is not evidence that any of these questions is worth asking. The governance group may reject the entire construct register.",
+    "It is not progress toward checkpoint 23B acceptance, which is defined as written review by accountable human roles."
+  ],
+  "limitations": [
+    "The construct register this package expands may be narrowed or rejected in full, in which case some of these records describe questions that will never be asked.",
+    "Reporting standards cited here were read at source where the source is open access. Several sample size methods sit behind paywalls; their required inputs are recorded from open implementations and restatements, and each citation says so. A paywalled formula transcribed by a third party is a lead, not a verified equation.",
+    "Naming a variance component does not mean a design can separate it. Some components are confounded in any practical study, and saying which ones is part of what the statistician is for.",
+    "Every input list here is a minimum. A statistician reviewing a real protocol will ask for things nobody thought of yet."
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "source_id": "pc_gita",
+  "title": "PC-GITA, Spanish speech corpus for Parkinson's disease analysis",
+  "citation": "Orozco-Arroyave, J. R. et al. New Spanish speech corpus database for the analysis of people suffering from Parkinson's disease. LREC 2014.",
+  "canonical_source": {
+    "landing_page": "https://www.researchgate.net/publication/265592171",
+    "terms_or_licence_url": null
+  },
+  "language_and_variety": {
+    "language": "Spanish",
+    "variety": "Colombian Spanish",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "Reported as 100 native Colombian Spanish speakers, 50 with Parkinson's disease and 50 healthy controls.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Spanish, and a single clinical condition.",
+      "No canonical repository landing page was located, so every figure here rests on published description rather than on a data record."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel",
+    "isolated_words",
+    "diadochokinesis_pa_ta_ka",
+    "read_sentences",
+    "read_text",
+    "monologue"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "population_description_only",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "Reported labels are neurologist diagnosis and MDS-UPDRS-III assessment, which is population description rather than rapid syllable reference truth.",
+      "No manual syllable boundary, count or task error marking is described in any material located."
+    ]
+  },
+  "access": {
+    "route": "email_request_to_authors",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": true,
+    "fee": null,
+    "state": "obtainable_only_after_contact_or_agreement",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "reported_not_verified",
+    "inspected_materials": [
+      "Reported from a discovery sweep and secondary literature on 2026-08-19 and not confirmed at source by this survey."
+    ],
+    "findings": [
+      "It is widely used in the automatic rapid syllable literature, which is why it is recorded rather than omitted.",
+      "No repository page, licence or access page was located, so both rights and content remain unchecked and drive no conclusion."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_licence_unresolved",
+    "reasons": [
+      "No stated licence and an author request route this project is not authorised to use."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "pc_gita_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

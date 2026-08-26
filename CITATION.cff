@@ -1,0 +1,64 @@
+cff-version: 1.2.0
+message: "If you use this software or its published evidence, please cite it as below."
+type: software
+title: "Evidence guarded speech measurement"
+abstract: >-
+  An open research project on speech measurement that records where every input
+  came from, carries uncertainty beside every number, and refuses to produce a
+  result when the evidence, the reference or the validation is inadequate. It
+  includes a reproducible audit of how pronunciation measurement behaves across
+  declared English reference varieties, and an implementation of the provenance,
+  abstention and claim verification machinery that audit needs. It makes no
+  screening or clinical claim.
+authors:
+  - family-names: Alshoomary
+    given-names: Adam
+    email: adamalshoomary@gmail.com
+license: GPL-3.0-or-later
+repository-code: "https://github.com/adamalshoomary-ctrl/evidence-guarded-speech"
+version: "0.1.0"
+date-released: "2026-08-26"
+keywords:
+  - speech measurement
+  - pronunciation assessment
+  - dialect fairness
+  - reproducibility
+  - provenance
+  - selective prediction
+  - abstention
+  - English varieties
+references:
+  - type: dataset
+    title: "LibriSpeech ASR corpus"
+    authors:
+      - family-names: Panayotov
+        given-names: Vassil
+      - family-names: Chen
+        given-names: Guoguo
+      - family-names: Povey
+        given-names: Daniel
+      - family-names: Khudanpur
+        given-names: Sanjeev
+    year: 2015
+    license: CC-BY-4.0
+    url: "https://www.openslr.org/12/"
+    notes: "Source of the regression fixture recordings distributed with this repository."
+  - type: dataset
+    title: "Montreal Forced Aligner English pronunciation dictionaries v3.1.0"
+    authors:
+      - family-names: McAuliffe
+        given-names: Michael
+      - family-names: Sonderegger
+        given-names: Morgan
+    year: 2024
+    license: CC-BY-4.0
+    url: "https://mfa-models.readthedocs.io/en/latest/dictionary/English/index.html"
+    notes: "American and British reference varieties for the reference variety probe."
+  - type: dataset
+    title: "Common Voice Scripted Speech 26.0"
+    authors:
+      - name: "Mozilla Data Collective Curators"
+    year: 2026
+    license: CC0-1.0
+    url: "https://mozilladatacollective.com/"
+    notes: "Speaker groups for the reference variety probe. No audio is redistributed here."

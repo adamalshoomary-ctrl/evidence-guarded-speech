@@ -1,0 +1,299 @@
+{
+  "schema_version": "1.1.0",
+  "contract_version": "1.1.0",
+  "status": "engineering_active_scientific_release_locked",
+  "purpose": "Preserve separate timestamped candidates for observable repetition, prolonged sound and possible block events without deciding that a person stutters.",
+  "terminology": {
+    "automated_output": "speech_event_candidate",
+    "human_output": "reviewed_observable_event",
+    "forbidden_automatic_label": "confirmed_stuttering_event",
+    "candidate_is_not_fact": true,
+    "absence_is_not_fluency": true
+  },
+  "event_types": {
+    "sound_or_syllable_repetition": {
+      "construct": "an audible sound or syllable appears to repeat immediately before the continuing word",
+      "automated_state": "candidate_only",
+      "automation_sources": [
+        "verbatim_asr_fragment_pattern",
+        "word_timing",
+        "speaker_attribution"
+      ],
+      "required_review": "trained_audio_review",
+      "important_alternatives": [
+        "false_start",
+        "phonological_fragment",
+        "asr_insertion_or_segmentation_error",
+        "intentional_sound_play",
+        "legitimate_language_or_dialect_pattern"
+      ]
+    },
+    "single_syllable_whole_word_repetition": {
+      "construct": "an audible single syllable whole word appears to repeat immediately",
+      "automated_state": "candidate_only",
+      "automation_sources": [
+        "verbatim_asr_adjacent_word_pattern",
+        "word_timing",
+        "speaker_attribution"
+      ],
+      "required_review": "trained_audio_review_and_syllable_confirmation",
+      "important_alternatives": [
+        "intentional_emphasis",
+        "turn_management",
+        "self_repair",
+        "asr_insertion_error",
+        "uncertain_syllable_count_across_varieties"
+      ]
+    },
+    "whole_word_repetition_unclassified": {
+      "construct": "an adjacent whole word repetition whose syllable class and meaning are not established",
+      "automated_state": "candidate_only",
+      "automation_sources": [
+        "verbatim_asr_adjacent_word_pattern",
+        "word_timing",
+        "speaker_attribution"
+      ],
+      "required_review": "trained_audio_review_and_syllable_confirmation",
+      "important_alternatives": [
+        "multiple_syllable_typical_disfluency",
+        "intentional_emphasis",
+        "turn_management",
+        "self_repair",
+        "asr_insertion_error"
+      ]
+    },
+    "prolonged_sound": {
+      "construct": "one aligned character interval is an extreme duration outlier that may represent an audibly prolonged sound",
+      "automated_state": "candidate_only",
+      "automation_sources": [
+        "forced_alignment_character_timing",
+        "within_recording_robust_duration_baseline",
+        "word_timing",
+        "speaker_attribution"
+      ],
+      "required_review": "trained_audio_review",
+      "important_alternatives": [
+        "ordinary_emphasis",
+        "expressive_lengthening",
+        "speech_technique",
+        "accent_or_dialect",
+        "singing_or_quotation",
+        "forced_alignment_error",
+        "asr_word_boundary_error"
+      ]
+    },
+    "possible_block": {
+      "construct": "an audible or silent inability to initiate or continue an intended sound",
+      "automated_state": "unavailable",
+      "automation_sources": [],
+      "required_review": "human_audio_or_audiovisual_review_with_speaker_context",
+      "important_alternatives": [
+        "ordinary_pause",
+        "planning_pause",
+        "breath",
+        "turn_transition",
+        "editing_silence",
+        "audio_dropout",
+        "unknown_intended_word"
+      ]
+    },
+    "phrase_repetition": {
+      "construct": "two or more complete words appear to repeat",
+      "automated_state": "context_only",
+      "automation_sources": [
+        "verbatim_asr_token_pattern",
+        "word_timing",
+        "speaker_attribution"
+      ],
+      "required_review": "audio_review_if_used",
+      "important_alternatives": [
+        "typical_disfluency",
+        "self_repair",
+        "intentional_rhetoric",
+        "asr_duplication"
+      ]
+    },
+    "interjection": {
+      "construct": "a transcribed filled pause or discourse interjection",
+      "automated_state": "context_only",
+      "automation_sources": [
+        "verbatim_asr_token",
+        "word_timing",
+        "speaker_attribution"
+      ],
+      "required_review": "audio_review_if_used",
+      "important_alternatives": [
+        "lexical_use",
+        "backchannel",
+        "asr_substitution"
+      ]
+    }
+  },
+  "candidate_contract": {
+    "required_fields": [
+      "event_id",
+      "candidate_type",
+      "start_s",
+      "end_s",
+      "speaker",
+      "evidence",
+      "alternatives",
+      "uncertainty",
+      "review"
+    ],
+    "time_basis": "seconds_from_start_of_source_audio",
+    "end_semantics": "best_available_observed_evidence_boundary_not_clinical_event_boundary",
+    "speaker_required": true,
+    "raw_evidence_preserved": true,
+    "confidence_is_probability": false,
+    "allowed_uncertainty_levels": [
+      "moderate",
+      "high"
+    ]
+  },
+  "review_contract": {
+    "states": [
+      "unreviewed",
+      "confirmed_observable_event",
+      "rejected",
+      "relabeled",
+      "uncertain"
+    ],
+    "reviewer_roles": [
+      "speaker_self_report",
+      "trained_fluency_annotator",
+      "speech_language_pathologist",
+      "research_adjudicator"
+    ],
+    "reference_truth_requires": {
+      "independent_reviewers": 2,
+      "blind_to_automation": true,
+      "disagreements_retained": true,
+      "adjudication": true,
+      "written_annotation_guide": true
+    },
+    "speaker_self_report_is_reference_truth": false,
+    "single_reviewer_is_reference_truth": false,
+    "review_cannot_create_diagnosis": true
+  },
+  "algorithm": {
+    "version": "fluency-event-candidates-1.0.0",
+    "language_scope": "English transcript patterns only",
+    "whole_word_repetition": {
+      "maximum_inter_word_gap_s": 1.0,
+      "minimum_asr_confidence": 0.5,
+      "syllable_classification": "manual_only"
+    },
+    "sound_repetition": {
+      "maximum_fragment_gap_s": 0.75,
+      "minimum_asr_confidence": 0.5,
+      "accepted_automatic_patterns": [
+        "hyphenated_repeated_prefix_inside_one_token",
+        "adjacent_short_prefix_tokens_before_target_word"
+      ]
+    },
+    "prolonged_sound": {
+      "minimum_character_duration_s": 0.25,
+      "minimum_baseline_observations": 20,
+      "minimum_ratio_to_speaker_character_median": 4.0,
+      "minimum_robust_z": 6.0,
+      "minimum_alignment_score": 0.5,
+      "timing_source_is_phonetic_transcription": false
+    },
+    "possible_block": {
+      "automatic_detection_enabled": false,
+      "silence_is_block": false,
+      "reason": "audio silence cannot establish intent and published annotation agreement for blocks is weak"
+    }
+  },
+  "task_policy": {
+    "supported_for_candidate_collection": [
+      "fixed_reading",
+      "listen_and_repeat",
+      "spontaneous_speech",
+      "conversation",
+      "unknown_ad_hoc"
+    ],
+    "excluded": [
+      "sustained_vowel_research",
+      "repeated_phrase_research"
+    ],
+    "unknown_task_comparability": "not_comparable",
+    "cross_task_pooling": "blocked",
+    "repeated_phrase_task_requires_prompt_aware_interpretation": true
+  },
+  "quality_policy": {
+    "candidate_suppressed_when": [
+      "source_timing_missing",
+      "speaker_unassigned",
+      "asr_confidence_below_threshold_for_transcript_pattern",
+      "audio_quality_rejected"
+    ],
+    "candidate_flagged_when": [
+      "speaker_attribution_uncertain",
+      "alignment_score_missing",
+      "audio_quality_warning",
+      "word_boundary_or_alignment_disagreement",
+      "overlap_or_contamination_present"
+    ],
+    "no_candidates_interpretation": "no supported candidates were surfaced by this version; fluent speech is not established"
+  },
+  "validation_program": {
+    "development_truth": "constructed timing fixtures only",
+    "clinical_reference": "independent event annotation by at least two trained reviewers with adjudication",
+    "primary_metrics": [
+      "event_level_precision_recall_and_f1_by_type",
+      "false_positive_events_per_speaking_minute_by_type",
+      "onset_and_offset_error_by_type",
+      "abstention_and_unavailable_rate"
+    ],
+    "boundary_matching": "predeclared temporal intersection or collar by event type",
+    "splits": [
+      "participant_disjoint",
+      "source_show_or_session_disjoint",
+      "device_and_task_held_out"
+    ],
+    "subgroups": [
+      "language_and_English_variety",
+      "accent_and_dialect",
+      "age_band",
+      "voice_range",
+      "recording_device",
+      "audio_condition",
+      "speech_difference",
+      "task"
+    ],
+    "adam_recordings_role": "functional_integration_only",
+    "public_clip_label_warning": "three_second_clip_labels are not exact event boundaries",
+    "scientific_release_status": "not_evaluated"
+  },
+  "downstream_policy": {
+    "included_in_evaluator_input": false,
+    "included_in_listener_prompt": false,
+    "included_in_claim_ledger": false,
+    "included_in_personal_progress": false,
+    "included_in_released_interpretation": false,
+    "combined_count_or_severity_score": false,
+    "absence_used_as_positive_fluency_claim": false
+  },
+  "release_limits": {
+    "candidate_collection": "engineering_only",
+    "released_interpretation": "blocked",
+    "personal_progress": "blocked",
+    "monitoring": "blocked",
+    "screening": "blocked",
+    "diagnosis": "blocked",
+    "severity": "blocked",
+    "ranking": "blocked",
+    "high_stakes_decision": "blocked"
+  },
+  "supersedes": {
+    "version": "1.0.0",
+    "path": "fluency_events/contract-v1.0.0.json",
+    "renamed": {
+      "coaching_interpretation": "released_interpretation",
+      "included_in_coaching": "included_in_released_interpretation"
+    },
+    "reason": "This project has no coaching audience and, since 2026-08-24, no language model score. The word described neither the limit nor anything the system does. The limits themselves are unchanged: this version renames and does not relax."
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "probe_id": "speech_sound_patterns_reference_variety_probe_v1",
+  "checkpoint": "22E8",
+  "status": "rules_frozen_before_any_speaker_is_scored",
+  "purpose": "Measure whether this project's American expected-phone reference flags Australian and British speakers more often than American speakers, and whether replacing that reference with a British and Australian one reduces the gap. This is a false concern and differential rate measurement. It selects nothing, applies none of the five frozen gates, and touches neither the frozen benchmark nor the selection record.",
+
+  "what_this_can_establish": [
+    "Whether the per consonant flag rate differs between speaker groups under one reference.",
+    "Whether changing the reference variety changes that difference, and in which direction.",
+    "Whether the American control group stays roughly unchanged under the repair, which it must if the repair is doing what it claims."
+  ],
+  "what_this_cannot_establish": [
+    "That the system correctly detects a genuine Australian mispronunciation. No Australian expert phone labels exist in this project or, so far as the 2026-07-28 search could establish, in any commercially usable form anywhere.",
+    "Any accuracy, sensitivity or specificity figure, because there is no truth to measure against.",
+    "That any candidate system, threshold or reference is fit for selection or release."
+  ],
+
+  "falsifiable_predictions": {
+    "declared_before_running": true,
+    "under_the_american_reference": "Australian and British speakers should be flagged more often than American speakers. If they are not, the premise of this checkpoint is wrong and must be recorded as wrong rather than explained away.",
+    "under_the_british_reference": "The Australian and British flag rates should fall while the American group stays roughly unchanged. If the American group also moves materially, the repair is doing something other than what it claims and the result must say so.",
+    "british_isles_is_the_informative_middle_case": "It is the variety the new reference actually describes, so it should improve most cleanly. The Australian residual after repair is then a fair estimate of what genuinely Australian reference data would still be worth."
+  },
+
+  "references": {
+    "american": {
+      "dictionary": "english_us_mfa",
+      "overlay": null,
+      "role": "the reference this project has always used, kept as the control condition"
+    },
+    "british": {
+      "dictionary": "english_uk_mfa",
+      "overlay": "wiktionary_australian_kaikki",
+      "role": "the repaired reference under test"
+    },
+    "why_one_publisher_and_one_alphabet": "Both dictionaries are Montreal Forced Aligner v3.1.0 in the MFA phone set. Two references differing in phone alphabet as well as in variety could not produce an interpretable difference, because any change could be the alphabet.",
+    "phone_mapping": "speech_sound_patterns/variety_reference.py PHONE_SUBSTITUTIONS, frozen before this probe runs. An aligner phone absent from the frozen model vocabulary and absent from that table is an error, never a silent drop."
+  },
+
+  "australian_overlay_rule": {
+    "source": "Australian tagged Wiktionary entries, phonemic transcriptions only",
+    "why_phonemic_only": "A transcription in brackets is a narrower claim about one production than a transcription in slashes, and the two are different claims that must not be pooled.",
+    "where_they_agree": "scorable",
+    "where_they_disagree_and_an_australian_entry_exists": "scorable against the Australian form",
+    "where_they_disagree_and_no_australian_entry_exists": "unscorable",
+    "never": "An Australian pronunciation is never averaged with, or subtracted from, a British one. A variety mismatch may be excluded but never subtracted."
+  },
+
+  "speaker_groups": [
+    "common_voice_26_australian_english",
+    "common_voice_26_british_english",
+    "common_voice_26_american_english_male",
+    "common_voice_26_american_english_female"
+  ],
+  "american_group_assembly": "The male and female subsets are pooled into one American control group. Neither may stand alone, because accent and speaker gender would vary together.",
+  "excluded_participants": "The frozen accent group exclusion record at .research_data/speech_sound_patterns/splits/common-voice-26-accent-group-exclusions.json. A contributor who declared more than one variety cannot represent either and is removed from every group.",
+
+  "sampling": {
+    "partition": "development only",
+    "held_out_access_allowed": false,
+    "threshold_tuning_access_allowed": false,
+    "speakers_per_group": 300,
+    "clips_per_speaker": 2,
+    "selection": "deterministic, by SHA256 of the group id, a fixed seed and the participant or clip identifier, so the sample is reproducible and was not chosen after seeing any result",
+    "seed": "speech_sound_patterns_variety_probe_v1",
+    "why_equal_sizes": "The groups differ in size by a factor of seven. Sampling the same number of speakers and clips from each keeps a per consonant rate from being dominated by whichever group happens to be largest."
+  },
+
+  "paired_design": {
+    "same_clips_under_both_references": true,
+    "why": "A clip is scored under the American and the British reference or under neither. Comparing two references on two different samples would confound the reference with the sample, which is the mistake this design exists to avoid.",
+    "consequence": "A clip whose words are missing from either dictionary is excluded from both conditions rather than scored under one."
+  },
+
+  "scoring": {
+    "path": "the existing segmentation free GOP implementation, unchanged",
+    "statistic": "gop_af_sd",
+    "targets": "consonant opportunities only, as in every earlier item 22 measurement",
+    "why_consonants_are_enough": "The sharpest British and Australian difference from American English is post-vocalic r, which is itself a consonant, as are t flapping and yod.",
+    "flag_definition": "An opportunity is flagged when its gop_af_sd falls below a reported threshold. No threshold is selected, validated or endorsed by this checkpoint.",
+    "reported_thresholds": [-0.5, -1.0, -1.5, -2.0, -3.0],
+    "why_a_range_and_not_one_point": "No operating point has ever passed a gate in this project, so quoting one would imply a choice nobody has earned. A real differential should hold across the range; one that appears at a single threshold is an artefact.",
+    "aggregation": "Rates are computed per speaker and then averaged across speakers, so a contributor who recorded more clips cannot dominate a group's rate.",
+    "secondary_analysis_excluding_the_conditioned_palatal_series": {
+      "consonants": ["c", "cʰ", "ɟ", "ʎ", "ɲ"],
+      "why": "The aligner transcribes palatalisation as a separate phone, and it conditions that choice on the following vowel. British glass is ɡ l ɑː s while American glass is ɟ ʎ æ s, so a purely vocalic difference between the varieties surfaces as a consonant difference. The series is common enough to matter: it appears in 7,426 of 51,770 British entries and 12,548 of 69,338 American ones. Both dictionaries are left exactly as published, and the whole comparison is additionally reported with this series removed, so the headline result can be checked against a version in which that mechanism cannot operate. A result that survives only with the series included is reporting vowels through consonants.",
+      "published_dictionaries_are_not_edited": true
+    }
+  },
+
+  "declared_confounds": [
+    "Recording quality varies across Common Voice contributors. Comparing accent subsets of one release, on one platform, from one prompt pool, under one validation process removes most of it, and a difference between two references on the same audio is far better evidence than a difference between two corpora.",
+    "Both American subsets are filtered to a declared gender while the Australian and British subsets are not, so American contributors who declared none are absent where the others' are present.",
+    "The British subset pools England, Scotland, Wales and Ireland, so it is broader than the variety the repaired reference describes.",
+    "Self reported accent is context, not phonetic truth. A speaker tagged Australian may not speak a broad Australian variety.",
+    "The dictionaries describe documented varieties and not individual speakers, so a flag may reflect a legitimate personal or regional variant rather than the group's variety.",
+    "The aligner writes conditioned palatal allophones as separate phones, so a vowel difference between the varieties can surface as a consonant difference. The secondary analysis excluding that series is how this is checked rather than assumed away."
+  ],
+
+  "release_boundaries": {
+    "gates_applied": false,
+    "frozen_benchmark_touched": false,
+    "selection_record_touched": false,
+    "system_selected": false,
+    "threshold_selected": false,
+    "held_out_read": false,
+    "pipeline_behaviour_changed": false,
+    "detection_accuracy_claimed": false,
+    "coaching_progress_screening_or_diagnosis_output": false
+  }
+}

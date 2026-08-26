@@ -1,0 +1,15 @@
+assemblyai==0.64.31
+google-genai==2.12.1
+httpx==0.28.1
+jsonschema==4.26.0
+librosa==0.11.0
+numpy==2.3.5
+praat-parselmouth==0.4.7
+pyannote-audio==4.0.7
+pydantic==2.12.5
+python-dotenv==1.2.2
+requests==2.32.5
+silero-vad==6.2.1
+soundfile==0.14.0
+torch==2.8.0
+whisperx==3.8.6

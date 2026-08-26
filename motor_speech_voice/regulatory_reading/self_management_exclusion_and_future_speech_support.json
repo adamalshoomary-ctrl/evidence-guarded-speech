@@ -1,0 +1,53 @@
+{
+  "question_id": "self_management_exclusion_and_future_speech_support",
+  "domain": "medical_device_regulation",
+  "question": "Would the health self-management exclusion cover the product vision's stated future ambition to support people with speech difficulties?",
+  "applies_to_purposes": [
+    "consumer_communication_coaching",
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Therapeutic Goods (Excluded Goods) Determination 2018 (Cth), Schedule 1, item 14A",
+      "url": "https://www.legislation.gov.au/F2018L01350/latest/text",
+      "currency": "Compilation F2024C00750, 8 August 2024",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "software that is: (a) intended by its manufacturer to be used by a consumer for the self-management of an existing disease, condition, ailment or defect that is not a serious disease or serious condition, ailment or defect; and (b) not intended by its manufacturer to be used: (i) in clinical practice; or (ii) in relation to a serious disease or serious condition, ailment or defect; or (iii) for the purpose of diagnosis, treatment, or making a specific recommendation or decision about the treatment, of a disease, condition, ailment or defect that is not a serious disease or serious condition, ailment or defect"
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Understanding the health self-management software exclusion",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-health-self-management-software-exclusion",
+      "currency": "Last updated 16 March 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "An example of a serious condition is diabetes. Diabetes is considered serious as it requires the intervention of a health professional to be evaluated and treated effectively. An example of a condition that is not serious is mild fever. A general consumer could reasonably evaluate whether they have a mild fever and manage it safely without the intervention of a health professional."
+    }
+  ],
+  "reading": [
+    "Item 14A is available only for self-management of a condition that is not serious. A named speech condition that a person has been diagnosed with is very unlikely to be not serious on the regulator's own test, because evaluating and treating it effectively requires a professional.",
+    "So the exclusion most people would reach for when imagining a support mode for people with speech difficulties is the one least likely to apply to it."
+  ],
+  "confidence": "reading_with_material_uncertainty",
+  "unresolved": [
+    {
+      "question": "Whether a particular speech condition is serious within the meaning of the Regulations.",
+      "why_it_cannot_be_settled_here": "Seriousness is assessed against a statutory test about what an average person can evaluate and treat safely without a registered practitioner, and applying it to a named condition is a regulatory judgement.",
+      "who_must_settle_it": "An Australian regulatory specialist, with input from the independent professional governance group."
+    }
+  ],
+  "consequences": [
+    "The product vision already places speech support later and behind stronger evidence and professional involvement. This reading adds a second, independent reason for that ordering: the regulatory position of a support mode is materially harder than that of general coaching, and is not improved by better measurement."
+  ],
+  "decided_by": [
+    "australian_regulatory_specialist",
+    "independent_professional_governance_group",
+    "owner"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "self_management_exclusion_and_future_speech_support_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

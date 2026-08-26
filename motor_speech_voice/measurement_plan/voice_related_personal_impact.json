@@ -1,0 +1,172 @@
+{
+  "candidate_id": "voice_related_personal_impact",
+  "title": "Voice related personal impact",
+  "register_lane": "voice_functional",
+  "governance_lane": "participant_report",
+  "related_governance_lanes": [
+    "voice"
+  ],
+  "register_row": {
+    "candidate": "Voice-related personal impact",
+    "narrowest_defensible_observation": "Participant's experienced concern and effect",
+    "required_reference": "Participant report and accessible interview",
+    "disposition_23a": "Required if voice benefit is pursued; separate from acoustics"
+  },
+  "observation": {
+    "what_would_be_measured": "What the person says their voice does to their life, which is a separate question from how their voice sounds to a listener or measures on an instrument.",
+    "why_it_is_not_yet_a_measure": [
+      "It becomes required only if a voice benefit is pursued, and the voice lane is unselected.",
+      "Checkpoint 23A keeps it explicitly separate from acoustics, so no acoustic quantity may stand in for it or predict it.",
+      "It is recorded in the participant report lane rather than the voice lane precisely so that an acoustic result cannot be reported as a personal one."
+    ],
+    "claim_level": "measured_observation_candidate_not_selected"
+  },
+  "reference_requirement": {
+    "truth_class": "personal_truth",
+    "substitutions_refused": [
+      "A perceptual severity rating is a listener's judgement and not the speaker's experience.",
+      "An acoustic primitive cannot establish concern or effect."
+    ],
+    "public_availability": "not_applicable_participant_is_the_source",
+    "source_survey_basis": [
+      "voiced_physionet"
+    ],
+    "consequence": "The survey noted that participant reported instruments appear in at least one public voice source, and recorded them as a separate truth class rather than as voice reference. That separation is preserved here."
+  },
+  "estimand_shape": {
+    "question": "What the person reports their voice costs them, and whether a change in that report is meaningful to them.",
+    "unit_of_analysis": "participant",
+    "comparison": "The same person against their own earlier report.",
+    "status": "candidate_shape_not_selected"
+  },
+  "variance_components_to_separate": [
+    "between_participant",
+    "within_participant_between_session",
+    "current_state_fatigue_or_voice_use",
+    "residual_unexplained"
+  ],
+  "required_statistician_inputs": [
+    {
+      "input": "The instrument, and evidence that its measurement properties were established in a population these participants belong to.",
+      "why_public_research_cannot_supply_it": "Instrument selection is a governance decision and its transferability is an empirical question with no data here."
+    },
+    {
+      "input": "The recall window, which determines whether a retest interval measures stability or real change.",
+      "why_public_research_cannot_supply_it": "It follows from the unselected instrument."
+    },
+    {
+      "input": "The one primary estimand for the question, stated before any data exists, together with the secondary quantities that may be reported beside it.",
+      "why_public_research_cannot_supply_it": "An estimand follows from an intended benefit and an intended claim. Checkpoint 23B has neither: the draft intended use records that it does not yet identify a sufficiently concrete benefit or eventual human action."
+    },
+    {
+      "input": "Expected between-person and within-person variance for the quantity, from a pilot run under the same task and capture path.",
+      "why_public_research_cannot_supply_it": "No task is selected and no pilot has been run, so there is no variance to expect. Published variance from another protocol, population or capture path describes that study rather than this one."
+    },
+    {
+      "input": "The precision the study must reach, expressed as an acceptable confidence interval width for each reported quantity rather than as a target point estimate.",
+      "why_public_research_cannot_supply_it": "Acceptable precision is a consequence of the claim being made and the harm of being wrong. Both belong to the accountable governance roles."
+    },
+    {
+      "input": "The number of candidate questions being carried, and how multiplicity across them will be handled.",
+      "why_public_research_cannot_supply_it": "The construct register may be narrowed or rejected entirely by the governance group, so the count of questions is not yet fixed."
+    },
+    {
+      "input": "Expected withdrawal, partial task completion, unusable recordings and missing reference, as rates rather than as a contingency.",
+      "why_public_research_cannot_supply_it": "These depend on the recruited population, the burden of the final protocol and the capture path, none of which exist."
+    },
+    {
+      "input": "Recruitment feasibility, participant burden and the cost of each additional participant, rater or listener.",
+      "why_public_research_cannot_supply_it": "There is no sponsor, no budget ceiling and no recruitment route, so feasibility cannot be estimated."
+    }
+  ],
+  "agreement_and_reliability": {
+    "statistic_family": "not_applicable_no_second_observer",
+    "form_selection_inputs": [
+      "There is no second observer. Stability is a test retest question over an interval short enough that nothing real changed.",
+      "Absolute agreement rather than consistency applies to a retest, because a systematic shift between occasions is exactly what matters."
+    ],
+    "reporting_standards": [
+      "cosmin_measurement_property_guidance"
+    ],
+    "notes": [
+      "A person's voice concern may change for reasons that have nothing to do with their voice, including their situation, their audience and their day."
+    ],
+    "measurement_error_required": true
+  },
+  "missingness_and_abstention": {
+    "categories": [
+      "participant_withdrew",
+      "task_not_attempted",
+      "unsupported_context_or_variety",
+      "consent_withdrawn_after_collection"
+    ],
+    "note": "A declined item is never estimated from the person's voice.",
+    "reported_separately": true
+  },
+  "split_and_clustering": {
+    "cluster_units": [
+      "site",
+      "repeated_session"
+    ],
+    "leakage_risks": [
+      "A participant's sessions, attempts and recordings must move together. Splitting them puts the same person on both sides of a comparison and makes a memorised speaker look like a general result.",
+      "Anything inspected during checkpoint 23C feasibility work is permanently pilot and development evidence for that participant and their related household, session and repeated recordings.",
+      "Item 22 material is not reusable by default. Even development use needs a new lawful purpose, consent, rights and ethics decision, and an overlap register covering every repository source and participant."
+    ],
+    "minimum_split_unit": "participant"
+  },
+  "subgroup_and_representation": [
+    "professional voice users, whose reported impact differs for occupational rather than physiological reasons",
+    "Australian English varieties the claim includes, including Aboriginal Englishes",
+    "multilingual adults and adults who speak English as an additional language",
+    "adults who cannot read the prompt, where a spoken alternative applies",
+    "disability, communication difference and assisted communication",
+    "gender-diverse voices and professional voice users",
+    "regional and remote participants and their capture conditions",
+    "device and capture-path strata the claim includes"
+  ],
+  "blockers": [
+    {
+      "blocker": "The voice lane is unselected, and this question becomes required only if a voice benefit is pursued.",
+      "blocker_class": "no_task_or_construct_selected"
+    },
+    {
+      "blocker": "No construct, task or measure is selected. Every lane in the checkpoint 23B governance contract remains unselected, and the register may be rejected in full.",
+      "blocker_class": "no_task_or_construct_selected"
+    },
+    {
+      "blocker": "No independent statistician is engaged, and the checkpoint requires the statistical plan to be prospectively received and reviewed by one.",
+      "blocker_class": "statistician_absent"
+    },
+    {
+      "blocker": "No pilot has been run, so no variance estimate exists to size anything against.",
+      "blocker_class": "no_pilot_variance"
+    },
+    {
+      "blocker": "The accountable professional and paid lived-experience governance roles are unfilled, and no external authority has been approached.",
+      "blocker_class": "professional_governance_absent"
+    },
+    {
+      "blocker": "There is no legal entity to sponsor collection, hold the data or sign an agreement, which the source survey already demonstrated as a concrete rather than formal obstacle.",
+      "blocker_class": "no_legal_entity"
+    },
+    {
+      "blocker": "No institution pathway or ethics review exists, and participant recording is prohibited until one does.",
+      "blocker_class": "ethics_review_absent"
+    }
+  ],
+  "sample_size": {
+    "method_candidates": [
+      "Test retest reliability sizing, which needs the expected reliability, the retest interval and the desired confidence interval width. Bonett, D. G. Sample size requirements for estimating intraclass correlations with desired precision. Statistics in Medicine, 2002, doi:10.1002/sim.1108. Primary text not opened here."
+    ],
+    "prerequisites": [
+      "A selected instrument reviewed with people who have lived experience.",
+      "An ethics approved route to ask participants anything."
+    ],
+    "state": "not_computable_without_the_inputs_above",
+    "computed_value": null
+  },
+  "schema_version": "1.0.0",
+  "record_id": "voice_related_personal_impact_measurement_inputs_v1",
+  "selected": false
+}

@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/motor-speech-voice/regulatory-reading-schema-v1.0.0.json",
+  "title": "Item 23 documented regulatory and privacy reading record",
+  "description": "One question about Australian medical device, clinical trial, privacy, recording, ethics or professional regulation, read against public primary sources and recorded with the exact wording relied on. A record is a documented reading by a non lawyer. It is never advice, a determination, an approval, a classification decision or a defence, and the schema cannot express that it is. Every record must name at least one accountable human role that has to settle it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_id",
+    "question_id",
+    "domain",
+    "question",
+    "applies_to_purposes",
+    "primary_sources",
+    "reading",
+    "confidence",
+    "unresolved",
+    "conflicts",
+    "consequences",
+    "decided_by",
+    "status",
+    "is_legal_or_regulatory_advice",
+    "creates_any_authority"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "record_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+_reading_v1$"
+    },
+    "question_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "domain": {
+      "enum": [
+        "medical_device_regulation",
+        "clinical_trial_regulation",
+        "privacy",
+        "recording_and_surveillance_law",
+        "research_ethics",
+        "professional_regulation"
+      ]
+    },
+    "question": {"type": "string", "minLength": 1},
+    "applies_to_purposes": {
+      "description": "Which rungs of the intended purpose ladder this question bites on. The ladder is defined once, in the registry.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "developer_research_only",
+          "consumer_communication_coaching",
+          "consumer_screening_referral"
+        ]
+      }
+    },
+    "primary_sources": {
+      "description": "The sources the reading rests on. At least one must have been read directly at the source, on a recorded date, with the exact wording relied on quoted. A reading built only on secondary description is not admissible here, because this repository has already been wrong three times by carrying forward figures nobody checked.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "citation",
+          "url",
+          "currency",
+          "read_at_source",
+          "read_on",
+          "extract"
+        ],
+        "properties": {
+          "citation": {"type": "string", "minLength": 1},
+          "url": {"type": "string", "minLength": 1},
+          "currency": {
+            "description": "The version, compilation or last updated date the source itself states. A source that states none says so here.",
+            "type": "string",
+            "minLength": 1
+          },
+          "read_at_source": {"type": "boolean"},
+          "read_on": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "extract": {
+            "description": "The operative wording, quoted rather than paraphrased.",
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "reading": {
+      "description": "What the sources appear to say about this question. Written as a reading, never as a conclusion of law.",
+      "$ref": "#/$defs/nonemptyStrings"
+    },
+    "confidence": {
+      "description": "How far the sources settle the question on their own words. None of these values means the question is closed, because closing it needs a person.",
+      "enum": [
+        "clear_on_the_face_of_the_source",
+        "reading_with_material_uncertainty",
+        "unresolved_needs_specialist"
+      ]
+    },
+    "unresolved": {
+      "description": "What this reading could not settle. A record with material uncertainty or worse must carry at least one entry.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["question", "why_it_cannot_be_settled_here", "who_must_settle_it"],
+        "properties": {
+          "question": {"type": "string", "minLength": 1},
+          "why_it_cannot_be_settled_here": {"type": "string", "minLength": 1},
+          "who_must_settle_it": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "conflicts": {
+      "description": "Where two sources disagree. Recorded rather than resolved, because resolving a conflict means choosing which source to believe.",
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "consequences": {
+      "description": "What follows for this project if the reading holds. Consequences are stated so the reading is useful, not so it becomes an instruction.",
+      "$ref": "#/$defs/nonemptyStrings"
+    },
+    "decided_by": {
+      "description": "The accountable human roles that must actually settle this. Every record has at least one, because no record here settles anything.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "australian_regulatory_specialist",
+          "australian_privacy_lawyer",
+          "queensland_lawyer",
+          "human_research_ethics_committee_or_review_body",
+          "responsible_institution",
+          "independent_professional_governance_group",
+          "paid_lived_experience_governance_group",
+          "owner"
+        ]
+      }
+    },
+    "status": {"const": "documented_reading_not_a_determination"},
+    "is_legal_or_regulatory_advice": {"const": false},
+    "creates_any_authority": {"const": false}
+  },
+  "$defs": {
+    "nonemptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "common_voice_26_american_english_female_manifest_v1",
+  "source_id": "common_voice_26_american_english_female",
+  "title": "Common Voice Scripted Speech 26.0 American English, female speakers",
+  "version": {
+    "label": "26.0 accent subset, locale en-US",
+    "release_date": "2026-07-20",
+    "immutable_id": "mdc_cmrt70j4z001qmm07nvfsmgmr"
+  },
+  "citation": "Mozilla Data Collective Curators. Common Voice Scripted Speech 26.0 American English, female speakers, dataset cmrt70j4z001qmm07nvfsmgmr.",
+  "canonical_source": {
+    "landing_page": "https://mozilladatacollective.com/datasets/cmrt70j4z001qmm07nvfsmgmr",
+    "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-29",
+    "account_required": true,
+    "terms_state": "accepted",
+    "terms_url": "https://mozilladatacollective.com/terms/consumers",
+    "terms_version": "2026-05-06",
+    "terms_snapshot_sha256": "315da9618192a5ce0beb89f4cb1326a72038b924ff4bbaff5e52d665659c156e"
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC0-1.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-29",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "american_variety_control_group"
+    ],
+    "prohibited_roles": [
+      "accent_quality_judgment",
+      "american_comparison_from_one_gender_alone",
+      "australian_lexical_variant_truth",
+      "clinical_inference",
+      "dataset_rehosting",
+      "phone_truth",
+      "product_release_truth",
+      "scientific_release_truth",
+      "selection_evidence_for_a_common_voice_trained_model",
+      "speaker_reidentification"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/common_voice_26_us_female",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Do not rehost or re-share, do not attempt reidentification, maintain reasonable safeguards, and cease use or delete copies if required by account termination and the applicable dataset licence."
+  },
+  "population": {
+    "description": "Validated scripted speech, 115209 clips from 1795 self identified speakers in the supplied speaker disjoint splits. Validated rows whose self declared accent field is exactly United States English with no other co-occurring tag, and whose gender field is exactly female_feminine.",
+    "known_strata": [
+      "source_train",
+      "source_dev",
+      "source_test"
+    ],
+    "limitations": [
+      "Accent information is self reported context rather than phonetic truth.",
+      "Sentence validation does not prove every phone matched one pronunciation.",
+      "The subset provides no phone timestamps and no lexical pronunciation variants.",
+      "Recording quality varies across contributors. Comparing accent subsets of one release on one platform controls most of that, and a difference between two reference paths on the same audio remains far better evidence than a difference between two corpora.",
+      "This subset is female only and exists to remove the gender confound in the male subset. Neither American subset may stand as the American group by itself.",
+      "Filtering on a declared gender also excludes American contributors who declared none, while the Australian and British subsets include theirs."
+    ]
+  },
+  "annotation": {
+    "truth_class": "validated_sentence_audio",
+    "provenance": "Common Voice sentence prompts, listener validation votes and optional self reported metadata; no phone annotation.",
+    "fields_retained": [
+      "client_id_private",
+      "path_private",
+      "sentence_id",
+      "sentence",
+      "validation_votes",
+      "self_reported_accent_context",
+      "source_split"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "A validated sentence supports a false concern and differential rate measurement only.",
+      "These are native speakers reading known text, so a flag is presumed a false concern rather than a detected error, and no detection accuracy claim can rest on this source.",
+      "Self reported demographic fields are optional and cannot create pronunciation truth."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "Authenticated dataset metadata, and the archive digest recomputed locally on 2026-07-29.",
+      "The supplied train, dev and test files, read row by row for participant and clip identifiers.",
+      "mdc_consumer_terms.html captured 2026-07-29 from https://mozilladatacollective.com/terms/consumers, SHA256 315da9618192a5ce0beb89f4cb1326a72038b924ff4bbaff5e52d665659c156e."
+    ],
+    "findings": [
+      "The package contains 109047 train, 3274 dev and 2888 test clips.",
+      "The splits contain 1674, 45 and 76 speakers respectively.",
+      "No client identifier appears in more than one supplied split.",
+      "No clip path and no client identifier is shared with any other Common Voice accent subset this project holds, so no speaker of this group is also a speaker of another. Checked against 4 subsets and recorded in .research_data/speech_sound_patterns/splits/common-voice-26-accent-group-exclusions.json, SHA256 bf78b7ecbbf8e58f441b357bac0d250bd9405fe797f0d982c333a9079fd78bfa.",
+      "The other half of the American control group, acquired so that accent and speaker gender do not vary together."
+    ]
+  },
+  "participant_split": {
+    "status": "audited",
+    "unit": "participant",
+    "source_split_provenance": "The package supplies train, dev and test TSV files with zero client identifier overlap.",
+    "project_strategy": "Map source train to development, source dev to threshold tuning and source test to frozen held out evaluation, exactly as the Australian subset already is.",
+    "frozen_held_out": true,
+    "assignment_artifact": ".research_data/speech_sound_patterns/splits/common-voice-26-us-female.json",
+    "assignment_sha256": "e89d937b923894dabf5067e7f7a3b18af5910a1493f4493ded1ebe53bf97f859",
+    "participant_counts": {
+      "development": 1674,
+      "threshold_tuning": 45,
+      "held_out_evaluation": 76
+    },
+    "cross_split_overlap_count": 0,
+    "strata": {
+      "dev": {
+        "development": 0,
+        "threshold_tuning": 45,
+        "held_out_evaluation": 0
+      },
+      "test": {
+        "development": 0,
+        "threshold_tuning": 0,
+        "held_out_evaluation": 76
+      },
+      "train": {
+        "development": 1674,
+        "threshold_tuning": 0,
+        "held_out_evaluation": 0
+      }
+    }
+  },
+  "lineage": {
+    "lineage_group": "common_voice",
+    "derived_from": [
+      "common_voice_26_english"
+    ],
+    "independence_claim": "not_independent_of_common_voice_family",
+    "duplicate_detection": "Private client and clip identifiers are checked against every Common Voice derived source before assembly.",
+    "candidate_model_overlap_status": "known_overlap_not_independent"
+  },
+  "archives": [
+    {
+      "filename": "common-voice-scripted-speech-26-0-americ-079c33be.tar.gz",
+      "size_bytes": 4297638413,
+      "canonical_download_url": "https://mozilladatacollective.com/api/datasets/cmrt70j4z001qmm07nvfsmgmr/download",
+      "upstream_checksum": {
+        "algorithm": "sha256",
+        "value": "e21a0b9521aa05aafd1e18e92b79a7c1bf4c70de8f810372a3f4d2ba93097e1c"
+      },
+      "local_sha256": "e21a0b9521aa05aafd1e18e92b79a7c1bf4c70de8f810372a3f4d2ba93097e1c",
+      "local_verification_status": "verified"
+    }
+  ]
+}

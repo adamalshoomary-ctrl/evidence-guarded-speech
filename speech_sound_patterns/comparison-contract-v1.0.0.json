@@ -1,0 +1,350 @@
+{
+  "schema_version": "1.0.0",
+  "comparison_id": "speech_sound_frozen_role_based_comparison_v1",
+  "checkpoint": "22E4",
+  "status": "rules_frozen_before_any_lane_scoring",
+  "declared_before_any_run": true,
+  "purpose": "Measure every eligible checkpoint 22E lane against the same frozen participant-exclusive expert phone relations, under the unchanged checkpoint 22D selection gates. This contract cannot establish pronunciation correctness, acceptable language variety, Australian performance, scientific validity, product readiness or a clinical conclusion. A documented no-selection is a correct completed outcome.",
+  "frozen_inputs": {
+    "private_benchmark_manifest_sha256": "e856b2fef404cd28c9d09c6748797e1c6b888361c83c8d62f47ebf2560e03b98",
+    "expected_only_manifest_sha256": "c918feffa7c0a3a3fa99ce7a9e028621e8fb002980777297f30088e5975331da",
+    "expected_only_clip_count": 480,
+    "relation_evidence_sha256": "571e04f1850e9889b9f5d0145765782162113b108bee6cfca6ed4e56ee344d96",
+    "benchmark_contract_sha256": "cee5b9a2865ed704b91b8a7859419f9ad08141525c8d108862bb83518c3c415b",
+    "phone_map_sha256": "4952c110c11b4c57cb1101b1bc1eec87b863815fdbf5645a88c0fb5c836cfd4d",
+    "baseline_repair_report_sha256": "7916f0be1c98299c1a36b8c03644e808859ae65d01ff802246a1af2fd2bb7ec5",
+    "provider_register_version": "1.2.0",
+    "frozen_inputs_may_be_rewritten": false
+  },
+  "input_policy": {
+    "allowed_project_splits": [
+      "development",
+      "threshold_tuning"
+    ],
+    "gate_population": "source_adults_only",
+    "child_rows_used_for_selection_or_thresholds": false,
+    "child_rows_reported_as_diagnostics": true,
+    "held_out_access_allowed": false,
+    "candidate_runner_may_read_expert_outcomes": false,
+    "expert_outcome_read_only_after_every_candidate_output_is_complete": true,
+    "same_input_repeats": 2,
+    "repeat_numeric_tolerance": 0.0,
+    "secondary_sources_for_non_gate_evidence": [
+      "acted_clear_speech",
+      "common_phone_1_0",
+      "common_voice_26_australian_english"
+    ],
+    "secondary_source_evidence_may_enter_selection_gates": false
+  },
+  "truth_policy": {
+    "source_id": "speechocean762",
+    "truth_class": "expert_phone_relations",
+    "unit": "one expected consonant target identified by clip, word index and target index",
+    "positive": "four or more of the five original reviewers recorded a coarse relation concern at that target",
+    "negative": "four or more of the five original reviewers confirmed the expected phone",
+    "unscorable": "disputed reviewers, unsupported phone class, post-vocalic r, or a target outside the frozen consonant scope",
+    "unscorable_rows_excluded_from_every_metric": true,
+    "reviewer_records_overwritten_by_consensus": false,
+    "model_output_is_reference_truth": false,
+    "cross_system_agreement_is_confirmation": false
+  },
+  "selection_gates": {
+    "minimum_precision_point_estimate": 0.75,
+    "minimum_precision_wilson_95_lower": 0.5,
+    "maximum_false_concerns_per_scorable_opportunity": 0.01,
+    "minimum_recall": 0.2,
+    "minimum_true_positives": 7,
+    "development_and_tuning_both_required": true,
+    "gates_inherited_unchanged_from": "benchmark-repair-meta-threshold-contract-v1.0.0.json",
+    "gates_may_be_changed_in_this_checkpoint": false,
+    "expert_agreement_band_may_lower_a_gate": false,
+    "expert_agreement_band_role": "the roughly 0.55 to 0.65 phone level expert agreement correlation reported around SpeechOcean762 is expectation calibration only"
+  },
+  "threshold_policy": {
+    "applies_to": "every candidate whose decision rule exposes a continuous concern score",
+    "authoritative_score_rounding": "nine_decimal_places",
+    "concern_score_orientation": "higher_is_more_concerning",
+    "positive_comparison": "concern_score_greater_than_or_equal_to_threshold",
+    "candidate_thresholds": "every distinct authoritative concern score observed across the two allowed adult partitions, plus one point above the observed maximum so the empty positive set is always examined",
+    "candidate_thresholds_use_labels": false,
+    "model_fitted_on_labels": false,
+    "features_or_scores_may_be_recomputed_after_seeing_labels": false,
+    "selection": "highest tuning recall meeting every development and tuning gate, then highest tuning precision, then highest threshold",
+    "closest_point_reporting_rule": "most frozen gate checks passed, then highest worst partition precision, then recall, then fewest false positives",
+    "closest_point_is_not_a_selection": true,
+    "development_and_tuning_both_must_pass": true,
+    "held_out_labels_or_outputs_used": false
+  },
+  "alignment_policy": {
+    "free_phone_lanes": {
+      "algorithm": "deterministic_unit_cost_levenshtein",
+      "tie_break_order": [
+        "exact_or_declared_equivalent",
+        "substitution",
+        "deletion",
+        "insertion"
+      ],
+      "reference_expansion": "frozen ARPAbet to IPA phone map, diphthongs expanded to their declared parts",
+      "weighted_panphon_distance_used": false,
+      "target_scorable_only_when_one_to_one": true,
+      "out_of_inventory_observed_token_behavior": "abstain",
+      "out_of_inventory_definition": "an observed token that is neither a frozen reference IPA token, a declared equivalent, a declared unsupported candidate detail nor a special nonphone; this applies the frozen phone map claim that an unknown candidate phone is unscorable",
+      "unsupported_candidate_detail_behavior": "abstain",
+      "insertion_only_alignment_behavior": "abstain"
+    },
+    "external_score_lanes": {
+      "position_matching": "per reference word, align this project's ARPAbet reference phones against the provider's returned expected phones using the same deterministic unit cost algorithm and tie break order",
+      "comparison_form": "normalized IPA string per reference phone, NFD, with tie bars, length marks, primary and secondary stress removed",
+      "target_scorable_only_when": "the target aligns one to one with a provider expected phone whose normalized string is identical",
+      "reference_disagreement_behavior": "abstain",
+      "missing_word_or_phone_behavior": "abstain",
+      "word_error_type_role": "recorded separately as provider word miscue evidence; it never creates or suppresses a phone level concern",
+      "locales_pooled": false,
+      "provider_expected_phone_is_the_provider_lexicon_not_this_project_reference": true
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "sfgop_af",
+      "lane_id": "segmentation_free_gop",
+      "register_status": "ready",
+      "evidence_class": "expected_phone_concern_score",
+      "score_source": "gop_af_s",
+      "concern_score": "negated GOP-AF log posterior over the substitution lattice",
+      "decision_rule": "continuous_threshold",
+      "exact_relation_capable": false,
+      "selection_eligible": true,
+      "independent_of_truth_source": true,
+      "runner": "comparison_sfgop"
+    },
+    {
+      "candidate_id": "sfgop_af_sd",
+      "lane_id": "segmentation_free_gop",
+      "register_status": "ready",
+      "evidence_class": "expected_phone_concern_score",
+      "score_source": "gop_af_sd",
+      "concern_score": "negated GOP-AF-SD log posterior over the substitution and deletion lattice",
+      "decision_rule": "continuous_threshold",
+      "exact_relation_capable": false,
+      "selection_eligible": true,
+      "independent_of_truth_source": true,
+      "runner": "comparison_sfgop"
+    },
+    {
+      "candidate_id": "powsm_free_phone_relation",
+      "lane_id": "powsm",
+      "register_status": "ready",
+      "evidence_class": "unconstrained_free_phone_relation",
+      "score_source": "aligned_relation_state",
+      "concern_score": null,
+      "decision_rule": "binary_alignment_relation",
+      "exact_relation_capable": true,
+      "selection_eligible": true,
+      "independent_of_truth_source": true,
+      "runner": "comparison_powsm"
+    },
+    {
+      "candidate_id": "azure_en_us_phone_score",
+      "lane_id": "azure_speech",
+      "locale": "en-US",
+      "register_status": "ready",
+      "evidence_class": "external_phone_accuracy_score",
+      "score_source": "phoneme_accuracy_score",
+      "concern_score": "one hundred minus the provider phoneme accuracy score",
+      "decision_rule": "continuous_threshold",
+      "exact_relation_capable": false,
+      "selection_eligible": true,
+      "independent_of_truth_source": true,
+      "runner": "comparison_azure"
+    },
+    {
+      "candidate_id": "azure_en_us_named_relation",
+      "lane_id": "azure_speech",
+      "locale": "en-US",
+      "register_status": "ready",
+      "evidence_class": "external_named_phone_relation",
+      "score_source": "top_nbest_phoneme_name",
+      "concern_score": null,
+      "decision_rule": "binary_named_candidate_differs_from_provider_expected_phone",
+      "exact_relation_capable": true,
+      "selection_eligible": true,
+      "independent_of_truth_source": true,
+      "runner": "comparison_azure"
+    },
+    {
+      "candidate_id": "azure_en_au_phone_score",
+      "lane_id": "azure_speech",
+      "locale": "en-AU",
+      "register_status": "ready",
+      "evidence_class": "external_phone_accuracy_score",
+      "score_source": "phoneme_accuracy_score",
+      "concern_score": "one hundred minus the provider phoneme accuracy score",
+      "decision_rule": "continuous_threshold",
+      "exact_relation_capable": false,
+      "selection_eligible": true,
+      "independent_of_truth_source": true,
+      "runner": "comparison_azure",
+      "locale_limitation": "this locale emits every phone name key as an empty string, so it can raise a concern but can never name a produced phone"
+    },
+    {
+      "candidate_id": "wav2vec2_commonphone_free_phone_relation",
+      "lane_id": "wav2vec2_commonphone",
+      "register_status": "supporting_only",
+      "evidence_class": "supporting_only_free_phone_relation",
+      "score_source": "aligned_relation_state",
+      "concern_score": null,
+      "decision_rule": "binary_alignment_relation",
+      "exact_relation_capable": true,
+      "selection_eligible": false,
+      "gates_evaluated": false,
+      "independent_of_truth_source": true,
+      "non_independent_sources": [
+        "common_phone_1_0",
+        "common_voice_26_australian_english"
+      ],
+      "runner": "comparison_commonphone"
+    }
+  ],
+  "baseline_reference": {
+    "candidate_id": "meta_wav2vec2_constrained_contextual",
+    "source": "local-benchmark-repair-v1.0.0.json",
+    "role": "checkpoint 22D local baseline for incremental value only",
+    "rerun_in_this_checkpoint": false,
+    "development_out_of_fold_average_precision": 0.580833349,
+    "closest_point_gate_checks_passed_of_ten": 9,
+    "decision": "no_system_or_threshold_selected"
+  },
+  "excluded_lanes": [
+    {
+      "lane_id": "elsa_scripted_v3",
+      "reason": "conditional; no written benchmark, aggregate publication, region, retention or training use permission exists, so the transfer review permits no audio",
+      "audio_sent": false
+    },
+    {
+      "lane_id": "iflytek_ise_global",
+      "reason": "owner declined on 2026-07-25; reopening needs a new explicit owner decision",
+      "audio_sent": false
+    },
+    {
+      "lane_id": "zipa",
+      "reason": "blocked; model weight licence and provenance unresolved",
+      "audio_sent": false
+    },
+    {
+      "lane_id": "unsw_speech_attributes",
+      "reason": "blocked; checkpoint licence and training data rights unresolved",
+      "audio_sent": false
+    },
+    {
+      "lane_id": "child_phoneme_model",
+      "reason": "blocked; OpenRAIL conditions and derived weight rights unreviewed",
+      "audio_sent": false
+    },
+    {
+      "lane_id": "auskidtalk",
+      "reason": "acquisition and collaboration path, not a scorer",
+      "audio_sent": false
+    },
+    {
+      "lane_id": "bookbot_au_g2p",
+      "reason": "conditional prompt target tool for checkpoint 22F, not a detector",
+      "audio_sent": false
+    },
+    {
+      "lane_id": "soapbox",
+      "reason": "rejected as currently unobtainable; no contact and no credential request",
+      "audio_sent": false
+    },
+    {
+      "lane_id": "speechace",
+      "reason": "blocked; its current terms prohibit this benchmark and aggregate publication without a written waiver",
+      "audio_sent": false
+    },
+    {
+      "lane_id": "speechsuper",
+      "reason": "rejected under its current terms",
+      "audio_sent": false
+    }
+  ],
+  "external_transmission_policy": {
+    "transfer_review_version": "1.1.0",
+    "lane_id": "azure_speech",
+    "source_id": "speechocean762",
+    "permitted_splits": [
+      "development",
+      "threshold_tuning"
+    ],
+    "permitted_strata": [
+      "source_adult_f",
+      "source_adult_m"
+    ],
+    "child_strata_transmitted": false,
+    "held_out_clips_transmitted": false,
+    "owner_or_personal_audio_transmitted": false,
+    "australian_common_voice_transmitted": false,
+    "transmitted_fields": [
+      "the canonical clip audio",
+      "the intended reference text"
+    ],
+    "never_transmitted_fields": [
+      "expert reviewer phone strings",
+      "aggregate mispronunciation labels",
+      "any expert outcome or truth value",
+      "any held out participant or clip",
+      "any owner or personal recording",
+      "any speaker identity"
+    ],
+    "upload_gate": "provider_register.audio_permitted must return true for the exact lane and source pair before any request is built"
+  },
+  "prohibited_inputs_and_outputs": [
+    "PronScore",
+    "FluencyScore",
+    "CompletenessScore",
+    "ProsodyScore",
+    "native_likeness_or_accent_quality_score",
+    "pooled en-AU and en-US results",
+    "an en-AU phone name read as a produced phone",
+    "an en-US named phone used for a vowel, diphthong or post-vocalic r relation",
+    "any Australian variety exact relation claim from an external lane",
+    "cross system agreement presented as confirmation",
+    "a child selection, threshold or gate result",
+    "a held out participant, clip, label or metric",
+    "a combined headline score across lanes"
+  ],
+  "report_policy": {
+    "committed_report_aggregate_only": true,
+    "private_row_level_evidence_required": true,
+    "development_and_tuning_separate": true,
+    "adult_and_child_separate": true,
+    "locales_separate": true,
+    "evidence_classes_separate": true,
+    "visible_denominators": true,
+    "coverage_abstention_and_failure_required": true,
+    "cost_latency_and_repeatability_required": true,
+    "baseline_comparison_required": true,
+    "limitations_required": true,
+    "private_rows_committed": false,
+    "held_out_fields_allowed": false,
+    "one_combined_headline_score_allowed": false
+  },
+  "release_boundaries": {
+    "normal_pipeline": false,
+    "candidate_artifact": false,
+    "coaching": false,
+    "personal_progress": false,
+    "scientific_release": false,
+    "product_release": false,
+    "screening": false,
+    "diagnosis": false,
+    "severity": false,
+    "cause": false,
+    "treatment": false
+  },
+  "acceptance": {
+    "all_denominators_and_failures_visible": true,
+    "no_held_out_participant_or_label_accessed": true,
+    "no_provider_output_becomes_reference_truth": true,
+    "documented_no_selection_is_a_valid_outcome": true,
+    "next_checkpoint": "22E5_selection_and_rejection_record_after_owner_commit"
+  }
+}

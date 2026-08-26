@@ -1,0 +1,94 @@
+{
+  "source_id": "clarity_prediction_challenge",
+  "title": "Clarity Prediction Challenge data, CPC1 and CPC2",
+  "citation": "Clarity Prediction Challenge, University of Sheffield and partners.",
+  "canonical_source": {
+    "landing_page": "https://claritychallenge.org/docs/cpc2/cpc2_data",
+    "terms_or_licence_url": "https://claritychallenge.org/docs/cpc2/cpc2_data"
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "British English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "25 listeners with documented hearing loss per challenge, with audiograms, listening to processed speech from a small number of talkers.",
+    "age_band": "adults",
+    "clinical_status": "listeners",
+    "limitations": [
+      "The listeners are hearing impaired and the speech is processed by hearing aid algorithms."
+    ]
+  },
+  "tasks_present": [
+    "sentence_listening_in_noise"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "intelligibility_multi_listener_transcription",
+    "independent_rater_or_annotator_count": 25,
+    "individual_records_retained": true,
+    "adjudication_defined": null,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "Per listener response transcriptions and word level correctness are retained, which is the shape item 23 wants.",
+      "The construct is wrong. It measures how well a hearing aid algorithm renders speech to a hearing impaired listener, not how intelligible a speaker is to unfamiliar listeners.",
+      "Using it as speaker intelligibility evidence would attribute the listener's hearing loss and the processing chain to the talker.",
+      "No licence is stated on the data pages, so rights also fail closed."
+    ]
+  },
+  "access": {
+    "route": "open_direct_download",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_without_contact",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "The CPC2 data documentation page, read 2026-08-19."
+    ],
+    "findings": [
+      "No explicit licence appears on the data page.",
+      "Recorded mainly as a worked example of why matching the evidence shape is not enough: the same file structure can answer a completely different question."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_truth_class",
+    "reasons": [
+      "It measures a listening and processing condition rather than a talker property.",
+      "No licence is stated."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "clarity_prediction_challenge_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

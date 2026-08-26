@@ -1,0 +1,223 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_id": "speech_sound_patterns_developer_benchmark_v1",
+  "status": "rules_frozen_before_development_or_tuning_scoring",
+  "purpose": "Developer-only measurement of local system behavior against source-specific public evidence. This contract cannot establish pronunciation correctness, acceptable language variety, scientific validity, product readiness or a clinical conclusion.",
+  "release_state": {
+    "engineering_checkpoint": "22D",
+    "scientific_release": "locked",
+    "product_release": "locked",
+    "normal_pipeline_activation": "blocked",
+    "candidate_artifact": "not_implemented",
+    "paid_provider_comparison": "not_started"
+  },
+  "split_policy": {
+    "allowed_splits": [
+      "development",
+      "threshold_tuning"
+    ],
+    "held_out_evaluation_allowed": false,
+    "participant_exclusive": true,
+    "selection_uses_labels_or_model_outputs": false,
+    "selection_seed": "speech_sound_patterns_benchmark_v1",
+    "final_evaluation_checkpoint": "22H",
+    "held_out_result_fields_allowed": false
+  },
+  "sample_policy": {
+    "speechocean762": {
+      "development_participants_per_source_stratum": 4,
+      "threshold_tuning_participants_per_source_stratum": 2,
+      "clips_per_selected_participant": 20,
+      "source_strata": [
+        "source_adult_f",
+        "source_adult_m",
+        "source_child_f",
+        "source_child_m"
+      ]
+    },
+    "acted_clear_speech": {
+      "clips_per_speaking_condition": 5,
+      "fixture_only": true
+    },
+    "common_phone_1_0": {
+      "development_participants": 20,
+      "threshold_tuning_participants": 10,
+      "clips_per_selected_participant": 1
+    },
+    "common_voice_26_australian_english": {
+      "development_participants": 20,
+      "threshold_tuning_participants": 10,
+      "clips_per_selected_participant": 1
+    },
+    "same_clip_local_system_subset": {
+      "speechocean_clips_per_selected_participant": 1,
+      "all_acted_clear_clips": true,
+      "all_selected_common_phone_clips": true,
+      "all_selected_common_voice_clips": true
+    }
+  },
+  "truth_classes": {
+    "expert_phone_relations": {
+      "source": "speechocean762_v1.2.0",
+      "allowed_metrics": [
+        "coarse_consonant_relation_precision_recall_f1",
+        "explicit_insertion_precision_recall_f1",
+        "aggregate_exact_substitution_support",
+        "false_concerns_per_scorable_opportunity",
+        "abstention",
+        "coverage",
+        "five_reviewer_agreement"
+      ],
+      "forbidden_interpretations": [
+        "acceptable_language_or_variety_truth",
+        "native_likeness_truth",
+        "accent_quality_truth",
+        "scientific_or_product_release_truth"
+      ]
+    },
+    "human_corrected_phone_boundaries": {
+      "source": "acted_clear_speech_2013",
+      "allowed_metrics": [
+        "matched_boundary_absolute_error",
+        "boundary_match_coverage",
+        "same_input_repeatability"
+      ],
+      "forbidden_interpretations": [
+        "phone_relation_truth",
+        "population_accuracy",
+        "australian_performance"
+      ]
+    },
+    "automatic_forced_alignments": {
+      "source": "common_phone_1.0",
+      "allowed_metrics": [
+        "output_availability",
+        "same_input_repeatability",
+        "candidate_system_disagreement"
+      ],
+      "forbidden_interpretations": [
+        "phone_relation_truth",
+        "substitution_deletion_or_insertion_truth"
+      ]
+    },
+    "validated_sentence_audio": {
+      "source": "common_voice_26_australian_english",
+      "allowed_metrics": [
+        "output_availability",
+        "abstention",
+        "candidate_system_disagreement"
+      ],
+      "forbidden_interpretations": [
+        "phone_truth",
+        "australian_lexical_variant_truth",
+        "accent_quality_truth"
+      ]
+    }
+  },
+  "expert_label_policy": {
+    "reviewer_count": 5,
+    "original_reviewer_records_retained": true,
+    "reviewer_records_overwritten_by_consensus": false,
+    "plain_phone_state": "reviewer_confirmed_expected_phone",
+    "brace_phone_state": "accent_marked_but_not_a_relation_concern",
+    "parenthesis_phone_state": "incorrect_or_missed_relation_type_unresolved",
+    "bracket_phone_state": "explicit_inserted_phone",
+    "minimum_matching_reviewers_for_scorable_consensus": 4,
+    "disputed_behavior": "unscorable",
+    "parenthesis_may_be_forced_to_substitution_or_deletion": false,
+    "scalar_scores_are_relation_labels": false,
+    "aggregate_mispronunciation_role": "separate_supporting_exact_relation_class_only"
+  },
+  "phone_scope": {
+    "included_target_class": "consonants",
+    "included_relation_types": [
+      "coarse_substitution_or_deletion",
+      "explicit_consonant_insertion",
+      "aggregate_exact_consonant_substitution_support"
+    ],
+    "unsupported": [
+      "vowels_and_diphthongs",
+      "narrow_ipa_distortions",
+      "post_vocalic_r",
+      "flaps_glottal_variants_reductions_and_unresolved_allophones",
+      "connected_or_spontaneous_speech_target_relations",
+      "named_clinical_patterns"
+    ],
+    "unsupported_behavior": "unscorable",
+    "mapping_path": "benchmark-phone-map-v1.0.0.json",
+    "alignment": {
+      "algorithm": "deterministic_unit_cost_levenshtein",
+      "tie_break_order": [
+        "exact_or_declared_equivalent",
+        "substitution",
+        "deletion",
+        "insertion"
+      ],
+      "weighted_panphon_distance_used": false,
+      "model_output_is_reference_truth": false
+    }
+  },
+  "candidate_system_policy": {
+    "local_systems": [
+      "montreal_forced_aligner_3.4.1",
+      "phoneticxeus_8d83dee94817a07dc150f87d08f7e0ee01bdb66d",
+      "panphon_0.22.2"
+    ],
+    "phoneticxeus_output": "greedy_fixed_inventory_phone_path_with_uncalibrated_contextual_ctc_logits",
+    "phoneticxeus_confidence": "unavailable",
+    "mfa_role": "expected_text_conditioned_timing_only",
+    "panphon_role": "strict_atomic_feature_encoding_only",
+    "cross_system_agreement_is_truth": false,
+    "provider_required": false,
+    "network_access_during_local_inference": false,
+    "raw_private_outputs_retained": true,
+    "committed_clip_level_outputs": false
+  },
+  "metrics_policy": {
+    "relation_metrics": [
+      "true_positive",
+      "false_positive",
+      "false_negative",
+      "true_negative",
+      "precision",
+      "recall",
+      "f1",
+      "false_concerns_per_scorable_opportunity",
+      "abstention_rate",
+      "coverage"
+    ],
+    "zero_denominator_behavior": "null_with_visible_zero_denominator",
+    "uncertainty": "wilson_95_percent_interval_for_binomial_proportions",
+    "required_partitions": [
+      "development_separate_from_threshold_tuning",
+      "adult_separate_from_child",
+      "truth_class",
+      "candidate_system"
+    ],
+    "one_combined_headline_score_allowed": false,
+    "every_denominator_visible": true,
+    "missing_is_zero": false
+  },
+  "report_policy": {
+    "private_row_level_evidence_required": true,
+    "committed_report_aggregate_only": true,
+    "private_participant_or_clip_identifier_allowed_in_committed_report": false,
+    "limitations_required": true,
+    "held_out_results_allowed": false,
+    "system_selection_allowed": false,
+    "threshold_selection_allowed": false
+  },
+  "prohibited_outputs": [
+    "speech_sound_candidates.json",
+    "pronunciation_score",
+    "communication_score",
+    "coaching",
+    "personal_progress",
+    "screening",
+    "diagnosis",
+    "severity",
+    "cause",
+    "treatment",
+    "named_articulation_or_phonological_pattern"
+  ]
+}

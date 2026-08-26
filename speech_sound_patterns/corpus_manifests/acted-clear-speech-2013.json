@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "acted_clear_speech_manifest_v1",
+  "source_id": "acted_clear_speech",
+  "title": "Acted Clear Speech Corpus",
+  "version": {
+    "label": "2013 repository release",
+    "release_date": "2013-09-24",
+    "immutable_id": "doi_10.7488_ds_138"
+  },
+  "citation": "Mayo, Catherine. Acted clear speech corpus. LISTA Consortium, 2013. https://doi.org/10.7488/ds/138.",
+  "canonical_source": {
+    "landing_page": "https://datashare.ed.ac.uk/handle/10283/343",
+    "licence_url": "https://creativecommons.org/licenses/by/3.0/"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-21",
+    "account_required": false,
+    "terms_state": "not_required",
+    "terms_url": null,
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC-BY-3.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-21",
+    "attribution_required": true,
+    "attribution_text": "Cite Catherine Mayo, Acted clear speech corpus, DOI 10.7488/ds/138, under CC BY 3.0."
+  },
+  "governance": {
+    "permitted_roles": [
+      "phone_boundary_regression_fixture",
+      "speaking_condition_boundary_regression"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "population_accuracy_estimate",
+      "speech_sound_relation_accuracy",
+      "australian_performance_estimate"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/acted_clear_speech_2013",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "requires_separate_provider_terms_review",
+    "retention_or_deletion_duties": "Keep the verified private copy and attribution; do not commit or rehost the recordings."
+  },
+  "population": {
+    "description": "One approximately forty year old male native British English speaker with RP accent reading 25 sentences in five speaking conditions.",
+    "known_strata": [
+      "single_speaker",
+      "five_speaking_conditions"
+    ],
+    "limitations": [
+      "One speaker cannot estimate population performance.",
+      "The sentences are read and acted, not controlled isolated word speech.",
+      "The corpus is British rather than Australian English."
+    ]
+  },
+  "annotation": {
+    "truth_class": "human_corrected_phone_boundaries",
+    "provenance": "The repository provides automatic lab files and separate hand corrected Praat TextGrids created under documented segmentation criteria.",
+    "fields_retained": [
+      "audio_filename",
+      "condition_code",
+      "prompt_id",
+      "hand_corrected_phone_intervals"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "Hand corrected boundaries establish timing only, not substitutions, deletions, insertions or accepted variants."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "Official record, licence, readme and segmentation criteria inspected.",
+      "Audio, automatic labs and hand corrected TextGrid archives verified against official MD5 checksums."
+    ],
+    "findings": [
+      "The audio archive contains 125 trials.",
+      "The hand corrected archive contains 125 usable TextGrids after excluding macOS resource fork files.",
+      "Each of five speaking conditions contains 25 trials."
+    ]
+  },
+  "participant_split": {
+    "status": "fixture_not_population_split",
+    "unit": "single_fixture_speaker",
+    "source_split_provenance": "The source contains one speaker only.",
+    "project_strategy": "Use only as an exact boundary regression fixture and never as an independently split population.",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {
+      "five_conditions_each": {
+        "trials": 25
+      }
+    }
+  },
+  "lineage": {
+    "lineage_group": "acted_clear_speech_2013",
+    "derived_from": [],
+    "independence_claim": "fixture_only_not_population_evidence",
+    "duplicate_detection": "Filename and prompt identifiers are checked inside the fixture only.",
+    "candidate_model_overlap_status": "unknown_requires_model_specific_audit"
+  },
+  "archives": [
+    {
+      "filename": "clear_speech_wavs.zip",
+      "size_bytes": 14404644,
+      "canonical_download_url": "https://datashare.ed.ac.uk/bitstream/handle/10283/343/clear_speech_wavs.zip?isAllowed=y&sequence=2",
+      "upstream_checksum": {
+        "algorithm": "md5",
+        "value": "98dd02261df59da523d501ec9e3b01cf"
+      },
+      "local_sha256": "6409e64ec204b55dd7d792f22db4d70f33e22e9ce6f282b47bb56d79edeafba1",
+      "local_verification_status": "verified"
+    },
+    {
+      "filename": "clear_speech_labs.zip",
+      "size_bytes": 93185,
+      "canonical_download_url": "https://datashare.ed.ac.uk/bitstream/handle/10283/343/clear_speech_labs.zip?isAllowed=y&sequence=3",
+      "upstream_checksum": {
+        "algorithm": "md5",
+        "value": "a38e53c99666276ab77c51bb248358f3"
+      },
+      "local_sha256": "bfbbcfa08ace9aeb6e74c7ce09166f9eeabffd382e91500261f7048bd2796748",
+      "local_verification_status": "verified"
+    },
+    {
+      "filename": "clear_speech_TextGrid.zip",
+      "size_bytes": 176524,
+      "canonical_download_url": "https://datashare.ed.ac.uk/bitstream/handle/10283/343/clear_speech_TextGrid.zip?isAllowed=y&sequence=4",
+      "upstream_checksum": {
+        "algorithm": "md5",
+        "value": "96361703f727e06e7c7595c21cfb0b50"
+      },
+      "local_sha256": "fd606b97f657d9ad3b14170e350506f0dcc6ffefdaa30541af5bf4bb8a82a1f5",
+      "local_verification_status": "verified"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "question_id": "supply_sponsor_and_the_missing_entity",
+  "domain": "medical_device_regulation",
+  "question": "What does supplying software in Australia mean, and what does the absence of a legal entity do to it?",
+  "applies_to_purposes": [
+    "consumer_communication_coaching",
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Therapeutic Goods Administration, Understanding how we regulate software-based medical devices, Definition of supply",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-how-we-regulate-software-based-medical-devices",
+      "currency": "Published and last updated 24 February 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Under the Therapeutic Goods Act 1989, supply means providing therapeutic goods by any method, including sale, exchange, gift, lease, loan, hire, offering as a sample or through advertising. This definition applies whether the goods are provided for payment or free of charge. ... If software is made available to users in Australia, whether through an app store, cloud platform, or website, it is considered to be supplied in Australia."
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Understanding how we regulate software-based medical devices, sponsor obligations",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-how-we-regulate-software-based-medical-devices",
+      "currency": "Published and last updated 24 February 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "When a software product that meets the definition of a medical device is supplied in this way, the sponsor must: be an Australian legal entity responsible for the device; ensure the device is included in the ARTG; comply with all relevant regulatory obligations, including those relating to advertising, safety, and post-market monitoring."
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Understanding how we regulate software-based medical devices, software updates",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-how-we-regulate-software-based-medical-devices",
+      "currency": "Published and last updated 24 February 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Software updates can affect the intended purpose of a product and change its status for the purpose of regulation. If an update introduces new functionality, such as introducing diagnostic support, treatment recommendations, or clinical monitoring, the software may now meet the definition of a medical device, even if it was not previously regulated."
+    }
+  ],
+  "reading": [
+    "Free does not mean unsupplied. The definition expressly covers gift and provision free of charge, and making software available through a website or app store is supply in Australia.",
+    "If the software is a medical device, the sponsor must be an Australian legal entity. There is no version of that obligation that an individual with no entity can satisfy by being careful.",
+    "This is the third separate place the missing legal entity has blocked a route concretely rather than formally. The source survey found it blocking the largest relevant intelligibility corpus through a data use agreement countersignature. The clinical trial pathway requires an Australian sponsor. And here it is a precondition of lawful supply.",
+    "A shipped product's regulatory status is not fixed at launch. An update that adds diagnostic or monitoring functionality can pull a previously unregulated product into the framework."
+  ],
+  "confidence": "clear_on_the_face_of_the_source",
+  "consequences": [
+    "Deciding whether to create a legal entity is not an administrative matter to be handled later. It gates the research reference data, the trial pathway and any regulated supply.",
+    "A release process for this product would need a step that asks whether an update changed the intended purpose, and that step is a regulatory control rather than a nicety."
+  ],
+  "decided_by": [
+    "owner",
+    "australian_regulatory_specialist"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "supply_sponsor_and_the_missing_entity_reading_v1",
+  "conflicts": [],
+  "unresolved": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

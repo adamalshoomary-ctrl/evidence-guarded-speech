@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "common_voice_26_british_english_manifest_v1",
+  "source_id": "common_voice_26_british_english",
+  "title": "Common Voice Scripted Speech 26.0 British English",
+  "version": {
+    "label": "26.0 accent subset, locale en-GB",
+    "release_date": "2026-07-20",
+    "immutable_id": "mdc_cmrt6zrob000zmm07yqwjlpwi"
+  },
+  "citation": "Mozilla Data Collective Curators. Common Voice Scripted Speech 26.0 British English, dataset cmrt6zrob000zmm07yqwjlpwi.",
+  "canonical_source": {
+    "landing_page": "https://mozilladatacollective.com/datasets/cmrt6zrob000zmm07yqwjlpwi",
+    "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-29",
+    "account_required": true,
+    "terms_state": "accepted",
+    "terms_url": "https://mozilladatacollective.com/terms/consumers",
+    "terms_version": "2026-05-06",
+    "terms_snapshot_sha256": "c35810c0b58eacc36f939d133618d6119d6582bc4c39fb37b3b5ba8476cb181b"
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC0-1.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-29",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "british_variety_comparison_group"
+    ],
+    "prohibited_roles": [
+      "accent_quality_judgment",
+      "australian_lexical_variant_truth",
+      "clinical_inference",
+      "dataset_rehosting",
+      "phone_truth",
+      "product_release_truth",
+      "scientific_release_truth",
+      "selection_evidence_for_a_common_voice_trained_model",
+      "speaker_reidentification"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/common_voice_26_gb",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Do not rehost or re-share, do not attempt reidentification, maintain reasonable safeguards, and cease use or delete copies if required by account termination and the applicable dataset licence."
+  },
+  "population": {
+    "description": "Validated scripted speech, 215340 clips from 3543 self identified speakers in the supplied speaker disjoint splits. Validated rows whose self declared accent field indicates an England, Scottish, Welsh or Irish accent, matched case insensitively. No gender or age filter is applied.",
+    "known_strata": [
+      "source_train",
+      "source_dev",
+      "source_test"
+    ],
+    "limitations": [
+      "Accent information is self reported context rather than phonetic truth.",
+      "Sentence validation does not prove every phone matched one pronunciation.",
+      "The subset provides no phone timestamps and no lexical pronunciation variants.",
+      "Recording quality varies across contributors. Comparing accent subsets of one release on one platform controls most of that, and a difference between two reference paths on the same audio remains far better evidence than a difference between two corpora.",
+      "This is British Isles English pooled across England, Scotland, Wales and Ireland, not England alone, so it is broader than the variety the repaired reference describes.",
+      "No gender filter was applied here, while both American subsets were filtered to a declared gender. The groups are therefore not selected identically, and that asymmetry is reported rather than absorbed."
+    ]
+  },
+  "annotation": {
+    "truth_class": "validated_sentence_audio",
+    "provenance": "Common Voice sentence prompts, listener validation votes and optional self reported metadata; no phone annotation.",
+    "fields_retained": [
+      "client_id_private",
+      "path_private",
+      "sentence_id",
+      "sentence",
+      "validation_votes",
+      "self_reported_accent_context",
+      "source_split"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "A validated sentence supports a false concern and differential rate measurement only.",
+      "These are native speakers reading known text, so a flag is presumed a false concern rather than a detected error, and no detection accuracy claim can rest on this source.",
+      "Self reported demographic fields are optional and cannot create pronunciation truth."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "Authenticated dataset metadata, and the archive digest recomputed locally on 2026-07-29.",
+      "The supplied train, dev and test files, read row by row for participant and clip identifiers.",
+      "mdc_consumer_terms.html captured 2026-07-29 from https://mozilladatacollective.com/terms/consumers, SHA256 c35810c0b58eacc36f939d133618d6119d6582bc4c39fb37b3b5ba8476cb181b."
+    ],
+    "findings": [
+      "The package contains 201330 train, 5302 dev and 8708 test clips.",
+      "The splits contain 3244, 135 and 164 speakers respectively.",
+      "No client identifier appears in more than one supplied split.",
+      "1 contributor of this subset also appears in common_voice_26_american_english_male, having declared a different variety on different clips. Common Voice asks for accent per clip and accepts more than one answer, so this is a property of the source rather than a packaging error. No clip is shared. Such a contributor cannot represent either variety and is excluded from every comparison group rather than assigned to whichever they recorded more clips for. The exclusion is frozen in .research_data/speech_sound_patterns/splits/common-voice-26-accent-group-exclusions.json, SHA256 bf78b7ecbbf8e58f441b357bac0d250bd9405fe797f0d982c333a9079fd78bfa, and checkpoint 22E8 must honour it.",
+      "The variety the repaired reference actually describes, so it should improve most cleanly under it. That makes it the informative middle case rather than a spare comparison."
+    ]
+  },
+  "participant_split": {
+    "status": "audited",
+    "unit": "participant",
+    "source_split_provenance": "The package supplies train, dev and test TSV files with zero client identifier overlap.",
+    "project_strategy": "Map source train to development, source dev to threshold tuning and source test to frozen held out evaluation, exactly as the Australian subset already is.",
+    "frozen_held_out": true,
+    "assignment_artifact": ".research_data/speech_sound_patterns/splits/common-voice-26-gb.json",
+    "assignment_sha256": "248b55740757c5c701de90494180c56527855f887d20c89a4bf51c37cf088d5a",
+    "participant_counts": {
+      "development": 3244,
+      "threshold_tuning": 135,
+      "held_out_evaluation": 164
+    },
+    "cross_split_overlap_count": 0,
+    "strata": {
+      "dev": {
+        "development": 0,
+        "threshold_tuning": 135,
+        "held_out_evaluation": 0
+      },
+      "test": {
+        "development": 0,
+        "threshold_tuning": 0,
+        "held_out_evaluation": 164
+      },
+      "train": {
+        "development": 3244,
+        "threshold_tuning": 0,
+        "held_out_evaluation": 0
+      }
+    }
+  },
+  "lineage": {
+    "lineage_group": "common_voice",
+    "derived_from": [
+      "common_voice_26_english"
+    ],
+    "independence_claim": "not_independent_of_common_voice_family",
+    "duplicate_detection": "Private client and clip identifiers are checked against every Common Voice derived source before assembly.",
+    "candidate_model_overlap_status": "known_overlap_not_independent"
+  },
+  "archives": [
+    {
+      "filename": "common-voice-scripted-speech-26-0-britis-0fe481c3.tar.gz",
+      "size_bytes": 7486406897,
+      "canonical_download_url": "https://mozilladatacollective.com/api/datasets/cmrt6zrob000zmm07yqwjlpwi/download",
+      "upstream_checksum": {
+        "algorithm": "sha256",
+        "value": "cd2b4c3be7264fc3729bc48946a35242231c4aa289d4c3a76b4ac2b42b6971da"
+      },
+      "local_sha256": "cd2b4c3be7264fc3729bc48946a35242231c4aa289d4c3a76b4ac2b42b6971da",
+      "local_verification_status": "verified"
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "candidate_id": "acoustic_articulation_properties",
+  "title": "Acoustic articulation properties",
+  "register_lane": "acoustic_articulation",
+  "governance_lane": "unassigned_requires_governance",
+  "related_governance_lanes": [
+    "motor_speech",
+    "general_speech"
+  ],
+  "register_row": {
+    "candidate": "Formant trajectories, vowel dispersion, VOT, segment duration or F2 transitions",
+    "narrowest_defensible_observation": "Named acoustic property in a named phonetic context",
+    "required_reference": "Human phonetic boundaries; direct movement evidence if movement is claimed",
+    "disposition_23a": "Deferred; high variety, anatomy, task and item 22 overlap"
+  },
+  "observation": {
+    "what_would_be_measured": "A named acoustic property measured in a named phonetic context, such as the time between a stop release and voicing onset.",
+    "why_it_is_not_yet_a_measure": [
+      "Checkpoint 23A defers it, and this record does not assign it to a governance lane because the register row does not map onto exactly one. An agent may not make that assignment.",
+      "These properties vary strongly with language variety and with anatomy, which is the same confound item 22 measured directly when an American reference flagged Australian rhotic and t productions more often.",
+      "If movement is claimed, acoustics alone cannot establish it. Direct movement evidence would be required, and that is a different kind of study entirely.",
+      "It overlaps item 22 substantially, and item 22 material is not reusable by default."
+    ],
+    "claim_level": "measured_observation_candidate_not_selected"
+  },
+  "reference_requirement": {
+    "truth_class": "timing_and_boundary_truth",
+    "substitutions_refused": [
+      "An automatic aligner's boundaries cannot check an automatic aligner's boundaries.",
+      "A pronunciation lexicon proposes how a word may be said and never observes how anybody said it, which item 22 recorded explicitly.",
+      "An acoustic measurement cannot substitute for movement evidence when a movement claim is made."
+    ],
+    "public_availability": "not_surveyed_public_availability_unknown",
+    "source_survey_basis": [],
+    "consequence": "Human phonetic boundary reference was outside the source survey's three lanes. Item 22 separately established that the whole field of English corpora with expert phone level annotation is nine datasets, of which one is commercially usable here, so the supply of this kind of reference is known to be thin even though it was not surveyed for item 23."
+  },
+  "estimand_shape": {
+    "question": "How closely automatic phonetic boundary placement matches human placement in a named context, and how stable the derived acoustic property is within a person.",
+    "unit_of_analysis": "recording",
+    "comparison": "Algorithm boundaries against human phonetic boundaries in the same named context.",
+    "status": "candidate_shape_not_selected"
+  },
+  "variance_components_to_separate": [
+    "between_participant",
+    "within_participant_between_session",
+    "between_rater",
+    "between_prompt_or_stimulus",
+    "between_device",
+    "algorithm_or_model_version",
+    "residual_unexplained"
+  ],
+  "required_statistician_inputs": [
+    {
+      "input": "The named property and the named phonetic context, since the property is meaningless without the context.",
+      "why_public_research_cannot_supply_it": "Both are deferred, and choosing them would be selecting the construct."
+    },
+    {
+      "input": "How variety is handled, given that a variety mismatch may be excluded but never subtracted.",
+      "why_public_research_cannot_supply_it": "It needs expertly labelled Australian speech that this repository has established does not exist in public."
+    },
+    {
+      "input": "The one primary estimand for the question, stated before any data exists, together with the secondary quantities that may be reported beside it.",
+      "why_public_research_cannot_supply_it": "An estimand follows from an intended benefit and an intended claim. Checkpoint 23B has neither: the draft intended use records that it does not yet identify a sufficiently concrete benefit or eventual human action."
+    },
+    {
+      "input": "Expected between-person and within-person variance for the quantity, from a pilot run under the same task and capture path.",
+      "why_public_research_cannot_supply_it": "No task is selected and no pilot has been run, so there is no variance to expect. Published variance from another protocol, population or capture path describes that study rather than this one."
+    },
+    {
+      "input": "The precision the study must reach, expressed as an acceptable confidence interval width for each reported quantity rather than as a target point estimate.",
+      "why_public_research_cannot_supply_it": "Acceptable precision is a consequence of the claim being made and the harm of being wrong. Both belong to the accountable governance roles."
+    },
+    {
+      "input": "The number of candidate questions being carried, and how multiplicity across them will be handled.",
+      "why_public_research_cannot_supply_it": "The construct register may be narrowed or rejected entirely by the governance group, so the count of questions is not yet fixed."
+    },
+    {
+      "input": "Expected withdrawal, partial task completion, unusable recordings and missing reference, as rates rather than as a contingency.",
+      "why_public_research_cannot_supply_it": "These depend on the recruited population, the burden of the final protocol and the capture path, none of which exist."
+    },
+    {
+      "input": "Recruitment feasibility, participant burden and the cost of each additional participant, rater or listener.",
+      "why_public_research_cannot_supply_it": "There is no sponsor, no budget ceiling and no recruitment route, so feasibility cannot be estimated."
+    }
+  ],
+  "agreement_and_reliability": {
+    "statistic_family": "continuous_agreement",
+    "form_selection_inputs": [
+      "Whether agreement is reported on the boundary positions or on the derived property, since the two can disagree.",
+      "Whether human labellers are a fixed panel or a sample."
+    ],
+    "reporting_standards": [
+      "grras_reliability_and_agreement_reporting",
+      "icc_form_selection_guidance",
+      "limits_of_agreement"
+    ],
+    "notes": [
+      "Where varieties legitimately differ, the opportunity is unscorable rather than wrong. Where they agree, a model may raise a candidate for human review and never a finding."
+    ],
+    "measurement_error_required": true
+  },
+  "missingness_and_abstention": {
+    "categories": [
+      "participant_withdrew",
+      "task_not_attempted",
+      "task_attempted_but_invalid",
+      "recording_quality_invalid",
+      "unsupported_context_or_variety",
+      "reference_missing_or_unresolved",
+      "algorithm_abstained",
+      "consent_withdrawn_after_collection"
+    ],
+    "note": "An unsupported variety produces an unscorable opportunity with a reason, never a default or corrected value.",
+    "reported_separately": true
+  },
+  "split_and_clustering": {
+    "cluster_units": [
+      "site",
+      "device",
+      "prompt_or_stimulus",
+      "rater",
+      "repeated_session"
+    ],
+    "leakage_risks": [
+      "Item 22 participants and material overlap this question directly, so the overlap register applies before any use.",
+      "A participant's sessions, attempts and recordings must move together. Splitting them puts the same person on both sides of a comparison and makes a memorised speaker look like a general result.",
+      "Anything inspected during checkpoint 23C feasibility work is permanently pilot and development evidence for that participant and their related household, session and repeated recordings.",
+      "Item 22 material is not reusable by default. Even development use needs a new lawful purpose, consent, rights and ethics decision, and an overlap register covering every repository source and participant."
+    ],
+    "minimum_split_unit": "participant"
+  },
+  "subgroup_and_representation": [
+    "Australian English varieties, which no public source carries with any of the three item 23 truth classes",
+    "Australian English varieties the claim includes, including Aboriginal Englishes",
+    "multilingual adults and adults who speak English as an additional language",
+    "adults who cannot read the prompt, where a spoken alternative applies",
+    "disability, communication difference and assisted communication",
+    "gender-diverse voices and professional voice users",
+    "regional and remote participants and their capture conditions",
+    "device and capture-path strata the claim includes"
+  ],
+  "blockers": [
+    {
+      "blocker": "The register defers this question and it is not assigned to a governance lane, so nobody currently owns the decision.",
+      "blocker_class": "no_task_or_construct_selected"
+    },
+    {
+      "blocker": "Australian variety reference for this kind of property does not exist in public, which item 22 established rather than assumed.",
+      "blocker_class": "no_reference_evidence_exists"
+    },
+    {
+      "blocker": "No construct, task or measure is selected. Every lane in the checkpoint 23B governance contract remains unselected, and the register may be rejected in full.",
+      "blocker_class": "no_task_or_construct_selected"
+    },
+    {
+      "blocker": "No independent statistician is engaged, and the checkpoint requires the statistical plan to be prospectively received and reviewed by one.",
+      "blocker_class": "statistician_absent"
+    },
+    {
+      "blocker": "No pilot has been run, so no variance estimate exists to size anything against.",
+      "blocker_class": "no_pilot_variance"
+    },
+    {
+      "blocker": "The accountable professional and paid lived-experience governance roles are unfilled, and no external authority has been approached.",
+      "blocker_class": "professional_governance_absent"
+    },
+    {
+      "blocker": "There is no legal entity to sponsor collection, hold the data or sign an agreement, which the source survey already demonstrated as a concrete rather than formal obstacle.",
+      "blocker_class": "no_legal_entity"
+    },
+    {
+      "blocker": "No institution pathway or ethics review exists, and participant recording is prohibited until one does.",
+      "blocker_class": "ethics_review_absent"
+    }
+  ],
+  "sample_size": {
+    "method_candidates": [
+      "Walter, S. D., Eliasziw, M. and Donner, A. Sample size and optimal designs for reliability studies. Statistics in Medicine, 1998, doi:10.1002/(SICI)1097-0258(19980115)17:1<101::AID-SIM727>3.0.CO;2-E. A hypothesis testing approach. Its inputs are the minimum acceptable intraclass correlation, the expected intraclass correlation, the significance level, the power, and the number of raters or repetitions per participant. Primary text not opened here; its inputs are reported from an open access implementation and its notation for the number of subjects and the number of replicates is the reverse of most modern restatements.",
+      "Bonett, D. G. Sample size requirements for estimating intraclass correlations with desired precision. Statistics in Medicine, 2002, doi:10.1002/sim.1108. A precision approach. Its inputs are the expected intraclass correlation, the desired confidence interval width, the confidence level, and the number of raters or repetitions. Primary text not opened here.",
+      "Zou, G. Y. Sample size formulas for estimating intraclass correlation coefficients with precision and assurance. Statistics in Medicine, 2012, doi:10.1002/sim.5466. Adds an assurance probability, because the width of a confidence interval is itself random and a precision calculation without assurance can miss its target about half the time. Primary text not opened here.",
+      "Bland, J. M. Deciding the sample size for a study of agreement between two methods of measurement, at https://www-users.york.ac.uk/~mb55/meas/sizemeth.htm, read 2026-08-19. Sizes a study by the precision required on the limits of agreement themselves, expressed as a multiple of the standard deviation of the differences, so it does not require that standard deviation to be known in advance."
+    ],
+    "prerequisites": [
+      "A named acoustic property and a named phonetic context.",
+      "A variety handling rule that excludes rather than subtracts.",
+      "A resolved item 22 overlap decision."
+    ],
+    "state": "not_computable_without_the_inputs_above",
+    "computed_value": null
+  },
+  "schema_version": "1.0.0",
+  "record_id": "acoustic_articulation_properties_measurement_inputs_v1",
+  "selected": false
+}

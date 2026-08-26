@@ -1,0 +1,66 @@
+{
+  "question_id": "speech_recordings_as_sensitive_information",
+  "domain": "privacy",
+  "question": "Are speech recordings personal information, and can they be sensitive information?",
+  "applies_to_purposes": [
+    "developer_research_only",
+    "consumer_communication_coaching",
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Privacy Act 1988 (Cth), section 6FA, Meaning of health information",
+      "url": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "The following information is health information: (a) information or an opinion about: (i) the health, including an illness, disability or injury, (at any time) of an individual ... that is also personal information; (b) other personal information collected to provide, or in providing, a health service to an individual ..."
+    },
+    {
+      "citation": "Privacy Act 1988 (Cth), section 6(1), definition of sensitive information",
+      "url": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "sensitive information means: ... (b) health information about an individual; or (c) genetic information about an individual that is not otherwise health information; or (d) biometric information that is to be used for the purpose of automated biometric verification or biometric identification; or (e) biometric templates."
+    },
+    {
+      "citation": "Privacy Act 1988 (Cth), Schedule 1, Australian Privacy Principle 3.3",
+      "url": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "An APP entity must not collect sensitive information about an individual unless: (a) the individual consents to the collection of the information and: ... (ii) if the entity is an organisation, the information is reasonably necessary for one or more of the entity's functions or activities; or (b) subclause 3.4 applies in relation to the information."
+    }
+  ],
+  "reading": [
+    "The shortest route from a speech recording to sensitive information is the health information one, and it does not require a health service. Section 6FA(a)(i) covers information or an opinion about the health, including an illness, disability or injury, of an individual. A recording that evidences a speech or neurological condition is on its face that.",
+    "The biometric route is narrower than it first looks. Limb (d) is conditional on the information being used for automated biometric verification or identification, which research on speech production would not be. Limb (e), biometric templates, carries no such condition, and whether a learned speaker embedding is a biometric template is undefined in the Act.",
+    "If recordings are sensitive information and the researcher is an Australian Privacy Principle entity, collection needs consent and must be reasonably necessary. Consent here means express consent in practice, not inferred consent.",
+    "The engineering plan already says an identifiable voice recording is personal information and is not automatically biometric sensitive information. That remains right. This record sharpens it: the health content route is the one to worry about, and it can engage on content alone."
+  ],
+  "confidence": "reading_with_material_uncertainty",
+  "unresolved": [
+    {
+      "question": "Whether a learned speaker embedding or voice model derived from a recording is a biometric template.",
+      "why_it_cannot_be_settled_here": "Neither biometric information nor biometric template is defined in the Act, and no guidance defining them was located.",
+      "who_must_settle_it": "An Australian privacy lawyer."
+    }
+  ],
+  "conflicts": [
+    "The regulator's consumer facing guidance on biometric scanning states without qualification that voice is biometric information and that biometric information is sensitive information. The statutory definition and the regulator's own Australian Privacy Principle guidelines both carry the qualifier that it must be information to be used for automated biometric verification or identification. The two are recorded and not reconciled here. This conflict was reported by a research pass that read both pages; the statutory wording was read directly at the compilation and is the extract quoted above."
+  ],
+  "consequences": [
+    "Consent design cannot treat audio as ordinary personal information. The plan's separate consent decisions already assume this.",
+    "A future feature that identifies or verifies a speaker would change the classification by itself, independently of what is recorded."
+  ],
+  "decided_by": [
+    "australian_privacy_lawyer",
+    "owner"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "speech_recordings_as_sensitive_information_reading_v1",
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

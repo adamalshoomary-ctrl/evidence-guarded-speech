@@ -1,0 +1,95 @@
+{
+  "source_id": "voc_als",
+  "title": "VOC-ALS, voice signals in amyotrophic lateral sclerosis and healthy controls",
+  "citation": "Sannino, G. et al. Voice signals database of ALS patients with different dysarthria severity and healthy controls. Scientific Data 11, 2024. doi:10.1038/s41597-024-03597-2",
+  "canonical_source": {
+    "landing_page": "https://www.synapse.org/Synapse:syn53009474",
+    "terms_or_licence_url": "https://www.nature.com/articles/s41597-024-03597-2"
+  },
+  "language_and_variety": {
+    "language": "Italian",
+    "variety": null,
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "153 participants: 51 healthy controls and 102 people with ALS at differing dysarthria severity, recruited consecutively at one hospital ALS centre.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Italian, and a single-centre clinical cohort.",
+      "Recorded on one smartphone model through one application, so the capture path is fixed and untested against any other device."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel",
+    "syllable_repetition_pa_ta_ka"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "population_description_only",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": false,
+    "adjudication_defined": false,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "Labels are the ALSFRS-R speech subscore and derived acoustic measures. No human marked syllable boundaries, counts, onsets or task errors.",
+      "A clinical rating scale subscore is a different truth class from task timing and cannot be pooled with it."
+    ]
+  },
+  "access": {
+    "route": "free_account_and_signed_agreement",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": true,
+    "agreement_signature_required": true,
+    "fee": null,
+    "state": "obtainable_only_after_contact_or_agreement",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Creative Commons Attribution 4.0 International",
+    "spdx_id": "CC-BY-4.0",
+    "commercial_use_permitted": true,
+    "source_of_licence_string": "publication_text",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "PubMed Central full text PMC11271596, read 2026-08-19."
+    ],
+    "findings": [
+      "All recordings were sampled at 8000 Hz with 16 bit resolution. That is telephone bandwidth and is not adequate for burst or voice onset time measurement, whatever the licence permits.",
+      "Access requires a Synapse Registered User profile and acceptance of Synapse governance and terms of use."
+    ],
+    "conflicting_claims": [
+      "The licence string comes from the article rather than from the Synapse landing page, which did not render a licence. The two have not been reconciled."
+    ]
+  },
+  "eligibility": {
+    "decision": "blocked_truth_class",
+    "reasons": [
+      "No rapid syllable reference truth, and an 8 kHz capture path that would not support timing measurement even if there were."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "voc_als_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

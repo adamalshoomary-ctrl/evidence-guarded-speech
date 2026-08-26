@@ -1,0 +1,91 @@
+{
+  "source_id": "saarbruecken_grb_labels",
+  "title": "GRB assessment of the Saarbruecken Voice Database",
+  "citation": "Arias-Londono, J. D., Gomez-Garcia, J. A., Godino-Llorente, J. I. & Mendes-Laureano, J. GRB assessment of the Saarbruecken Voice Database. Zenodo 3550736, annex to IEEE JSTSP 14(2), 2020.",
+  "canonical_source": {
+    "landing_page": "https://zenodo.org/records/3550736",
+    "terms_or_licence_url": "https://zenodo.org/records/3550736"
+  },
+  "language_and_variety": {
+    "language": "German",
+    "variety": null,
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "Grade, roughness and breathiness labels covering a subset of the Saarbruecken speakers; the associated paper uses 568 normophonic and 970 pathological subjects.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Labels only. The recordings live in the separate Saarbruecken deposit."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel_a_i_u"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "perceptual_voice_single_rater",
+    "independent_rater_or_annotator_count": 1,
+    "individual_records_retained": false,
+    "adjudication_defined": false,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "The labels come from a single evaluator. The paper the deposit annexes describes its own predecessor work as emulating the perceptual capabilities of a single evaluator, and refers throughout to the perceptual evaluation provided by the speech therapist in the singular.",
+      "Item 23 states directly that one clinician cannot substitute for several independent qualified raters, so an openly licensed single rater label set does not become perceptual truth by being free."
+    ]
+  },
+  "access": {
+    "route": "open_direct_download",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_without_contact",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Creative Commons Attribution 4.0 International",
+    "spdx_id": "CC-BY-4.0",
+    "commercial_use_permitted": true,
+    "source_of_licence_string": "repository_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Zenodo API record 3550736, queried 2026-08-19: open access, CC BY 4.0, one spreadsheet of 122,880 bytes.",
+      "Open access preprint of the annexed IEEE JSTSP paper, Zenodo record 3601013, read 2026-08-19."
+    ],
+    "findings": [
+      "This is the nearest thing to a free perceptual label set attached to a free audio corpus, and it fails on rater multiplicity alone."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_truth_class",
+    "reasons": [
+      "Single rater perceptual labels are excluded by the item 23 truth architecture regardless of licence or availability."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "saarbruecken_grb_labels_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

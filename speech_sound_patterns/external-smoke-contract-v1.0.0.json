@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "speech_sound_external_schema_smoke",
+  "contract_version": "1.0.0",
+  "checkpoint": "22E3",
+  "declared": "2026-07-25",
+  "declared_before_any_request": true,
+  "scope_statement": "This contract is written before any audio leaves the machine. It fixes what the external schema smoke test is allowed to ask, what counts as a present field, what counts as repeatable, and what each possible outcome permits a lane to do in checkpoint 22E4. It measures response shape and repeatability only. It measures no accuracy, selects no system and sets no threshold.",
+  "question_under_test": "For each external lane and locale configuration, do the response fields that the provider documents actually appear in a real response, and does an identical request return an identical response?",
+  "not_under_test": [
+    "accuracy against expert human labels",
+    "agreement with any local candidate",
+    "threshold selection",
+    "Australian variety performance",
+    "child speech performance",
+    "cost or latency at benchmark scale"
+  ],
+  "input_policy": {
+    "transfer_review_id": "speech_sound_corpus_provider_transfer_review",
+    "transfer_review_version": "1.0.0",
+    "expected_only_manifest_sha256": "c918feffa7c0a3a3fa99ce7a9e028621e8fb002980777297f30088e5975331da",
+    "source_id": "speechocean762",
+    "project_split": "development",
+    "permitted_strata": ["source_adult_f", "source_adult_m"],
+    "clip_count": 5,
+    "repeats_per_configuration": 2,
+    "selection_scope": "speech_sound_patterns_external_smoke_v1",
+    "selection_used_expert_labels_or_model_outputs": false,
+    "transmitted_fields": [
+      "the clip audio as stored in the private benchmark tree",
+      "the intended reference text for that clip"
+    ],
+    "never_transmitted_fields": [
+      "expert reviewer phone strings",
+      "aggregate mispronunciation labels",
+      "reference phone sequences",
+      "private participant identifiers",
+      "private utterance identifiers",
+      "any held out participant or clip",
+      "any threshold tuning clip",
+      "any child stratum clip",
+      "any owner or personal recording"
+    ]
+  },
+  "azure_configurations": [
+    {
+      "configuration_id": "azure_en_au",
+      "lane_id": "azure_speech",
+      "locale": "en-AU",
+      "documented_expectation": "en-AU is a supported pronunciation assessment locale, but phoneme name, syllable group and spoken phoneme output are documented for en-US only, so the expected result is a per position phoneme accuracy score with no phoneme name.",
+      "expectation_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment"
+    },
+    {
+      "configuration_id": "azure_en_us",
+      "lane_id": "azure_speech",
+      "locale": "en-US",
+      "documented_expectation": "en-US with the IPA alphabet is documented to return phoneme names, syllable groups and NBestPhonemes spoken phoneme candidates with confidence scores.",
+      "expectation_source": "https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-pronunciation-assessment"
+    }
+  ],
+  "azure_request_policy": {
+    "endpoint_shape": "https://REGION.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=LOCALE&format=detailed",
+    "endpoint_note": "Microsoft documents a custom subdomain form at https://RESOURCE.cognitiveservices.azure.com/stt/speech/recognition/conversation/cognitiveservices/v1. The regional speech host is used instead because the recorded .env endpoint is the regional form and the resource key authenticates against both. The region is australiaeast, which is the recorded processing region for this resource.",
+    "content_type": "audio/wav; codecs=audio/pcm; samplerate=16000",
+    "assessment_parameters": {
+      "GradingSystem": "HundredMark",
+      "Granularity": "Phoneme",
+      "Dimension": "Comprehensive",
+      "EnableMiscue": "True",
+      "PhonemeAlphabet": "IPA",
+      "NBestPhonemeCount": 5
+    },
+    "undocumented_in_rest_reference": [
+      "PhonemeAlphabet",
+      "NBestPhonemeCount"
+    ],
+    "undocumented_parameter_note": "The REST short audio reference lists ReferenceText, GradingSystem, Granularity, Dimension, EnableMiscue, EnableProsodyAssessment and ScenarioId only. PhonemeAlphabet and NBestPhonemeCount are documented for the Speech SDK configuration object. Whether the REST header honours them is an open empirical question this smoke test must answer rather than assume.",
+    "prosody_assessment_enabled": false,
+    "prosody_note": "Prosody assessment is documented as en-US only and is a prohibited output class for this project, so it is never requested."
+  },
+  "field_presence_rules": {
+    "present": "the field exists in the parsed response with a non null value on every clip in the configuration",
+    "partial": "the field exists on at least one clip but not on every clip",
+    "absent": "the field exists on no clip",
+    "unknown_is_absent": "any field the runner cannot locate is recorded absent; a missing field is never assumed present"
+  },
+  "required_fields_per_configuration": {
+    "recognition": ["RecognitionStatus", "NBest"],
+    "utterance_assessment": ["AccuracyScore"],
+    "word_level": ["Word", "AccuracyScore", "ErrorType"],
+    "phoneme_level": ["AccuracyScore"]
+  },
+  "capability_probes": {
+    "phoneme_name": "a phoneme level Phoneme field naming the expected phone",
+    "spoken_phoneme_candidates": "a phoneme level NBestPhonemes list whose entries carry a Phoneme name and a Score",
+    "syllable_group": "a word level Syllables list",
+    "miscue_error_types": "a word level ErrorType able to take the values Omission or Insertion",
+    "ipa_alphabet_honoured": "phoneme names rendered in IPA rather than SAPI when PhonemeAlphabet is IPA"
+  },
+  "repeatability_rules": {
+    "method": "each clip is sent twice per configuration with byte identical audio and byte identical assessment parameters",
+    "exact": "every recorded numeric score and every phone name string is identical across both repeats",
+    "stable_schema_only": "the field set is identical across both repeats but at least one numeric value differs",
+    "unstable": "the field set differs across repeats, or a request failed on one repeat and succeeded on the other",
+    "numeric_tolerance": 0.0,
+    "tolerance_note": "no tolerance is granted. A provider whose identical request returns different numbers is recorded as such, because that materially affects how any later comparison must be interpreted."
+  },
+  "advancement_rules": {
+    "exact_relation_capable": "the configuration exposes a phoneme name for the expected phone and a named produced or candidate phone with a score. Only such a configuration may supply exact relation evidence in checkpoint 22E4.",
+    "score_only": "the configuration exposes a phoneme level score but no named produced phone. It may supply score only concern evidence in checkpoint 22E4 and may never be read as naming what the speaker produced.",
+    "failed": "the configuration does not expose a usable phoneme level score, or its requests did not succeed. It advances nothing.",
+    "no_lane_advances_on_marketing": "a documented claim, a product page, an overall score or agreement with another system can never qualify a configuration. Only observed response fields can."
+  },
+  "prohibited_outputs": [
+    "PronScore",
+    "FluencyScore",
+    "CompletenessScore",
+    "ProsodyScore",
+    "any native likeness interpretation",
+    "any pooling of en-AU and en-US results",
+    "any treatment of an Azure score as reference truth or as Australian truth",
+    "any use of en-US produced phones for vowel, diphthong or post vocalic r relations"
+  ],
+  "failure_handling": {
+    "on_http_error": "record the status code, the response body classification and the configuration outcome as failed; do not retry more than twice and never vary the request to obtain a better answer",
+    "on_quota_error": "record it and stop; report to Adam rather than hammering retries",
+    "partial_run_is_reported": "a configuration that could not be completed is reported incomplete rather than omitted"
+  },
+  "privacy_and_storage": {
+    "raw_responses": "retained privately under .research_data and never committed",
+    "committed_report": "aggregate field presence, repeatability and outcome only, with no transcript text, no per clip score and no participant identifier",
+    "secrets": "credentials are read from the gitignored .env by variable name and never printed, logged or written to any artifact"
+  },
+  "release_lock": "Completing this contract unlocks nothing. No task, prompt pack, extractor, candidate artifact, score, coaching output, progress metric, screening or diagnosis is created or approved by a schema smoke test."
+}

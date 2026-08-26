@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "repair_id": "speech_sound_patterns_repeated_expected_sound_filter_v1",
+  "status": "rules_frozen_before_repeated_evidence_scoring",
+  "purpose": "Test whether requiring the same expected sound to produce independent high-probability review candidates across multiple words and clips can remove isolated model false alarms. This benchmark filter does not create a product artifact or a named pattern.",
+  "input_policy": {
+    "context_contract_sha256": "38add2aa66357da73b6aca36f5993125032d4e280c17336c18c290bc4fad7c96",
+    "context_calibration_sha256": "024bc12ca60c5413c2cdd12819f398d5dec0da601f88d18956df0a71b9c2dd6c",
+    "selected_context_model_family": "l2_logistic_regression",
+    "selected_context_model_c": 0.1,
+    "development_grouped_average_precision": 0.450153862,
+    "allowed_partitions": [
+      "development_out_of_fold",
+      "threshold_tuning"
+    ],
+    "held_out_access_allowed": false,
+    "children_in_filter_selection": false
+  },
+  "grouping_policy": {
+    "group_key": [
+      "private_participant_id",
+      "expected_arpabet"
+    ],
+    "participant_identity_used_as_predictive_feature": false,
+    "participant_identity_role": "same_controlled_session_grouping_only",
+    "candidate_must_repeat_same_expected_sound": true,
+    "distinct_word_occurrences_required": true,
+    "distinct_clips_required": true,
+    "word_identity_used_as_predictive_feature": false,
+    "named_pattern_created": false
+  },
+  "fixed_search_grid": {
+    "opportunity_probability_threshold": {
+      "minimum": 0.5,
+      "maximum": 0.99,
+      "step": 0.01
+    },
+    "minimum_candidates_for_same_expected_sound": [
+      2,
+      3,
+      4
+    ],
+    "minimum_distinct_words": [
+      2,
+      3
+    ],
+    "minimum_distinct_clips": [
+      2,
+      3
+    ]
+  },
+  "selection_policy": {
+    "development_and_tuning_both_must_pass": true,
+    "selection_order": [
+      "highest_tuning_recall",
+      "highest_tuning_precision",
+      "highest_probability_threshold",
+      "largest_repeat_requirements"
+    ],
+    "tuning_may_change_context_model": false,
+    "tuning_may_change_feature_set": false,
+    "held_out_labels_or_outputs_used": false
+  },
+  "selection_gates": {
+    "minimum_precision_point_estimate": 0.75,
+    "minimum_precision_wilson_95_lower": 0.5,
+    "maximum_false_concerns_per_scorable_opportunity": 0.01,
+    "minimum_recall": 0.2,
+    "minimum_true_positives": 7,
+    "every_tuning_participant_reported": true,
+    "failure_behavior": "no_system_filter_or_threshold_selected"
+  },
+  "population_policy": {
+    "eligible_population": "source_adults_only",
+    "children": "unavailable_insufficient_positive_reference_opportunities",
+    "insertions": "unavailable_no_positive_consensus_examples",
+    "held_out": "sealed_for_checkpoint_22H"
+  },
+  "release_boundaries": {
+    "normal_pipeline": false,
+    "candidate_artifact": false,
+    "coaching": false,
+    "personal_progress": false,
+    "named_pattern": false,
+    "scientific_release": false,
+    "product_release": false,
+    "screening": false,
+    "diagnosis": false,
+    "severity": false,
+    "cause": false,
+    "treatment": false
+  }
+}

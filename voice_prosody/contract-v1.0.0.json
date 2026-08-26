@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "1.0.0",
+  "status": "engineering_active_scientific_release_locked",
+  "purpose": "Define low level task aware voice and prosody observations without creating a score, diagnosis or preferred speaking style.",
+  "claim_boundaries": {
+    "allowed_claim_level": "measured_observation",
+    "coaching_interpretation_requires_separate_validation": true,
+    "combined_voice_or_prosody_index_allowed": false,
+    "confidence_or_personality_inference_allowed": false,
+    "gender_or_identity_inference_allowed": false,
+    "screening_allowed": false,
+    "diagnosis_allowed": false,
+    "ranking_allowed": false,
+    "personal_progress_allowed": false,
+    "universal_ideal_voice_allowed": false,
+    "missing_evidence_becomes_zero": false
+  },
+  "task_profiles": {
+    "fixed_reading": {
+      "task_ids": [
+        "standard_reading_en_v1",
+        "anchor_repeat_en_v1"
+      ],
+      "comparability": "same_task_prompt_version_and_validated_capture_only",
+      "supports": [
+        "f0_median_hz",
+        "f0_percentiles_hz",
+        "f0_distribution_span_st",
+        "recorder_level_percentiles_dbfs",
+        "recorder_level_span_db",
+        "cpps_db"
+      ]
+    },
+    "listen_and_repeat": {
+      "task_ids": [
+        "spoken_repetition_alternative_en_v1",
+        "spoken_anchor_repeat_alternative_en_v1"
+      ],
+      "comparability": "same_task_prompt_playback_and_capture_only",
+      "supports": [
+        "f0_median_hz",
+        "f0_percentiles_hz",
+        "f0_distribution_span_st",
+        "recorder_level_percentiles_dbfs",
+        "recorder_level_span_db"
+      ]
+    },
+    "spontaneous_speech": {
+      "task_ids": [
+        "spontaneous_explanation_en_v1",
+        "goal_specific_response_en_v1"
+      ],
+      "comparability": "same_task_context_prompt_and_validated_capture_only",
+      "supports": [
+        "f0_median_hz",
+        "f0_percentiles_hz",
+        "f0_distribution_span_st",
+        "recorder_level_percentiles_dbfs",
+        "recorder_level_span_db"
+      ]
+    },
+    "conversation": {
+      "task_ids": [],
+      "comparability": "contiguous_exclusive_speaker_regions_only",
+      "supports": [
+        "f0_median_hz",
+        "f0_percentiles_hz",
+        "f0_distribution_span_st",
+        "recorder_level_percentiles_dbfs",
+        "recorder_level_span_db"
+      ]
+    },
+    "sustained_vowel_research": {
+      "task_ids": [
+        "comfortable_vowel_research_en_v1"
+      ],
+      "comparability": "same_vowel_task_capture_and_three_valid_repetitions_only",
+      "requires_research_consent": true,
+      "supports": [
+        "f0_median_hz",
+        "cpps_db",
+        "jitter_local_pct",
+        "shimmer_local_pct"
+      ]
+    },
+    "repeated_phrase_research": {
+      "task_ids": [
+        "repeated_phrase_research_en_v1"
+      ],
+      "comparability": "same_phrase_prompt_playback_capture_and_repetition_only",
+      "requires_research_consent": true,
+      "supports": [
+        "f0_median_hz",
+        "f0_percentiles_hz",
+        "f0_distribution_span_st",
+        "recorder_level_percentiles_dbfs",
+        "recorder_level_span_db"
+      ]
+    },
+    "unknown_ad_hoc": {
+      "task_ids": [],
+      "comparability": "not_comparable",
+      "supports": [
+        "f0_median_hz",
+        "f0_percentiles_hz",
+        "f0_distribution_span_st",
+        "recorder_level_percentiles_dbfs",
+        "recorder_level_span_db"
+      ]
+    }
+  },
+  "primitive_registry": {
+    "f0_median_hz": {
+      "construct": "median estimated fundamental frequency across eligible voiced frames",
+      "unit": "hertz",
+      "minimum": {
+        "voiced_frames": 50,
+        "voiced_s": 1.0
+      },
+      "task_specific": true,
+      "device_validation": "not_established",
+      "release": "experimental_observation",
+      "forbidden_interpretations": [
+        "perceived pitch",
+        "gender",
+        "confidence",
+        "personality",
+        "voice health"
+      ]
+    },
+    "f0_percentiles_hz": {
+      "construct": "fifth twenty fifth seventy fifth and ninety fifth percentiles of eligible fundamental frequency estimates",
+      "unit": "hertz",
+      "minimum": {
+        "voiced_frames": 100,
+        "voiced_s": 2.0
+      },
+      "task_specific": true,
+      "device_validation": "not_established",
+      "release": "experimental_observation",
+      "forbidden_interpretations": [
+        "intonation target",
+        "expressiveness",
+        "monotone",
+        "emotion"
+      ]
+    },
+    "f0_distribution_span_st": {
+      "construct": "ninety fifth minus fifth percentile fundamental frequency distribution span within one attempt",
+      "unit": "semitones",
+      "minimum": {
+        "voiced_frames": 100,
+        "voiced_s": 2.0
+      },
+      "task_specific": true,
+      "device_validation": "not_established",
+      "release": "experimental_observation",
+      "forbidden_interpretations": [
+        "intonation range",
+        "expressiveness",
+        "monotone score",
+        "communication quality"
+      ]
+    },
+    "recorder_level_percentiles_dbfs": {
+      "construct": "digital root mean square recorder level percentiles across eligible voiced frames",
+      "unit": "dBFS",
+      "minimum": {
+        "voiced_frames": 100,
+        "voiced_s": 2.0
+      },
+      "task_specific": true,
+      "device_validation": "not_established",
+      "release": "experimental_observation",
+      "forbidden_interpretations": [
+        "sound pressure level",
+        "vocal loudness",
+        "confidence",
+        "projection quality"
+      ]
+    },
+    "recorder_level_span_db": {
+      "construct": "ninety fifth minus fifth percentile digital recorder level within one attempt",
+      "unit": "decibels relative within capture",
+      "minimum": {
+        "voiced_frames": 100,
+        "voiced_s": 2.0
+      },
+      "task_specific": true,
+      "device_validation": "not_established",
+      "release": "experimental_observation",
+      "forbidden_interpretations": [
+        "sound pressure level range",
+        "expressiveness",
+        "vocal control",
+        "better or worse"
+      ]
+    },
+    "cpps_db": {
+      "construct": "smoothed cepstral peak prominence calculated with the declared task specific algorithm",
+      "unit": "decibels",
+      "minimum": {
+        "continuous_s": 5.0,
+        "sustained_vowel_repetitions": 3
+      },
+      "task_specific": true,
+      "device_validation": "not_established",
+      "release": "research_only",
+      "forbidden_interpretations": [
+        "clinical cutoff",
+        "dysphonia",
+        "breathiness",
+        "voice disorder",
+        "voice health"
+      ]
+    },
+    "jitter_local_pct": {
+      "construct": "local cycle to cycle period perturbation across three eligible steady sustained vowel repetitions",
+      "unit": "percent",
+      "minimum": {
+        "repetitions": 3,
+        "middle_steady_s_per_repetition": 1.0
+      },
+      "task_specific": true,
+      "device_validation": "not_established",
+      "release": "research_only",
+      "forbidden_interpretations": [
+        "connected speech quality",
+        "shaky voice",
+        "nervousness",
+        "voice disorder"
+      ]
+    },
+    "shimmer_local_pct": {
+      "construct": "local cycle to cycle amplitude perturbation across three eligible steady sustained vowel repetitions",
+      "unit": "percent",
+      "minimum": {
+        "repetitions": 3,
+        "middle_steady_s_per_repetition": 1.0
+      },
+      "task_specific": true,
+      "device_validation": "not_established",
+      "release": "research_only",
+      "forbidden_interpretations": [
+        "connected speech quality",
+        "shaky voice",
+        "nervousness",
+        "voice disorder"
+      ]
+    },
+    "absolute_vocal_spl_db": {
+      "construct": "physical sound pressure level from a calibrated recording chain",
+      "unit": "dB SPL",
+      "minimum": {
+        "calibrated_chain": true
+      },
+      "task_specific": true,
+      "device_validation": "not_established",
+      "release": "locked",
+      "forbidden_interpretations": [
+        "ordinary upload amplitude as physical loudness"
+      ]
+    }
+  },
+  "algorithm": {
+    "version": "voice-prosody-primitives-1.0.0",
+    "analysis_sample_rate_hz": 48000,
+    "frame_step_s": 0.01,
+    "level_window_s": 0.02,
+    "pitch": {
+      "primary": "praat_raw_autocorrelation_two_pass_adaptive",
+      "pitch_floor_hz": 50,
+      "pitch_ceiling_hz": 800,
+      "adaptive_pitch_ratio": 3.0,
+      "voicing_threshold": 0.45,
+      "silence_threshold": 0.03,
+      "octave_jump_ratio": 1.9,
+      "boundary_margin_ratio": 0.05,
+      "region_edge_margin_s": 0.03
+    },
+    "level": {
+      "method": "rms_dbfs",
+      "reference_full_scale": 1.0,
+      "absolute_spl_without_calibration": "unavailable"
+    },
+    "cpps": {
+      "method": "praat_power_cepstrogram_cpps",
+      "task_gated": true
+    },
+    "perturbation": {
+      "method": "praat_point_process_periodic_cc",
+      "sustained_vowel_only": true,
+      "continuous_regions_only": true
+    }
+  },
+  "frame_contract": {
+    "required_fields": [
+      "time_s",
+      "f0_hz",
+      "pitch_strength",
+      "recorder_level_dbfs",
+      "voiced",
+      "speaker",
+      "region_id",
+      "quality_flags"
+    ],
+    "unvoiced_f0": null,
+    "original_timestamps_preserved": true,
+    "crosses_silence": false,
+    "crosses_speaker_change": false,
+    "crosses_overlap": false,
+    "crosses_region_boundary": false
+  },
+  "device_policy": {
+    "ordinary_upload_absolute_spl": "unavailable",
+    "cross_device_comparison": "blocked_until_metric_specific_held_out_validation",
+    "same_device_longitudinal_comparison": "blocked_until_metric_specific_repeatability_release",
+    "required_nonidentifying_context": [
+      "device_class",
+      "platform",
+      "microphone",
+      "source"
+    ],
+    "unknown_processing_is_visible": true,
+    "hardware_fingerprint_allowed": false,
+    "validation_status": "not_evaluated"
+  },
+  "validation_program": {
+    "synthetic_controls": [
+      "known steady fundamental frequencies",
+      "known pitch glides",
+      "known digital level changes",
+      "silence and unvoiced regions",
+      "noise clipping reverberation and gain changes",
+      "pitch floor ceiling and octave error stress",
+      "separated regions and speaker overlap",
+      "lossy codec and sample rate transformations"
+    ],
+    "natural_pitch_reference": "held_out_laryngograph_aligned_corpus_plus_trained_review",
+    "device_reference": "simultaneous_reference_microphone_and_representative_consumer_devices",
+    "task_repeatability": "repeated_participants_across_tasks_sessions_and_days",
+    "agreement_statistics": [
+      "bias",
+      "limits_of_agreement",
+      "absolute_error",
+      "gross_pitch_error",
+      "voicing_precision_recall",
+      "availability_rate"
+    ],
+    "development_and_evaluation_participants_separate": true,
+    "adam_recordings_role": "functional_integration_only"
+  },
+  "release_limits": {
+    "single_recording_observation": "allowed_only_when_metric_task_and_quality_requirements_pass",
+    "coaching_interpretation": "blocked_pending_separate_validation",
+    "personal_progress": "blocked",
+    "cross_device_progress": "blocked",
+    "combined_index": "blocked",
+    "ranking": "blocked",
+    "screening": "blocked",
+    "diagnosis": "blocked",
+    "high_stakes_decision": "blocked"
+  }
+}

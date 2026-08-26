@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.1.0",
+  "registry_version": "1.1.0",
+  "progress_contract_version": "1.1.0",
+  "status": "no_metrics_released",
+  "approved_metric_profiles": [],
+  "current_blockers": [
+    "No repeated stable human productions from enough independent participants.",
+    "No metric specific measurement error or natural variation estimate.",
+    "No independently evaluated meaningful change boundary.",
+    "No representative device, task, language, accent or speech difference evaluation."
+  ],
+  "owner_recordings_may_unlock_metrics": false,
+  "supersedes": {
+    "version": "1.0.0",
+    "path": "progress_model/reliability-registry-v1.0.0.json",
+    "reason": "Follows progress_model/contract-v1.1.0.json, which renamed one claim boundary. No metric profile, blocker or release decision changed: the registry still releases zero speech metrics."
+  }
+}

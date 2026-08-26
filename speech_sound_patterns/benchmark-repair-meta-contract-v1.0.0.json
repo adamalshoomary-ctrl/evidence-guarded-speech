@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.0.0",
+  "repair_id": "speech_sound_patterns_meta_wav2vec2_ctc_repair_v1",
+  "status": "rules_frozen_before_meta_feature_scoring",
+  "purpose": "Test one final commercially usable local phone recognizer after the pinned PhoneticXEUS repairs failed the unchanged adult developer review gates. This comparison remains label blind during feature extraction and cannot establish pronunciation correctness, scientific validity or product readiness.",
+  "prior_repair": {
+    "numeric_contract_sha256": "3da9d53ccde6b5ba6155522077db7df4dd09f1164616216c04b5dab9b63d1a18",
+    "context_contract_sha256": "38add2aa66357da73b6aca36f5993125032d4e280c17336c18c290bc4fad7c96",
+    "context_calibration_sha256": "024bc12ca60c5413c2cdd12819f398d5dec0da601f88d18956df0a71b9c2dd6c",
+    "repeated_contract_sha256": "57062400c6b484b8d34bf9cfdae29dd1174d4c00b200164fd1c5476a63146a3f",
+    "decision": "no_system_or_threshold_selected",
+    "gates_may_be_lowered": false
+  },
+  "input_policy": {
+    "expected_only_manifest_sha256": "c918feffa7c0a3a3fa99ce7a9e028621e8fb002980777297f30088e5975331da",
+    "expected_only_clip_count": 480,
+    "allowed_project_splits": [
+      "development",
+      "threshold_tuning"
+    ],
+    "held_out_access_allowed": false,
+    "candidate_runner_may_read_expert_outcomes": false,
+    "candidate_runner_inputs": [
+      "canonical_audio",
+      "known_expected_arpabet_sequence",
+      "frozen_model_specific_arpabet_to_ipa_mapping",
+      "word_and_target_indexes"
+    ]
+  },
+  "model": {
+    "repository": "onnx-community/wav2vec2-lv-60-espeak-cv-ft-ONNX",
+    "revision": "c69750f5043e5e1f8a71ab95dd3b98338c280c92",
+    "base_model": "facebook/wav2vec2-lv-60-espeak-cv-ft",
+    "declared_license": "Apache-2.0",
+    "declared_training_source": "Common Voice multilingual phoneme labels",
+    "primary_benchmark_training_overlap": false,
+    "common_voice_robustness_independence": false,
+    "format": "ONNX",
+    "weights_file": "onnx/model.onnx",
+    "weights_bytes": 1264009987,
+    "weights_sha256": "93265694093f5f91497181ed9d7791f43bc818d2e23c46caf988fd9b8b1a1fba",
+    "config_sha256": "428b7781d080ad9463dca0e17e5066073cb691bfc14a178a85e76ac79c1f4a0f",
+    "preprocessor_config_sha256": "a2254a5b58f72cd4de3632f8eee64f3f098b7c1402128d2f419e7d00ae13e335",
+    "vocab_sha256": "d732ab2456c0c017930001dc9af0b41b3b93d25b2eb9740bf9d925508d7d87d0",
+    "executable_or_pickle_weights_allowed": false,
+    "network_access_during_inference": false
+  },
+  "phone_mapping": {
+    "base_map": "benchmark-phone-map-v1.0.0.json",
+    "base_map_sha256": "67e331507bd48c725b7e205c3213143915ea346187d540abc5efe028cafeebd9",
+    "normalization": "NFD",
+    "model_specific_replacements": {
+      "CH": [
+        "tʃ"
+      ],
+      "ER": [
+        "ɚ"
+      ],
+      "JH": [
+        "dʒ"
+      ]
+    },
+    "expected_consonant_variants": {
+      "P": [
+        "p",
+        "pʰ"
+      ],
+      "T": [
+        "t",
+        "tʰ"
+      ],
+      "K": [
+        "k",
+        "kʰ"
+      ],
+      "L": [
+        "l"
+      ]
+    },
+    "new_scoring_scope_created": false
+  },
+  "feature_extractor": {
+    "backend": "onnxruntime_cpu",
+    "same_input_repeats": 2,
+    "sample_rate_hz": 16000,
+    "waveform_normalization": "zero_mean_unit_variance_with_1e_minus_7_variance_floor",
+    "alignment": "repository_deterministic_ctc_viterbi_alignment_of_known_expected_model_ipa_sequence",
+    "blank_token_id": 0,
+    "target_evidence_window": "forced_nonblank_target_span_plus_one_frame_on_each_side",
+    "competitor_inventory": "single_segment_panphon_classified_consonant_model_tokens",
+    "full_logits_committed": false,
+    "private_target_features_retained": true,
+    "numeric_features": [
+      "forced_path_expected_log_posterior",
+      "best_expected_variant_log_posterior",
+      "best_competing_consonant_log_posterior",
+      "expected_variant_margin",
+      "expected_variant_peak_posterior",
+      "expected_variant_top_one_frame_rate",
+      "forced_span_frame_count",
+      "forced_span_duration_seconds",
+      "greedy_alignment_relation_indicator"
+    ],
+    "categorical_features": [
+      "expected_arpabet",
+      "word_position",
+      "previous_expected_arpabet",
+      "next_expected_arpabet",
+      "greedy_alignment_relation_type",
+      "best_competing_consonant",
+      "expected_competing_pair"
+    ],
+    "feature_values_are_calibrated_confidence": false,
+    "forced_alignment_verifies_production": false
+  },
+  "calibration_policy": {
+    "eligible_population": "source_adults_only",
+    "child_status": "unavailable_insufficient_positive_reference_opportunities",
+    "child_labels_used_for_training_or_thresholds": false,
+    "insertion_status": "unavailable_no_positive_consensus_examples",
+    "training_split": "development",
+    "threshold_split": "threshold_tuning",
+    "participant_grouping_required": true,
+    "numeric_preprocessing": "development_training_fold_standardization",
+    "categorical_preprocessing": {
+      "encoding": "one_hot",
+      "handle_unknown": "ignore",
+      "minimum_frequency": 5,
+      "fitted_on": "development_training_fold_only"
+    },
+    "participant_identity_feature_allowed": false,
+    "source_sex_feature_allowed": false,
+    "word_identity_feature_allowed": false,
+    "reviewer_outcome_feature_allowed": false,
+    "model_comparison_same_as_context_contract": true,
+    "threshold_grid": {
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "step": 0.01
+    },
+    "threshold_selection": "highest_tuning_recall_meeting_every_development_out_of_fold_and_tuning_gate_then_highest_precision_then_highest_threshold",
+    "tuning_may_change_features_or_model": false,
+    "coefficients_or_trees_refit_after_tuning": false,
+    "held_out_labels_or_outputs_used": false
+  },
+  "selection_gates": {
+    "minimum_precision_point_estimate": 0.75,
+    "minimum_precision_wilson_95_lower": 0.5,
+    "maximum_false_concerns_per_scorable_opportunity": 0.01,
+    "minimum_recall": 0.2,
+    "minimum_true_positives": 7,
+    "same_input_target_features_exact": true,
+    "every_tuning_participant_reported": true,
+    "system_selection_if_all_gates_pass": "adult_developer_review_candidate_only",
+    "failure_behavior": "no_system_or_threshold_selected"
+  },
+  "report_policy": {
+    "development_and_tuning_separate": true,
+    "adult_and_child_separate": true,
+    "visible_denominators": true,
+    "participant_distribution_required": true,
+    "prior_repairs_compared": true,
+    "private_rows_committed": false,
+    "held_out_fields_allowed": false
+  },
+  "release_boundaries": {
+    "normal_pipeline": false,
+    "candidate_artifact": false,
+    "coaching": false,
+    "personal_progress": false,
+    "scientific_release": false,
+    "product_release": false,
+    "screening": false,
+    "diagnosis": false,
+    "severity": false,
+    "cause": false,
+    "treatment": false
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.5.0",
+  "protocol_id": "speech_sound_patterns_research_contract",
+  "protocol_version": "1.5.0",
+  "status": "benchmark_repair_complete_no_system_selected_candidate_engineering_not_active",
+  "base_contract": {
+    "path": "research-contract-v1.4.0.json",
+    "sha256": "046be02a8ea5c1fdc328fdf6a35078a93fcf7448d62e6208d72aa259311290ee",
+    "protocol_version": "1.4.0",
+    "unchanged_historical_contract": true
+  },
+  "updates": {
+    "engineering_implementation_status": "benchmark_repair_complete_extractor_not_started",
+    "pattern_threshold_status": "not_selected_after_conservative_benchmark_repair",
+    "candidate_comparison_status": "local_benchmark_repair_complete_no_system_selected",
+    "engineering_evaluation_status": "development_and_tuning_repair_complete_no_system_selected",
+    "developer_release_status": "approved_local_benchmark_repair_complete_candidate_extractor_not_implemented",
+    "candidate_system_record": {
+      "system_id": "meta_wav2vec2_constrained_contextual",
+      "kind": "local_constrained_phone_candidate",
+      "state": "development_relation_benchmark_failed_selection_release_blocked"
+    }
+  },
+  "local_benchmark_repair": {
+    "status": "complete_release_locked",
+    "report_path": "local-benchmark-repair-v1.0.0.json",
+    "report_sha256": "7916f0be1c98299c1a36b8c03644e808859ae65d01ff802246a1af2fd2bb7ec5",
+    "repair_contracts": {
+      "numeric": {
+        "path": "benchmark-repair-contract-v1.0.0.json",
+        "sha256": "3da9d53ccde6b5ba6155522077db7df4dd09f1164616216c04b5dab9b63d1a18"
+      },
+      "contextual": {
+        "path": "benchmark-repair-context-contract-v1.0.0.json",
+        "sha256": "38add2aa66357da73b6aca36f5993125032d4e280c17336c18c290bc4fad7c96"
+      },
+      "repeated": {
+        "path": "benchmark-repair-repeated-contract-v1.0.0.json",
+        "sha256": "57062400c6b484b8d34bf9cfdae29dd1174d4c00b200164fd1c5476a63146a3f"
+      },
+      "meta_model": {
+        "path": "benchmark-repair-meta-contract-v1.0.0.json",
+        "sha256": "f3f7fcf0b49e7b3ae84fb0578856f4c7bbd59e8305c985cd78905da26f37f446"
+      },
+      "meta_exact_threshold": {
+        "path": "benchmark-repair-meta-threshold-contract-v1.0.0.json",
+        "sha256": "9063be3af105b6409b3f7fb3e1ffd5ddaa85faf998f0ef937df0dfb704584774"
+      }
+    },
+    "expected_only_manifest_sha256": "c918feffa7c0a3a3fa99ce7a9e028621e8fb002980777297f30088e5975331da",
+    "raw_or_row_level_evidence_committed": false,
+    "development_and_tuning_only": true,
+    "held_out_evaluation_accessed_or_scored": false,
+    "selected_system": null,
+    "threshold_selected": false,
+    "candidate_extractor_implemented": false,
+    "research_artifact_implemented": false,
+    "normal_pipeline_used_as_input": false,
+    "paid_provider_evaluated": false,
+    "exact_meta_thresholds_evaluated": 2957,
+    "next_checkpoint": "22E_paid_api_bake_off_after_owner_commit_and_explicit_approval"
+  }
+}

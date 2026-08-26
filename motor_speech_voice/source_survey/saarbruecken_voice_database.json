@@ -1,0 +1,92 @@
+{
+  "source_id": "saarbruecken_voice_database",
+  "title": "Saarbruecken Voice Database",
+  "citation": "Puetzer, M. & Barry, W. J. Saarbruecken Voice Database. Zenodo 16874898.",
+  "canonical_source": {
+    "landing_page": "https://zenodo.org/records/16874898",
+    "terms_or_licence_url": "https://zenodo.org/records/16874898"
+  },
+  "language_and_variety": {
+    "language": "German",
+    "variety": null,
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "More than 2,000 German speakers phonating vowels and producing a short sentence, recorded at 50 kHz and 16 bit, spanning normal voices and a wide range of laryngeal and voice pathologies.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "German, so its material cannot be read into an English task.",
+      "Organised by pathology label, which describes a population rather than measuring a voice property."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel",
+    "short_sentence"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "audio_without_qualifying_labels",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "The deposit carries recordings and pathology grouping. It carries no perceptual rating of any kind, so it supplies no perceptual truth."
+    ]
+  },
+  "access": {
+    "route": "open_direct_download",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_without_contact",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Creative Commons Attribution 4.0 International",
+    "spdx_id": "CC-BY-4.0",
+    "commercial_use_permitted": true,
+    "source_of_licence_string": "repository_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Zenodo API record 16874898, queried 2026-08-19, showing open access, CC BY 4.0 and 73 archive files grouped by pathology.",
+      "Reachability checks on 2026-08-19: stimmdb.coli.uni-saarland.de returned HTTP 200 and the older stimmdatenbank host returned 404."
+    ],
+    "findings": [
+      "The collection moved host and is now managed by Essen University Hospital with a Zenodo distribution, so earlier notes that it was offline for revision are out of date."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_truth_class",
+    "reasons": [
+      "Openly licensed audio with no perceptual reference attached."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "saarbruecken_voice_database_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "question_id": "seriousness_test",
+  "domain": "medical_device_regulation",
+  "question": "What does serious mean in this context, and who decides it?",
+  "applies_to_purposes": [
+    "consumer_communication_coaching",
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Therapeutic Goods Administration, Classifying active medical devices in Australia (including software-based medical devices), Rule 4.5",
+      "url": "https://www.tga.gov.au/resources/guidance/classifying-active-medical-devices-australia-including-software-based-medical-devices",
+      "currency": "Retrieved 2026-08-19; page states no separate last updated date in the extracted text",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "'Serious' has the meaning defined in the Regulations. Serious means a condition, ailment or defect that is: generally accepted as not being appropriate to be diagnosed or treated without consulting a medical practitioner, dentist or other kind of health care worker registered under a law of a state or territory; or generally accepted to be beyond the ability of the average person to evaluate accurately, or treat safely, without supervision by a medical practitioner, dentist or other kind of health care worker registered under a law of a state or territory. Serious disease means a disease that: may result in death or long-term disability; and may be incurable or require major therapeutic interventions; and must be diagnosed accurately, to mitigate the public health impact of the disease."
+    }
+  ],
+  "reading": [
+    "The test is not about how distressing a condition is. It is about whether an ordinary person can evaluate or treat it safely without a registered practitioner.",
+    "On that test a motor speech condition reads as serious. It is not something an average person can accurately evaluate alone, and it is not appropriate to diagnose without a professional. Both limbs point the same way.",
+    "There is a wrinkle worth flagging rather than smoothing over. Both limbs are written around a practitioner registered under a law of a state or territory, and speech pathology is not such a profession in Australia. A narrow reading might argue a condition chiefly assessed by speech pathologists escapes the definition. That reading looks weak, because motor speech difficulty is routinely evaluated by medical practitioners as well, but it has not been tested and is recorded rather than dismissed.",
+    "Serious condition and serious disease are separate defined terms with different tests, and the classification rule uses both. The serious disease test is considerably harder to satisfy."
+  ],
+  "confidence": "reading_with_material_uncertainty",
+  "unresolved": [
+    {
+      "question": "Whether the registered under a law of a state or territory wording changes the seriousness analysis for a condition principally assessed by a self regulated profession.",
+      "why_it_cannot_be_settled_here": "It is a question of statutory construction with no published guidance addressing it.",
+      "who_must_settle_it": "An Australian regulatory specialist."
+    }
+  ],
+  "consequences": [
+    "Seriousness is the hinge for both the item 14B exclusion and the Rule 4.5 classification, so one contested reading drives two outcomes."
+  ],
+  "decided_by": [
+    "australian_regulatory_specialist"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "seriousness_test_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

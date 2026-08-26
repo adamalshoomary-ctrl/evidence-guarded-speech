@@ -1,0 +1,70 @@
+{
+  "question_id": "wellness_and_coaching_exclusions",
+  "domain": "medical_device_regulation",
+  "question": "If a consumer communication coaching feature were a medical device, would the general health or wellness or the behavioural change and coaching exclusions take it back out?",
+  "applies_to_purposes": [
+    "consumer_communication_coaching",
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Therapeutic Goods (Excluded Goods) Determination 2018 (Cth), Schedule 1, item 14B",
+      "url": "https://www.legislation.gov.au/F2018L01350/latest/text",
+      "currency": "Compilation F2024C00750, 8 August 2024",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "software, or a combination of software and non-invasive hardware, that is: (a) intended by its manufacturer to be used by a consumer to promote or facilitate general health or wellness by measuring or monitoring (through non-invasive means) a physical parameter, such as movement, sleep, heart rate, heart rhythm, temperature, blood pressure or oxygen saturation; and (b) not intended by its manufacturer to be used: (i) in clinical practice; or (ii) for the purpose of diagnosis, screening, prevention, monitoring, prediction, prognosis, alleviation, treatment, or making a recommendation or decision about the treatment, of a serious disease or a serious condition, ailment or defect"
+    },
+    {
+      "citation": "Therapeutic Goods (Excluded Goods) Determination 2018 (Cth), Schedule 1, item 14C",
+      "url": "https://www.legislation.gov.au/F2018L01350/latest/text",
+      "currency": "Compilation F2024C00750, 8 August 2024",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "software that is: (a) intended by its manufacturer to be used by a consumer to improve general health or wellness by coaching, or encouraging behavioural change, in relation to personal or environmental factors, such as weight, exercise, sun exposure or dietary intake; and (b) not intended by its manufacturer to be used: (i) in clinical practice or to provide information to the consumer that would generally be accepted to require the interpretation of a health professional; or (ii) for the purpose of diagnosis, prognosis, or making a decision about the treatment, of a disease, condition, ailment or defect"
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Software-based medical device exclusions",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-if-your-software-based-medical-device-excluded-our-regulation",
+      "currency": "Last updated 16 March 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "There are currently 15 categories of software products listed in Schedule 1 of the Determination. If your product meets all the conditions of an excluded good described in the Determination, it is not subject to TGA regulation and must not be included in the ARTG. ... Some software products have multiple functions. To qualify for exclusion, every function must meet the exclusion criteria."
+    }
+  ],
+  "reading": [
+    "Both exclusions are plausibly available to a coaching feature that makes no claim about any disease or condition, and both are lost the moment it makes one.",
+    "The two have different thresholds and that difference matters. Item 14B is lost only for a serious disease or condition. Item 14C is lost for diagnosis, prognosis or a treatment decision about any disease, condition, ailment or defect, serious or not, and is additionally lost if the software provides information that would generally be accepted to require the interpretation of a health professional.",
+    "Whether speech is a physical parameter under item 14B is an open reading. The list is introduced by such as and is not exhaustive, and speech measured through a microphone is non-invasive, so the reading is available; it has not been tested.",
+    "The multiple function rule is the sharpest practical constraint. Every function of the software must meet the exclusion criteria, so one screening feature inside an otherwise excluded coaching product takes the whole product out of the exclusion."
+  ],
+  "confidence": "reading_with_material_uncertainty",
+  "unresolved": [
+    {
+      "question": "Whether speech timing or voice acoustics count as a physical parameter within item 14B.",
+      "why_it_cannot_be_settled_here": "The instrument's list is illustrative and no published guidance addresses speech.",
+      "who_must_settle_it": "An Australian regulatory specialist."
+    },
+    {
+      "question": "Whether communication skill is general health or wellness at all, which both exclusions assume as their subject matter.",
+      "why_it_cannot_be_settled_here": "The guidance defines general health and wellness as broad or non specific health or wellness issues, for example a person's state of mind, general mobility, or fitness. Communication is not named either way.",
+      "who_must_settle_it": "An Australian regulatory specialist."
+    }
+  ],
+  "conflicts": [
+    "The instrument's item 14C paragraph (b)(ii) lists diagnosis, prognosis and treatment decisions, and does not list screening. The regulator's guidance page for the same exclusion defines general consumer use to include not intending the software to be used for diagnosis, screening, prevention, monitoring, prediction, prognosis, alleviation, treatment, or making recommendations or decisions about the treatment, of a disease, condition, ailment, or defect. The guidance is therefore wider than the instrument it explains. Both are recorded; neither is preferred here."
+  ],
+  "consequences": [
+    "An exclusion is not a safe harbour that survives a feature being added later. It is a property of the whole product at the time it is supplied.",
+    "If a coaching mode and a screening mode ever coexist in one product, the exclusion analysis is decided by the screening mode."
+  ],
+  "decided_by": [
+    "australian_regulatory_specialist",
+    "owner"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "wellness_and_coaching_exclusions_reading_v1",
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

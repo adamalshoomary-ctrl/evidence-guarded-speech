@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "wiktionary_australian_kaikki_manifest_v1",
+  "source_id": "wiktionary_australian_kaikki",
+  "title": "Wiktionary Australian tagged English pronunciations, through Kaikki",
+  "version": {
+    "label": "Kaikki English extraction of 2026-07-25 from the enwiktionary dump dated 2026-07-06",
+    "release_date": "2026-07-25",
+    "immutable_id": "kaikki_english_20260725_enwiktionary_20260706"
+  },
+  "citation": "Ylonen, Tatu. Wiktextract: Wiktionary as Machine-Readable Structured Data. LREC 2022.",
+  "canonical_source": {
+    "landing_page": "https://kaikki.org/dictionary/English/",
+    "licence_url": "https://en.wiktionary.org/wiki/Wiktionary:Copyrights"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-29",
+    "account_required": false,
+    "terms_state": "not_required",
+    "terms_url": "https://en.wiktionary.org/wiki/Wiktionary:Copyrights",
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC-BY-SA-4.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-29",
+    "attribution_required": true,
+    "attribution_text": "Entries extracted from English Wiktionary by Wiktextract and reused under Wiktionary's CC BY SA terms."
+  },
+  "governance": {
+    "permitted_roles": [
+      "australian_reference_variant_overlay"
+    ],
+    "prohibited_roles": [
+      "accent_quality_judgment",
+      "accepted_variant_truth",
+      "acoustic_judgement",
+      "clinical_inference",
+      "distribution_of_a_derived_lexicon_without_meeting_sharealike",
+      "product_release_truth",
+      "scientific_release_truth"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/wiktionary_australian_kaikki",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Share alike attaches when adapted material is distributed, not when it is used internally. A derived lexicon stays on the server. Shipping one inside a mobile application is distribution and would trigger the licence."
+  },
+  "population": {
+    "description": "English Wiktionary entries whose pronunciation carries an Australian accent tag, extracted locally from the full English Wiktextract release.",
+    "known_strata": [
+      "Australian",
+      "Australia",
+      "General-Australian"
+    ],
+    "limitations": [
+      "A Wiktionary accent tag is a volunteer annotation, so it may propose a target and can never accept or reject what a speaker produced.",
+      "Entries mix phonemic transcriptions in slashes with narrower phonetic transcriptions in brackets, and the two are different claims that must not be pooled.",
+      "Many Australian tagged pronunciations carry other variety tags beside the Australian one, so they are shared pronunciations rather than distinctively Australian ones.",
+      "Kaikki regenerates weekly and publishes no checksum, so the acquired archive itself is the only fixed record of these exact bytes.",
+      "Share alike attaches when adapted material is distributed, so a derived lexicon stays server side."
+    ]
+  },
+  "annotation": {
+    "truth_class": "unavailable",
+    "provenance": "Word, part of speech, IPA and accent tags extracted from English Wiktionary. There is no recording, no speaker and no observation of a production.",
+    "fields_retained": [
+      "word",
+      "ipa",
+      "accent_tags",
+      "part_of_speech"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "A lexicon proposes how a word may be said and can never establish how anybody said it, so no truth class applies to it.",
+      "An Australian tag identifies a documented Australian pronunciation, not the pronunciation a particular Australian speaker uses."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "The full acquired extraction, 1481704 English entries read line by line on 2026-07-29.",
+      "A census of every pronunciation tag in the extraction, taken before any tag was selected.",
+      "kaikki_english_index.html captured 2026-07-29 from https://kaikki.org/dictionary/English/, SHA256 ce04d2a2674e11d721867879c08e2bc0f8960c6bbce0b8da3ae83791738b869f.",
+      "kaikki_rawdata.html captured 2026-07-29 from https://kaikki.org/dictionary/rawdata.html, SHA256 bf9da44f867c383a26f11ee16fa80977b3ed18ae56fb807b21d79bc7f8f26890.",
+      "wiktionary_copyrights.html captured 2026-07-29 from https://en.wiktionary.org/wiki/Wiktionary:Copyrights, SHA256 3c387a95b50e6c3dfa7819ddc65307e33da3b31fe482d9249f4daa71cd210786."
+    ],
+    "findings": [
+      "The accent tag vocabulary was measured rather than guessed. The extraction carries 220 distinct pronunciation tags, and exactly three are Australian: Australia, Australian, General-Australian. Selecting on a guessed tag name would have built the wrong reference silently.",
+      "Those tags yield 5347 distinct words carrying 11328 Australian tagged pronunciations. The figure of roughly 2,700 entries recorded from the 2026-07-28 search is wrong and is corrected here.",
+      "4380 of those words are plain lower case alphabetic forms rather than affixes, contractions or multiword entries, and 4270 of those also carry a phonemic transcription.",
+      "Against a prompt pack of about twenty chosen words, that pool is ample many times over, which is what checkpoint 22F needs to know.",
+      "Inspected entries show the exact phenomena this repair exists for: car as /kaː/ without a final rhotic, bath as /bɐːθ/, dance as /dæːns/ and data as a flapped [ˈdäːɾə]."
+    ]
+  },
+  "participant_split": {
+    "status": "not_applicable",
+    "unit": null,
+    "source_split_provenance": "A pronunciation lexicon has no speakers, so there is no participant split to make.",
+    "project_strategy": "lexicon_has_no_participants",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {}
+  },
+  "lineage": {
+    "lineage_group": "wiktionary",
+    "derived_from": [
+      "english_wiktionary"
+    ],
+    "independence_claim": "no_evidence_claim_permitted",
+    "duplicate_detection": "Overlap with the WikiPron scrapes is expected and recorded, because all three derive from the same dictionary and none is independent evidence of another.",
+    "candidate_model_overlap_status": "unknown_requires_model_specific_audit"
+  },
+  "archives": [
+    {
+      "filename": "kaikki.org-dictionary-English.jsonl.gz",
+      "size_bytes": 497930333,
+      "canonical_download_url": "https://kaikki.org/dictionary/English/kaikki.org-dictionary-English.jsonl.gz",
+      "upstream_checksum": {
+        "algorithm": "none",
+        "value": null
+      },
+      "local_sha256": "e011c77674445344e3d50a2390727aa9c911a1356beb69115d76610ced487b51",
+      "local_verification_status": "verified"
+    }
+  ]
+}

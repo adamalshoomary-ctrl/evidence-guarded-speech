@@ -1,0 +1,90 @@
+{
+  "source_id": "voiced_physionet",
+  "title": "VOICED database",
+  "citation": "VOICED database, PhysioNet, version 1.0.0.",
+  "canonical_source": {
+    "landing_page": "https://physionet.org/content/voiced/1.0.0/",
+    "terms_or_licence_url": "https://physionet.org/content/voiced/1.0.0/"
+  },
+  "language_and_variety": {
+    "language": "Italian",
+    "variety": null,
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "208 voice samples, 150 pathological and 58 healthy.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Sustained vowel only, so no connected speech material."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel_a"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "population_description_only",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": false,
+    "adjudication_defined": false,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "Labels are diagnosis, demographics, lifestyle factors and the participant reported Voice Handicap Index and Reflux Symptom Index.",
+      "Participant reported instruments answer the person's own experience and are a separate truth class. They are not perceptual voice judgement and the two may not be pooled."
+    ]
+  },
+  "access": {
+    "route": "open_direct_download",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_without_contact",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Open Data Commons Attribution License v1.0",
+    "spdx_id": "ODC-By-1.0",
+    "commercial_use_permitted": true,
+    "source_of_licence_string": "repository_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "PhysioNet content page for VOICED 1.0.0, read 2026-08-19."
+    ],
+    "findings": [
+      "A second openly licensed voice corpus with no perceptual rating attached, reinforcing that open audio is not the scarce thing."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_truth_class",
+    "reasons": [
+      "No perceptual reference, and participant report is a separate lane."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "voiced_physionet_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

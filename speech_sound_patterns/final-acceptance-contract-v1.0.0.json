@@ -1,0 +1,942 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "speech_sound_patterns_final_acceptance_v1",
+  "contract_version": "1.0.0",
+  "checkpoint": "22H",
+  "status": "rules_frozen_before_final_repository_acceptance",
+  "purpose": "Close item 22 engineering honestly after the frozen no-selection and evidence-adequacy outcomes. This contract permits repository acceptance, not a held-out performance estimate. It freezes the absence of an eligible method, keeps every held-out participant sealed, requires missing performance to remain explicitly unavailable, and cannot unlock scientific or product release.",
+  "plan_resolution": {
+    "original_instruction": "freeze an eligible method and evaluate it once on held-out public-corpus participants",
+    "later_binding_evidence": [
+      "two frozen comparisons selected no candidate system or operating point",
+      "the closed selection record carried no system, mapping, feature rule, threshold or provider configuration forward",
+      "the task-matched evidence adequacy gate failed before threshold or repeated-rule search",
+      "the frozen candidate contract prohibits held-out access after that failure"
+    ],
+    "resolution": "held_out_remains_sealed_no_evaluation",
+    "reason": "No eligible method exists to freeze or evaluate. Opening the held-out evidence would test an unselected method after the decision and would not answer a predeclared question.",
+    "owner_approved": true,
+    "owner_approval_date": "2026-08-12",
+    "held_out_non_evaluation_is_not": [
+      "a zero",
+      "a pass",
+      "a failure",
+      "evidence of accuracy",
+      "evidence of fairness",
+      "permission to tune",
+      "permission to reuse the held-out data in item 24"
+    ]
+  },
+  "historical_inputs": {
+    "exact_files": [
+      {
+        "path": "research-contract-v1.6.0.json",
+        "sha256": "1541488efe1a8d1998bc8ca9b4322a7d849f670c574d1310413aabe392dde7fc",
+        "role": "unchanged_active_contract_before_final_acceptance"
+      },
+      {
+        "path": "candidate-artifact-contract-v1.0.0.json",
+        "sha256": "20ece314254cbbe7eea8c2a175e8ca177a5d85bd8fa2150d18620f0104c26791",
+        "role": "frozen_no_rule_candidate_artifact_contract"
+      },
+      {
+        "path": "candidate-evidence-v1.0.0.json",
+        "sha256": "4f2a68eb2492679d50c828aef99c422d5536555b522ee55ec61ebf0311f5068d",
+        "role": "aggregate_task_matched_evidence_adequacy_failure"
+      },
+      {
+        "path": "prompt-pack-contract-v1.0.0.json",
+        "sha256": "fc0a1827cb1c5187ab2479d8776a200eb59596cc6a5a0c7c4f25cab989787001",
+        "role": "frozen_research_prompt_pack_rules"
+      },
+      {
+        "path": "research-prompt-pack-v1.0.0.json",
+        "sha256": "c53522ee155628d6266c5494d7e9c45d9d06f4dc550abac82f9816e00f5b7d72",
+        "role": "unreviewed_inactive_developer_prompt_pack"
+      },
+      {
+        "path": "selection-record-v1.1.0.json",
+        "sha256": "528e2a07c733bb4f456f422765589d362f3fe242f08909b011f30ce8bc6dbe66",
+        "role": "closed_no_selection_record"
+      },
+      {
+        "path": "benchmark-contract-v1.0.0.json",
+        "sha256": "cee5b9a2865ed704b91b8a7859419f9ad08141525c8d108862bb83518c3c415b",
+        "role": "frozen_truth_metrics_and_split_rules"
+      },
+      {
+        "path": "benchmark-phone-map-v1.0.0.json",
+        "sha256": "4952c110c11b4c57cb1101b1bc1eec87b863815fdbf5645a88c0fb5c836cfd4d",
+        "role": "frozen_arpabet_to_ipa_mapping"
+      },
+      {
+        "path": "benchmark-powered-sample-contract-v1.0.0.json",
+        "sha256": "c75ef6288f8494cd4f7edd1f0b1b987517de3e713d0a3a2521ac85bb102169ef",
+        "role": "frozen_every_non_held_out_adult_sample_rules"
+      },
+      {
+        "path": "local-feasibility-v1.0.0.json",
+        "sha256": "59bfcb89e75da7082fcf78ca763ee507215c8950123c53d8685523e6661c0095",
+        "role": "local_timing_and_phone_engineering_feasibility"
+      },
+      {
+        "path": "local-research-feasibility-v1.0.0.json",
+        "sha256": "9c5421ab53fe6c2f7f23a24d8615d90b2fd1aaed6347050199072f0509eb28ba",
+        "role": "local_candidate_runtime_and_repeatability"
+      },
+      {
+        "path": "local-benchmark-v1.0.0.json",
+        "sha256": "3b3911c3917fe85467a3d4c146b6383dca379a48f07fee281a91f38ddf188a8b",
+        "role": "development_and_tuning_baseline"
+      },
+      {
+        "path": "local-benchmark-repair-v1.0.0.json",
+        "sha256": "7916f0be1c98299c1a36b8c03644e808859ae65d01ff802246a1af2fd2bb7ec5",
+        "role": "development_and_tuning_repair_no_selection"
+      },
+      {
+        "path": "external-schema-smoke-v1.0.0.json",
+        "sha256": "de5545baf14ed15381ebdf07070eb303501479ea1ab24a8102b69fe1332e9354",
+        "role": "external_response_shape_only"
+      },
+      {
+        "path": "frozen-comparison-v1.0.0.json",
+        "sha256": "472f85d61dccb7a50e0ffb41d34049f55f0b7a06401526cc6ef5c6d16e5f5563",
+        "role": "first_frozen_no_selection_comparison"
+      },
+      {
+        "path": "frozen-comparison-v1.1.0.json",
+        "sha256": "b8871fdca4e8a62bfb7cd38bd0545c73c1713a88324d06e6ac57f6a40bc989bd",
+        "role": "powered_frozen_no_selection_comparison"
+      },
+      {
+        "path": "variety-probe-contract-v1.0.0.json",
+        "sha256": "7ef46a1007fa82e659ab11dd6b5037c47466ebcb0f1e06d4dc369c9c46c9437f",
+        "role": "frozen_reference_variety_probe_rules"
+      },
+      {
+        "path": "variety-probe-v1.0.0.json",
+        "sha256": "8156ce119af6b879b37f70b30a132fffab130e3e93638c2d41fa32043b856ee8",
+        "role": "separate_reference_variety_engineering_evidence"
+      },
+      {
+        "path": "accent-contrast-v1.0.0.json",
+        "sha256": "cc2e54c24739d41e7285af1632ac2ae947b48e91c5220ccb7754280e6a7e345a",
+        "role": "frozen_comparison_group_and_exclusion_rules"
+      },
+      {
+        "path": "corpus_manifests/registry-v1.0.0.json",
+        "sha256": "d2fcb6381737278110ffc3073afaf8794e16fd2c2589950edb90dfdb193750a0",
+        "role": "source_registry"
+      },
+      {
+        "path": "provider_register/provider-register-v1.2.0.json",
+        "sha256": "7c70adef70b0d5a4ff27e98eb094c989359c0a700004e221b2441e40494eadb6",
+        "role": "fail_closed_lane_authority"
+      },
+      {
+        "path": "corpus_manifests/provider-transfer-review-v1.2.0.json",
+        "sha256": "a6fae3d60c69024a5dcc328f9e9ffd4145ecb6cb1a5ac2577a3de28c7942d132",
+        "role": "corpus_to_provider_transfer_authority"
+      },
+      {
+        "path": "../assessment/pronunciation-research-v1.0.0.json",
+        "sha256": "d7e718b8f0798ac8a4336d9d80d6d7d5bd5ee0173ecb65286d172f63684864c1",
+        "role": "empty_product_word_pack_and_professional_activation_gate"
+      }
+    ],
+    "corpus_manifest_bundle": [
+      {
+        "source_id": "speechocean762",
+        "path": "corpus_manifests/speechocean762-v1.2.0.json",
+        "sha256": "5a96d39255f471359129e414af192b27cccc6ba5dc1c85a574eb0a4721900855"
+      },
+      {
+        "source_id": "acted_clear_speech",
+        "path": "corpus_manifests/acted-clear-speech-2013.json",
+        "sha256": "22eb0a8ad27a1f950216a6197aed2ab005cffe2c941b715a12197a70284a2046"
+      },
+      {
+        "source_id": "common_phone_1_0",
+        "path": "corpus_manifests/common-phone-v1.0.json",
+        "sha256": "acb9242b7becc05d9e74120c7aa57fac76fdb7979fe4f91d9fbac19289d857d4"
+      },
+      {
+        "source_id": "common_voice_26_australian_english",
+        "path": "corpus_manifests/common-voice-26-australian-english.json",
+        "sha256": "5a89820a5f5adda588a46880b6bbd2266560ea65a4426f70dbab643f8f1f2def"
+      },
+      {
+        "source_id": "common_voice_26_british_english",
+        "path": "corpus_manifests/common-voice-26-british-english.json",
+        "sha256": "8d46d19e6e505f369d384850353c8af4c4457b87c2bd38659befb06889e851fa"
+      },
+      {
+        "source_id": "common_voice_26_american_english_male",
+        "path": "corpus_manifests/common-voice-26-american-english-male.json",
+        "sha256": "56bb5ac231231a80994e95bc97bf84df4895b7359b36c790cae5b034678961d2"
+      },
+      {
+        "source_id": "common_voice_26_american_english_female",
+        "path": "corpus_manifests/common-voice-26-american-english-female.json",
+        "sha256": "fbc0924da93e3829ef4be159797811f08c29b34b84389b0ddd4d0ff67f701349"
+      },
+      {
+        "source_id": "librispeech_slr12_small",
+        "path": "corpus_manifests/librispeech-slr12-small.json",
+        "sha256": "23b8529245a6f6d1f2f186c138d90478300dd270e5b3b72cd97baaaf48a768a2"
+      },
+      {
+        "source_id": "macquarie_australian_pronunciation_data",
+        "path": "corpus_manifests/macquarie-pending.json",
+        "sha256": "ebbc6c09bb1dcea7442d598db58f0a0144071d0f73c8780952ac3e480787f542"
+      },
+      {
+        "source_id": "timit_ldc93s1",
+        "path": "corpus_manifests/timit-rejected.json",
+        "sha256": "2e87f8180484d2918c5a36c739737d4ceadc4cfa5f25b2cc386601469f6727ca"
+      },
+      {
+        "source_id": "l2_arctic",
+        "path": "corpus_manifests/l2-arctic-blocked.json",
+        "sha256": "b0dfff1e7d5e49ddfab64f65bc6438a69d1ed1ad85c8d4b1b507d8128d5dbbcb"
+      },
+      {
+        "source_id": "talkbank_research",
+        "path": "corpus_manifests/talkbank-blocked.json",
+        "sha256": "f4343cc7025beb02b747bfc55aabb9fabdaa5e6668f858003b630cb6af87ff76"
+      },
+      {
+        "source_id": "andosl",
+        "path": "corpus_manifests/andosl-rejected.json",
+        "sha256": "5137d6cf5fe2ffd19ae30ea23259f04efa63cb31731376049c47811fe14ed45e"
+      },
+      {
+        "source_id": "austalk",
+        "path": "corpus_manifests/austalk-unavailable.json",
+        "sha256": "c3d1a88c8d9f85bc11638a390911e0c1b4ac0e4e5c6c2da9412019d31b37d8b5"
+      },
+      {
+        "source_id": "isle_elra_s0083",
+        "path": "corpus_manifests/isle-declined.json",
+        "sha256": "e25992236e28f5dad499393d58a682a79708a44ba033163d481e9c3b1757c035"
+      },
+      {
+        "source_id": "mitchell_delbridge",
+        "path": "corpus_manifests/mitchell-delbridge-blocked.json",
+        "sha256": "f901fac8f736aa89c63f0bdbe638c3510d1f71564a8890065955690ca1e56433"
+      },
+      {
+        "source_id": "speech_accent_archive",
+        "path": "corpus_manifests/speech-accent-archive-blocked.json",
+        "sha256": "ea3a0da011c886b6c9a95d6f2c529870b089e704e9032c32f500d67e91274931"
+      },
+      {
+        "source_id": "coanzse",
+        "path": "corpus_manifests/coanzse-rejected.json",
+        "sha256": "eb29b47a7a642a635e4e236d24826458135a5e68f5d79a6930d1a438e9210e48"
+      },
+      {
+        "source_id": "wikipron_eng_latn_uk_broad",
+        "path": "corpus_manifests/wikipron-uk-broad.json",
+        "sha256": "eb66f6c5e0461814e837366accbdd1b6956e571ab8837bc552ffdf446e6a8eb8"
+      },
+      {
+        "source_id": "wikipron_eng_latn_us_broad",
+        "path": "corpus_manifests/wikipron-us-broad.json",
+        "sha256": "e522101086967ca7877ecd94d9a1003d43b00bdd3b1c70d38d11af85ef65eafd"
+      },
+      {
+        "source_id": "wiktionary_australian_kaikki",
+        "path": "corpus_manifests/wiktionary-australian-kaikki.json",
+        "sha256": "2999bf643abeac915f55938076589d0353b47ecb061533e05fbc4bafb9885940"
+      },
+      {
+        "source_id": "mfa_english_dictionary",
+        "path": "corpus_manifests/mfa-english-dictionary.json",
+        "sha256": "dc5e1aab3ef086892f19ccd28f7581713c8fde85e81679f71552580ff18a51b3"
+      }
+    ],
+    "historical_contract_versions_unchanged": [
+      "1.0.0",
+      "1.1.0",
+      "1.2.0",
+      "1.3.0",
+      "1.4.0",
+      "1.5.0",
+      "1.6.0"
+    ]
+  },
+  "frozen_no_selection": {
+    "selection_decision": "no_selection",
+    "candidate_system": null,
+    "mapping": null,
+    "feature_relation": null,
+    "threshold": null,
+    "provider_configuration": null,
+    "repeated_relation_minimum": null,
+    "further_threshold_search_authorised": false,
+    "candidate_rule_search_authorised": false,
+    "possible_relation_candidate_emission_enabled": false,
+    "repeated_relation_candidate_emission_enabled": false,
+    "selection_gates": {
+      "minimum_precision_point_estimate": 0.75,
+      "minimum_precision_wilson_95_lower": 0.5,
+      "maximum_false_concerns_per_scorable_opportunity": 0.01,
+      "minimum_recall": 0.2,
+      "minimum_true_positives": 7,
+      "development_and_tuning_both_required": true
+    },
+    "prompt_pack": {
+      "path": "research-prompt-pack-v1.0.0.json",
+      "sha256": "c53522ee155628d6266c5494d7e9c45d9d06f4dc550abac82f9816e00f5b7d72",
+      "word_count": 20,
+      "status": "unreviewed_inactive_developer_research_only",
+      "product_pack": false
+    }
+  },
+  "held_out_policy": {
+    "source_id": "speechocean762",
+    "participant_split_manifest_path": "corpus_manifests/speechocean762-v1.2.0.json",
+    "private_assignment_path_may_be_opened": false,
+    "held_out_adults_declared_sealed": 26,
+    "held_out_children_declared_sealed": 24,
+    "identity_access_allowed": false,
+    "label_access_allowed": false,
+    "audio_access_allowed": false,
+    "derived_row_access_allowed": false,
+    "local_processing_allowed": false,
+    "provider_transmission_allowed": false,
+    "evaluation_status": "not_performed",
+    "result_availability": "unavailable",
+    "reason_code": "not_evaluated_no_selected_candidate",
+    "held_out_metric_gate_result": null,
+    "held_out_metrics_may_be_used_for_engineering_completion": false,
+    "later_access_requires_new_contract_and_explicit_owner_approval": true,
+    "may_become_item_24_tuning_or_evaluation_silently": false
+  },
+  "truth_class_policy": {
+    "truth_classes_pooled": false,
+    "headline_score": null,
+    "required_sections": [
+      {
+        "truth_class": "source_specific_expert_phone_relations",
+        "sources": [
+          "speechocean762"
+        ],
+        "historical_result": "development_and_tuning_no_selection",
+        "permitted_interpretation": "source_specific_engineering_relation_evidence_only",
+        "prohibited_interpretations": [
+          "held_out_accuracy",
+          "Australian_English_accuracy",
+          "population_validity",
+          "product_correctness"
+        ]
+      },
+      {
+        "truth_class": "human_corrected_phone_boundaries",
+        "sources": [
+          "acted_clear_speech"
+        ],
+        "historical_result": "timing_fixture_evidence_only",
+        "permitted_interpretation": "local_timing_engineering",
+        "prohibited_interpretations": [
+          "phone_relation_accuracy",
+          "candidate_selection",
+          "population_validity"
+        ]
+      },
+      {
+        "truth_class": "automatic_phone_alignments",
+        "sources": [
+          "common_phone_1_0"
+        ],
+        "historical_result": "automatic_alignment_robustness_only",
+        "permitted_interpretation": "phone_processing_engineering",
+        "prohibited_interpretations": [
+          "independent_truth",
+          "candidate_selection",
+          "corroboration"
+        ]
+      },
+      {
+        "truth_class": "validated_sentence_audio",
+        "sources": [
+          "common_voice_26_australian_english",
+          "common_voice_26_british_english",
+          "common_voice_26_american_english_male",
+          "common_voice_26_american_english_female",
+          "librispeech_slr12_small"
+        ],
+        "historical_result": "variety_and_scale_robustness_only",
+        "permitted_interpretation": "engineering_stress_evidence_without_produced_relation_truth",
+        "prohibited_interpretations": [
+          "phone_relation_accuracy",
+          "Australian_fairness",
+          "candidate_selection"
+        ]
+      },
+      {
+        "truth_class": "pronunciation_reference_lexicons",
+        "sources": [
+          "mfa_english_dictionary",
+          "wikipron_eng_latn_uk_broad",
+          "wikipron_eng_latn_us_broad",
+          "wiktionary_australian_kaikki"
+        ],
+        "historical_result": "reference_forms_only",
+        "permitted_interpretation": "proposed_documented_word_pronunciations",
+        "prohibited_interpretations": [
+          "participant_production_truth",
+          "phone_relation_accuracy",
+          "product_variant_approval"
+        ]
+      },
+      {
+        "truth_class": "owner_controlled_functional_integration",
+        "sources": [
+          "adam_controlled_recordings"
+        ],
+        "historical_result": "optional_local_plumbing_evidence_only",
+        "permitted_interpretation": "functional_integration_only",
+        "prohibited_interpretations": [
+          "selection",
+          "accuracy",
+          "fairness",
+          "population_validity",
+          "external_transfer"
+        ]
+      }
+    ]
+  },
+  "definition_of_done_evidence": {
+    "source_lineage_and_model_overlap": {
+      "primary_relation_source": "speechocean762",
+      "source_lineage_group": "speechocean762",
+      "participant_split_cross_overlap_count": 0,
+      "selected_candidate_model": null,
+      "selected_candidate_model_overlap": "not_applicable_no_selected_candidate",
+      "historical_candidate_lineage_path": "provider_register/provider-register-v1.2.0.json",
+      "historical_candidate_lineage_sha256": "7c70adef70b0d5a4ff27e98eb094c989359c0a700004e221b2441e40494eadb6",
+      "historical_overlap_may_be_treated_as_independent_truth": false
+    },
+    "declared_sealed_population_strata": [
+      {
+        "stratum": "source_adult_f",
+        "age_group": "adult",
+        "sex_stratum": "female",
+        "participants": 15,
+        "result_availability": "unavailable"
+      },
+      {
+        "stratum": "source_adult_m",
+        "age_group": "adult",
+        "sex_stratum": "male",
+        "participants": 11,
+        "result_availability": "unavailable"
+      },
+      {
+        "stratum": "source_child_f",
+        "age_group": "child",
+        "sex_stratum": "female",
+        "participants": 10,
+        "result_availability": "unavailable"
+      },
+      {
+        "stratum": "source_child_m",
+        "age_group": "child",
+        "sex_stratum": "male",
+        "participants": 14,
+        "result_availability": "unavailable"
+      }
+    ],
+    "population_strata_pooled": false,
+    "provider_and_local_decision": {
+      "decision": "no_selection",
+      "selected_provider": null,
+      "selected_local_system": null,
+      "local_only_decision_claimed": false,
+      "historical_paid_provider_comparison_completed": true,
+      "historical_provider_result_may_be_relabelled_as_selected": false
+    },
+    "australian_variant_strategy": {
+      "strategy": "open_reference_forms_and_variety_stress_evidence_remain_separate_from_produced_relation_truth",
+      "macquarie_pronunciation_data_status": "not_licensed_owner_declined_acquisition_enquiry",
+      "andosl_status": "rejected_licence_incompatible_owner_declined_acquisition_enquiry",
+      "equivalent_expert_australian_phone_relation_evidence_status": "unavailable",
+      "open_reference_sources": [
+        "mfa_english_dictionary",
+        "wikipron_eng_latn_uk_broad",
+        "wikipron_eng_latn_us_broad",
+        "wiktionary_australian_kaikki"
+      ],
+      "australian_sentence_audio_source": "common_voice_26_australian_english",
+      "australian_phone_relation_accuracy_established": false,
+      "australian_fairness_established": false
+    }
+  },
+  "metric_policy": {
+    "required_relation_outcomes": [
+      "exact",
+      "substitution",
+      "deletion",
+      "insertion"
+    ],
+    "required_uncertainty_strata": [
+      "source_adult_f",
+      "source_adult_m",
+      "source_child_f",
+      "source_child_m",
+      "language_variety",
+      "first_language_background",
+      "multilingual_status",
+      "task",
+      "phonetic_context",
+      "voice_range",
+      "device",
+      "audio_quality",
+      "speech_difference",
+      "consented_target_population"
+    ],
+    "held_out_metrics": [
+      {
+        "metric_id": "true_positive_count",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "count"
+      },
+      {
+        "metric_id": "false_positive_count",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "count"
+      },
+      {
+        "metric_id": "false_negative_count",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "count"
+      },
+      {
+        "metric_id": "true_negative_count",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "count"
+      },
+      {
+        "metric_id": "phone_relation_precision",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "precision_wilson_95_lower",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "phone_relation_recall",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "phone_relation_f1",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "phone_relation_precision_by_outcome",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "outcome_metric_set"
+      },
+      {
+        "metric_id": "phone_relation_recall_by_outcome",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "outcome_metric_set"
+      },
+      {
+        "metric_id": "phone_relation_f1_by_outcome",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "outcome_metric_set"
+      },
+      {
+        "metric_id": "phone_relation_uncertainty_by_outcome",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "outcome_interval_set"
+      },
+      {
+        "metric_id": "accepted_variant_false_concern_rate",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "asr_attribution_matrix",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "matrix"
+      },
+      {
+        "metric_id": "false_concerns_per_scorable_opportunity",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "abstention_rate",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "unscorable_rate",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "coverage",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "calibration",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "calibration_record"
+      },
+      {
+        "metric_id": "exact_same_input_repeatability",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "repeated_human_production_reliability",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "reliability_record"
+      },
+      {
+        "metric_id": "human_inter_reviewer_agreement",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "agreement_record"
+      },
+      {
+        "metric_id": "human_intra_reviewer_agreement",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "agreement_record"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_source_adult_f",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_source_adult_m",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_source_child_f",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_source_child_m",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_language_variety",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_first_language_background",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_multilingual_status",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_task",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_phonetic_context",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_voice_range",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_device",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_audio_quality",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_speech_difference",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "relation_metrics_with_uncertainty_by_consented_target_population",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "stratified_metric_set"
+      },
+      {
+        "metric_id": "provider_incremental_value",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "comparison_record"
+      },
+      {
+        "metric_id": "unsupported_scope_rate",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "proportion"
+      },
+      {
+        "metric_id": "pattern_level_metrics",
+        "truth_class": "source_specific_expert_phone_relations",
+        "unit": "pattern_metric_set"
+      }
+    ],
+    "unavailable_record": {
+      "availability": "unavailable",
+      "value": null,
+      "numerator": null,
+      "denominator": null,
+      "interval_95": null,
+      "reason_code": "not_evaluated_no_selected_candidate",
+      "must_not_be_interpreted_as_zero": true,
+      "gate_result": null
+    },
+    "every_predeclared_metric_must_be_present": true,
+    "missing_metric_behavior": "invalid",
+    "unavailable_may_be_encoded_as_zero": false,
+    "historical_metrics_may_be_relabelled_as_held_out": false,
+    "cross_truth_class_metric_pooling_allowed": false
+  },
+  "owner_integration_policy": {
+    "role": "local_functional_integration_only",
+    "allowed_statuses": [
+      "not_performed_no_task_matched_owner_recording_available"
+    ],
+    "default_without_an_exact_controlled_word_recording": "not_performed_no_task_matched_owner_recording_available",
+    "optional_owner_input_path_enabled_for_checkpoint_22h": false,
+    "existing_solo_or_conversation_recording_is_task_matched": false,
+    "may_fill_evidence_adequacy_gap": false,
+    "may_enter_selection_or_accuracy": false,
+    "may_support_fairness_or_population_claim": false,
+    "external_transfer_allowed": false,
+    "private_artifact_committed": false
+  },
+  "repository_acceptance_policy": {
+    "private_evidence_root": ".research_data/speech_sound_patterns/final_acceptance",
+    "acceptance_python_command_name": "acceptance_python",
+    "normal_pipeline": {
+      "fixture_id": "real_conversation",
+      "mode": "conversation",
+      "speakers": 2,
+      "isolated_run_required": true,
+      "caffeinate_required": true,
+      "me_argument_allowed": false,
+      "session_context_allowed": false,
+      "expected_stage_count": 14,
+      "required_artifacts": [
+        "audio_quality.json",
+        "diarization.json",
+        "transcript.json",
+        "alignment.json",
+        "vad.json",
+        "acoustics.json",
+        "words_attributed.json",
+        "master.json",
+        "fluency_events.json",
+        "master_preview.txt",
+        "evaluation.md",
+        "evaluation_claims.json",
+        "verification.md",
+        "verification.json",
+        "run_manifest.json"
+      ],
+      "optional_artifacts": [
+        "listener.json",
+        "audit.md"
+      ],
+      "unexpected_artifact_behavior": "fail",
+      "transcription_is_load_bearing": true,
+      "safe_remote_degradation_allowed": true,
+      "safe_remote_error_categories": [
+        "empty_response",
+        "schema_failure",
+        "semantic_validation_failure",
+        "quota_exhaustion",
+        "timeout",
+        "provider_failure"
+      ],
+      "quota_exhaustion_behavior": "report_and_do_not_rerun",
+      "independent_regression_fixture_must_pass": true,
+      "frozen_pre_22h_git_commit": "6d2b2055ef77861212297ffb1f9c63cbc09be217",
+      "frozen_pre_22h_pipeline_version": "0.10.1",
+      "frozen_pre_22h_active_source_tree_sha256": "5efb674cc2e61a55cd610a6ec1a8957a97ee7a299818557e8cbf1decc3f744c6",
+      "frozen_pre_22h_model_registry_sha256": "b7fc893516bb4e509c5171d9a0556a1df2bafb55d4339435fcc69ca8a9e2bc45",
+      "frozen_pre_22h_prompt_registry_sha256": "4776ac8c707736117e236178662c2fc516eea0f58c5535f4948a4442960b721c"
+    },
+    "required_validators": [
+      "speech_sound_patterns.validate",
+      "speech_sound_patterns.validate_corpora",
+      "speech_sound_patterns.validate_benchmark",
+      "speech_sound_patterns.validate_comparison",
+      "speech_sound_patterns.validate_selection",
+      "speech_sound_patterns.validate_variety_probe",
+      "speech_sound_patterns.validate_prompt_pack",
+      "speech_sound_patterns.validate_candidates",
+      "speech_sound_patterns.validate_final_acceptance"
+    ],
+    "required_test_commands": [
+      "acceptance_python -m unittest tests.test_speech_sound_final_acceptance",
+      "acceptance_python -m unittest discover -s tests"
+    ],
+    "required_test_minimums": {
+      "acceptance_python -m unittest tests.test_speech_sound_final_acceptance": 35,
+      "acceptance_python -m unittest discover -s tests": 729
+    },
+    "maximum_skipped_tests_per_command": 0,
+    "python_compile_roots": [
+      "pipeline",
+      "regression",
+      "speech_sound_patterns",
+      "tests"
+    ],
+    "protected_repository_state": [
+      "history.json",
+      "progress.md",
+      "output"
+    ],
+    "protected_state_must_be_byte_identical": true,
+    "root_output_snapshot_is_recursive": true,
+    "public_repository_state_must_be_byte_identical_during_acceptance": true,
+    "normal_pipeline_source_may_import_speech_sound_patterns": false,
+    "normal_pipeline_may_emit_speech_sound_artifact": false,
+    "forbidden_normalized_output_keys_or_filenames": [
+      "speech_sound",
+      "speech_sound_patterns",
+      "speech_sound_candidates",
+      "candidate_artifact",
+      "prompt_pack",
+      "phoneme",
+      "scorable",
+      "possible_relation",
+      "repeated_relation",
+      "phone_relation",
+      "produced_phone",
+      "expected_phone"
+    ],
+    "forbidden_strong_content_tokens": [
+      "speech_sound_patterns",
+      "speech_sound_candidates",
+      "candidate_artifact",
+      "research_prompt_pack",
+      "repeated_relation"
+    ]
+  },
+  "private_acceptance_manifest": {
+    "manifest_id": "speech_sound_patterns_final_acceptance_evidence_v1",
+    "manifest_version": "1.0.0",
+    "allowed_root": ".research_data/speech_sound_patterns/final_acceptance",
+    "no_overwrite": true,
+    "required_sections": [
+      "contract",
+      "repository",
+      "held_out_audit",
+      "validations",
+      "python_compilation",
+      "tests",
+      "owner_functional_integration",
+      "normal_pipeline",
+      "protected_state",
+      "leakage_checks",
+      "evidence_inventory"
+    ],
+    "held_out_access_counters_must_all_be_zero": true,
+    "raw_evidence_must_be_checksum_linked_and_revalidated": true,
+    "private_paths_or_audio_identity_may_enter_public_report": false,
+    "raw_logs_or_outputs_committed": false
+  },
+  "output_and_reproduction": {
+    "report_path": "final-evidence-v1.0.0.json",
+    "repository_closure_path": "repository-closure-v1.0.0.json",
+    "report_id": "speech_sound_patterns_final_evidence",
+    "report_version": "1.0.0",
+    "canonical_json": true,
+    "write_atomically": true,
+    "overwrite_allowed": false,
+    "aggregate_only": true,
+    "private_manifest_committed": false,
+    "private_audio_or_row_level_evidence_committed": false,
+    "reproduction_rebuilds_in_memory_and_requires_exact_bytes": true,
+    "post_report_changes_require_repository_closure": true,
+    "repository_closure_excludes_only_its_own_path_from_public_snapshot": true,
+    "repository_closure_must_bind_report_and_active_research_contract": true,
+    "repository_closure_overwrite_allowed": false
+  },
+  "privacy_policy": {
+    "committed_private_identifiers": false,
+    "committed_audio_hashes": false,
+    "committed_audio_paths": false,
+    "committed_transcripts": false,
+    "committed_provider_payloads": false,
+    "committed_row_level_evidence": false,
+    "held_out_identifiers_read": false,
+    "held_out_audio_read": false,
+    "held_out_labels_read": false,
+    "held_out_derived_rows_read": false,
+    "owner_audio_external_transfer": false
+  },
+  "mandatory_limitations": [
+    "No candidate system, candidate output mapping, feature rule, provider configuration, threshold or repeated minimum was selected.",
+    "Held-out evaluation was not performed because no eligible method existed; every held-out metric is unavailable and is not zero, a pass or a failure.",
+    "SpeechOcean762 is the only commercially usable expert phone-relation corpus found, contains Mandarin first-language read speech and was assessed against American English.",
+    "No expertly labelled Australian English produced-phone relation evidence exists in this project.",
+    "The research prompt pack is unreviewed and inactive, and the product pronunciation pack remains empty pending professional and representative review.",
+    "The available evidence cannot support a task-matched repeated-relation denominator or a repeated-relation rule.",
+    "Children remain unsupported and no child result may be inferred from adult engineering evidence.",
+    "Reference lexicons describe possible word forms and never establish how a participant produced a sound.",
+    "Engineering completion does not establish detector accuracy, population validity, fairness, clinical validity, user benefit or product correctness.",
+    "Scientific and product release remain locked and require new professional, representative and independent evidence plus separate owner approval."
+  ],
+  "release_boundaries": {
+    "normal_pipeline": false,
+    "listener": false,
+    "evaluator": false,
+    "claim_ledger": false,
+    "coaching": false,
+    "history": false,
+    "personal_progress": false,
+    "named_pattern": false,
+    "screening": false,
+    "diagnosis": false,
+    "severity": false,
+    "cause": false,
+    "treatment": false,
+    "scientific_release": false,
+    "product_release": false
+  },
+  "acceptance": {
+    "final_decision": "engineering_acceptance_passed_no_selection_path",
+    "held_out_evaluation_required_for_this_path": false,
+    "every_historical_binding_must_match": true,
+    "every_corpus_manifest_must_match": true,
+    "every_held_out_metric_must_be_explicitly_unavailable": true,
+    "truth_classes_must_remain_separate": true,
+    "every_required_validator_must_pass": true,
+    "every_required_test_command_must_pass": true,
+    "python_compilation_must_pass": true,
+    "normal_pipeline_acceptance_must_pass": true,
+    "protected_repository_state_must_be_unchanged": true,
+    "runtime_and_static_leakage_checks_must_pass": true,
+    "owner_integration_absence_may_be_reported_honestly": true,
+    "engineering_complete_only": true,
+    "scientific_or_product_release_supported": false
+  }
+}

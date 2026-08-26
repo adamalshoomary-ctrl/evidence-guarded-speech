@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.7.0",
+  "protocol_id": "speech_sound_patterns_research_contract",
+  "protocol_version": "1.7.0",
+  "status": "item_22_engineering_complete_no_selection_held_out_not_performed_release_locked",
+  "base_contract": {
+    "path": "research-contract-v1.6.0.json",
+    "sha256": "1541488efe1a8d1998bc8ca9b4322a7d849f670c574d1310413aabe392dde7fc",
+    "protocol_version": "1.6.0",
+    "unchanged_historical_contract": true
+  },
+  "updates": {
+    "engineering_implementation_status": "item_22_engineering_complete_no_selection_release_locked",
+    "engineering_evaluation_status": "final_repository_acceptance_passed_no_selected_method_held_out_not_performed"
+  },
+  "final_repository_acceptance": {
+    "checkpoint": "22H",
+    "status": "final_repository_acceptance_complete_release_locked",
+    "acceptance_contract": {
+      "path": "final-acceptance-contract-v1.0.0.json",
+      "sha256": "49ec6d04032121efbdd2ae89472f1e952a970a1958d34bf955eadadf1deaf558",
+      "status": "rules_frozen_before_final_repository_acceptance"
+    },
+    "evidence_report": {
+      "path": "final-evidence-v1.0.0.json",
+      "sha256": "68d3e92cececfa2e4a9050ce4eab704afa8c1664fb65fb21764bf27104a5199a",
+      "status": "final_repository_acceptance_complete_release_locked",
+      "decision": "engineering_acceptance_passed_no_selection_path"
+    },
+    "selection_outcome": {
+      "decision": "no_selection",
+      "candidate_system": null,
+      "candidate_output_mapping": null,
+      "feature_relation": null,
+      "threshold": null,
+      "provider_configuration": null,
+      "repeated_relation_minimum": null,
+      "further_search_authorised": false
+    },
+    "held_out_outcome": {
+      "evaluation_status": "not_performed",
+      "result_availability": "unavailable",
+      "reason_code": "not_evaluated_no_selected_candidate",
+      "evidence_accessed": false,
+      "performance_established": false,
+      "metric_gate_result": null,
+      "predeclared_metric_count": 40,
+      "all_predeclared_metrics_explicitly_unavailable": true,
+      "later_access_requires_new_contract_and_explicit_owner_approval": true,
+      "silent_item_24_reuse_authorised": false
+    },
+    "completion": {
+      "engineering_complete_after_repository_closure": true,
+      "truth_classes_pooled": false,
+      "normal_pipeline_speech_sound_activation": false,
+      "scientific_release": false,
+      "product_release": false,
+      "next_roadmap_item_approved": false
+    }
+  }
+}

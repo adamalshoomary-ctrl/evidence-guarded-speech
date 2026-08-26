@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "librispeech_slr12_small_manifest_v1",
+  "source_id": "librispeech_slr12_small",
+  "title": "LibriSpeech OpenSLR 12 small development subsets",
+  "version": {
+    "label": "SLR12 dev clean and dev other",
+    "release_date": "2015",
+    "immutable_id": "openslr_slr12_archive_md5_set"
+  },
+  "citation": "Panayotov, Vassil et al. LibriSpeech: An ASR Corpus Based on Public Domain Audio Books. ICASSP 2015.",
+  "canonical_source": {
+    "landing_page": "https://www.openslr.org/12/",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-21",
+    "account_required": false,
+    "terms_state": "not_required",
+    "terms_url": null,
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC-BY-4.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-21",
+    "attribution_required": true,
+    "attribution_text": "Cite Panayotov et al., LibriSpeech, ICASSP 2015, and retain CC BY 4.0 attribution."
+  },
+  "governance": {
+    "permitted_roles": [
+      "runtime_and_determinism_regression",
+      "ordinary_read_speech_regression"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "phone_production_truth",
+      "australian_performance_estimate",
+      "speech_sound_relation_truth"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/librispeech_slr12",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "requires_separate_provider_terms_review",
+    "retention_or_deletion_duties": "Keep selected subsets privately with attribution and never commit or rehost the recordings."
+  },
+  "population": {
+    "description": "Seventy three audiobook readers represented in the official LibriSpeech dev clean and dev other subsets.",
+    "known_strata": [
+      "dev_clean",
+      "dev_other"
+    ],
+    "limitations": [
+      "Audiobook reading is not the controlled isolated word task.",
+      "The corpus has no human phone production labels.",
+      "The population does not establish Australian or product task performance."
+    ]
+  },
+  "annotation": {
+    "truth_class": "transcript_only_robustness",
+    "provenance": "Official utterance transcripts and speaker separated audio, without human phone production annotation.",
+    "fields_retained": [
+      "speaker_id_private",
+      "chapter_id_private",
+      "utterance_id_private",
+      "source_subset",
+      "orthographic_transcript"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "Transcripts can test runtime and ordinary ASR or alignment behavior only."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "Official OpenSLR landing page and md5sum.txt inspected.",
+      "dev-clean and dev-other archives verified against official MD5 checksums.",
+      "Archive speaker paths audited without extracting audio."
+    ],
+    "findings": [
+      "The selected subsets contain 73 unique speakers.",
+      "No speaker appears in both selected subsets.",
+      "Private deterministic participant assignments retain original subset as an aggregate stratum."
+    ]
+  },
+  "participant_split": {
+    "status": "audited",
+    "unit": "participant",
+    "source_split_provenance": "The selected official development subsets contain disjoint speaker identifiers.",
+    "project_strategy": "Stable SHA256 order inside dev clean and dev other strata, then exact 60 percent development, 20 percent tuning and 20 percent held out.",
+    "frozen_held_out": true,
+    "assignment_artifact": ".research_data/speech_sound_patterns/splits/librispeech-slr12-small.json",
+    "assignment_sha256": "69e097df3a5c38b6ac959398d3672c2980de7143fcd29cd5373fa78829a44d95",
+    "participant_counts": {
+      "development": 44,
+      "threshold_tuning": 15,
+      "held_out_evaluation": 14
+    },
+    "cross_split_overlap_count": 0,
+    "strata": {
+      "dev-clean": {
+        "development": 24,
+        "threshold_tuning": 8,
+        "held_out_evaluation": 8
+      },
+      "dev-other": {
+        "development": 20,
+        "threshold_tuning": 7,
+        "held_out_evaluation": 6
+      }
+    }
+  },
+  "lineage": {
+    "lineage_group": "librispeech",
+    "derived_from": [
+      "public_domain_audiobooks"
+    ],
+    "independence_claim": "candidate_model_overlap_must_be_audited",
+    "duplicate_detection": "Private speaker and utterance ids are checked before benchmark assembly.",
+    "candidate_model_overlap_status": "unknown_requires_model_specific_audit"
+  },
+  "archives": [
+    {
+      "filename": "dev-clean.tar.gz",
+      "size_bytes": 337926286,
+      "canonical_download_url": "https://www.openslr.org/resources/12/dev-clean.tar.gz",
+      "upstream_checksum": {
+        "algorithm": "md5",
+        "value": "42e2234ba48799c1f50f24a7926300a1"
+      },
+      "local_sha256": "76f87d090650617fca0cac8f88b9416e0ebf80350acb97b343a85fa903728ab3",
+      "local_verification_status": "verified"
+    },
+    {
+      "filename": "dev-other.tar.gz",
+      "size_bytes": 314305928,
+      "canonical_download_url": "https://www.openslr.org/resources/12/dev-other.tar.gz",
+      "upstream_checksum": {
+        "algorithm": "md5",
+        "value": "c8d0bcc9cca99d4f8b62fcc847357931"
+      },
+      "local_sha256": "12661c48e8c3fe1de2c1caa4c3e135193bfb1811584f11f569dd12645aa84365",
+      "local_verification_status": "verified"
+    }
+  ]
+}

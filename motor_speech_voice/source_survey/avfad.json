@@ -1,0 +1,92 @@
+{
+  "source_id": "avfad",
+  "title": "Advanced Voice Function Assessment Databases",
+  "citation": "AVFAD, Universidade de Aveiro.",
+  "canonical_source": {
+    "landing_page": "https://acsa.web.ua.pt/AVFAD.htm",
+    "terms_or_licence_url": null
+  },
+  "language_and_variety": {
+    "language": "Portuguese",
+    "variety": "European Portuguese",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "709 participants, 346 with vocal pathology and 363 without, 8,648 audio files.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "European Portuguese."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel",
+    "cape_v_style_sentences",
+    "reading",
+    "spontaneous_speech"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "unresolved",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "unresolved",
+    "failure_reasons": [
+      "Whether per rater perceptual scores are distributed with the database was not established from the project page."
+    ]
+  },
+  "access": {
+    "route": "email_request_to_authors",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_only_after_contact_or_agreement",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "reported_not_verified",
+    "inspected_materials": [
+      "Reported from a discovery sweep on 2026-08-19 and not confirmed at source by this survey."
+    ],
+    "findings": [
+      "Recorded so that it is not rediscovered as a fresh lead. Its licence, rater structure and access terms all remain unchecked."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_licence_unresolved",
+    "reasons": [
+      "No stated licence and an email route that this project is not authorised to use."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "avfad_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

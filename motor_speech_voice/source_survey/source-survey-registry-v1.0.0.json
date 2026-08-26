@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "motor_speech_voice_source_survey_v1",
+  "checkpoint": "23B",
+  "status": "evidence_survey_complete_no_source_selected",
+  "record_schema": "source-survey-schema-v1.0.0.json",
+  "surveyed_at": "2026-08-19",
+  "raw_data_root": ".research_data/motor_speech_voice/23b/",
+  "raw_data_committed": false,
+  "acquisition_authorised": false,
+  "purpose": "Record which publicly identifiable sources could supply the independent human reference evidence item 23 requires, what they may lawfully be used for, and whether they can be obtained at all. This survey selects no source, authorises no acquisition, and decides no truth requirement.",
+  "record_count": 27,
+  "records": [
+    {
+      "source_id": "younger_nt_adults",
+      "path": "younger_nt_adults.json"
+    },
+    {
+      "source_id": "ondri_speech",
+      "path": "ondri_speech.json"
+    },
+    {
+      "source_id": "ewa_db",
+      "path": "ewa_db.json"
+    },
+    {
+      "source_id": "voc_als",
+      "path": "voc_als.json"
+    },
+    {
+      "source_id": "neurovoz",
+      "path": "neurovoz.json"
+    },
+    {
+      "source_id": "alois_db",
+      "path": "alois_db.json"
+    },
+    {
+      "source_id": "ddk_development_measures",
+      "path": "ddk_development_measures.json"
+    },
+    {
+      "source_id": "ddk_post_stroke_rate_measures",
+      "path": "ddk_post_stroke_rate_measures.json"
+    },
+    {
+      "source_id": "plosive_vot_features_parkinson",
+      "path": "plosive_vot_features_parkinson.json"
+    },
+    {
+      "source_id": "pc_gita",
+      "path": "pc_gita.json"
+    },
+    {
+      "source_id": "pvqd",
+      "path": "pvqd.json"
+    },
+    {
+      "source_id": "saarbruecken_voice_database",
+      "path": "saarbruecken_voice_database.json"
+    },
+    {
+      "source_id": "saarbruecken_grb_labels",
+      "path": "saarbruecken_grb_labels.json"
+    },
+    {
+      "source_id": "hupa",
+      "path": "hupa.json"
+    },
+    {
+      "source_id": "voiced_physionet",
+      "path": "voiced_physionet.json"
+    },
+    {
+      "source_id": "bridge2ai_voice",
+      "path": "bridge2ai_voice.json"
+    },
+    {
+      "source_id": "avfad",
+      "path": "avfad.json"
+    },
+    {
+      "source_id": "aprocsa",
+      "path": "aprocsa.json"
+    },
+    {
+      "source_id": "speech_accessibility_project",
+      "path": "speech_accessibility_project.json"
+    },
+    {
+      "source_id": "ua_speech",
+      "path": "ua_speech.json"
+    },
+    {
+      "source_id": "torgo",
+      "path": "torgo.json"
+    },
+    {
+      "source_id": "talkbank_phonbank_clinical",
+      "path": "talkbank_phonbank_clinical.json"
+    },
+    {
+      "source_id": "osf_slp_intelligibility_estimations",
+      "path": "osf_slp_intelligibility_estimations.json"
+    },
+    {
+      "source_id": "clarity_prediction_challenge",
+      "path": "clarity_prediction_challenge.json"
+    },
+    {
+      "source_id": "nki_ccrt",
+      "path": "nki_ccrt.json"
+    },
+    {
+      "source_id": "austalk_alveo",
+      "path": "austalk_alveo.json"
+    },
+    {
+      "source_id": "auskidtalk",
+      "path": "auskidtalk.json"
+    }
+  ],
+  "counts": {
+    "obtainable_without_any_contact_account_or_agreement": 11,
+    "licence_permits_commercial_use": 10,
+    "recorded_as_meeting_an_item_23_truth_requirement": 0,
+    "selected": 0
+  },
+  "obtainable_without_contact": [
+    "aprocsa",
+    "clarity_prediction_challenge",
+    "ddk_development_measures",
+    "ddk_post_stroke_rate_measures",
+    "osf_slp_intelligibility_estimations",
+    "plosive_vot_features_parkinson",
+    "pvqd",
+    "saarbruecken_grb_labels",
+    "saarbruecken_voice_database",
+    "torgo",
+    "voiced_physionet"
+  ],
+  "commercial_use_permitted": [
+    "ddk_development_measures",
+    "ddk_post_stroke_rate_measures",
+    "ewa_db",
+    "plosive_vot_features_parkinson",
+    "pvqd",
+    "saarbruecken_grb_labels",
+    "saarbruecken_voice_database",
+    "speech_accessibility_project",
+    "voc_als",
+    "voiced_physionet"
+  ],
+  "lane_conclusions": {
+    "motor_task_timing_and_accuracy": {
+      "question": "Is there a public source in which trained humans marked rapid syllable cycles, boundaries or task errors, so that a computed timing value has something independent to be graded against?",
+      "answer": "no_qualifying_source_located",
+      "conclusion": "Public rapid syllable recordings exist in quantity, and none of them carries rapid syllable reference truth. The large collections carry diagnosis and clinical rating scale labels, which describe a study population and are a different truth class. The one located set that does carry two independent annotators marking voice onset times and vowel boundaries on neurotypical adults has no public release. This is a property of what has been published, not a licence problem and not a gap in searching: the same conclusion holds at every licence and at every price, including sources that require an application this project cannot make.",
+      "consequences": [
+        "No licence decision, account, agreement or payment would obtain this truth class.",
+        "Collecting it would mean recruiting participants and paying trained annotators, which is precisely the participant work that checkpoint 23B cannot authorise without professional governance and ethics review.",
+        "Any future motor timing claim therefore depends on prospective data collection, and no shortcut through public data exists."
+      ]
+    },
+    "perceptual_voice": {
+      "question": "Is there a public source in which several qualified raters judged voice under a standardised protocol, with the individual ratings kept?",
+      "answer": "one_candidate_source_with_unresolved_and_measured_limits",
+      "conclusion": "Exactly one located source plausibly reaches the multiple qualified rater requirement under a licence that permits commercial use and needs no contact, account or agreement: the Perceptual Voice Qualities Database, under CC BY 4.0. Two things stop that being good news. Whether it distributes individual rater rows or only combined values is unresolved and cannot be settled without opening the file. And an independent re-rating measured how far trained clinicians actually agree, which fixes a ceiling on anything built against it: good agreement for overall severity, moderate for roughness, breathiness and strain, and poor for pitch and loudness. Every other perceptual source located fails on rater multiplicity, on consensus collapsing the disagreement, on a non commercial licence, or on restricted access.",
+      "consequences": [
+        "Pitch and loudness have no reliable human reference in the one available source, so no candidate measure may be graded against them, and the existing item 20 pitch primitive gains no reference by this route.",
+        "On the most reliable feature two trained raters typically differ by 12 to 15 points on a 100 point scale, so no future claim of finer resolution than that can be supported.",
+        "The material is United States English, which repeats the imported reference problem item 22 measured, and there is no Australian equivalent.",
+        "Whether this source is acceptable at all is a decision for independent voice governance, not for this survey."
+      ]
+    },
+    "intelligibility": {
+      "question": "Is there a public source in which several unfamiliar listeners wrote down what they understood, retained per listener, under a declared listening condition?",
+      "answer": "no_lawfully_usable_source_located",
+      "conclusion": "Sources of the right shape exist and none of them is usable here. The largest carries commercial permission but requires a data use agreement countersigned by an authorised representative of an organisation, which this project does not have. Others are limited to academic non-profit use, or to research, education and clinical use, or require professional certification, or are restricted, or carry no licence at all. One openly visible set of seventy unfamiliar listener transcriptions has no licence assigned, so nothing has been granted. One set with per listener transcriptions measures hearing aid processing for hearing impaired listeners, which is a different construct wearing the same file shape.",
+      "consequences": [
+        "The missing legal entity is not an abstract governance concern. It is the concrete reason the single most relevant modern corpus cannot be requested.",
+        "An openly visible dataset without a licence grants nothing, and public visibility must never be read as permission."
+      ]
+    },
+    "australian_english": {
+      "question": "Is there any Australian English source carrying any of the three truth classes?",
+      "answer": "none_located",
+      "conclusion": "No Australian English source carrying motor task, perceptual voice or multi listener intelligibility reference evidence was located. The adult Australian corpus this project would most want remains unreachable, which direct checks on 2026-08-19 confirmed rather than changed. The one large Australian corpus that is active covers children and is outside the approved adults first scope.",
+      "consequences": [
+        "Any Australian variety question in item 23 depends on prospective collection, exactly as the motor timing question does.",
+        "An international source cannot answer an Australian variety question, and item 22 already demonstrated the cost of assuming otherwise."
+      ]
+    }
+  },
+  "cross_source_rules": {
+    "truth_classes_may_be_pooled": false,
+    "diagnosis_is_numeric_ground_truth": false,
+    "consensus_may_replace_retained_disagreement": false,
+    "public_visibility_implies_a_licence": false,
+    "single_rater_may_substitute_for_multiple_raters": false,
+    "agreement_between_two_systems_is_evidence": false,
+    "a_source_may_be_recorded_as_meeting_a_truth_requirement": false,
+    "acquisition_authorised_by_this_survey": false
+  },
+  "limitations": [
+    "A survey of what has been published is not a survey of what exists. A source that is unlisted, unindexed or described only in a language not searched here would be missed.",
+    "Records marked reported_not_verified were not confirmed at source and drive no conclusion. They exist so the lead is not rediscovered.",
+    "Availability and licence statements change. Every record carries the date it was checked, and a stale record must be rechecked rather than trusted.",
+    "Nothing here establishes that a source is scientifically suitable, ethically reusable or acceptable to independent governance. It establishes only what could be obtained and under what terms."
+  ]
+}

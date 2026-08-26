@@ -1,0 +1,759 @@
+{
+  "schema_version": "1.3.0",
+  "protocol_id": "speech_sound_pattern_research_en",
+  "protocol_version": "1.3.0",
+  "status": "local_feasibility_complete_candidate_engineering_not_active",
+  "language": "en",
+  "purpose": "Govern developer-only offline engineering that may separate an automatic speech sound relation candidate, repeated relation evidence, ASR error, and legitimate accent or dialect variation without creating product or clinical claims.",
+  "claim_boundaries": {
+    "allowed_claim_levels": [
+      "measured_observation"
+    ],
+    "forbidden_outputs": [
+      "articulation_score",
+      "phonology_score",
+      "pronunciation_score",
+      "accent_quality",
+      "native_likeness",
+      "disorder_label",
+      "screening_result",
+      "diagnosis",
+      "severity",
+      "cause_or_etiology",
+      "ranking_between_people",
+      "personal_progress",
+      "treatment_recommendation"
+    ],
+    "asr_text_is_lexical_intent": false,
+    "asr_is_phone_truth": false,
+    "automatic_system_agreement_is_truth": false,
+    "automatic_absence_establishes_typical_speech": false
+  },
+  "constructs": {
+    "speech_sound_production_observation": {
+      "definition": "A time linked, independently reviewed record of what speech sound appears to have been produced in one known task opportunity.",
+      "does_not_establish": [
+        "error",
+        "cause",
+        "disorder",
+        "treatment_need"
+      ],
+      "automatic_state": "unavailable"
+    },
+    "target_relation_observation": {
+      "definition": "A reviewed relation between the production record and every professionally accepted pronunciation variant for the intended word in that task context.",
+      "does_not_establish": [
+        "disorder",
+        "accent_quality",
+        "cause"
+      ],
+      "automatic_state": "unavailable"
+    },
+    "phonological_pattern_hypothesis": {
+      "definition": "A descriptive hypothesis supported by repeated independently reviewed target relations across multiple eligible opportunities, sound contexts and words.",
+      "does_not_establish": [
+        "phonological_disorder",
+        "developmental_status",
+        "cause",
+        "severity"
+      ],
+      "automatic_state": "unavailable"
+    },
+    "asr_disagreement": {
+      "definition": "A difference between an automatic word hypothesis and an independently established intended or heard word.",
+      "does_not_establish": [
+        "speech_sound_difference",
+        "speaker_error",
+        "low_intelligibility"
+      ],
+      "automatic_state": "research_context_only"
+    },
+    "legitimate_language_or_variety_form": {
+      "definition": "A production consistent with a professionally reviewed language, accent, dialect, allophonic or cross linguistic pattern relevant to the speaker and task.",
+      "can_be_error": false,
+      "automatic_state": "unavailable"
+    }
+  },
+  "task_policy": {
+    "active_task": null,
+    "active_stimulus_pack": null,
+    "primary_future_task": "controlled_word_research_en_v1",
+    "primary_task_contract": "assessment/pronunciation-research-v1.0.0.json",
+    "elicitation_modes": {
+      "controlled_word": {
+        "role": "primary_development_and_evaluation",
+        "status": "locked",
+        "intended_word_source": "versioned_presented_stimulus",
+        "limitations": [
+          "reading_ability",
+          "word_familiarity",
+          "prompt_imitation_for_spoken_alternative"
+        ]
+      },
+      "sentence_or_connected_speech": {
+        "role": "secondary_transfer_evidence",
+        "status": "research_protocol_not_defined",
+        "intended_word_source": "independent_human_confirmation_required",
+        "limitations": [
+          "coarticulation",
+          "speech_rate",
+          "word_boundary_uncertainty",
+          "style_and_context"
+        ]
+      },
+      "spontaneous_speech": {
+        "role": "context_only_until_separately_validated",
+        "status": "locked_for_target_relation_and_pattern_inference",
+        "intended_word_source": "asr_forbidden",
+        "limitations": [
+          "unknown_lexical_intent",
+          "self_repair",
+          "reduced_forms",
+          "connected_speech_variation"
+        ]
+      }
+    },
+    "elicitation_modes_are_comparable": false,
+    "cross_task_pooling": "blocked",
+    "repeated_productions_required": true,
+    "pattern_minimum_opportunities": null,
+    "pattern_minimum_rule_status": "requires_professional_design_and_development_data",
+    "active_developer_research_task": null,
+    "active_product_task": null,
+    "developer_research_task_status": "planned_not_implemented",
+    "product_task_status": "locked",
+    "developer_research_pack_may_use_versioned_open_or_licensed_variants": true,
+    "product_task_activation_requires_professionally_reviewed_word_pack": true,
+    "normal_pipeline_task_activation": "blocked",
+    "developer_research_activation_requirements": [
+      "validated_engineering_contract",
+      "verified_source_and_licence_manifests",
+      "versioned_controlled_word_research_pack",
+      "explicit_research_command"
+    ]
+  },
+  "evidence_model": {
+    "layers_kept_separate": [
+      "source_audio_and_quality",
+      "task_prompt_and_intended_word",
+      "blind_listener_word_transcriptions",
+      "blind_human_production_transcriptions",
+      "reviewed_variant_set",
+      "target_relation_reviews",
+      "raw_asr_outputs",
+      "raw_candidate_system_outputs",
+      "reviewer_disagreements_and_adjudication",
+      "versioned_provenance"
+    ],
+    "production_units": [
+      "consonant",
+      "vowel",
+      "diphthong",
+      "consonant_cluster",
+      "syllable_shape"
+    ],
+    "target_relation_outcomes": [
+      "accepted_variant",
+      "observed_substitution",
+      "observed_deletion",
+      "observed_insertion",
+      "observed_distortion",
+      "uncertain",
+      "unscorable"
+    ],
+    "pattern_outcomes": [
+      "evidence_supported_pattern_hypothesis",
+      "insufficient_opportunities",
+      "language_or_variety_consistent",
+      "uncertain",
+      "unscorable"
+    ],
+    "required_primitive_fields": [
+      "participant_id",
+      "session_id",
+      "attempt_id",
+      "trial_id",
+      "stimulus_id",
+      "elicitation_mode",
+      "start_s",
+      "end_s",
+      "audio_quality_status",
+      "intended_word_source",
+      "blind_listener_records",
+      "blind_production_records",
+      "variant_set_version",
+      "target_relation_reviews",
+      "raw_asr_outputs",
+      "raw_candidate_outputs",
+      "review_state",
+      "provenance"
+    ],
+    "denominators": {
+      "expected_word_opportunities": "Every presented word before technical or evidence exclusions.",
+      "scorable_word_opportunities": "Expected words remaining after documented exclusions.",
+      "expected_sound_opportunities": "Every professionally reviewed sound opportunity across all accepted variants before exclusions.",
+      "scorable_sound_opportunities": "Expected sound opportunities remaining after quality, variant and evidence exclusions.",
+      "insertions": "Separate observations that never change an expected opportunity denominator.",
+      "pattern_support": "Report supporting opportunities, eligible opportunities, distinct words, contexts and sessions without hiding any denominator."
+    },
+    "missing_evidence_is_zero": false,
+    "production_transcription_is_infallible": false,
+    "combined_score_allowed": false,
+    "automatic_candidate_states": [
+      "possible_relation_candidate",
+      "asr_only_disagreement",
+      "candidate_system_conflict",
+      "known_reference_variant",
+      "insufficient_evidence",
+      "unsupported",
+      "unavailable"
+    ],
+    "automatic_candidate_is_reviewed_target_relation": false,
+    "generic_repeated_relation_state": "repeated_relation_candidate",
+    "generic_repeated_relation_is_named_pattern": false
+  },
+  "reference_truth": {
+    "blind_listener_reference": {
+      "construct": "The word an independent listener actually understood.",
+      "listener_sees_prompt_or_expected_word": false,
+      "listener_sees_automatic_outputs": false,
+      "kept_separate_from_sound_production": true
+    },
+    "two_pass_production_review": {
+      "pass_one": "At least two qualified reviewers independently record the audible production before seeing the expected word, accepted variant set or automatic outputs.",
+      "pass_two": "Reviewers compare the retained production records with the intended word and all accepted variants, then record the target relation without erasing pass one.",
+      "independent_reviewers": 2,
+      "reviewers_blind_to_automatic_outputs": true,
+      "pass_one_blind_to_expected_word": true,
+      "original_records_retained": true,
+      "disagreements_retained": true,
+      "documented_adjudication": true,
+      "broad_ipa_default": true,
+      "narrow_transcription_requires_separate_protocol_and_reliability": true,
+      "reviewer_language_and_variety_competence_recorded": true
+    },
+    "variant_reference": {
+      "unit": "word_specific_versioned_union_of_accepted_forms",
+      "relevant_language_and_variety_expertise_required": true,
+      "unresolved_form_behavior": "unscorable",
+      "self_report_alone_creates_truth": false,
+      "qualified_professional_review_required_for_scientific_or_product_release": true,
+      "developer_reference_variants_may_use_versioned_open_or_licensed_sources": true,
+      "developer_reference_variant_role": "candidate_exclusion_prompt_design_and_engineering_benchmark_only"
+    },
+    "single_reviewer_is_reference_truth": false,
+    "automatic_system_is_reference_truth": false,
+    "engineering_benchmark_reference": {
+      "allowed_reference": "documented_existing_expert_annotations",
+      "source_specific_construct_and_disagreement_retained": true,
+      "source_limitations_required": true,
+      "may_unlock_scientific_or_product_release": false,
+      "may_define_acceptable_language_or_variety_truth": false
+    }
+  },
+  "asr_and_alignment_separation": {
+    "raw_asr_retained_as_system_evidence": true,
+    "asr_may_trigger_manual_review": true,
+    "asr_disagreement_may_create_sound_concern": false,
+    "asr_confidence_is_phone_probability": false,
+    "multiple_asr_agreement_is_truth": false,
+    "expected_text_forced_alignment_verifies_production": false,
+    "forced_alignment_role": "candidate_interval_localisation_only",
+    "phone_recognizer_role": "candidate_system_only",
+    "provider_pronunciation_score_role": "raw_research_output_only",
+    "llm_may_infer_produced_phone": false,
+    "required_error_attribution_states": [
+      "human_production_and_asr_agree",
+      "asr_only_disagreement",
+      "human_confirmed_target_relation_difference",
+      "human_reference_disagreement",
+      "unscorable"
+    ]
+  },
+  "language_and_variety_policy": {
+    "single_standard_accent_allowed": false,
+    "acceptable_variant_can_be_error": false,
+    "unsupported_or_unrepresented_form_behavior": "unscorable",
+    "self_reported_language_or_variety_is_context_not_truth": true,
+    "language_history_may_be_inferred_from_voice": false,
+    "cross_linguistic_transfer_is_disorder": false,
+    "accent_modification_is_elective_and_separate": true,
+    "listener_bias_is_speaker_impairment": false,
+    "professional_or_linguistic_broker_review_required_when_expertise_missing": true
+  },
+  "pattern_policy": {
+    "active_pattern_registry": [],
+    "single_opportunity_can_create_pattern": false,
+    "asr_errors_can_create_pattern": false,
+    "pattern_requires_multiple_words_and_contexts": true,
+    "support_and_opportunity_counts_required": true,
+    "consistency_must_be_reported": true,
+    "language_and_variety_explanation_checked_first": true,
+    "pattern_label_is_disorder": false,
+    "numeric_pattern_thresholds": null,
+    "threshold_status": "not_set_before_development_and_tuning_evidence",
+    "named_pattern_requires_human_confirmed_target_relations": true,
+    "automatic_named_pattern_allowed": false,
+    "generic_repeated_relation_candidate_allowed_after_validation": true,
+    "generic_repeated_relation_status": "planned_not_implemented",
+    "generic_repeated_relation_requires_multiple_words_and_contexts": true,
+    "generic_repeated_relation_is_disorder": false,
+    "threshold_selection_rule": "select_on_development_and_tuning_participants_then_freeze_before_held_out"
+  },
+  "consent_policy": {
+    "required_separate_consents": [
+      "research_collection",
+      "human_review",
+      "raw_audio_retention"
+    ],
+    "fairness_metadata_requires_separate_consent": true,
+    "declining_research_affects_normal_coaching": false,
+    "consent_may_be_inferred": false
+  },
+  "candidate_systems": {
+    "selected_system": null,
+    "comparison_status": "local_feasibility_complete_benchmark_not_started",
+    "reuse_pronunciation_candidate_contract": "assessment/pronunciation-research-v1.0.0.json",
+    "minimum_system_roles_to_compare": [
+      "current_asr_word_baseline",
+      "inspectable_alignment_or_phone_baseline"
+    ],
+    "raw_outputs_and_versions_required": true,
+    "same_recording_to_every_candidate": true,
+    "candidate_outputs_hidden_from_reference_reviewers": true,
+    "provider_states": [
+      "planned",
+      "terms_pending",
+      "configured",
+      "evaluated",
+      "local_feasibility_passed_timing_only",
+      "local_feasibility_passed_release_blocked",
+      "local_feasibility_passed_strict_identity_only",
+      "selected_supporting_evidence",
+      "rejected",
+      "unavailable"
+    ],
+    "planned_systems": [
+      {
+        "system_id": "current_asr_word_baseline",
+        "kind": "existing_local_or_provider_baseline",
+        "state": "planned"
+      },
+      {
+        "system_id": "montreal_forced_aligner",
+        "kind": "local_interval_candidate",
+        "state": "local_feasibility_passed_timing_only"
+      },
+      {
+        "system_id": "phoneticxeus",
+        "kind": "local_unconstrained_phone_candidate",
+        "state": "local_feasibility_passed_release_blocked"
+      },
+      {
+        "system_id": "panphon",
+        "kind": "local_phone_feature_mapping",
+        "state": "local_feasibility_passed_strict_identity_only"
+      },
+      {
+        "system_id": "azure_pronunciation_assessment",
+        "kind": "optional_remote_comparison",
+        "state": "terms_pending"
+      },
+      {
+        "system_id": "speechace",
+        "kind": "optional_remote_comparison",
+        "state": "terms_pending"
+      },
+      {
+        "system_id": "speechsuper",
+        "kind": "optional_remote_comparison",
+        "state": "terms_pending"
+      }
+    ],
+    "selected_supporting_systems": [],
+    "local_primary_evidence_required": true,
+    "remote_provider_required": false,
+    "provider_agreement_is_reference_truth": false,
+    "provider_selection_requires_held_out_incremental_value": true
+  },
+  "local_feasibility": {
+    "status": "complete_release_locked",
+    "report_path": "local-feasibility-v1.0.0.json",
+    "report_sha256": "59bfcb89e75da7082fcf78ca763ee507215c8950123c53d8685523e6661c0095",
+    "private_sample_manifest_sha256": "655c8ba92d56b6804b453397f7919cb57ed4875d035f2884493a7c7e63e938fa",
+    "raw_evidence_committed": false,
+    "development_sample_only": true,
+    "held_out_or_accuracy_evaluation_performed": false,
+    "normal_pipeline_used_as_input": false,
+    "gpu_rental_used": false,
+    "local_stack_fits_current_machine": true,
+    "candidate_extractor_implemented": false,
+    "research_artifact_implemented": false,
+    "next_checkpoint": "22D_build_benchmark_harness_after_owner_commit_and_explicit_approval"
+  },
+  "validation_program": {
+    "scientific_release_status": "not_evaluated",
+    "adam_recordings_role": "functional_integration_only",
+    "data_splits": [
+      "development",
+      "threshold_tuning",
+      "held_out_evaluation"
+    ],
+    "participant_exclusive_splits": true,
+    "thresholds_frozen_before_held_out_evaluation": true,
+    "reference_data": "documented source-specific public expert annotations for engineering; independent two pass human review for scientific release",
+    "required_metrics": [
+      "phone_relation_precision_recall_and_f1_by_outcome",
+      "accepted_variant_false_concern_rate",
+      "asr_error_attribution_matrix",
+      "false_concerns_per_scorable_opportunity",
+      "abstention_and_unscorable_rate",
+      "calibration_if_confidence_is_retained",
+      "exact_same_input_repeatability",
+      "repeated_human_production_reliability",
+      "human_inter_and_intra_reviewer_agreement",
+      "pattern_level_metrics_after_pattern_registry_approval",
+      "subgroup_results_with_uncertainty",
+      "source_and_licence_compliance",
+      "provider_incremental_value_if_compared",
+      "unsupported_scope_rate"
+    ],
+    "required_dimensions": [
+      "English variety and accent",
+      "first language background",
+      "multilingual status",
+      "task and elicitation mode",
+      "word and phonetic context",
+      "voice range",
+      "device and audio quality",
+      "speech difference",
+      "consented target population strata"
+    ],
+    "sample_size_rule": "Predeclare and justify participant, listener and reviewer sample sizes before collection; the owner recordings cannot establish population performance.",
+    "release_thresholds": null,
+    "engineering_evaluation_status": "not_started",
+    "engineering_thresholds": null,
+    "scientific_release_thresholds": null
+  },
+  "failure_policy": {
+    "poor_audio": "unavailable",
+    "unsupported_language": "unavailable",
+    "unsupported_or_unrepresented_variety": "unavailable",
+    "unknown_intended_word": "unavailable",
+    "asr_or_alignment_conflict": "manual_review_or_unavailable",
+    "insufficient_opportunities": "unavailable",
+    "unresolved_human_disagreement": "unavailable",
+    "fallback_to_default_accent": false,
+    "fallback_to_zero": false,
+    "fallback_to_llm_judgment": false,
+    "missing_versioned_research_variant_set": "unavailable",
+    "missing_professionally_reviewed_variant_set_for_product_release": "blocked",
+    "missing_source_or_licence_manifest": "blocked",
+    "missing_required_local_model_or_version": "unavailable",
+    "optional_provider_unavailable": "record_provider_unavailable_and_continue_with_local_evidence"
+  },
+  "downstream_policy": {
+    "pipeline_extractor_exists": false,
+    "research_artifact_exists": false,
+    "included_in_listener_prompt": false,
+    "included_in_evaluator_input": false,
+    "included_in_claim_ledger": false,
+    "included_in_coaching": false,
+    "included_in_personal_progress": false,
+    "included_in_screening_or_diagnosis": false,
+    "developer_research_extractor_exists": false,
+    "developer_research_artifact_exists": false,
+    "normal_pipeline_extractor_exists": false
+  },
+  "release_policy": {
+    "automatic_candidate_collection": "blocked_until_validated_manifests_and_research_task",
+    "normal_coaching": "blocked",
+    "personal_progress": "blocked",
+    "ranking": "blocked",
+    "screening": "blocked",
+    "diagnosis": "blocked",
+    "severity": "blocked",
+    "treatment": "blocked",
+    "unlock_requirements": [
+      "developer engineering follows engineering requirements",
+      "scientific release follows scientific release requirements",
+      "product release follows product release requirements"
+    ],
+    "developer_offline_candidate_engineering": "approved_local_feasibility_complete_candidate_extractor_not_implemented",
+    "normal_pipeline_activation": "blocked",
+    "engineering_requirements": [
+      "validated_engineering_contract",
+      "verified_source_and_licence_manifests",
+      "versioned_controlled_word_research_pack",
+      "local_feasibility_and_repeatability_pass",
+      "participant_exclusive_engineering_benchmark"
+    ],
+    "scientific_release_requirements": [
+      "qualified speech pathology and phonetic review",
+      "active professionally reviewed task and word specific variant pack",
+      "written two pass annotation guide and trained reviewers",
+      "representative independent participant labelled data",
+      "predeclared accuracy reliability abstention and subgroup gates",
+      "acceptable held out performance including variant false concerns",
+      "privacy consent retention and provider review",
+      "separate owner approval"
+    ],
+    "product_release_requirements": [
+      "scientific release requirements satisfied",
+      "separate owner approval for product release"
+    ]
+  },
+  "out_of_scope": [
+    "motor_speech_screening",
+    "voice_screening",
+    "cause_or_etiology",
+    "oral_mechanism_examination",
+    "hearing_assessment",
+    "clinical_differential_diagnosis",
+    "personalised_speech_recognition",
+    "exercise_selection_or_treatment"
+  ],
+  "sources": [
+    {
+      "id": "asha_speech_sound_disorders",
+      "url": "https://www.asha.org/practice-portal/clinical-topics/articulation-and-phonology/",
+      "relevance": "Production units, connected speech, pattern analysis, and language and dialect safeguards."
+    },
+    {
+      "id": "asha_accent_modification",
+      "url": "https://www.asha.org/practice-portal/professional-issues/accent-modification/",
+      "relevance": "Accents are natural differences, not disorders, and intelligibility is separate from accentedness."
+    },
+    {
+      "id": "speech_pathology_australia_culturally_responsive_practice",
+      "url": "https://www.speechpathologyaustralia.org.au/Common/Uploaded%20files/Smart%20Suite/Smart%20Library/e0f18c12-a0d6-4a44-a9c3-2bbd9436e37f/2025_Culturally-responsive-speech-pathology-practice.pdf",
+      "relevance": "Current Australian professional position on culturally safe, responsive and relevant speech pathology research and practice."
+    },
+    {
+      "id": "international_phonetic_association_chart",
+      "url": "https://www.internationalphoneticassociation.org/content/ipa-chart",
+      "relevance": "Official phonetic symbol reference."
+    },
+    {
+      "id": "mallaband_2024_transcription_agreement",
+      "url": "https://doi.org/10.1111/1460-6984.13043",
+      "relevance": "Human phonetic transcription is uncertain and can materially change inferred patterns."
+    },
+    {
+      "id": "child_speech_disorder_research_network_2017",
+      "url": "https://www.rcslt.org/wp-content/uploads/media/docs/clinical-guidance/bsltru-good-practice-guidelines-transcription.pdf",
+      "relevance": "Recorded samples, fit for purpose transcription, repeated productions, connected speech, consent and reliability."
+    },
+    {
+      "id": "koenecke_2020_asr_disparities",
+      "url": "https://doi.org/10.1073/pnas.1915768117",
+      "relevance": "ASR errors differ across speaker groups and cannot be treated as speaker errors."
+    },
+    {
+      "id": "tatman_2017_asr_dialect_bias",
+      "url": "https://aclanthology.org/W17-1606/",
+      "relevance": "ASR accuracy varied across dialect and gender groups, requiring stratified validation."
+    },
+    {
+      "id": "el_kheir_2023_automatic_pronunciation_review",
+      "url": "https://aclanthology.org/2023.findings-emnlp.557/",
+      "relevance": "Automatic pronunciation assessment has distinct constructs, scarce data, imbalanced error classes and unresolved evaluation challenges."
+    },
+    {
+      "id": "microsoft_pronunciation_limitations",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/responsible-ai/speech-service/pronunciation-assessment/characteristics-and-limitations-pronunciation-assessment",
+      "relevance": "Provider results depend on speech to text, audio conditions, submitted reference text, local thresholds and local evaluation."
+    },
+    {
+      "id": "speechocean762",
+      "url": "https://www.openslr.org/101/",
+      "relevance": "Primary public expert-labelled engineering benchmark with source-specific limitations."
+    },
+    {
+      "id": "l2_arctic",
+      "url": "https://psi.engr.tamu.edu/l2-arctic-corpus/",
+      "relevance": "Restricted secondary phone-relation evidence across six first-language groups."
+    },
+    {
+      "id": "macquarie_pronunciation_data",
+      "url": "https://www.macquariedictionary.com.au/pronunciations/",
+      "relevance": "Potential licensed Australian English word-specific variants and reference audio."
+    },
+    {
+      "id": "timit_ldc93s1",
+      "url": "https://catalog.ldc.upenn.edu/LDC93S1",
+      "relevance": "Potential licensed future alignment regression evidence, not target-relation truth."
+    },
+    {
+      "id": "microsoft_pronunciation_data_privacy",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/speech-service/speech-to-text/data-privacy-security",
+      "relevance": "Provider processing and retention information that must be reviewed before use."
+    }
+  ],
+  "engineering_policy": {
+    "approval_scope": "developer_only_offline_candidate_engineering",
+    "implementation_status": "local_feasibility_complete_extractor_not_started",
+    "normal_pipeline_activation": "blocked",
+    "explicit_research_command_required": true,
+    "known_presented_stimulus_required": true,
+    "current_solo_or_conversation_target_inference": "blocked",
+    "planned_artifact": "speech_sound_candidates.json",
+    "planned_artifact_status": "not_implemented",
+    "scientific_release_status": "locked",
+    "product_release_status": "locked",
+    "gpu_rental_approved": false,
+    "allowed_initial_scope": [
+      "controlled_isolated_english_words",
+      "conservative_consonant_substitution_candidates",
+      "conservative_consonant_deletion_candidates",
+      "conservative_consonant_insertion_candidates",
+      "generic_repeated_relation_candidates"
+    ],
+    "explicitly_unsupported_initial_scope": [
+      "vowel_or_diphthong_judgment",
+      "distortion_judgment",
+      "strongly_variety_sensitive_opportunities",
+      "spontaneous_or_connected_speech_target_relations",
+      "named_articulation_or_phonological_patterns",
+      "developmental_expectations",
+      "disorder_severity_cause_or_treatment"
+    ]
+  },
+  "research_sources": {
+    "source_manifest_required_before_use": true,
+    "unmanifested_source_behavior": "blocked",
+    "required_manifest_fields": [
+      "canonical_source",
+      "version",
+      "archive_checksum",
+      "citation",
+      "access_and_terms",
+      "licence_and_commercial_use",
+      "permitted_and_prohibited_roles",
+      "population_and_annotation_construct",
+      "participant_split",
+      "lineage_and_independence",
+      "candidate_model_overlap",
+      "privacy_and_transfer_duties"
+    ],
+    "allowed_access_states": [
+      "available",
+      "access_pending",
+      "rejected",
+      "unavailable"
+    ],
+    "allowed_licence_states": [
+      "pending_review",
+      "verified_for_declared_role",
+      "restricted_role_only",
+      "rejected"
+    ],
+    "restricted_source_data_may_be_committed": false,
+    "participant_exclusive_split_required": true,
+    "provider_processing_requires_source_and_provider_terms": true,
+    "owner_controls_accounts_purchases_and_terms": true,
+    "api_credentials_location": ".env",
+    "recorded_sources": [
+      {
+        "source_id": "speechocean762",
+        "manifest_path": "corpus_manifests/speechocean762-v1.2.0.json",
+        "manifest_status": "validated",
+        "access_state": "available",
+        "licence_state": "verified_for_declared_role",
+        "planned_role": "primary_expert_phone_relation_engineering_benchmark",
+        "may_define_acceptable_variety_truth": false
+      },
+      {
+        "source_id": "acted_clear_speech",
+        "manifest_path": "corpus_manifests/acted-clear-speech-2013.json",
+        "manifest_status": "validated",
+        "access_state": "available",
+        "licence_state": "verified_for_declared_role",
+        "planned_role": "phone_boundary_regression_fixture",
+        "may_establish_population_performance": false
+      },
+      {
+        "source_id": "common_phone_1_0",
+        "manifest_path": "corpus_manifests/common-phone-v1.0.json",
+        "manifest_status": "validated",
+        "access_state": "available",
+        "licence_state": "verified_for_declared_role",
+        "planned_role": "automatic_phone_engineering_only",
+        "may_be_phone_relation_truth": false,
+        "independent_of_common_voice": false
+      },
+      {
+        "source_id": "common_voice_26_australian_english",
+        "manifest_path": "corpus_manifests/common-voice-26-australian-english.json",
+        "manifest_status": "validated",
+        "access_state": "available",
+        "licence_state": "verified_for_declared_role",
+        "planned_role": "australian_robustness_stress_test",
+        "may_be_phone_or_australian_variant_truth": false
+      },
+      {
+        "source_id": "librispeech_slr12_small",
+        "manifest_path": "corpus_manifests/librispeech-slr12-small.json",
+        "manifest_status": "validated",
+        "access_state": "available",
+        "licence_state": "verified_for_declared_role",
+        "planned_role": "runtime_and_determinism_regression",
+        "may_be_phone_production_truth": false
+      },
+      {
+        "source_id": "macquarie_australian_pronunciation_data",
+        "manifest_path": "corpus_manifests/macquarie-pending.json",
+        "manifest_status": "validated_pending_source",
+        "access_state": "access_pending",
+        "licence_state": "pending_review",
+        "planned_role": "australian_reference_variants_if_licensed",
+        "blocks_initial_engineering": false
+      },
+      {
+        "source_id": "timit_ldc93s1",
+        "manifest_path": "corpus_manifests/timit-rejected.json",
+        "manifest_status": "validated_rejected_source",
+        "access_state": "rejected",
+        "licence_state": "rejected",
+        "planned_role": "no_current_use",
+        "blocks_initial_engineering": false
+      },
+      {
+        "source_id": "l2_arctic",
+        "manifest_path": "corpus_manifests/l2-arctic-blocked.json",
+        "manifest_status": "validated_blocked_source",
+        "access_state": "unavailable",
+        "licence_state": "restricted_role_only",
+        "planned_role": "manifest_only",
+        "may_enter_commercial_training_or_evaluation": false
+      },
+      {
+        "source_id": "talkbank_research",
+        "manifest_path": "corpus_manifests/talkbank-blocked.json",
+        "manifest_status": "validated_blocked_source",
+        "access_state": "unavailable",
+        "licence_state": "restricted_role_only",
+        "planned_role": "manifest_only",
+        "may_validate_adult_product": false
+      },
+      {
+        "source_id": "adam_controlled_recordings",
+        "manifest_path": null,
+        "manifest_status": "owner_controlled_integration_evidence_not_public_corpus",
+        "access_state": "available",
+        "licence_state": "verified_for_declared_role",
+        "planned_role": "functional_integration_only",
+        "may_establish_population_performance": false
+      }
+    ],
+    "source_registry_path": "corpus_manifests/registry-v1.0.0.json",
+    "source_registry_status": "validated_release_locked",
+    "manifest_schema_path": "corpus_manifests/corpus-manifest-schema-v1.0.0.json",
+    "source_manifest_validator": "python3 -m speech_sound_patterns.validate_corpora",
+    "duplicate_participant_or_clip_across_splits": "blocked",
+    "related_sources_count_as_independent": false,
+    "model_seen_data_count_as_independent": false,
+    "truth_classes_may_be_pooled": false,
+    "unknown_licence_access_or_lineage_behavior": "blocked"
+  }
+}

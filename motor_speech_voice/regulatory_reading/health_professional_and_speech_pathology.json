@@ -1,0 +1,55 @@
+{
+  "question_id": "health_professional_and_speech_pathology",
+  "domain": "professional_regulation",
+  "question": "Is a speech pathologist a health professional for the purposes of Australian medical device regulation?",
+  "applies_to_purposes": [
+    "consumer_communication_coaching",
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Therapeutic Goods Administration, Understanding clinical decision support system software regulation, terminology used in exemption criterion (a)",
+      "url": "https://www.tga.gov.au/resources/guidance/understanding-clinical-decision-support-system-software-regulation",
+      "currency": "Retrieved 2026-08-19",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "A Health professional is defined by the Regulations and includes a person who is: a medical practitioner, a dentist or any other kind of health care worker registered under a law of a State or Territory or a biomedical engineer, chiropractor, optometrist, orthodontist, osteopath, pharmacist, physiotherapist, podiatrist, prosthetist, or rehabilitation engineer."
+    },
+    {
+      "citation": "Australian Health Practitioner Regulation Agency, Registers of practitioners",
+      "url": "https://www.ahpra.gov.au/Registration/Registers-of-Practitioners.aspx",
+      "currency": "Retrieved 2026-08-19",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "If you have a complaint about a service or fee, or a dispute with a health service provider (such as a hospital, clinic or a health practitioner) you should contact the relevant healthcare complaints organisation in your state or territory. They also manage complaints about other people working in healthcare that are not registered health practitioners (such as nutritionists, masseuses, naturopaths, homeopaths, dieticians, social workers and speech pathologists.)."
+    }
+  ],
+  "reading": [
+    "The regulator's list of health professionals names ten specific occupations and otherwise requires registration under a state or territory law. Speech pathology is not on the list.",
+    "The national regulator states in its own words that speech pathologists are among the people working in healthcare who are not registered health practitioners. Australian speech pathology is self regulated through professional certification, which the engineering plan already records.",
+    "Read together, the likely position is that a speech pathologist is not a health professional under the Medical Devices Regulations. That is a technical regulatory classification and says nothing whatever about their expertise or standing.",
+    "Two consequences follow and both cut against the project. The clinical decision support exemption is built around supporting a health professional, so software built for speech pathologists may not reach it. And the Rule 4.5 reduction of one class for providing information to a relevant health professional may be unavailable for the same reason, leaving the higher consumer facing classification in place."
+  ],
+  "confidence": "reading_with_material_uncertainty",
+  "unresolved": [
+    {
+      "question": "Whether the Regulations' definition is exhaustive or merely inclusive, given the guidance renders it with the word includes.",
+      "why_it_cannot_be_settled_here": "The guidance paraphrases the Regulations rather than quoting the definition in full, and the definition itself was not read at source here.",
+      "who_must_settle_it": "An Australian regulatory specialist, reading the Therapeutic Goods (Medical Devices) Regulations 2002 definition directly."
+    }
+  ],
+  "consequences": [
+    "This is a genuinely non obvious trap. A designer would reasonably assume that routing a result to a speech pathologist is the cautious, lower risk choice, and under this reading it may not reduce the regulatory burden at all.",
+    "It also matters to the governance package, which correctly treats speech pathology certification and practitioner registration as different things."
+  ],
+  "decided_by": [
+    "australian_regulatory_specialist",
+    "independent_professional_governance_group"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "health_professional_and_speech_pathology_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

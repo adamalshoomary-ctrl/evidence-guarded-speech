@@ -1,0 +1,220 @@
+{
+  "checkpoint": "22C",
+  "limitations": [
+    "This small development sample establishes local execution output shape mapping and repeatability only not accuracy.",
+    "No held out participant expert relation label or population result was inspected or scored.",
+    "The MFA model is General American read speech and conditions on expected text so it cannot establish produced phones Australian variants or correctness.",
+    "MFA emitted unknown phone intervals in three clips and an unlabeled interval in one clip; neither is silently repaired.",
+    "PhoneticXEUS emits a greedy token sequence and contextual CTC logits but no official phone timestamps calibrated confidence or sequence alternatives.",
+    "PhoneticXEUS training or evaluation lineage overlaps SpeechOcean Common Voice and LibriSpeech; Common Phone is related to Common Voice; these sources cannot provide independent model accuracy evidence.",
+    "The PhoneticXEUS model card says Apache 2.0 but the pinned snapshot lacks a complete license and training data provenance bundle; commercial or product use remains blocked.",
+    "PanPhon does not listen to audio and can only encode a supplied supported IPA token.",
+    "PanPhon weighted distance is prohibited because version 0.22.2 has a feature weight count and ordering mismatch.",
+    "The exact environment locks are macOS arm64 specific and do not establish repeatability on other hardware or software stacks.",
+    "No task detector candidate artifact score coaching progress screening diagnosis severity cause or treatment output was created."
+  ],
+  "machine": {
+    "architecture": "arm64",
+    "hardware": "Apple M4",
+    "mps_available": true,
+    "operating_system": "macOS 26.5.2",
+    "physical_memory_bytes": 17179869184
+  },
+  "mapping": {
+    "accuracy_or_relation_scoring_performed": false,
+    "cross_system_agreement_is_truth": false,
+    "montreal_forced_aligner": {
+      "input": "known_source_transcript_plus_audio",
+      "may_establish_produced_phone": false,
+      "nonphones": [
+        "empty_unlabeled_interval",
+        "eps",
+        "sil",
+        "sp",
+        "spn"
+      ],
+      "observed_interval_aggregates": {
+        "clips_with_unknown": 3,
+        "clips_with_unlabeled": 1,
+        "lexical_phone_count": 355,
+        "phone_count": 396,
+        "silence_count": 36,
+        "unknown_count": 4,
+        "unlabeled_count": 1,
+        "word_count": 131
+      },
+      "output": "ARPA_word_and_phone_intervals_conditioned_on_expected_sequence"
+    },
+    "panphon": {
+      "atomic_identity_required": true,
+      "feature_count": 24,
+      "input": "one_observed_PhoneticXEUS_token_at_a_time",
+      "normalization": "NFD_only",
+      "unknown_or_composite_behavior": "unsupported_without_partial_mapping",
+      "weighted_distance_enabled": false
+    },
+    "phoneticxeus": {
+      "calibrated_confidence": false,
+      "input": "mono_16_kHz_audio_without_reference_text",
+      "official_phone_timestamps": false,
+      "output": "greedy_phone_sequence_plus_contextual_frame_CTC_logits",
+      "phone_tokens": 424,
+      "sequence_alternatives": false,
+      "special_tokens": 4,
+      "top_frame_logits_are_sequence_alternatives": false,
+      "vocabulary_total": 428
+    }
+  },
+  "release_boundaries": {
+    "coaching": false,
+    "diagnosis": false,
+    "normal_pipeline_activation": false,
+    "personal_progress": false,
+    "product_release": false,
+    "scientific_release": false,
+    "screening": false
+  },
+  "repeatability": {
+    "montreal_forced_aligner": {
+      "canonical_alignment_exact_across_repeats": true,
+      "clip_count": 12,
+      "fresh_alignment_count": 36
+    },
+    "panphon": {
+      "observed_unique_phone_tokens": 55,
+      "strict_atomic_identity_mappings": 55,
+      "unsupported_observed_tokens": 0
+    },
+    "phoneticxeus": {
+      "cpu_clip_count": 5,
+      "cpu_mps_collapsed_tokens_exact": true,
+      "cpu_mps_comparison_clip_count": 5,
+      "cpu_mps_frame_argmax_exact": true,
+      "cpu_mps_max_absolute_raw_logit_difference": 0.0001792908,
+      "cpu_raw_logits_exact_within_process": true,
+      "cpu_warm_inference_count": 15,
+      "mps_fresh_process_count": 3,
+      "mps_raw_logits_exact_within_and_across_processes": true,
+      "mps_warm_inference_count": 130
+    }
+  },
+  "resource_use": {
+    "measurement_note": "macOS maximum resident set and peak memory footprint are different kernel metrics and are reported separately",
+    "montreal_forced_aligner": {
+      "alignment_real_time_factor": 3.642981,
+      "alignment_s_max": 17.995327,
+      "alignment_s_median": 15.928807,
+      "alignment_s_min": 15.063535,
+      "maximum_resident_set_bytes": 987414528,
+      "peak_memory_footprint_bytes": 813254720,
+      "swaps": 0
+    },
+    "panphon": {
+      "maximum_resident_set_bytes": 109576192,
+      "observed_mapping_process_s": 1.2,
+      "peak_memory_footprint_bytes": 83231368,
+      "swaps": 0
+    },
+    "phoneticxeus": {
+      "cpu_inference_real_time_factor": 1.412824,
+      "cpu_inference_s_max": 11.012105,
+      "cpu_inference_s_median": 7.086344,
+      "cpu_inference_s_min": 3.638409,
+      "cpu_maximum_resident_set_bytes": 3380953088,
+      "cpu_peak_memory_footprint_bytes": 359369680,
+      "mps_inference_real_time_factor": 0.152209,
+      "mps_inference_s_max": 2.473942,
+      "mps_inference_s_median": 0.579549,
+      "mps_inference_s_min": 0.247356,
+      "mps_maximum_resident_set_bytes": 1517010944,
+      "mps_model_load_s_range": [
+        2.514142,
+        4.311011
+      ],
+      "mps_peak_memory_footprint_bytes": 4856189680,
+      "swaps": 0
+    }
+  },
+  "schema_version": "1.0.0",
+  "source_summary": {
+    "clip_count": 13,
+    "development_only": true,
+    "held_out_participants_or_labels_inspected": false,
+    "independent_accuracy_evidence": false,
+    "owner_clip_used_for_accuracy": false,
+    "private_sample_manifest_sha256": "655c8ba92d56b6804b453397f7919cb57ed4875d035f2884493a7c7e63e938fa",
+    "selection": "fixed_hash_selection_from_frozen_development_participants_without_using_labels_scores_or_outputs",
+    "source_count": 5,
+    "sources": [
+      {
+        "clip_count": 3,
+        "role": "hand_corrected_timing_fixture_only",
+        "source": "acted_clear_speech_2013"
+      },
+      {
+        "clip_count": 3,
+        "role": "broad_phone_engineering_development_only",
+        "source": "common_phone_1_0"
+      },
+      {
+        "clip_count": 3,
+        "role": "australian_robustness_development_only",
+        "source": "common_voice_26_australian_english"
+      },
+      {
+        "clip_count": 1,
+        "role": "functional_integration_only_unknown_intended_text",
+        "source": "owner_controlled_integration"
+      },
+      {
+        "clip_count": 3,
+        "role": "expert_corpus_development_audio_only_in_this_checkpoint",
+        "source": "speechocean762"
+      }
+    ],
+    "total_audio_s": 57.948813
+  },
+  "status": "local_feasibility_complete_release_locked",
+  "tools": {
+    "montreal_forced_aligner": {
+      "acoustic_model": "english_us_arpa_v3.0.0",
+      "acoustic_model_bytes": 91928208,
+      "acoustic_model_sha256": "d35ce271ded357d833d2f4b8d1041dc3748b9538567ba13f2c697f4e4126711b",
+      "dictionary": "english_us_arpa_v3.0.0",
+      "dictionary_bytes": 7186498,
+      "dictionary_sha256": "e8c6c7b036ae2b7c78d2768b8dc6b1f9359175b842956d00b48c53c9c332e6b0",
+      "environment_lock": "speech_sound_patterns/environments/mfa-3.4.1-osx-arm64-explicit.txt",
+      "environment_lock_sha256": "f355141edc0a7f08eb215932220c8139b24aeec72efe4f0f2d1c02cd7a3400c8",
+      "environment_python": "3.11.15",
+      "model_and_dictionary_license_metadata": "CC_BY_4.0",
+      "selected_role": "expected_text_conditioned_timing_feasibility_only",
+      "version": "3.4.1"
+    },
+    "panphon": {
+      "license_metadata": "MIT",
+      "locked_wheel_sha256": "a4c65113430d0699054cb00df978c02712d3c80913a1ef67697f888d96f3a00a",
+      "packaged_data_sha256": {
+        "diacritic_definitions.yml": "7e93c5bd9ee3dfeea820375d5c7e630dd3f358d2c6a32946091a97b843e73d56",
+        "feature_weights.csv": "03e80a6489e4993de6f17e063eaa74eb59c1d9ba9bc0dec9bec6ffce0cb8080d",
+        "ipa_all.csv": "0ec0052edf4e58c8c23eda10c0195687eb167ce9bd206cf9a85b9cce8b181f0a",
+        "ipa_bases.csv": "61991886e55adaf7df42799bb422af90ff403b2b6cc56dead4a5b4acddcc5568"
+      },
+      "selected_role": "strict_atomic_ipa_identity_to_24_feature_mapping_only",
+      "version": "0.22.2"
+    },
+    "phoneticxeus": {
+      "commercial_release_status": "blocked_pending_complete_training_provenance_and_license_review",
+      "environment_lock": "speech_sound_patterns/environments/phoneticxeus-8d83dee-osx-arm64-explicit.txt",
+      "environment_lock_sha256": "fc378b1d4f429bcc019fdb0ab554c1dd0dad213d3271f6467f351306dc30b34a",
+      "environment_python": "3.10.20",
+      "model_card_license_metadata": "Apache_2.0",
+      "model_tree_sha256": "a3d1ee69e9dd4e2926c48f44d1765e0c11489e78ce9d3e06d49f5a3bd0a2ed3e",
+      "pip_lock": "speech_sound_patterns/environments/phoneticxeus-8d83dee-pip.txt",
+      "pip_lock_sha256": "e772cafbc5ac3df1fe02f574a0e5436ea6f14afa4c5541173ff13c7088abb1ad",
+      "revision": "8d83dee94817a07dc150f87d08f7e0ee01bdb66d",
+      "selected_role": "reference_text_independent_phone_candidate_feasibility_only",
+      "weights_bytes": 2300089432,
+      "weights_sha256": "ad58bf20a60e9d0380327bd8b2d0e8e90a9b8de2adccbfb479f9b21ea85eda18"
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0.0",
+  "contract_version": "1.0.0",
+  "status": "personal_progress_protocol_metrics_locked",
+  "purpose": "Define when repeated observations may form a personal baseline and when a change may be described as detectable or meaningful without turning normal variation into progress.",
+  "claim_boundaries": {
+    "one_observation_is_a_baseline": false,
+    "same_day_success_is_mastery": false,
+    "detectable_change_is_automatically_improvement": false,
+    "user_report_is_a_speech_measurement": false,
+    "practice_is_skill_mastery": false,
+    "coaching_scores_are_progress_measures": false,
+    "run_quality_is_skill_progress": false,
+    "missing_evidence_becomes_zero": false,
+    "universal_ideal_voice_allowed": false,
+    "confidence_inferred_from_voice": false
+  },
+  "evidence_streams": {
+    "speech_measurements": {
+      "source": "validated pipeline measurement evidence",
+      "may_support_change": "only_after_metric_specific_release"
+    },
+    "user_reports": {
+      "source": "user_declared",
+      "fields": [
+        "difficulty",
+        "confidence",
+        "representativeness",
+        "usefulness"
+      ],
+      "kept_separate_from_speech_measurements": true
+    },
+    "real_world_outcomes": {
+      "source": "user_declared",
+      "kept_separate_from_speech_measurements": true
+    },
+    "practice": {
+      "source": "attempt and exercise records",
+      "may_reward_participation": true,
+      "proves_mastery": false
+    },
+    "mastery": {
+      "source": "later retention and suitable transfer evidence",
+      "requires_retention_and_transfer": true
+    }
+  },
+  "comparability": {
+    "core_exact_match_fields": [
+      "account_id",
+      "context_id",
+      "task_id",
+      "task_version",
+      "prompt_id",
+      "prompt_version",
+      "language",
+      "recording_mode",
+      "quality_policy",
+      "device_class",
+      "platform",
+      "microphone",
+      "environment_setting",
+      "environment_noise",
+      "preparation_allowed_s",
+      "accommodations"
+    ],
+    "metric_profile_may_relax_a_field_only_with_validation": true,
+    "different_contexts_are_automatically_comparable": false,
+    "different_tasks_are_automatically_comparable": false,
+    "different_prompts_are_automatically_comparable": false,
+    "different_devices_are_automatically_comparable": false,
+    "accessibility_choice_reduces_coaching_access": false,
+    "accessibility_choice_may_require_its_own_comparability_evidence": true
+  },
+  "baseline_model": {
+    "explicit_progress_intent_required": true,
+    "baseline_intent": "baseline_observation",
+    "eligible_attempt_roles": [
+      "first"
+    ],
+    "requires_baseline_quality_pass": true,
+    "requires_representative_user_report": true,
+    "minimum_observations_is_metric_specific": true,
+    "minimum_distinct_sessions_is_metric_specific": true,
+    "minimum_distinct_days_is_metric_specific": true,
+    "global_minimum_observation_count": null,
+    "one_recording_default_allowed": false,
+    "summary": {
+      "centre": "median",
+      "observed_range": "minimum_and_maximum",
+      "values_remain_auditable": true,
+      "outliers_are_silently_deleted": false
+    },
+    "states": [
+      "metric_not_released",
+      "insufficient_comparable_observations",
+      "established"
+    ]
+  },
+  "change_model": {
+    "change_intents": [
+      "change_check",
+      "retention",
+      "transfer"
+    ],
+    "requires_established_baseline": true,
+    "requires_current_measurement_quality": true,
+    "requires_metric_release_profile": true,
+    "requires_measurement_error": true,
+    "requires_expected_natural_variation": true,
+    "requires_separately_justified_meaningful_change": true,
+    "required_change_boundary": "strictly_exceeds_the_largest_applicable_error_variation_and_meaningful_change_boundary",
+    "global_percentage_rule": null,
+    "statuses": [
+      "unavailable",
+      "within_measurement_error",
+      "within_expected_variation",
+      "detectable_not_proven_meaningful",
+      "credible_change"
+    ],
+    "direction_labels": [
+      "increased",
+      "decreased",
+      "unchanged"
+    ],
+    "improving_and_slipping_labels_allowed_without_goal_specific_evidence": false,
+    "percentage_change_is_default": false
+  },
+  "metric_release_profile": {
+    "required_fields": [
+      "metric_path",
+      "construct",
+      "unit",
+      "release_status",
+      "eligible_attempt_roles",
+      "comparison_fields",
+      "minimum_baseline_observations",
+      "minimum_distinct_sessions",
+      "minimum_distinct_days",
+      "measurement_error",
+      "natural_variation",
+      "meaningful_change",
+      "validated_algorithm_versions",
+      "evidence"
+    ],
+    "release_status": "approved_for_personal_change",
+    "measurement_error_method": "individual_sdc95_or_justified_limits_of_agreement",
+    "development_and_evaluation_participants_separate": true,
+    "independent_held_out_evaluation_required": true,
+    "representative_conditions_required": true,
+    "subgroup_reporting_required": true,
+    "professional_measurement_review_required": true,
+    "owner_release_approval_required": true,
+    "owner_recordings_can_set_release_thresholds": false
+  },
+  "mastery_model": {
+    "retention_attempt_role": "retention",
+    "transfer_attempt_role": "transfer",
+    "retention_must_be_later_day": true,
+    "transfer_must_use_suitable_new_prompt": true,
+    "retention_and_transfer_remain_separate": true,
+    "same_day_repeat_counts_as_practice_only": true,
+    "current_mastery_release": "blocked_until_skill_specific_policy"
+  },
+  "runtime_outputs": {
+    "history_record_version": "2.0.0",
+    "progress_report_sections": [
+      "baseline_status",
+      "speech_change",
+      "user_reports",
+      "real_world_outcomes",
+      "practice",
+      "mastery",
+      "run_quality"
+    ],
+    "machine_result_available_from_library": true,
+    "personal_progress_markdown": "progress.md"
+  },
+  "sources": [
+    {
+      "id": "cosmin_manual_2",
+      "url": "https://www.cosmin.nl/wp-content/uploads/COSMIN-manual-V2_final.pdf",
+      "relevance": "Separates reliability from measurement error and describes SEM, SDC and limits of agreement from stable repeated measurements."
+    },
+    {
+      "id": "fda_pfdd_guidance_4_draft",
+      "url": "https://www.fda.gov/media/166830/download",
+      "relevance": "Requires a clear baseline definition and supports anchor based evidence for meaningful change rather than distribution rules alone."
+    },
+    {
+      "id": "bland_altman_1999",
+      "url": "https://doi.org/10.1177/096228029900800204",
+      "relevance": "Defines agreement through differences and limits of agreement, including repeated measurement designs."
+    },
+    {
+      "id": "multi_day_remote_speech_2024",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11293000/",
+      "relevance": "Shows speech feature reliability depends on task and can improve when multiple samples are averaged."
+    },
+    {
+      "id": "consumer_device_speech_reliability_2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39738817/",
+      "relevance": "Shows cross device and test retest reliability varies by speech task and acoustic feature."
+    }
+  ]
+}

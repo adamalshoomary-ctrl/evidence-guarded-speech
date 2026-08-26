@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_id": "conversation",
+  "fixture_kind": "assembled_open_licensed_recording",
+  "built_by": "release/build_fixture.py",
+  "source": {
+    "corpus": "LibriSpeech, OpenSLR 12, dev-clean",
+    "licence": "CC-BY-4.0",
+    "attribution": "Cite Panayotov et al., LibriSpeech, ICASSP 2015, and retain CC BY 4.0 attribution.",
+    "permission_record": "release/redistribution-decision-v1.0.0.json",
+    "split_restriction": "development split only, never threshold tuning or held out evaluation"
+  },
+  "audio": {
+    "sample_rate_hz": 16000,
+    "channels": 1,
+    "encoding": "16 bit PCM WAV",
+    "duration_s": 123.89,
+    "path": "regression/fixtures/conversation.wav",
+    "sha256": "1158739c38d468969e50fbd1fc5f6b93425657978e574b58a476b9694471d966",
+    "bytes": 3964524
+  },
+  "assembly": {
+    "target_rms_dbfs": -23.0,
+    "peak_ceiling_dbfs": -1.0,
+    "gap_within_turn_s": 0.28,
+    "gap_between_turns_s": 0.45,
+    "gap_content": "The quietest second of the speaker's own recording, taken at a rotating offset. Digital silence made the quality preflight warn about level stability and reverberation, because a tenth percentile frame level near minus 240 dB forces the analyser onto its fallback thresholds.",
+    "normalisation": "Each source utterance was scaled to a common RMS and then limited to the peak ceiling. Loudness differences between the two readers would otherwise show up as an unstable recording level in the quality preflight."
+  },
+  "readers": [
+    {
+      "speaker_id": "1272",
+      "librivox_reader": "John Rose",
+      "chapter_id": "128104",
+      "utterances": 8
+    },
+    {
+      "speaker_id": "1988",
+      "librivox_reader": "Ransom",
+      "chapter_id": "24833",
+      "utterances": 6
+    }
+  ],
+  "utterances": [
+    {
+      "speaker_id": "1272",
+      "utterance_id": "1272-128104-0000",
+      "turn": 0,
+      "samples": 93680,
+      "seconds": 5.855,
+      "transcript": "MISTER QUILTER IS THE APOSTLE OF THE MIDDLE CLASSES AND WE ARE GLAD TO WELCOME HIS GOSPEL"
+    },
+    {
+      "speaker_id": "1272",
+      "utterance_id": "1272-128104-0001",
+      "turn": 0,
+      "samples": 77040,
+      "seconds": 4.815,
+      "transcript": "NOR IS MISTER QUILTER'S MANNER LESS INTERESTING THAN HIS MATTER"
+    },
+    {
+      "speaker_id": "1988",
+      "utterance_id": "1988-24833-0000",
+      "turn": 1,
+      "samples": 53120,
+      "seconds": 3.32,
+      "transcript": "THE TWO STRAY KITTENS GRADUALLY MAKE THEMSELVES AT HOME"
+    },
+    {
+      "speaker_id": "1988",
+      "utterance_id": "1988-24833-0001",
+      "turn": 1,
+      "samples": 126320,
+      "seconds": 7.895,
+      "transcript": "SOMEHOW OR OTHER CAT HAS TAUGHT THEM THAT HE'S IN CHARGE HERE AND HE JUST CHASES THEM FOR FUN NOW AND AGAIN WHEN HE'S NOT BUSY SLEEPING"
+    },
+    {
+      "speaker_id": "1272",
+      "utterance_id": "1272-128104-0002",
+      "turn": 2,
+      "samples": 199760,
+      "seconds": 12.485,
+      "transcript": "HE TELLS US THAT AT THIS FESTIVE SEASON OF THE YEAR WITH CHRISTMAS AND ROAST BEEF LOOMING BEFORE US SIMILES DRAWN FROM EATING AND ITS RESULTS OCCUR MOST READILY TO THE MIND"
+    },
+    {
+      "speaker_id": "1272",
+      "utterance_id": "1272-128104-0003",
+      "turn": 2,
+      "samples": 158400,
+      "seconds": 9.9,
+      "transcript": "HE HAS GRAVE DOUBTS WHETHER SIR FREDERICK LEIGHTON'S WORK IS REALLY GREEK AFTER ALL AND CAN DISCOVER IN IT BUT LITTLE OF ROCKY ITHACA"
+    },
+    {
+      "speaker_id": "1988",
+      "utterance_id": "1988-24833-0002",
+      "turn": 3,
+      "samples": 72880,
+      "seconds": 4.555,
+      "transcript": "SHE DOESN'T PICK THEM UP BUT JUST HAVING THEM IN THE ROOM SURE DOESN'T GIVE HER ASTHMA"
+    },
+    {
+      "speaker_id": "1988",
+      "utterance_id": "1988-24833-0003",
+      "turn": 3,
+      "samples": 82560,
+      "seconds": 5.16,
+      "transcript": "WHEN ARE YOU GETTING RID OF THESE CATS I'M NOT FIXING TO START AN ANNEX TO KATE'S CAT HOME"
+    },
+    {
+      "speaker_id": "1272",
+      "utterance_id": "1272-128104-0004",
+      "turn": 4,
+      "samples": 470400,
+      "seconds": 29.4,
+      "transcript": "LINNELL'S PICTURES ARE A SORT OF UP GUARDS AND AT EM PAINTINGS AND MASON'S EXQUISITE IDYLLS ARE AS NATIONAL AS A JINGO POEM MISTER BIRKET FOSTER'S LANDSCAPES SMILE AT ONE MUCH IN THE SAME WAY THAT MISTER CARKER USED TO FLASH HIS TEETH AND MISTER JOHN COLLIER GIVES HIS SITTER A CHEERFUL SLAP ON THE BACK BEFORE HE SAYS LIKE A SHAMPOOER IN A TURKISH BATH NEXT MAN"
+    },
+    {
+      "speaker_id": "1272",
+      "utterance_id": "1272-128104-0005",
+      "turn": 4,
+      "samples": 144160,
+      "seconds": 9.01,
+      "transcript": "IT IS OBVIOUSLY UNNECESSARY FOR US TO POINT OUT HOW LUMINOUS THESE CRITICISMS ARE HOW DELICATE IN EXPRESSION"
+    },
+    {
+      "speaker_id": "1988",
+      "utterance_id": "1988-24833-0004",
+      "turn": 5,
+      "samples": 88000,
+      "seconds": 5.5,
+      "transcript": "RIGHT AWAY WHEN I BRING HOME MY NEW PROGRAM HE SAYS HOW COME YOU'RE TAKING ONE LESS COURSE THIS HALF"
+    },
+    {
+      "speaker_id": "1988",
+      "utterance_id": "1988-24833-0005",
+      "turn": 5,
+      "samples": 103280,
+      "seconds": 6.455,
+      "transcript": "I EXPLAIN THAT I'M TAKING MUSIC AND ALSO BIOLOGY ALGEBRA ENGLISH AND FRENCH MUSIC HE SNORTS"
+    },
+    {
+      "speaker_id": "1272",
+      "utterance_id": "1272-128104-0006",
+      "turn": 6,
+      "samples": 90240,
+      "seconds": 5.64,
+      "transcript": "ON THE GENERAL PRINCIPLES OF ART MISTER QUILTER WRITES WITH EQUAL LUCIDITY"
+    },
+    {
+      "speaker_id": "1272",
+      "utterance_id": "1272-128104-0007",
+      "turn": 6,
+      "samples": 147840,
+      "seconds": 9.24,
+      "transcript": "PAINTING HE TELLS US IS OF A DIFFERENT QUALITY TO MATHEMATICS AND FINISH IN ART IS ADDING MORE FACT"
+    }
+  ],
+  "what_this_is_not": [
+    "Not a conversation. The readers take turns because the builder alternates them, so there is no overlap, no interruption, no shared topic and no repair.",
+    "Not spontaneous speech. It is read audiobook prose, so it carries no filled pauses, repetitions or false starts.",
+    "Not truth for any measurement. It establishes recording identity, mode, speaker count and duration, and nothing else.",
+    "Not representative of any population, and specifically not of Australian English."
+  ],
+  "quality_preflight": {
+    "overall_status": "warn",
+    "measured": {
+      "duration": 123.89,
+      "sample_rate": 16000,
+      "peak_level": -1.0,
+      "clipping": 0.0,
+      "speech_proportion": 0.7049,
+      "signal_to_noise_proxy": 43.26,
+      "recording_level_stability": 19.89,
+      "reverberation_risk_proxy": 0.816
+    },
+    "accepted_warnings": [
+      "recording_level_stability",
+      "reverberation_risk_proxy"
+    ],
+    "why_the_warnings_are_accepted": "Read audiobook speech has a wider distance between its noise floor and ordinary speech than the phone recordings these two heuristics were tuned on. The owner's own solo recording warns on the same two checks. Adding noise to raise the floor would manufacture a pass, and moving the threshold would be a calibration study. The warning is correct about the recording, the run proceeds, and the fixture is published as measured."
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "speechocean762_manifest_v1",
+  "source_id": "speechocean762",
+  "title": "SpeechOcean762",
+  "version": {
+    "label": "1.2.0",
+    "release_date": "2022-07-06",
+    "immutable_id": "github_release_v1.2.0"
+  },
+  "citation": "Zhang, Junbo et al. SpeechOcean762: An Open-Source Non-native English Speech Corpus for Pronunciation Assessment. Interspeech 2021.",
+  "canonical_source": {
+    "landing_page": "https://github.com/jimbozhang/speechocean762/releases/tag/v1.2.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-21",
+    "account_required": false,
+    "terms_state": "not_required",
+    "terms_url": null,
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC-BY-4.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-21",
+    "attribution_required": true,
+    "attribution_text": "Cite Zhang et al., SpeechOcean762, Interspeech 2021, and retain CC BY 4.0 attribution."
+  },
+  "governance": {
+    "permitted_roles": [
+      "developer_phone_relation_benchmark",
+      "participant_exclusive_development",
+      "participant_exclusive_threshold_tuning",
+      "frozen_held_out_engineering_evaluation"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "native_likeness_truth",
+      "acceptable_variety_truth",
+      "scalar_score_as_error_label",
+      "direct_import_of_accent_penalties"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/speechocean762_v1_2_0",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "requires_separate_provider_terms_review",
+    "retention_or_deletion_duties": "Retain privately only while needed, preserve attribution, and never commit raw audio or participant metadata."
+  },
+  "population": {
+    "description": "Five thousand read English utterances from 250 Mandarin first language speakers, split evenly between the source child and adult populations.",
+    "known_strata": [
+      "source_child",
+      "source_adult",
+      "female",
+      "male"
+    ],
+    "limitations": [
+      "The population is not representative of all English speakers or Australian English.",
+      "The source rubric uses a single expected pronunciation and includes accent and native likeness judgements that this project rejects."
+    ]
+  },
+  "annotation": {
+    "truth_class": "expert_phone_relations",
+    "provenance": "Five experts scored independently. scores-detail.json retains each reviewer phone string and disagreement.",
+    "fields_retained": [
+      "utterance_id",
+      "speaker_id_private",
+      "source_split",
+      "reference_phones",
+      "five_reviewer_phone_strings",
+      "explicit_relation_notation",
+      "aggregate_stratum"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "Curly brace score one means right with heavy accent and is not imported as an error.",
+      "Parentheses combine incorrect and missed phones, so unresolved cases remain uncertain.",
+      "The aggregated mispronunciations block is supporting evidence only and does not replace five original reviewer records."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "Release archive SHA256 verified locally.",
+      "README scoring definitions inspected.",
+      "train.json and test.json inspected.",
+      "All 5,000 scores-detail.json records checked for five reviewer vectors."
+    ],
+    "findings": [
+      "All 250 speakers are exclusive across the original train and test sets.",
+      "All 5,000 utterances retain five top level and five per word reviewer records.",
+      "Explicit insertion, zero or missed, and accent marked notation exists.",
+      "Scalar pronunciation and accent scores are excluded from phone relation truth."
+    ]
+  },
+  "participant_split": {
+    "status": "audited",
+    "unit": "participant",
+    "source_split_provenance": "Original train and test membership retained privately; original speaker overlap is zero.",
+    "project_strategy": "Stable SHA256 order within source child or adult and gender strata, then exact 60 percent development, 20 percent tuning and 20 percent held out.",
+    "frozen_held_out": true,
+    "assignment_artifact": ".research_data/speech_sound_patterns/splits/speechocean762-v1.2.0.json",
+    "assignment_sha256": "8bb4fc723051b94525b75e91c0b5a89625e853bfcd023a21a45fde5207e80eb5",
+    "participant_counts": {
+      "development": 150,
+      "threshold_tuning": 50,
+      "held_out_evaluation": 50
+    },
+    "cross_split_overlap_count": 0,
+    "strata": {
+      "source_adult_f": {
+        "development": 43,
+        "threshold_tuning": 14,
+        "held_out_evaluation": 15
+      },
+      "source_adult_m": {
+        "development": 34,
+        "threshold_tuning": 11,
+        "held_out_evaluation": 11
+      },
+      "source_child_f": {
+        "development": 32,
+        "threshold_tuning": 11,
+        "held_out_evaluation": 10
+      },
+      "source_child_m": {
+        "development": 41,
+        "threshold_tuning": 14,
+        "held_out_evaluation": 14
+      }
+    }
+  },
+  "lineage": {
+    "lineage_group": "speechocean762",
+    "derived_from": [],
+    "independence_claim": "candidate_model_overlap_must_be_audited",
+    "duplicate_detection": "Private participant and utterance ids are checked before every benchmark assembly.",
+    "candidate_model_overlap_status": "unknown_requires_model_specific_audit"
+  },
+  "archives": [
+    {
+      "filename": "speechocean762.tar.gz",
+      "size_bytes": 520859854,
+      "canonical_download_url": "https://github.com/jimbozhang/speechocean762/releases/download/v1.2.0/speechocean762.tar.gz",
+      "upstream_checksum": {
+        "algorithm": "none",
+        "value": null
+      },
+      "local_sha256": "87054ed0ad25276d0301df3d132470c3d2ee84c1aa5f70d7d9dd4cfe046b6a30",
+      "local_verification_status": "verified"
+    }
+  ]
+}

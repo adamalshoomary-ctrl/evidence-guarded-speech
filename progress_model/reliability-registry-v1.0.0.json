@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "registry_version": "1.0.0",
+  "progress_contract_version": "1.0.0",
+  "status": "no_metrics_released",
+  "approved_metric_profiles": [],
+  "current_blockers": [
+    "No repeated stable human productions from enough independent participants.",
+    "No metric specific measurement error or natural variation estimate.",
+    "No independently evaluated meaningful change boundary.",
+    "No representative device, task, language, accent or speech difference evaluation."
+  ],
+  "owner_recordings_may_unlock_metrics": false
+}

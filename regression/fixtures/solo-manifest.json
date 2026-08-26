@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0.0",
+  "fixture_id": "solo",
+  "fixture_kind": "assembled_open_licensed_recording",
+  "built_by": "release/build_fixture.py",
+  "source": {
+    "corpus": "LibriSpeech, OpenSLR 12, dev-clean",
+    "licence": "CC-BY-4.0",
+    "attribution": "Cite Panayotov et al., LibriSpeech, ICASSP 2015, and retain CC BY 4.0 attribution.",
+    "permission_record": "release/redistribution-decision-v1.0.0.json",
+    "split_restriction": "development split only, never threshold tuning or held out evaluation"
+  },
+  "audio": {
+    "sample_rate_hz": 16000,
+    "channels": 1,
+    "encoding": "16 bit PCM WAV",
+    "duration_s": 150.175,
+    "path": "regression/fixtures/solo.wav",
+    "sha256": "b986c5cb854a6c6e8a259ed0a778500cd5ef620374f8bb8dd55bee7c59ea9eed",
+    "bytes": 4805644
+  },
+  "assembly": {
+    "target_rms_dbfs": -23.0,
+    "peak_ceiling_dbfs": -1.0,
+    "gap_within_turn_s": 0.28,
+    "gap_between_turns_s": 0.45,
+    "gap_content": "The quietest second of the speaker's own recording, taken at a rotating offset. Digital silence made the quality preflight warn about level stability and reverberation, because a tenth percentile frame level near minus 240 dB forces the analyser onto its fallback thresholds.",
+    "normalisation": "Each source utterance was scaled to a common RMS and then limited to the peak ceiling. Loudness differences between the two readers would otherwise show up as an unstable recording level in the quality preflight."
+  },
+  "readers": [
+    {
+      "speaker_id": "3576",
+      "librivox_reader": "JudyGibson",
+      "chapter_id": "138058",
+      "utterances": 14
+    }
+  ],
+  "utterances": [
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0000",
+      "turn": 0,
+      "samples": 226240,
+      "seconds": 14.14,
+      "transcript": "MASTER AND MAN DISMOUNTED FROM THEIR BEASTS AND AS SOON AS THEY HAD SETTLED THEMSELVES AT THE FOOT OF THE TREES SANCHO WHO HAD HAD A GOOD NOONTIDE MEAL THAT DAY LET HIMSELF WITHOUT MORE ADO PASS THE GATES OF SLEEP"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0001",
+      "turn": 0,
+      "samples": 172480,
+      "seconds": 10.78,
+      "transcript": "BUT DON QUIXOTE WHOM HIS THOUGHTS FAR MORE THAN HUNGER KEPT AWAKE COULD NOT CLOSE AN EYE AND ROAMED IN FANCY TO AND FRO THROUGH ALL SORTS OF PLACES"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0002",
+      "turn": 0,
+      "samples": 357280,
+      "seconds": 22.33,
+      "transcript": "AT ONE MOMENT IT SEEMED TO HIM THAT HE WAS IN THE CAVE OF MONTESINOS AND SAW DULCINEA TRANSFORMED INTO A COUNTRY WENCH SKIPPING AND MOUNTING UPON HER SHE ASS AGAIN THAT THE WORDS OF THE SAGE MERLIN WERE SOUNDING IN HIS EARS SETTING FORTH THE CONDITIONS TO BE OBSERVED AND THE EXERTIONS TO BE MADE FOR THE DISENCHANTMENT OF DULCINEA"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0003",
+      "turn": 0,
+      "samples": 40160,
+      "seconds": 2.51,
+      "transcript": "WHO IS TOUCHING ME AND UNTRUSSING ME"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0004",
+      "turn": 1,
+      "samples": 264960,
+      "seconds": 16.56,
+      "transcript": "DULCINEA IS PERISHING THOU ART LIVING ON REGARDLESS I AM DYING OF HOPE DEFERRED THEREFORE UNTRUSS THYSELF WITH A GOOD WILL FOR MINE IT IS HERE IN THIS RETIRED SPOT TO GIVE THEE AT LEAST TWO THOUSAND LASHES"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0005",
+      "turn": 1,
+      "samples": 266480,
+      "seconds": 16.655,
+      "transcript": "SEEING THIS SANCHO GOT UP AND GRAPPLING WITH HIS MASTER HE GRIPPED HIM WITH ALL HIS MIGHT IN HIS ARMS GIVING HIM A TRIP WITH THE HEEL STRETCHED HIM ON THE GROUND ON HIS BACK AND PRESSING HIS RIGHT KNEE ON HIS CHEST HELD HIS HANDS IN HIS OWN SO THAT HE COULD NEITHER MOVE NOR BREATHE"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0006",
+      "turn": 1,
+      "samples": 63120,
+      "seconds": 3.945,
+      "transcript": "HOW NOW TRAITOR EXCLAIMED DON QUIXOTE"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0007",
+      "turn": 1,
+      "samples": 56800,
+      "seconds": 3.55,
+      "transcript": "DOST THOU REVOLT AGAINST THY MASTER AND NATURAL LORD"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0008",
+      "turn": 2,
+      "samples": 61760,
+      "seconds": 3.86,
+      "transcript": "DOST THOU RISE AGAINST HIM WHO GIVES THEE HIS BREAD"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0009",
+      "turn": 2,
+      "samples": 231760,
+      "seconds": 14.485,
+      "transcript": "DON QUIXOTE GAVE HIS PROMISE AND SWORE BY THE LIFE OF HIS THOUGHTS NOT TO TOUCH SO MUCH AS A HAIR OF HIS GARMENTS AND TO LEAVE HIM ENTIRELY FREE AND TO HIS OWN DISCRETION TO WHIP HIMSELF WHENEVER HE PLEASED"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0010",
+      "turn": 2,
+      "samples": 251760,
+      "seconds": 15.735,
+      "transcript": "SANCHO ROSE AND REMOVED SOME DISTANCE FROM THE SPOT BUT AS HE WAS ABOUT TO PLACE HIMSELF LEANING AGAINST ANOTHER TREE HE FELT SOMETHING TOUCH HIS HEAD AND PUTTING UP HIS HANDS ENCOUNTERED SOMEBODY'S TWO FEET WITH SHOES AND STOCKINGS ON THEM"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0011",
+      "turn": 2,
+      "samples": 180480,
+      "seconds": 11.28,
+      "transcript": "HE TREMBLED WITH FEAR AND MADE FOR ANOTHER TREE WHERE THE VERY SAME THING HAPPENED TO HIM AND HE FELL A SHOUTING CALLING UPON DON QUIXOTE TO COME AND PROTECT HIM"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0012",
+      "turn": 3,
+      "samples": 87680,
+      "seconds": 5.48,
+      "transcript": "DON QUIXOTE DID SO AND ASKED HIM WHAT HAD HAPPENED TO HIM AND WHAT HE WAS AFRAID OF"
+    },
+    {
+      "speaker_id": "3576",
+      "utterance_id": "3576-138058-0013",
+      "turn": 3,
+      "samples": 75440,
+      "seconds": 4.715,
+      "transcript": "SANCHO REPLIED THAT ALL THE TREES WERE FULL OF MEN'S FEET AND LEGS"
+    }
+  ],
+  "what_this_is_not": [
+    "Not a conversation. The readers take turns because the builder alternates them, so there is no overlap, no interruption, no shared topic and no repair.",
+    "Not spontaneous speech. It is read audiobook prose, so it carries no filled pauses, repetitions or false starts.",
+    "Not truth for any measurement. It establishes recording identity, mode, speaker count and duration, and nothing else.",
+    "Not representative of any population, and specifically not of Australian English."
+  ],
+  "quality_preflight": {
+    "overall_status": "warn",
+    "measured": {
+      "duration": 150.175,
+      "sample_rate": 16000,
+      "peak_level": -2.45,
+      "clipping": 0.0,
+      "speech_proportion": 0.7373,
+      "signal_to_noise_proxy": 30.79,
+      "recording_level_stability": 16.65,
+      "reverberation_risk_proxy": 0.718
+    },
+    "accepted_warnings": [
+      "recording_level_stability",
+      "reverberation_risk_proxy"
+    ],
+    "why_the_warnings_are_accepted": "Read audiobook speech has a wider distance between its noise floor and ordinary speech than the phone recordings these two heuristics were tuned on. The owner's own solo recording warns on the same two checks. Adding noise to raise the floor would manufacture a pass, and moving the threshold would be a calibration study. The warning is correct about the recording, the run proceeds, and the fixture is published as measured."
+  }
+}

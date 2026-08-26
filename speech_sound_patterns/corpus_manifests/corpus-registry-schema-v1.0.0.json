@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/speech-sound-patterns/corpus-registry-schema-v1.0.0.json",
+  "title": "Speech sound corpus manifest registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "registry_id",
+    "status",
+    "manifest_schema",
+    "raw_data_root",
+    "raw_data_committed",
+    "manifests",
+    "cross_source_rules"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "registry_id": {"const": "speech_sound_corpus_registry_v1"},
+    "status": {"const": "engineering_sources_manifested_release_locked"},
+    "manifest_schema": {"const": "corpus-manifest-schema-v1.0.0.json"},
+    "raw_data_root": {"const": ".research_data/speech_sound_patterns/corpora"},
+    "raw_data_committed": {"const": false},
+    "manifests": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "path"],
+        "properties": {
+          "source_id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+          "path": {"type": "string", "pattern": "^[^/]+\\.json$"}
+        }
+      }
+    },
+    "cross_source_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "duplicate_participant_or_clip_across_splits",
+        "related_sources_count_as_independent",
+        "model_seen_data_count_as_independent",
+        "truth_classes_may_be_pooled"
+      ],
+      "properties": {
+        "duplicate_participant_or_clip_across_splits": {"const": "blocked"},
+        "related_sources_count_as_independent": {"const": false},
+        "model_seen_data_count_as_independent": {"const": false},
+        "truth_classes_may_be_pooled": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "source_id": "neurovoz",
+  "title": "NeuroVoz, Castilian Spanish corpus of parkinsonian speech",
+  "citation": "Mendes-Laureano, J. et al. NeuroVoz: a Castillian Spanish corpus of parkinsonian speech. Scientific Data, 2024.",
+  "canonical_source": {
+    "landing_page": "https://zenodo.org/records/10777657",
+    "terms_or_licence_url": "https://zenodo.org/records/10777657"
+  },
+  "language_and_variety": {
+    "language": "Spanish",
+    "variety": "Castilian Spanish",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "112 native Castilian Spanish speakers, 58 healthy controls and 54 people with Parkinson's disease recorded in the medication ON state.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Spanish, and a single clinical condition.",
+      "Recorded only in the medication ON state."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel",
+    "diadochokinesis_pa_ta_ka",
+    "listen_and_repeat",
+    "monologue"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "perceptual_voice_single_rater",
+    "independent_rater_or_annotator_count": 1,
+    "individual_records_retained": false,
+    "adjudication_defined": false,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "The perceptual material is a GRBAS assessment by one expert. Item 23 requires several blinded qualified raters with individual ratings and disagreement retained, and states that one clinician cannot substitute.",
+      "The diadochokinetic recordings carry no human syllable marking."
+    ]
+  },
+  "access": {
+    "route": "application_and_review",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": false,
+    "account_required": true,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "restricted",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Creative Commons Attribution Non Commercial No Derivatives 4.0 International",
+    "spdx_id": "CC-BY-NC-ND-4.0",
+    "commercial_use_permitted": false,
+    "source_of_licence_string": "repository_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Zenodo record 10777657 and the Zenodo search API, read 2026-08-19."
+    ],
+    "findings": [
+      "The record is publicly listed but the audio files are restricted and require login plus permission from the data custodians.",
+      "The non commercial and no derivatives terms block this project independently of the access question."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_licence_non_commercial",
+    "reasons": [
+      "A non commercial licence cannot support a commercial product backend, which is what this repository is.",
+      "No derivatives additionally blocks the transformations any analysis would need."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "neurovoz_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

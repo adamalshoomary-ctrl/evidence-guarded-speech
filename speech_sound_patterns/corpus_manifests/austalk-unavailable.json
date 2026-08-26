@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "austalk_manifest_v1",
+  "source_id": "austalk",
+  "title": "AusTalk, the Big Australian Speech Corpus",
+  "version": {
+    "label": "collection as formerly distributed through the Alveo Virtual Laboratory",
+    "release_date": "2011",
+    "immutable_id": "austalk_big_asc_collection"
+  },
+  "citation": "Burnham, Denis et al. AusTalk: an audio-visual corpus of Australian English. LREC 2014.",
+  "canonical_source": {
+    "landing_page": "https://researchers.mq.edu.au/en/publications/austalk-an-audio-visual-corpus-of-australian-english",
+    "licence_url": "https://researchers.mq.edu.au/en/publications/austalk-an-audio-visual-corpus-of-australian-english"
+  },
+  "access": {
+    "state": "unavailable",
+    "retrieved_at": null,
+    "account_required": false,
+    "terms_state": "pending",
+    "terms_url": "https://researchers.mq.edu.au/en/publications/austalk-an-audio-visual-corpus-of-australian-english",
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "pending_review",
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "verified_at": "2026-07-29",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "manifest_only"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "use_before_an_access_route_exists",
+      "assuming_annotation_content_that_cannot_be_inspected"
+    ],
+    "raw_data_committed": false,
+    "local_storage": null,
+    "rehosting_permitted": null,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Do not acquire, retain, upload or process source data while the recorded rights state blocks use."
+  },
+  "population": {
+    "description": "Audio and video recordings of about one thousand speakers of Australian English across scripted, spontaneous and dialogue tasks.",
+    "known_strata": [],
+    "limitations": [
+      "No access route exists, so what its manual annotation contains cannot be inspected and fails closed.",
+      "Audio visual recordings of identifiable participants would need their own privacy review before any use, if a route reopened.",
+      "This is the Australian corpus this project would most want and cannot have. It is recorded so nobody spends a second week rediscovering it."
+    ]
+  },
+  "annotation": {
+    "truth_class": "unavailable",
+    "provenance": "No annotations acquired; published descriptions were read.",
+    "fields_retained": [],
+    "original_records_retained": false,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "No source record may enter engineering while access or rights remain blocked."
+    ]
+  },
+  "capability_audit": {
+    "status": "blocked_or_pending",
+    "inspected_materials": [
+      "Published corpus descriptions from the project partners.",
+      "Domain name resolution for the former distribution hosts, checked 2026-07-29."
+    ],
+    "findings": [
+      "alveo.edu.au, app.alveo.edu.au, austalk.edu.au and bigasc.edu.au all failed to resolve on 2026-07-29.",
+      "The Language Data Commons of Australia catalogue does not list the collection, so the successor archive did not ingest it.",
+      "There is no application form, no registration and no click through, so this is unobtainable rather than pending."
+    ]
+  },
+  "participant_split": {
+    "status": "not_applicable",
+    "unit": null,
+    "source_split_provenance": "No source participant data is acquired or approved.",
+    "project_strategy": "no_data_use_until_rights_change",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {}
+  },
+  "lineage": {
+    "lineage_group": "austalk",
+    "derived_from": [],
+    "independence_claim": "no_evidence_claim_permitted",
+    "duplicate_detection": "Required if rights later permit acquisition.",
+    "candidate_model_overlap_status": "not_applicable"
+  },
+  "archives": []
+}

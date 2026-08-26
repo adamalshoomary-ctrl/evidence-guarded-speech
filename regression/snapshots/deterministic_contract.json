@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.1.0",
+  "protected_renderer_thresholds": {
+    "DRAG_RATIO": 2.6,
+    "DRAG_MIN_S": 0.5,
+    "DRAG_PERCENTILE": 95,
+    "LOUD_DB_ABOVE": 5.5,
+    "RISE_RATIO": 1.18,
+    "RISE_MIN_HZ": 15.0
+  },
+  "synthetic_contract": {
+    "speaker_attribution": [
+      {
+        "index": 0,
+        "word": "alpha",
+        "speaker": "SPEAKER_00",
+        "start_s": 0.0,
+        "end_s": 0.3,
+        "confidence": "high"
+      },
+      {
+        "index": 1,
+        "word": "speaks",
+        "speaker": "SPEAKER_00",
+        "start_s": 0.4,
+        "end_s": 0.7,
+        "confidence": "high"
+      },
+      {
+        "index": 2,
+        "word": "yeah",
+        "speaker": "SPEAKER_01",
+        "start_s": 0.8,
+        "end_s": 1.1,
+        "confidence": "high"
+      },
+      {
+        "index": 3,
+        "word": "continues",
+        "speaker": "SPEAKER_00",
+        "start_s": 1.2,
+        "end_s": 1.5,
+        "confidence": "high"
+      },
+      {
+        "index": 4,
+        "word": "slowword",
+        "speaker": "SPEAKER_00",
+        "start_s": 3.0,
+        "end_s": 4.5,
+        "confidence": "high"
+      },
+      {
+        "index": 5,
+        "word": "loud",
+        "speaker": "SPEAKER_00",
+        "start_s": 5.0,
+        "end_s": 5.3,
+        "confidence": "high"
+      },
+      {
+        "index": 6,
+        "word": "really.",
+        "speaker": "SPEAKER_00",
+        "start_s": 6.0,
+        "end_s": 6.4,
+        "confidence": "high"
+      },
+      {
+        "index": 7,
+        "word": "overlapword.",
+        "speaker": "SPEAKER_01",
+        "start_s": 7.0,
+        "end_s": 7.4,
+        "confidence": "high"
+      }
+    ],
+    "turns": [
+      {
+        "turn_id": 1,
+        "speaker": "SPEAKER_00",
+        "start_s": 0.0,
+        "end_s": 6.4,
+        "pause_before_s": null,
+        "expressive_text": "alpha speaks [SPEAKER_01: \"yeah\"] continues ... [1.5s] slowwoooord LOUD really?"
+      },
+      {
+        "turn_id": 2,
+        "speaker": "SPEAKER_01",
+        "start_s": 7.0,
+        "end_s": 7.4,
+        "pause_before_s": null,
+        "expressive_text": "overlapword."
+      }
+    ],
+    "renderer_events": [
+      {
+        "type": "drag",
+        "word": "slowword",
+        "speaker": "SPEAKER_00",
+        "timestamp_s": 3.0
+      },
+      {
+        "type": "loud",
+        "word": "loud",
+        "speaker": "SPEAKER_00",
+        "timestamp_s": 5.0
+      },
+      {
+        "type": "uptalk",
+        "word": "really.",
+        "speaker": "SPEAKER_00",
+        "timestamp_s": 6.0
+      }
+    ],
+    "metrics": {
+      "fast_wpm": 241.6,
+      "slow_wpm": 61.6,
+      "conversation": {
+        "SPEAKER_00": {
+          "talk_time_s": 5.9,
+          "talk_share_pct": 89.4,
+          "words": 6,
+          "wpm": 61.0,
+          "filler_count": 0,
+          "fillers_per_min": 0.0,
+          "drag_count": 1,
+          "loud_spike_count": 1,
+          "uptalk_count": 1,
+          "uptalk_per_min": 10.17,
+          "backchannels_given": 0,
+          "avg_response_pause_s": 0.0,
+          "median_pitch_hz": 100.0,
+          "hedge_count": 0,
+          "hedges_per_min": 0.0,
+          "hedge_breakdown": {},
+          "question_count": 0,
+          "question_ratio": 0.0,
+          "pronoun_balance": {
+            "i_me_my": 0,
+            "you_your": 0,
+            "ratio": null
+          },
+          "repetition_count": 0,
+          "repetition_rate": 0.0,
+          "vocab_variety": null
+        },
+        "SPEAKER_01": {
+          "talk_time_s": 0.7,
+          "talk_share_pct": 10.6,
+          "words": 2,
+          "wpm": 171.4,
+          "filler_count": 0,
+          "fillers_per_min": 0.0,
+          "drag_count": 0,
+          "loud_spike_count": 0,
+          "uptalk_count": 0,
+          "uptalk_per_min": 0.0,
+          "backchannels_given": 1,
+          "avg_response_pause_s": 0.0,
+          "median_pitch_hz": null,
+          "hedge_count": 0,
+          "hedges_per_min": 0.0,
+          "hedge_breakdown": {},
+          "question_count": 0,
+          "question_ratio": 0.0,
+          "pronoun_balance": {
+            "i_me_my": 0,
+            "you_your": 0,
+            "ratio": null
+          },
+          "repetition_count": 0,
+          "repetition_rate": 0.0,
+          "vocab_variety": null
+        }
+      }
+    },
+    "quality": {
+      "clean": {
+        "decision": "continue",
+        "overall_status": "pass",
+        "checks": {
+          "file_readability": "pass",
+          "duration": "pass",
+          "sample_rate": "pass",
+          "channel_handling": "pass",
+          "decoded_audio": "pass",
+          "codec_support": "pass",
+          "clipping": "pass",
+          "peak_level": "pass",
+          "rms_and_near_silence": "pass",
+          "speech_proportion": "pass",
+          "signal_to_noise_proxy": "pass",
+          "recording_level_stability": "pass",
+          "reverberation_risk_proxy": "pass",
+          "background_speech_preflight": "pass"
+        }
+      },
+      "noisy": {
+        "decision": "continue",
+        "overall_status": "warn",
+        "checks": {
+          "file_readability": "pass",
+          "duration": "pass",
+          "sample_rate": "pass",
+          "channel_handling": "pass",
+          "decoded_audio": "pass",
+          "codec_support": "pass",
+          "clipping": "pass",
+          "peak_level": "pass",
+          "rms_and_near_silence": "pass",
+          "speech_proportion": "warn",
+          "signal_to_noise_proxy": "warn",
+          "recording_level_stability": "pass",
+          "reverberation_risk_proxy": "pass",
+          "background_speech_preflight": "pass"
+        }
+      },
+      "loud": {
+        "decision": "continue",
+        "overall_status": "pass",
+        "checks": {
+          "file_readability": "pass",
+          "duration": "pass",
+          "sample_rate": "pass",
+          "channel_handling": "pass",
+          "decoded_audio": "pass",
+          "codec_support": "pass",
+          "clipping": "pass",
+          "peak_level": "pass",
+          "rms_and_near_silence": "pass",
+          "speech_proportion": "pass",
+          "signal_to_noise_proxy": "pass",
+          "recording_level_stability": "pass",
+          "reverberation_risk_proxy": "pass",
+          "background_speech_preflight": "pass"
+        }
+      },
+      "quiet": {
+        "decision": "continue",
+        "overall_status": "warn",
+        "checks": {
+          "file_readability": "pass",
+          "duration": "pass",
+          "sample_rate": "pass",
+          "channel_handling": "pass",
+          "decoded_audio": "pass",
+          "codec_support": "pass",
+          "clipping": "pass",
+          "peak_level": "warn",
+          "rms_and_near_silence": "warn",
+          "speech_proportion": "warn",
+          "signal_to_noise_proxy": "pass",
+          "recording_level_stability": "pass",
+          "reverberation_risk_proxy": "pass",
+          "background_speech_preflight": "pass"
+        }
+      }
+    },
+    "monotone": {
+      "pitch_median_hz": 180.0,
+      "pitch_variation_hz": 0.0
+    },
+    "voice_prosody": {
+      "f0_median_hz": 180.0,
+      "f0_distribution_span_st": 0.0,
+      "recorder_level_span_db": 12.24,
+      "frame_step_s": 0.01,
+      "combined_index_present": false
+    },
+    "verification": {
+      "valid_claim": "pass",
+      "wrong_speaker_claim": "fail"
+    }
+  }
+}

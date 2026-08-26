@@ -1,0 +1,106 @@
+{
+  "question_id": "ethics_review_for_an_unaffiliated_individual",
+  "domain": "research_ethics",
+  "question": "Can a researcher with no institution obtain the ethics review this research would need in Australia?",
+  "applies_to_purposes": [
+    "developer_research_only"
+  ],
+  "primary_sources": [
+    {
+      "citation": "NHMRC, National Statement on Ethical Conduct in Human Research",
+      "url": "https://www.nhmrc.gov.au/research-policy/ethics/national-statement-ethical-conduct-human-research",
+      "currency": "Retrieved 2026-08-19",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "The 2025 National Statement came into effect on 23 June 2026. ... Compliance with the National Statement is a prerequisite for receipt of NHMRC funding."
+    },
+    {
+      "citation": "NHMRC National Statement on Ethical Conduct in Human Research (2025), paragraph 5.1.11",
+      "url": "https://www.nhmrc.gov.au/sites/default/files/documents/attachments/publications/National-Statement-on-Ethical-Conduct-Human-Research-25.pdf",
+      "currency": "Published 2025; NHMRC states it came into effect on 23 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "If a research project is assessed as having more than low risk, it must be reviewed by an HREC."
+    },
+    {
+      "citation": "NHMRC National Statement on Ethical Conduct in Human Research (2025), paragraph 5.1.15",
+      "url": "https://www.nhmrc.gov.au/sites/default/files/documents/attachments/publications/National-Statement-on-Ethical-Conduct-Human-Research-25.pdf",
+      "currency": "Published 2025; NHMRC states it came into effect on 23 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Some research may be eligible for exemption from ethics review. The institution responsible for the research may choose to exempt from ethics review research that meets the criteria set out in paragraph 5.1.17. Where there is no institution providing oversight of the research, researchers should request a grant of exemption from an ethics review body."
+    },
+    {
+      "citation": "NHMRC National Statement on Ethical Conduct in Human Research (2025), paragraph 5.1.16",
+      "url": "https://www.nhmrc.gov.au/sites/default/files/documents/attachments/publications/National-Statement-on-Ethical-Conduct-Human-Research-25.pdf",
+      "currency": "Published 2025; NHMRC states it came into effect on 23 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Research that involves the use of personal information without consent cannot be granted an exemption from ethics review because, to conduct such research, a waiver of the requirement for consent would need to be granted by an appropriate ethics review body."
+    },
+    {
+      "citation": "NHMRC, Human Research Ethics Committees",
+      "url": "https://www.nhmrc.gov.au/research-policy/ethics/human-research-ethics-committees",
+      "currency": "Retrieved 2026-08-19",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Researchers who are not affiliated with an Australian organisation that has an HREC can contact any HREC from our registration list (provided above) and discuss matters with them directly."
+    },
+    {
+      "citation": "Queensland University of Technology, Manual of Policies and Procedures D/6.5, University Human Research Ethics Committee",
+      "url": "https://www.mopp.qut.edu.au/D/D_06_05.jsp",
+      "currency": "Retrieved 2026-08-19",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "The University Human Research Ethics Committee normally considers applications only from QUT staff and students. ... The Committee does not review projects where there is no QUT involvement. ... A QUT staff member must be nominated as the project Chief Investigator and accept ultimate responsibility for the conduct of the project."
+    },
+    {
+      "citation": "University of Southern Queensland, Human Research Ethics Procedure",
+      "url": "https://policy.unisq.edu.au/documents/181191PL",
+      "currency": "Retrieved 2026-08-19",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "The UniSQ HREC does not currently accept applications from Researchers with no formal affiliation with the University."
+    }
+  ],
+  "reading": [
+    "There is no guaranteed route. No Australian body is obliged to review an unaffiliated individual's research, and the national guidance goes no further than saying such researchers may contact committees and discuss matters with them.",
+    "Two Queensland universities checked directly show the realistic spread. One will not review a project with no involvement of its own and requires one of its own staff to be the chief investigator; the other states flatly that it does not accept applications from unaffiliated researchers.",
+    "The National Statement's compliance duties are addressed to institutions throughout. Its one sentence written for a researcher with no institution, at paragraph 5.1.15, points to requesting an exemption from an ethics review body, which still needs a body willing to entertain the request.",
+    "The exemption route is also narrower than it looks for this project. Paragraph 5.1.16 blocks exemption for research using personal information without consent, and research recordings of identifiable voices sit awkwardly with the exemption criteria in any case.",
+    "Whether this research would be more than low risk, and therefore require a full committee under paragraph 5.1.11, is not obvious either way. A study in which trained listeners rate individuals' speech has to be assessed against harm categories that include psychological harm and devaluation of personal worth, and if either is foreseeable the paragraph applies.",
+    "A research pass reported that a private not for profit provider operating twelve registered committees publishes a self funded investigator pathway with review fees in the range of roughly three to seven thousand dollars, and separately requires portal registration to be authorised through an organisation. Whether it accepts an applicant with no organisation at all could not be established from public pages. That is reported rather than verified here, and it is the decisive practical unknown.",
+    "The vocabulary has changed and older notes will be wrong. The 2025 National Statement does not use the term negligible risk anywhere; the lower risk band is now low risk or minimal risk."
+  ],
+  "confidence": "reading_with_material_uncertainty",
+  "unresolved": [
+    {
+      "question": "Whether any registered committee will accept an application from an individual with no organisation and no legal entity.",
+      "why_it_cannot_be_settled_here": "No public page states an eligibility rule either way, and settling it requires contacting a committee, which the approved research only route prohibits.",
+      "who_must_settle_it": "The owner, by deciding whether to make contact, and then the committee itself."
+    },
+    {
+      "question": "Whether this research would be assessed as more than low risk.",
+      "why_it_cannot_be_settled_here": "The National Statement assigns the risk assessment to the institution responsible for the research, and there is none.",
+      "who_must_settle_it": "An ethics review body or responsible institution."
+    }
+  ],
+  "conflicts": [
+    "NHMRC's main National Statement page states that the 2025 version came into effect on 23 June 2026. A research pass reported that NHMRC's own update FAQ page still says it will take effect in early 2026, date to be advised. The main page was read directly and is quoted above; the FAQ divergence is reported and not resolved."
+  ],
+  "consequences": [
+    "Ethics review is not a step that can be scheduled. It is a dependency on somebody else's willingness, and it currently has no confirmed supplier.",
+    "This compounds with the clinical trial question, which the regulator assigns to an ethics committee. Both blocked routes are blocked by the same missing thing.",
+    "A research pass also reported that NHMRC is revising the provisions defining human research and exemption from review, with public consultation expected. Any reading of those provisions may date."
+  ],
+  "decided_by": [
+    "human_research_ethics_committee_or_review_body",
+    "responsible_institution",
+    "owner"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "ethics_review_for_an_unaffiliated_individual_reading_v1",
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

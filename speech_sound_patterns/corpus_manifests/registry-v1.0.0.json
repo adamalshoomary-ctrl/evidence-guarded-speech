@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "speech_sound_corpus_registry_v1",
+  "status": "engineering_sources_manifested_release_locked",
+  "manifest_schema": "corpus-manifest-schema-v1.0.0.json",
+  "raw_data_root": ".research_data/speech_sound_patterns/corpora",
+  "raw_data_committed": false,
+  "manifests": [
+    {
+      "source_id": "speechocean762",
+      "path": "speechocean762-v1.2.0.json"
+    },
+    {
+      "source_id": "acted_clear_speech",
+      "path": "acted-clear-speech-2013.json"
+    },
+    {
+      "source_id": "common_phone_1_0",
+      "path": "common-phone-v1.0.json"
+    },
+    {
+      "source_id": "common_voice_26_australian_english",
+      "path": "common-voice-26-australian-english.json"
+    },
+    {
+      "source_id": "common_voice_26_british_english",
+      "path": "common-voice-26-british-english.json"
+    },
+    {
+      "source_id": "common_voice_26_american_english_male",
+      "path": "common-voice-26-american-english-male.json"
+    },
+    {
+      "source_id": "common_voice_26_american_english_female",
+      "path": "common-voice-26-american-english-female.json"
+    },
+    {
+      "source_id": "librispeech_slr12_small",
+      "path": "librispeech-slr12-small.json"
+    },
+    {
+      "source_id": "macquarie_australian_pronunciation_data",
+      "path": "macquarie-pending.json"
+    },
+    {
+      "source_id": "timit_ldc93s1",
+      "path": "timit-rejected.json"
+    },
+    {
+      "source_id": "l2_arctic",
+      "path": "l2-arctic-blocked.json"
+    },
+    {
+      "source_id": "talkbank_research",
+      "path": "talkbank-blocked.json"
+    },
+    {
+      "source_id": "andosl",
+      "path": "andosl-rejected.json"
+    },
+    {
+      "source_id": "austalk",
+      "path": "austalk-unavailable.json"
+    },
+    {
+      "source_id": "isle_elra_s0083",
+      "path": "isle-declined.json"
+    },
+    {
+      "source_id": "mitchell_delbridge",
+      "path": "mitchell-delbridge-blocked.json"
+    },
+    {
+      "source_id": "speech_accent_archive",
+      "path": "speech-accent-archive-blocked.json"
+    },
+    {
+      "source_id": "coanzse",
+      "path": "coanzse-rejected.json"
+    },
+    {
+      "source_id": "wikipron_eng_latn_uk_broad",
+      "path": "wikipron-uk-broad.json"
+    },
+    {
+      "source_id": "wikipron_eng_latn_us_broad",
+      "path": "wikipron-us-broad.json"
+    },
+    {
+      "source_id": "wiktionary_australian_kaikki",
+      "path": "wiktionary-australian-kaikki.json"
+    },
+    {
+      "source_id": "mfa_english_dictionary",
+      "path": "mfa-english-dictionary.json"
+    }
+  ],
+  "cross_source_rules": {
+    "duplicate_participant_or_clip_across_splits": "blocked",
+    "related_sources_count_as_independent": false,
+    "model_seen_data_count_as_independent": false,
+    "truth_classes_may_be_pooled": false
+  }
+}

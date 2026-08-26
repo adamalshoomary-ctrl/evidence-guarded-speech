@@ -1,0 +1,91 @@
+{
+  "source_id": "auskidtalk",
+  "title": "AusKidTalk, Australian children's speech corpus",
+  "citation": "AusKidTalk, Macquarie University and partners.",
+  "canonical_source": {
+    "landing_page": "https://researchers.mq.edu.au/en/projects/auskidtalk-an-australian-childrens-speech-corpus/",
+    "terms_or_licence_url": null
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "Australian English",
+    "covers_australian_english": true
+  },
+  "population": {
+    "description": "Australian children aged roughly 3 to 12, with orthographic transcription.",
+    "age_band": "children",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Children only.",
+      "Adam approved an adults first scope on 2026-08-14, and adult and child evidence must never be pooled."
+    ]
+  },
+  "tasks_present": [
+    "elicited_speech"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "audio_without_qualifying_labels",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "Transcription only. No rapid syllable, perceptual voice or multi listener intelligibility reference is described.",
+      "Children are outside the approved research scope, so it cannot be used whatever it contains."
+    ]
+  },
+  "access": {
+    "route": "application_and_review",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": false,
+    "account_required": true,
+    "agreement_signature_required": true,
+    "fee": null,
+    "state": "restricted",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "reported_not_verified",
+    "inspected_materials": [
+      "Reported from a discovery sweep on 2026-08-19 and not confirmed at source by this survey."
+    ],
+    "findings": [
+      "Recorded to close the Australian question rather than to open a lead. It is out of scope on population alone, so its access terms were not pursued."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "out_of_scope_population",
+    "reasons": [
+      "Children only, against an approved adults first research scope."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "auskidtalk_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

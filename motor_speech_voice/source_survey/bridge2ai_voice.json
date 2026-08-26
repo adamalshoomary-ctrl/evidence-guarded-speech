@@ -1,0 +1,97 @@
+{
+  "source_id": "bridge2ai_voice",
+  "title": "Bridge2AI-Voice",
+  "citation": "Bridge2AI-Voice, PhysioNet, version 3.1.0.",
+  "canonical_source": {
+    "landing_page": "https://physionet.org/content/b2ai-voice/3.1.0/",
+    "terms_or_licence_url": "https://physionet.org/content/b2ai-voice/3.1.0/"
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "North American English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "833 adults across five North American sites, spanning voice, neurological, mood and respiratory conditions.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "The PhysioNet distribution carries derived acoustic features and phenotypic data; raw audio is held separately."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel_e",
+    "harvard_sentences",
+    "random_item_generation",
+    "stroop",
+    "winograd"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "population_description_only",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": false,
+    "adjudication_defined": false,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "No rapid syllable task is present at all.",
+      "No CAPE-V, GRBAS or other multi-rater perceptual judgement is included, and no listener transcription.",
+      "Labels are clinical diagnoses and validated participant questionnaires, which are population description and participant report respectively."
+    ]
+  },
+  "access": {
+    "route": "free_account_and_signed_agreement",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": true,
+    "agreement_signature_required": true,
+    "fee": null,
+    "state": "restricted",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Bridge2AI Voice Registered Access License",
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "repository_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "PhysioNet content page for b2ai-voice 3.1.0, read 2026-08-19."
+    ],
+    "findings": [
+      "Credentialed access plus a signed data use agreement, and the licence does not state whether commercial use is permitted.",
+      "The largest and newest adult voice collection found still supplies neither of the two truth classes item 23 needs."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_truth_class",
+    "reasons": [
+      "No rapid syllable task and no multi-rater perceptual judgement.",
+      "Commercial permission is unstated, so rights would also fail closed."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "bridge2ai_voice_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

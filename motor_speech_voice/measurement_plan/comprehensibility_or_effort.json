@@ -1,0 +1,182 @@
+{
+  "candidate_id": "comprehensibility_or_effort",
+  "title": "Comprehensibility or listener effort",
+  "register_lane": "functional",
+  "governance_lane": "controlled_intelligibility",
+  "related_governance_lanes": [
+    "participant_report"
+  ],
+  "register_row": {
+    "candidate": "Comprehensibility or effort",
+    "narrowest_defensible_observation": "Listener experience under one predeclared instrument and condition",
+    "required_reference": "Multiple listeners with individual results retained",
+    "disposition_23a": "Deferred until intended benefit is defined"
+  },
+  "observation": {
+    "what_would_be_measured": "How much work listeners report it took to understand, which is a different question from how much they understood.",
+    "why_it_is_not_yet_a_measure": [
+      "Checkpoint 23A deferred this outright until the intended benefit is defined, and the benefit is still undefined.",
+      "Effort ratings measure the listener's experience. Reporting them as a speaker property would attribute a listener's attention, hearing, fatigue and attitude to the person speaking.",
+      "No instrument is selected, and instrument choice changes the construct rather than just the scale."
+    ],
+    "claim_level": "measured_observation_candidate_not_selected"
+  },
+  "reference_requirement": {
+    "truth_class": "functional_truth",
+    "substitutions_refused": [
+      "Transcription accuracy is not effort. A listener may understand everything and still find it exhausting.",
+      "An acoustic primitive cannot stand in for a listener's reported experience."
+    ],
+    "public_availability": "sources_exist_none_lawfully_usable",
+    "source_survey_basis": [
+      "osf_slp_intelligibility_estimations",
+      "torgo"
+    ],
+    "consequence": "This question inherits the intelligibility lane's availability problem and adds an instrument selection problem on top of it."
+  },
+  "estimand_shape": {
+    "question": "How consistently listeners rate the effort of understanding the same speaker, and how much of that rating is the speaker rather than the listener.",
+    "unit_of_analysis": "participant_by_listener",
+    "comparison": "Speaker against speaker with listener retained as a separate facet.",
+    "status": "candidate_shape_not_selected"
+  },
+  "variance_components_to_separate": [
+    "between_participant",
+    "between_listener",
+    "listener_by_speaker_interaction",
+    "between_prompt_or_stimulus",
+    "adaptation_or_familiarity_effect",
+    "residual_unexplained"
+  ],
+  "required_statistician_inputs": [
+    {
+      "input": "The selected instrument, its scale properties and whether its published measurement properties transfer to this population and condition.",
+      "why_public_research_cannot_supply_it": "Instrument selection is deferred and would need review against measurement property guidance by someone accountable for it."
+    },
+    {
+      "input": "Whether the rating is ordinal or continuous, since that decides the agreement statistic and the model.",
+      "why_public_research_cannot_supply_it": "It follows from the unselected instrument."
+    },
+    {
+      "input": "The one primary estimand for the question, stated before any data exists, together with the secondary quantities that may be reported beside it.",
+      "why_public_research_cannot_supply_it": "An estimand follows from an intended benefit and an intended claim. Checkpoint 23B has neither: the draft intended use records that it does not yet identify a sufficiently concrete benefit or eventual human action."
+    },
+    {
+      "input": "Expected between-person and within-person variance for the quantity, from a pilot run under the same task and capture path.",
+      "why_public_research_cannot_supply_it": "No task is selected and no pilot has been run, so there is no variance to expect. Published variance from another protocol, population or capture path describes that study rather than this one."
+    },
+    {
+      "input": "The precision the study must reach, expressed as an acceptable confidence interval width for each reported quantity rather than as a target point estimate.",
+      "why_public_research_cannot_supply_it": "Acceptable precision is a consequence of the claim being made and the harm of being wrong. Both belong to the accountable governance roles."
+    },
+    {
+      "input": "The number of candidate questions being carried, and how multiplicity across them will be handled.",
+      "why_public_research_cannot_supply_it": "The construct register may be narrowed or rejected entirely by the governance group, so the count of questions is not yet fixed."
+    },
+    {
+      "input": "Expected withdrawal, partial task completion, unusable recordings and missing reference, as rates rather than as a contingency.",
+      "why_public_research_cannot_supply_it": "These depend on the recruited population, the burden of the final protocol and the capture path, none of which exist."
+    },
+    {
+      "input": "Recruitment feasibility, participant burden and the cost of each additional participant, rater or listener.",
+      "why_public_research_cannot_supply_it": "There is no sponsor, no budget ceiling and no recruitment route, so feasibility cannot be estimated."
+    }
+  ],
+  "agreement_and_reliability": {
+    "statistic_family": "ordinal_or_rating_scale_agreement",
+    "form_selection_inputs": [
+      "Whether the scale is treated as ordinal or as continuous.",
+      "Whether the reported unit is one listener or a panel mean.",
+      "Whether listener specific response style is modelled or ignored."
+    ],
+    "reporting_standards": [
+      "cosmin_measurement_property_guidance",
+      "grras_reliability_and_agreement_reporting",
+      "generalisability_theory_multi_facet"
+    ],
+    "notes": [
+      "Rating scale agreement is where the perceptual voice lane's measured ceiling is most instructive: on the most reliable feature in the one open voice source, two trained clinicians typically differed by twelve to fifteen points on a hundred point scale. A new effort scale should not be assumed to do better."
+    ],
+    "measurement_error_required": true
+  },
+  "missingness_and_abstention": {
+    "categories": [
+      "participant_withdrew",
+      "task_not_attempted",
+      "recording_quality_invalid",
+      "unsupported_context_or_variety",
+      "reference_missing_or_unresolved",
+      "consent_withdrawn_after_collection"
+    ],
+    "note": "A listener declining to rate is recorded rather than treated as a mid scale response.",
+    "reported_separately": true
+  },
+  "split_and_clustering": {
+    "cluster_units": [
+      "listener",
+      "prompt_or_stimulus",
+      "repeated_session"
+    ],
+    "leakage_risks": [
+      "A participant's sessions, attempts and recordings must move together. Splitting them puts the same person on both sides of a comparison and makes a memorised speaker look like a general result.",
+      "Anything inspected during checkpoint 23C feasibility work is permanently pilot and development evidence for that participant and their related household, session and repeated recordings.",
+      "Item 22 material is not reusable by default. Even development use needs a new lawful purpose, consent, rights and ethics decision, and an overlap register covering every repository source and participant."
+    ],
+    "minimum_split_unit": "participant"
+  },
+  "subgroup_and_representation": [
+    "listeners of different ages and hearing status, where the claim includes them",
+    "Australian English varieties the claim includes, including Aboriginal Englishes",
+    "multilingual adults and adults who speak English as an additional language",
+    "adults who cannot read the prompt, where a spoken alternative applies",
+    "disability, communication difference and assisted communication",
+    "gender-diverse voices and professional voice users",
+    "regional and remote participants and their capture conditions",
+    "device and capture-path strata the claim includes"
+  ],
+  "blockers": [
+    {
+      "blocker": "The question is deferred at checkpoint 23A until an intended benefit exists, and no instrument is selected.",
+      "blocker_class": "no_task_or_construct_selected"
+    },
+    {
+      "blocker": "No construct, task or measure is selected. Every lane in the checkpoint 23B governance contract remains unselected, and the register may be rejected in full.",
+      "blocker_class": "no_task_or_construct_selected"
+    },
+    {
+      "blocker": "No independent statistician is engaged, and the checkpoint requires the statistical plan to be prospectively received and reviewed by one.",
+      "blocker_class": "statistician_absent"
+    },
+    {
+      "blocker": "No pilot has been run, so no variance estimate exists to size anything against.",
+      "blocker_class": "no_pilot_variance"
+    },
+    {
+      "blocker": "The accountable professional and paid lived-experience governance roles are unfilled, and no external authority has been approached.",
+      "blocker_class": "professional_governance_absent"
+    },
+    {
+      "blocker": "There is no legal entity to sponsor collection, hold the data or sign an agreement, which the source survey already demonstrated as a concrete rather than formal obstacle.",
+      "blocker_class": "no_legal_entity"
+    },
+    {
+      "blocker": "No institution pathway or ethics review exists, and participant recording is prohibited until one does.",
+      "blocker_class": "ethics_review_absent"
+    }
+  ],
+  "sample_size": {
+    "method_candidates": [
+      "A generalisability theory decision study, which projects the reliability of a planned design by reweighting variance components measured in an earlier generalisability study, and so sizes the number of listeners and the number of items separately because each carries its own component. Lakes, K. D. and Hoyt, W. T. Applications of generalizability theory to clinical child and adolescent psychology research. Journal of Clinical Child and Adolescent Psychology, 2009, doi:10.1080/15374410802575461, open access and read at source. Brennan, R. L. Generalizability Theory, Springer 2001, is the standard reference text and was not opened here.",
+      "Bonett, D. G. Sample size requirements for estimating intraclass correlations with desired precision. Statistics in Medicine, 2002, doi:10.1002/sim.1108, applied to the listener facet where an averaged listener panel is the reported unit. Primary text not opened here."
+    ],
+    "prerequisites": [
+      "A selected instrument and listening condition.",
+      "A pilot estimate of listener and speaker variance on that instrument."
+    ],
+    "state": "not_computable_without_the_inputs_above",
+    "computed_value": null
+  },
+  "schema_version": "1.0.0",
+  "record_id": "comprehensibility_or_effort_measurement_inputs_v1",
+  "selected": false
+}

@@ -1,0 +1,368 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/motor-speech-voice/measurement-plan-schema-v1.0.0.json",
+  "title": "Item 23 measurement and sampling input record",
+  "description": "One provisional construct from the checkpoint 23A construct register, described as the set of inputs an independent statistician would need before a study could be designed for it. A record states what must be supplied, what varies, what would have to be separated and what is unknown. It never selects a construct, task, estimand, statistic, threshold or sample size, and it never reports a computed quantity. Any JSON number is refused outright, because a number in this artifact would be a result rather than an input.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_id",
+    "candidate_id",
+    "title",
+    "register_lane",
+    "governance_lane",
+    "related_governance_lanes",
+    "register_row",
+    "observation",
+    "reference_requirement",
+    "estimand_shape",
+    "variance_components_to_separate",
+    "required_statistician_inputs",
+    "agreement_and_reliability",
+    "missingness_and_abstention",
+    "split_and_clustering",
+    "subgroup_and_representation",
+    "blockers",
+    "sample_size",
+    "selected"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "record_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+_measurement_inputs_v1$"
+    },
+    "candidate_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "register_lane": {
+      "description": "The lane name used by the checkpoint 23A provisional construct register.",
+      "enum": [
+        "motor_task",
+        "general_speech",
+        "functional",
+        "personal",
+        "voice_acoustic",
+        "voice_perceptual",
+        "voice_functional",
+        "endurance",
+        "acoustic_articulation"
+      ]
+    },
+    "governance_lane": {
+      "description": "The independent decision lane in the checkpoint 23B governance contract that would own this question. 'unassigned_requires_governance' is the honest answer where the register row does not map onto exactly one lane; an agent may not assign it.",
+      "enum": [
+        "motor_speech",
+        "general_speech",
+        "voice",
+        "participant_report",
+        "controlled_intelligibility",
+        "clinical_or_laryngeal_reference",
+        "unassigned_requires_governance"
+      ]
+    },
+    "related_governance_lanes": {
+      "description": "Other lanes whose decisions this question depends on or could be mistaken for. Recorded so that success in one lane cannot quietly stand in for another.",
+      "type": "array",
+      "items": {
+        "enum": [
+          "motor_speech",
+          "general_speech",
+          "voice",
+          "participant_report",
+          "controlled_intelligibility",
+          "clinical_or_laryngeal_reference"
+        ]
+      }
+    },
+    "register_row": {
+      "description": "The narrowest defensible observation and required reference exactly as the checkpoint 23A register states them, so this artifact cannot drift from its parent.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate", "narrowest_defensible_observation", "required_reference", "disposition_23a"],
+      "properties": {
+        "candidate": {"type": "string", "minLength": 1},
+        "narrowest_defensible_observation": {"type": "string", "minLength": 1},
+        "required_reference": {"type": "string", "minLength": 1},
+        "disposition_23a": {"type": "string", "minLength": 1}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["what_would_be_measured", "claim_level", "why_it_is_not_yet_a_measure"],
+      "properties": {
+        "what_would_be_measured": {"type": "string", "minLength": 1},
+        "claim_level": {
+          "description": "The highest claim level this question could ever reach on its own evidence. Nothing in item 23 may exceed measured observation without a separate approved checkpoint.",
+          "const": "measured_observation_candidate_not_selected"
+        },
+        "why_it_is_not_yet_a_measure": {"$ref": "#/$defs/nonemptyStrings"}
+      }
+    },
+    "reference_requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "truth_class",
+        "substitutions_refused",
+        "public_availability",
+        "source_survey_basis",
+        "consequence"
+      ],
+      "properties": {
+        "truth_class": {
+          "description": "The truth class from the checkpoint 23A truth architecture that would have to establish this observation.",
+          "enum": [
+            "task_fidelity",
+            "computational_truth",
+            "timing_and_boundary_truth",
+            "perceptual_voice_truth",
+            "intelligibility_truth",
+            "personal_truth",
+            "functional_truth",
+            "clinical_reference"
+          ]
+        },
+        "substitutions_refused": {"$ref": "#/$defs/nonemptyStrings"},
+        "public_availability": {
+          "description": "What the checkpoint 23B candidate reference source survey established about obtaining this truth class in public. It must agree with the survey; the validator cross-checks it.",
+          "enum": [
+            "no_qualifying_public_source",
+            "one_candidate_unresolved",
+            "sources_exist_none_lawfully_usable",
+            "not_surveyed_public_availability_unknown",
+            "not_applicable_computational_truth",
+            "not_applicable_participant_is_the_source"
+          ]
+        },
+        "source_survey_basis": {
+          "description": "Source ids from the survey that this availability statement rests on, or an empty list where the survey did not cover this truth class.",
+          "type": "array",
+          "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}
+        },
+        "consequence": {"type": "string", "minLength": 1}
+      }
+    },
+    "estimand_shape": {
+      "description": "The SHAPE of the quantity a future study would estimate, written so that a statistician can see what kind of question it is. It is not a selected estimand and carries no target value.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question", "unit_of_analysis", "comparison", "status"],
+      "properties": {
+        "question": {"type": "string", "minLength": 1},
+        "unit_of_analysis": {
+          "enum": [
+            "participant",
+            "participant_by_session",
+            "participant_by_attempt",
+            "participant_by_rater",
+            "participant_by_listener",
+            "recording"
+          ]
+        },
+        "comparison": {"type": "string", "minLength": 1},
+        "status": {"const": "candidate_shape_not_selected"}
+      }
+    },
+    "variance_components_to_separate": {
+      "description": "Sources of variation a design would have to separate rather than pool. Drawn from the checkpoint 23A confounder register.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "between_participant",
+          "within_participant_between_session",
+          "within_session_between_attempt",
+          "between_rater",
+          "between_listener",
+          "rater_by_participant_interaction",
+          "listener_by_speaker_interaction",
+          "between_device",
+          "between_room_or_environment",
+          "between_prompt_or_stimulus",
+          "between_site",
+          "practice_or_order_effect",
+          "adaptation_or_familiarity_effect",
+          "current_state_fatigue_or_voice_use",
+          "algorithm_or_model_version",
+          "residual_unexplained"
+        ]
+      }
+    },
+    "required_statistician_inputs": {
+      "description": "Each item is something the independent statistician must be given prospectively. Every one carries the reason public research cannot supply it, so this list can never be mistaken for work that is already done.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["input", "why_public_research_cannot_supply_it"],
+        "properties": {
+          "input": {"type": "string", "minLength": 1},
+          "why_public_research_cannot_supply_it": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "agreement_and_reliability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statistic_family",
+        "form_selection_inputs",
+        "measurement_error_required",
+        "reporting_standards",
+        "notes"
+      ],
+      "properties": {
+        "statistic_family": {
+          "description": "The family of agreement statistic the question's data shape points at. A family is not a selected statistic; the form within it is decided by the inputs below.",
+          "enum": [
+            "continuous_agreement",
+            "categorical_agreement",
+            "transcription_based_accuracy",
+            "ordinal_or_rating_scale_agreement",
+            "not_applicable_no_second_observer"
+          ]
+        },
+        "form_selection_inputs": {"$ref": "#/$defs/nonemptyStrings"},
+        "measurement_error_required": {
+          "description": "Reliability alone is never sufficient. Measurement error in the original units and the smallest change distinguishable from it must both be reported before any change may be called real.",
+          "const": true
+        },
+        "reporting_standards": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "grras_reliability_and_agreement_reporting",
+              "cosmin_measurement_property_guidance",
+              "icc_form_selection_guidance",
+              "limits_of_agreement",
+              "generalisability_theory_multi_facet",
+              "stard_diagnostic_accuracy",
+              "tripod_ai_prediction_model"
+            ]
+          }
+        },
+        "notes": {"$ref": "#/$defs/nonemptyStrings"}
+      }
+    },
+    "missingness_and_abstention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["categories", "reported_separately", "note"],
+      "properties": {
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "participant_withdrew",
+              "task_not_attempted",
+              "task_attempted_but_invalid",
+              "recording_quality_invalid",
+              "unsupported_context_or_variety",
+              "reference_missing_or_unresolved",
+              "reference_raters_disagreed_beyond_adjudication",
+              "algorithm_abstained",
+              "consent_withdrawn_after_collection"
+            ]
+          }
+        },
+        "reported_separately": {"const": true},
+        "note": {"type": "string", "minLength": 1}
+      }
+    },
+    "split_and_clustering": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum_split_unit", "cluster_units", "leakage_risks"],
+      "properties": {
+        "minimum_split_unit": {"const": "participant"},
+        "cluster_units": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "household",
+              "site",
+              "clinician_or_recruiter",
+              "device",
+              "prompt_or_stimulus",
+              "repeated_session",
+              "rater",
+              "listener"
+            ]
+          }
+        },
+        "leakage_risks": {"$ref": "#/$defs/nonemptyStrings"}
+      }
+    },
+    "subgroup_and_representation": {
+      "description": "Strata whose evidence would have to be reported separately rather than absorbed into an average. An underpowered stratum is reported as not evaluated.",
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "blockers": {
+      "description": "What stops this question being designed today. Every record has at least one, because no lane is selected.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["blocker", "blocker_class"],
+        "properties": {
+          "blocker": {"type": "string", "minLength": 1},
+          "blocker_class": {
+            "enum": [
+              "no_reference_evidence_exists",
+              "reference_evidence_not_lawfully_usable",
+              "reference_availability_unresolved",
+              "no_task_or_construct_selected",
+              "professional_governance_absent",
+              "no_legal_entity",
+              "ethics_review_absent",
+              "no_pilot_variance",
+              "statistician_absent"
+            ]
+          }
+        }
+      }
+    },
+    "sample_size": {
+      "description": "Deliberately unanswerable here. The plan states that thirty or one hundred is not a scientific plan, and this artifact enforces that structurally: the computed value can only ever be null.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "computed_value", "method_candidates", "prerequisites"],
+      "properties": {
+        "state": {"const": "not_computable_without_the_inputs_above"},
+        "computed_value": {"type": "null"},
+        "method_candidates": {
+          "description": "Published methods a statistician could choose between, cited so the choice is informed. Citing a method is not choosing one.",
+          "$ref": "#/$defs/nonemptyStrings"
+        },
+        "prerequisites": {"$ref": "#/$defs/nonemptyStrings"}
+      }
+    },
+    "selected": {
+      "description": "Always false. No construct, task, statistic or design is selected by this artifact.",
+      "const": false
+    }
+  },
+  "$defs": {
+    "nonemptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

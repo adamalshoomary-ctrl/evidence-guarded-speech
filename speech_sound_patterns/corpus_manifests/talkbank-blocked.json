@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "talkbank_research_manifest_v1",
+  "source_id": "talkbank_research",
+  "title": "TalkBank and PhonBank research sources",
+  "version": {
+    "label": "no corpus selected",
+    "release_date": "not_acquired",
+    "immutable_id": "talkbank_source_specific_rights_pending"
+  },
+  "citation": "TalkBank. PhonBank database and source specific access rules.",
+  "canonical_source": {
+    "landing_page": "https://talkbank.org/phon/",
+    "licence_url": "https://talkbank.org/0share/rules.html"
+  },
+  "access": {
+    "state": "unavailable",
+    "retrieved_at": null,
+    "account_required": false,
+    "terms_state": "pending",
+    "terms_url": "https://talkbank.org/phon/",
+    "terms_version": null,
+    "terms_snapshot_sha256": null
+  },
+  "licence": {
+    "state": "restricted_role_only",
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "verified_at": "2026-07-21",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "manifest_only"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "use_without_corpus_specific_rights",
+      "commercial_product_engineering",
+      "adult_product_validation_from_child_clinical_data"
+    ],
+    "raw_data_committed": false,
+    "local_storage": null,
+    "rehosting_permitted": null,
+    "reidentification_prohibited": true,
+    "provider_transfer": "blocked",
+    "retention_or_deletion_duties": "Do not acquire, retain, upload or process source data while the recorded rights state blocks use."
+  },
+  "population": {
+    "description": "Corpus dependent clinical and child speech resources; no source has been selected or acquired.",
+    "known_strata": [],
+    "limitations": [
+      "Rights and participant restrictions are corpus and role specific.",
+      "Child clinical evidence cannot validate a general adult communication product."
+    ]
+  },
+  "annotation": {
+    "truth_class": "unavailable",
+    "provenance": "No annotations acquired; official public descriptions reviewed only.",
+    "fields_retained": [],
+    "original_records_retained": false,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "No source record may enter engineering while access or rights remain blocked."
+    ]
+  },
+  "capability_audit": {
+    "status": "blocked_or_pending",
+    "inspected_materials": [
+      "Official landing page and available licence or access description."
+    ],
+    "findings": [
+      "No TalkBank media is approved for download or use.",
+      "A future source requires its own rights and participant review."
+    ]
+  },
+  "participant_split": {
+    "status": "not_applicable",
+    "unit": null,
+    "source_split_provenance": "No source participant data is acquired or approved.",
+    "project_strategy": "no_data_use_until_rights_change",
+    "frozen_held_out": false,
+    "assignment_artifact": null,
+    "assignment_sha256": null,
+    "participant_counts": {},
+    "cross_split_overlap_count": 0,
+    "strata": {}
+  },
+  "lineage": {
+    "lineage_group": "talkbank",
+    "derived_from": [],
+    "independence_claim": "no_evidence_claim_permitted",
+    "duplicate_detection": "Required if rights later permit acquisition.",
+    "candidate_model_overlap_status": "not_applicable"
+  },
+  "archives": []
+}

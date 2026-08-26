@@ -1,0 +1,97 @@
+{
+  "source_id": "younger_nt_adults",
+  "title": "Younger NT Adults diadochokinetic set (DDKtor / DDK deep network papers)",
+  "citation": "Segal-Feldman, Y. et al. Enhancing analysis of diadochokinetic speech using deep neural networks. Computer Speech & Language, 2024.",
+  "canonical_source": {
+    "landing_page": "https://github.com/MLSpeech/DDKtor",
+    "terms_or_licence_url": null
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "United States English, not stated explicitly",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "92 neurotypical adult participants recorded as pre-test data in speech motor learning experiments, median age 22 to 25 across splits.",
+    "age_band": "adults",
+    "clinical_status": "healthy",
+    "limitations": [
+      "Collected as pre-test data for a different experiment, not for a measurement validation purpose.",
+      "Young adults only, so it cannot describe an adult population across the age range item 23 would include."
+    ]
+  },
+  "tasks_present": [
+    "alternating_motion_rate",
+    "sequential_motion_rate"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "motor_task_timing_two_annotator",
+    "independent_rater_or_annotator_count": 2,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "unresolved",
+    "failure_reasons": [
+      "This is the closest published match to the item 23 motor timing requirement: two independent annotators marked voice onset times and vowel durations and boundaries on AMR and SMR from neurotypical adults.",
+      "No public release was located. The paper carries no data availability statement and the MIT licensed DDKtor repository distributes code and one model file but no speech data or annotations.",
+      "Whether individual annotator records and an adjudication rule were kept cannot be determined without the data."
+    ]
+  },
+  "access": {
+    "route": "no_public_release_located",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "unobtainable",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": null,
+    "spdx_id": null,
+    "commercial_use_permitted": null,
+    "source_of_licence_string": "not_stated",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Full text of the Computer Speech & Language paper, read on 2026-08-19.",
+      "The MLSpeech/DDKtor repository landing page, read on 2026-08-19."
+    ],
+    "findings": [
+      "The paper describes the annotation protocol in detail: burst onset from waveform spike and broadband spectrogram energy, vowel onset from the positive zero crossing at the start of periodic energy, syllable offset at the last periodic cycle.",
+      "The repository instructs users to supply their own wav files and TextGrid annotations, confirming no data ships with it.",
+      "No data availability statement, repository link or licence for the speech data appears anywhere in the paper."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_no_public_release",
+    "reasons": [
+      "The single best conceptual match for the item 23 motor timing truth class is not published, so no licence question even arises.",
+      "Obtaining it would require contacting the authors, which is not authorised and would still leave rights, ethics and privacy open."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "younger_nt_adults_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

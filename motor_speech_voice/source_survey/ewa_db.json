@@ -1,0 +1,103 @@
+{
+  "source_id": "ewa_db",
+  "title": "EWA-DB, Early Warning of Alzheimer speech database",
+  "citation": "Rusko, M. et al. Slovak database of speech affected by neurodegenerative diseases. Scientific Data 11, 2024. doi:10.1038/s41597-024-04171-6",
+  "canonical_source": {
+    "landing_page": "https://catalog.elda.org/en-us/repository/browse/ELRA-S0489/",
+    "terms_or_licence_url": "https://zenodo.org/records/10952480"
+  },
+  "language_and_variety": {
+    "language": "Slovak",
+    "variety": null,
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "1,649 speakers: 1,323 healthy controls, 175 Parkinson's disease, 87 Alzheimer's disease, 62 mild cognitive impairment, 2 mixed. Audio is published only for the 1,003 speakers who gave written consent to publication.",
+    "age_band": "adults",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Slovak, so nothing about it transfers to an English task without separate evidence.",
+      "Recorded through a smartphone application on mixed Apple and Android devices at 16 kHz, so device effects are uncontrolled.",
+      "646 of the 1,649 speakers did not consent to audio publication."
+    ]
+  },
+  "tasks_present": [
+    "sustained_vowel",
+    "diadochokinesis_pataka",
+    "object_and_action_naming",
+    "picture_description"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "population_description_only",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": false,
+    "adjudication_defined": false,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "The manual annotation is automatic speech recognition transcription corrected by trained annotators, plus tags for phenomena such as hesitation and intelligibility. It is not syllable boundary, syllable count, timing or task error marking for the diadochokinesis recordings.",
+      "The remaining labels are diagnosis, demographic and clinical test scores. A diagnosis describes a study population and is not the numeric ground truth for a timing primitive.",
+      "Annotators were predominantly speech and language pathology students working under supervision, and no agreement statistic for the diadochokinesis task is reported."
+    ]
+  },
+  "access": {
+    "route": "free_account_and_signed_agreement",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": true,
+    "agreement_signature_required": true,
+    "fee": "0.00 EUR for academic and commercial users, member and non member",
+    "state": "obtainable_only_after_contact_or_agreement",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "ELRA catalogue offers Non Commercial Use, ELRA END USER and Commercial Use, ELRA VAR; the Zenodo deposit states no licence",
+    "spdx_id": null,
+    "commercial_use_permitted": true,
+    "source_of_licence_string": "catalogue_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "Zenodo API record 10952480, queried 2026-08-19.",
+      "ELRA catalogue entry ELRA-S0489, read 2026-08-19.",
+      "PubMed Central full text PMC11618578, read 2026-08-19."
+    ],
+    "findings": [
+      "The ELRA distribution includes audio for 1,003 consenting speakers, ASR transcription JSON for all 1,649, and manual annotation for a further subset, at 0.00 EUR under either licence type.",
+      "The ELRA route needs an account and a signed licence, which is a click-through rather than a negotiation, but is still an agreement this project has not decided to sign."
+    ],
+    "conflicting_claims": [
+      "The Scientific Data paper states the database is publicly available at ELDA and at Zenodo. The Zenodo deposit is in fact access restricted with no licence recorded and no files listed, so the Zenodo half of that published claim is wrong as of 2026-08-19.",
+      "The paper's own description of manual annotation coverage and the ELRA catalogue's speaker count for manual annotation do not match exactly; neither figure is relied on here."
+    ]
+  },
+  "eligibility": {
+    "decision": "blocked_truth_class",
+    "reasons": [
+      "The largest openly obtainable collection of rapid syllable recordings carries no rapid syllable reference truth.",
+      "It could support engineering feasibility questions only, and even that would need a separate owner decision to sign the ELRA licence and a separate rights and privacy review."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "ewa_db_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

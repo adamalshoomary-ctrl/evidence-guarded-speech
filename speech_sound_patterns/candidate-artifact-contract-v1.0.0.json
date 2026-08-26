@@ -1,0 +1,384 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "speech_sound_patterns_developer_candidate_artifact_v1",
+  "contract_version": "1.0.0",
+  "checkpoint": "22G",
+  "status": "rules_frozen_before_candidate_extractor_implementation",
+  "purpose": "Define the private developer artifact, its evidence adequacy stop, its fail closed opportunity states and its generic repeated relation structure before extractor logic exists. The artifact assembles review evidence for known controlled words. It does not establish a speech sound error, a reviewed target relation, a named pattern, a disorder or any user facing result.",
+  "frozen_inputs": {
+    "previous_research_contract": {
+      "path": "research-contract-v1.5.0.json",
+      "sha256": "d3201a24c9bac7211aef96f8f4b9a1850e0c4bd9c2161d24de0cf879b80197ac",
+      "protocol_version": "1.5.0",
+      "unchanged_historical_contract": true
+    },
+    "prompt_pack_contract": {
+      "path": "prompt-pack-contract-v1.0.0.json",
+      "sha256": "fc0a1827cb1c5187ab2479d8776a200eb59596cc6a5a0c7c4f25cab989787001"
+    },
+    "prompt_pack": {
+      "path": "research-prompt-pack-v1.0.0.json",
+      "sha256": "c53522ee155628d6266c5494d7e9c45d9d06f4dc550abac82f9816e00f5b7d72",
+      "pack_id": "speech_sound_patterns_research_prompt_pack_v1",
+      "pack_version": "1.0.0",
+      "word_count": 20
+    },
+    "selection_record": {
+      "path": "selection-record-v1.1.0.json",
+      "sha256": "528e2a07c733bb4f456f422765589d362f3fe242f08909b011f30ce8bc6dbe66",
+      "decision": "no_selection",
+      "further_threshold_search_authorised": false
+    },
+    "corpus_registry": {
+      "path": "corpus_manifests/registry-v1.0.0.json",
+      "sha256": "d2fcb6381737278110ffc3073afaf8794e16fd2c2589950edb90dfdb193750a0"
+    },
+    "speechocean762_corpus_manifest": {
+      "path": "corpus_manifests/speechocean762-v1.2.0.json",
+      "sha256": "5a96d39255f471359129e414af192b27cccc6ba5dc1c85a574eb0a4721900855"
+    },
+    "powered_expected_manifest": {
+      "private_path": ".research_data/speech_sound_patterns/benchmark/v2/expected-only-manifest-v1.1.0.json",
+      "sha256": "a609994485db13e4d61b76c635459f26709bf8031f551de0c610a27b4816eace"
+    },
+    "powered_expert_relations": {
+      "private_path": ".research_data/speech_sound_patterns/benchmark/v2/evidence/scoring/speechocean-relation-evidence.json",
+      "sha256": "34e4d1fcc725542583e22798a0b590ac01c0a2c6fdc3211cad008d8c5d83d564",
+      "truth_class": "source_specific_expert_phone_relations"
+    },
+    "powered_source_reference": {
+      "private_path": ".research_data/speech_sound_patterns/benchmark/v2/references/speechocean762.json",
+      "sha256": "375e0d886ee8b304e357b67751d65f9189134aeb220321783768bd2247f23946"
+    }
+  },
+  "carried_forward": {
+    "developer_research_code": [
+      "the independent local segmentation free GOP implementation",
+      "the pinned local model environment",
+      "the prompt pack normalisation and refusal rules"
+    ],
+    "not_carried_forward": [
+      "any operating point",
+      "any score threshold",
+      "any expected to produced phone mapping",
+      "any feature relation rule",
+      "any provider configuration",
+      "any selected candidate system"
+    ]
+  },
+  "evidence_adequacy_gate": {
+    "runs_before_any_threshold_or_repeated_rule_search": true,
+    "required": [
+      "task matched controlled isolated word recordings",
+      "participant exclusive development and threshold tuning partitions",
+      "independent exact produced relation truth",
+      "at least two distinct prompt pack words for an eligible participant",
+      "enough positive relations to make every unchanged selection gate attainable",
+      "every support and opportunity denominator visible"
+    ],
+    "unchanged_selection_gates": {
+      "minimum_precision_point_estimate": 0.75,
+      "minimum_precision_wilson_95_lower": 0.5,
+      "maximum_false_concerns_per_scorable_opportunity": 0.01,
+      "minimum_recall": 0.2,
+      "minimum_true_positives": 7,
+      "development_and_tuning_both_required": true
+    },
+    "failure_decision": "no_rule_selected_task_matched_evidence_unavailable",
+    "threshold_search_after_failure": false,
+    "held_out_access_after_failure": false,
+    "owner_recordings_may_fill_the_evidence_gap": false,
+    "synthetic_fixtures_may_fill_the_evidence_gap": false
+  },
+  "input_manifest_contract": {
+    "manifest_id": "speech_sound_candidate_trials_v1",
+    "explicit_command_required": true,
+    "normal_pipeline_manifest_allowed": false,
+    "normal_master_json_allowed": false,
+    "known_presented_stimulus_required": true,
+    "allowed_pack_words_only": true,
+    "allowed_elicitation_modes": [
+      "written_word"
+    ],
+    "allowed_project_splits": [
+      "development",
+      "threshold_tuning",
+      "functional_integration"
+    ],
+    "held_out_split_allowed": false,
+    "required_trial_identifiers": [
+      "participant_id",
+      "session_id",
+      "attempt_id",
+      "trial_id",
+      "stimulus_id"
+    ],
+    "required_trial_fields": [
+      "identifiers",
+      "elicitation_mode",
+      "intended_word",
+      "intended_word_source",
+      "audio",
+      "audio_quality",
+      "source",
+      "raw_evidence"
+    ],
+    "intended_word_source": "versioned_presented_stimulus",
+    "asr_may_supply_intended_word": false,
+    "raw_audio_required_for_a_real_model_run": true,
+    "audio_sha256_required": true,
+    "quality_statuses": [
+      "pass",
+      "fail",
+      "unavailable"
+    ],
+    "network_access_allowed": false,
+    "provider_request_allowed": false,
+    "cached_provider_evidence_role": "optional_raw_research_evidence_only",
+    "adam_recordings_role": "functional_integration_only_local_processing",
+    "unregistered_sources_allowed": false,
+    "speechocean762_trial_extraction_allowed": false,
+    "approved_source_profiles": {
+      "synthetic_fixture": {
+        "project_split": "functional_integration",
+        "manifest_state": "synthetic_fixture",
+        "licence_state": "not_applicable_synthetic",
+        "role": "structural_testing_only",
+        "external_transfer": false,
+        "selection_evidence_allowed": false,
+        "real_evidence_references_required": false
+      },
+      "adam_controlled_recordings": {
+        "project_split": "functional_integration",
+        "manifest_state": "owner_controlled_local",
+        "licence_state": "owner_authorised_local_functional_integration",
+        "role": "functional_integration_only",
+        "external_transfer": false,
+        "selection_evidence_allowed": false,
+        "real_evidence_references_required": true
+      }
+    }
+  },
+  "artifact_contract": {
+    "filename": "speech_sound_candidates.json",
+    "artifact_id": "speech_sound_candidates",
+    "artifact_version": "1.0.0",
+    "privacy": "private_gitignored_developer_research_artifact",
+    "root_required_fields": [
+      "schema_version",
+      "artifact_id",
+      "artifact_version",
+      "status",
+      "contract",
+      "input_manifest",
+      "prompt_pack",
+      "task",
+      "source",
+      "candidate_rule",
+      "trials",
+      "repeated_relation_summary",
+      "denominators",
+      "limitations",
+      "release_boundaries"
+    ],
+    "trial_required_fields": [
+      "identifiers",
+      "elicitation_mode",
+      "intended_word",
+      "intended_word_source",
+      "audio",
+      "audio_quality",
+      "source",
+      "raw_evidence",
+      "word_evidence",
+      "opportunities",
+      "insertions"
+    ],
+    "opportunity_required_fields": [
+      "opportunity_id",
+      "trial_id",
+      "stimulus_id",
+      "opportunity_index",
+      "expected_phone",
+      "position",
+      "context",
+      "source_interval",
+      "audio_quality",
+      "reference_variants",
+      "raw_evidence",
+      "candidate_state",
+      "candidate_relation",
+      "alternative_explanations",
+      "uncertainty",
+      "abstention_reason",
+      "review",
+      "provenance",
+      "downstream_exclusions"
+    ],
+    "word_evidence_required_fields": [
+      "unit_id",
+      "trial_id",
+      "stimulus_id",
+      "intended_word",
+      "raw_asr",
+      "candidate_state",
+      "sound_attribution_allowed",
+      "manual_review_trigger",
+      "alternative_explanations",
+      "uncertainty",
+      "abstention_reason",
+      "review",
+      "provenance",
+      "downstream_exclusions"
+    ],
+    "insertion_required_fields": [
+      "insertion_id",
+      "trial_id",
+      "stimulus_id",
+      "between_opportunities",
+      "source_interval",
+      "raw_evidence",
+      "candidate_state",
+      "candidate_relation",
+      "alternative_explanations",
+      "uncertainty",
+      "abstention_reason",
+      "review",
+      "provenance",
+      "downstream_exclusions"
+    ],
+    "allowed_automatic_states": [
+      "possible_relation_candidate",
+      "asr_only_disagreement",
+      "candidate_system_conflict",
+      "known_reference_variant",
+      "insufficient_evidence",
+      "unsupported",
+      "unavailable"
+    ],
+    "allowed_relation_types": [
+      "substitution",
+      "deletion",
+      "insertion"
+    ],
+    "automatic_error_state_allowed": false,
+    "automatic_reviewed_relation_allowed": false,
+    "confidence_is_probability": false,
+    "review_state": "unreviewed",
+    "insertions_change_expected_opportunity_denominator": false,
+    "raw_evidence_preserved": true,
+    "alternative_explanations_required": true,
+    "uncertainty_and_abstention_required": true
+  },
+  "state_resolution": {
+    "precedence": [
+      "unavailable",
+      "known_reference_variant",
+      "unsupported",
+      "candidate_system_conflict",
+      "asr_only_disagreement",
+      "insufficient_evidence",
+      "possible_relation_candidate"
+    ],
+    "rules": {
+      "unavailable": "Rejected or unavailable audio, an unknown intended word, a missing required local model or version, or unreadable evidence becomes unavailable with its reason. Audio quality is resolved before automatic speech evidence is interpreted.",
+      "known_reference_variant": "After usable audio is established, a prompt pack opportunity whose documented British and Australian reference forms disagree remains a known reference variant and never becomes a concern.",
+      "unsupported": "After usable audio is established, any other prompt pack refusal, unsupported sound or context, or an unimplemented insertion lane becomes unsupported and never becomes normal, correct or zero.",
+      "candidate_system_conflict": "Materially different automatic proposals are preserved as conflict and agreement still cannot become truth.",
+      "asr_only_disagreement": "ASR disagreement without independent phone relation evidence remains one word level review unit. It is never copied onto expected sound opportunities and cannot create a speech sound concern.",
+      "insufficient_evidence": "Scorable opportunities with raw evidence but no frozen passing candidate rule remain insufficient evidence.",
+      "possible_relation_candidate": "This state requires a separately frozen candidate rule that passed every unchanged gate on task matched development and tuning evidence."
+    },
+    "possible_relation_candidate_emission_enabled": false,
+    "reason": "No candidate system, mapping, feature rule or threshold was selected, and the task matched evidence adequacy gate fails before any new search."
+  },
+  "generic_repeated_relation_policy": {
+    "state": "repeated_relation_candidate",
+    "is_named_pattern": false,
+    "is_disorder": false,
+    "emission_enabled": false,
+    "minimum_rule": null,
+    "minimum_rule_status": "no_rule_selected_task_matched_evidence_unavailable",
+    "support_may_only_reference_state": "possible_relation_candidate",
+    "same_participant_required": true,
+    "same_task_pack_and_elicitation_mode_required": true,
+    "same_feature_relation_required": true,
+    "distinct_words_required": true,
+    "distinct_contexts_required": true,
+    "distinct_recordings_required": true,
+    "duplicate_audio_or_model_repeats_count_once": true,
+    "one_token_can_qualify": false,
+    "one_word_can_qualify": false,
+    "support_and_opportunity_counts_required": true,
+    "distinct_counts_required": [
+      "words",
+      "positions",
+      "contexts",
+      "attempts",
+      "trials",
+      "recordings",
+      "sessions"
+    ],
+    "named_clinical_pattern_allowed": false,
+    "threshold_search_allowed": false,
+    "held_out_evaluation_allowed": false
+  },
+  "evidence_report_policy": {
+    "report_id": "speech_sound_candidate_evidence",
+    "report_version": "1.0.0",
+    "safe_aggregate_only": true,
+    "private_participant_ids_committed": false,
+    "row_level_evidence_committed": false,
+    "raw_audio_committed": false,
+    "held_out_access_allowed": false,
+    "adults_only_for_rule_adequacy": true,
+    "children_supported": false,
+    "exact_feature_relation_truth_available": false,
+    "a_failed_adequacy_gate_stops_threshold_search": true
+  },
+  "output_and_distribution": {
+    "artifact_output_directory_must_be_explicit": true,
+    "artifact_output_root": ".research_data/speech_sound_patterns/candidates",
+    "manifest_input_root": ".research_data/speech_sound_patterns/candidates/manifests",
+    "offline_environment_variable": "SPEECH_SOUND_OFFLINE=1",
+    "existing_artifact_may_be_overwritten": false,
+    "normal_pipeline_output_directory_allowed": false,
+    "existing_pipeline_artifacts_may_be_modified": false,
+    "root_history_or_progress_may_be_modified": false,
+    "derived_lexicon_material_may_be_committed": false,
+    "raw_provider_or_restricted_corpus_evidence_may_be_committed": false
+  },
+  "release_boundaries": {
+    "normal_pipeline": false,
+    "listener": false,
+    "evaluator": false,
+    "claim_ledger": false,
+    "coaching": false,
+    "personal_progress": false,
+    "screening": false,
+    "diagnosis": false,
+    "severity": false,
+    "cause": false,
+    "treatment": false,
+    "named_pattern": false,
+    "scientific_release": false,
+    "product_release": false
+  },
+  "acceptance": {
+    "required_fixture_cases": [
+      "substitution",
+      "deletion",
+      "insertion",
+      "documented_variant",
+      "candidate_system_conflict",
+      "bad_audio",
+      "unsupported_context",
+      "missing_model",
+      "cached_provider_failure"
+    ],
+    "one_token_and_one_word_never_create_repeated_relation": true,
+    "artifact_bytes_are_deterministic": true,
+    "all_counts_are_recomputed_by_the_validator": true,
+    "no_normal_pipeline_or_longitudinal_leakage": true
+  }
+}

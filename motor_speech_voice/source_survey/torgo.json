@@ -1,0 +1,96 @@
+{
+  "source_id": "torgo",
+  "title": "TORGO database of dysarthric articulation",
+  "citation": "Rudzicz, F., Namasivayam, A. K. & Wolff, T. The TORGO database of acoustic and articulatory speech from speakers with dysarthria. Language Resources and Evaluation 46(4), 2012.",
+  "canonical_source": {
+    "landing_page": "http://www.cs.toronto.edu/~complingweb/data/TORGO/torgo.html",
+    "terms_or_licence_url": "http://www.cs.toronto.edu/~complingweb/data/TORGO/torgo.html"
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "Canadian English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "15 speakers: 8 with cerebral palsy or amyotrophic lateral sclerosis and 7 controls, about 23 hours.",
+    "age_band": "mixed",
+    "clinical_status": "mixed",
+    "limitations": [
+      "15 speakers in total.",
+      "Collected primarily to improve speech recognition, not to measure speech."
+    ]
+  },
+  "tasks_present": [
+    "isolated_words",
+    "sentences",
+    "articulatory_measurement"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "audio_without_qualifying_labels",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": false,
+    "adjudication_defined": false,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "Annotation is phonemic and orthographic transcription plus a clinician administered dysarthria assessment. There is no multi listener intelligibility transcription.",
+      "A single clinician's assessment instrument is not listener intelligibility truth."
+    ]
+  },
+  "access": {
+    "route": "open_direct_download",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_without_contact",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Use of this database is free for academic (non-profit) purposes.",
+    "spdx_id": null,
+    "commercial_use_permitted": false,
+    "source_of_licence_string": "project_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "The University of Toronto TORGO page, fetched and read 2026-08-19, returning HTTP 200."
+    ],
+    "findings": [
+      "The licence sentence is unambiguous and quoted verbatim above. It restricts use to academic non-profit purposes.",
+      "The data is a free 18 GB download, which makes it a standing temptation. The licence, not the availability, is what excludes it."
+    ],
+    "conflicting_claims": [
+      "The Linguistic Data Consortium lists the same corpus under a separate paid member agreement. The two routes carry different terms and the Toronto page is treated as authoritative for the free download it offers."
+    ]
+  },
+  "eligibility": {
+    "decision": "blocked_licence_non_commercial",
+    "reasons": [
+      "Academic non-profit use only excludes this repository, which is the measurement backend of a future commercial product."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "torgo_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

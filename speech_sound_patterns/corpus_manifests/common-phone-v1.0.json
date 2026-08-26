@@ -1,0 +1,160 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_id": "common_phone_1_0_manifest_v1",
+  "source_id": "common_phone_1_0",
+  "title": "Common Phone",
+  "version": {
+    "label": "1.0",
+    "release_date": "2022-01-17",
+    "immutable_id": "doi_10.5281_zenodo.5846137"
+  },
+  "citation": "Klumpp, Philipp, Tomas Arias-Vergara, Paula Andrea Perez-Toro, Elmar Noth, and Juan Rafael Orozco-Arroyave. Common Phone: A Multilingual Dataset for Robust Acoustic Modelling. Common Phone 1.0, Zenodo, 2022. https://doi.org/10.5281/zenodo.5846137.",
+  "canonical_source": {
+    "landing_page": "https://zenodo.org/records/5846137",
+    "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  "access": {
+    "state": "available",
+    "retrieved_at": "2026-07-21",
+    "account_required": false,
+    "terms_state": "accepted",
+    "terms_url": "https://commonvoice.mozilla.org/en/terms",
+    "terms_version": "retrieved_2026-07-21",
+    "terms_snapshot_sha256": "65f2bc1acc499dc0b886c04123b13ab7516bef2067b81dfeb1ae8661feee8b3a"
+  },
+  "licence": {
+    "state": "verified_for_declared_role",
+    "spdx_id": "CC0-1.0",
+    "commercial_use_permitted": true,
+    "verified_at": "2026-07-21",
+    "attribution_required": false,
+    "attribution_text": null
+  },
+  "governance": {
+    "permitted_roles": [
+      "automatic_phone_engineering",
+      "phone_recognizer_parser_and_timing_regression",
+      "device_and_repeatability_engineering"
+    ],
+    "prohibited_roles": [
+      "scientific_release_truth",
+      "product_release_truth",
+      "clinical_inference",
+      "accent_quality_judgment",
+      "phone_relation_truth",
+      "substitution_deletion_or_insertion_truth",
+      "accepted_pronunciation_variant_truth",
+      "independent_evidence_from_common_voice",
+      "speaker_reidentification",
+      "dataset_rehosting"
+    ],
+    "raw_data_committed": false,
+    "local_storage": ".research_data/speech_sound_patterns/corpora/common_phone_1_0",
+    "rehosting_permitted": false,
+    "reidentification_prohibited": true,
+    "provider_transfer": "requires_separate_provider_terms_review",
+    "retention_or_deletion_duties": "Keep the verified archive private, do not attempt to identify speakers, do not commit or rehost recordings, and review both source and provider terms before any external processing."
+  },
+  "population": {
+    "description": "The English source splits contain 4,716 train, 771 development and 774 test speakers. After excluding every speaker detectably shared with the current Australian Common Voice package, 4,506, 740 and 751 speakers remain eligible for this research.",
+    "known_strata": [
+      "source_train",
+      "source_dev",
+      "source_test",
+      "source_demographic_fields_are_context_only"
+    ],
+    "limitations": [
+      "The English data is international Common Voice read speech and is not an Australian product population.",
+      "The source was derived from Common Voice 7 and is not independent of the Common Voice family.",
+      "Identifier comparison detects known overlap but cannot prove that separately pseudonymised speakers never recur.",
+      "Self reported demographic and accent fields are incomplete context rather than phone truth."
+    ]
+  },
+  "annotation": {
+    "truth_class": "automatic_forced_alignments",
+    "provenance": "Prompt text was converted to expected IPA and automatically aligned with the BAS G2P and MAUS pipeline; supplied TextGrids contain automatic word and phone intervals.",
+    "fields_retained": [
+      "audio_filename_private",
+      "participant_id_private",
+      "prompt_text",
+      "source_split",
+      "automatic_word_intervals",
+      "automatic_phone_intervals"
+    ],
+    "original_records_retained": true,
+    "scalar_scores_are_relation_truth": false,
+    "limitations": [
+      "Forced alignment locates the prompted sequence and does not establish which phone was actually produced.",
+      "Automatic intervals cannot validate substitutions, deletions, insertions or accepted variants."
+    ]
+  },
+  "capability_audit": {
+    "status": "complete",
+    "inspected_materials": [
+      "Official Zenodo metadata, legal statement, paper and archive checksum were inspected.",
+      "English train, development, test and participant metadata fields were audited privately.",
+      "The archive was scanned to pair every declared English clip with its MP3, WAV and TextGrid files and to inspect automatic annotation tiers."
+    ],
+    "findings": [
+      "The English package has 9,307 train, 1,514 development and 1,522 test clips from 6,261 source exclusive speakers.",
+      "Comparison with Common Voice 26 Australian English found 264 shared participant identifiers and 521 shared clip identifiers.",
+      "All 264 detectable shared speakers are excluded from Common Phone project splits, leaving 5,997 eligible speakers with no identifier crossing the three project splits.",
+      "All 12,343 declared English clips pair one to one with usable MP3, WAV and TextGrid files after excluding macOS resource forks; 25 inspected TextGrids each exposed KAN-MAU, MAU and ORT-MAU tiers.",
+      "The phone and word TextGrids are automatic engineering annotations only."
+    ]
+  },
+  "participant_split": {
+    "status": "audited",
+    "unit": "participant",
+    "source_split_provenance": "Common Phone supplies speaker exclusive English train, development and test splits. The audit then excludes every participant detectably overlapping the current Australian Common Voice package.",
+    "project_strategy": "Map eligible source train to development, source development to threshold tuning and source test to frozen held out evaluation. Never reintroduce any excluded Common Voice related participant.",
+    "frozen_held_out": true,
+    "assignment_artifact": ".research_data/speech_sound_patterns/splits/common-phone-v1.0.json",
+    "assignment_sha256": "3e7e3520726bcdb6cc9a540d28a54b7ef53bb9edadfbc9fae0369bae59f4787a",
+    "participant_counts": {
+      "development": 4506,
+      "threshold_tuning": 740,
+      "held_out_evaluation": 751
+    },
+    "cross_split_overlap_count": 0,
+    "strata": {
+      "train": {
+        "development": 4506,
+        "threshold_tuning": 0,
+        "held_out_evaluation": 0
+      },
+      "dev": {
+        "development": 0,
+        "threshold_tuning": 740,
+        "held_out_evaluation": 0
+      },
+      "test": {
+        "development": 0,
+        "threshold_tuning": 0,
+        "held_out_evaluation": 751
+      }
+    }
+  },
+  "lineage": {
+    "lineage_group": "common_voice",
+    "derived_from": [
+      "common_voice_7"
+    ],
+    "independence_claim": "not_independent_of_lineage",
+    "duplicate_detection": "Compare participant and clip identifiers against every Common Voice derived package; exclude the whole Common Phone participant when either identifier overlaps. Treat undetectable pseudonym changes as residual lineage risk.",
+    "candidate_model_overlap_status": "unknown_requires_model_specific_audit"
+  },
+  "archives": [
+    {
+      "filename": "cp-1-0.tgz",
+      "size_bytes": 13268029941,
+      "canonical_download_url": "https://zenodo.org/api/records/5846137/files/cp-1-0.tgz/content",
+      "upstream_checksum": {
+        "algorithm": "md5",
+        "value": "2022f16ef7296b9141b275e2288280b9"
+      },
+      "local_sha256": "57773bf6611e1445fd11e60b51af1cd3ba3918efc91b50a1c9a3b8eb2f23e1e1",
+      "local_verification_status": "verified"
+    }
+  ]
+}

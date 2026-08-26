@@ -1,0 +1,1531 @@
+{
+  "analyses": {
+    "complete": {
+      "-0.5": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.191207,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.181222,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.205455,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.161177,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.148878,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.168961,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.03003,
+          "australian": -0.032344,
+          "british": -0.036494
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.009985,
+            "british": 0.014248
+          },
+          "british": {
+            "australian": -0.012299,
+            "british": 0.007784
+          }
+        }
+      },
+      "-1.0": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.166381,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.162866,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.177896,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.137818,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.130622,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.143074,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.028563,
+          "australian": -0.032244,
+          "british": -0.034822
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.003515,
+            "british": 0.011515
+          },
+          "british": {
+            "australian": -0.007196,
+            "british": 0.005256
+          }
+        }
+      },
+      "-1.5": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.154384,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.149469,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.165598,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.127521,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.119482,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.131681,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.026863,
+          "australian": -0.029987,
+          "british": -0.033917
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.004915,
+            "british": 0.011214
+          },
+          "british": {
+            "australian": -0.008039,
+            "british": 0.00416
+          }
+        }
+      },
+      "-2.0": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.143367,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.139998,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.152874,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.117679,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.111378,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.119894,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.025688,
+          "australian": -0.02862,
+          "british": -0.03298
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.003369,
+            "british": 0.009507
+          },
+          "british": {
+            "australian": -0.006301,
+            "british": 0.002215
+          }
+        }
+      },
+      "-3.0": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.124254,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.123595,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.136253,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.101594,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.095981,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.10434,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.02266,
+          "australian": -0.027614,
+          "british": -0.031913
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.000659,
+            "british": 0.011999
+          },
+          "british": {
+            "australian": -0.005613,
+            "british": 0.002746
+          }
+        }
+      }
+    },
+    "without_conditioned_palatals": {
+      "-0.5": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.150644,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.139442,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.16146,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.12848,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.112432,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.133425,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.022164,
+          "australian": -0.02701,
+          "british": -0.028035
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.011202,
+            "british": 0.010816
+          },
+          "british": {
+            "australian": -0.016048,
+            "british": 0.004945
+          }
+        }
+      },
+      "-1.0": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.124876,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.120174,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.132485,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.104342,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.093417,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.106555,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.020534,
+          "australian": -0.026757,
+          "british": -0.02593
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.004702,
+            "british": 0.007609
+          },
+          "british": {
+            "australian": -0.010925,
+            "british": 0.002213
+          }
+        }
+      },
+      "-1.5": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.112201,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.106273,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.119572,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.093659,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.081994,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.094771,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.018542,
+          "australian": -0.024279,
+          "british": -0.024801
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.005928,
+            "british": 0.007371
+          },
+          "british": {
+            "australian": -0.011665,
+            "british": 0.001112
+          }
+        }
+      },
+      "-2.0": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.10066,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.096514,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.10628,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.083463,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.073586,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.08265,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.017197,
+          "australian": -0.022928,
+          "british": -0.02363
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.004146,
+            "british": 0.00562
+          },
+          "british": {
+            "australian": -0.009877,
+            "british": -0.000813
+          }
+        }
+      },
+      "-3.0": {
+        "american": {
+          "american": {
+            "mean_speaker_flag_rate": 0.080771,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.079794,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.088924,
+            "speakers": 300
+          }
+        },
+        "british": {
+          "american": {
+            "mean_speaker_flag_rate": 0.066888,
+            "speakers": 600
+          },
+          "australian": {
+            "mean_speaker_flag_rate": 0.058034,
+            "speakers": 300
+          },
+          "british": {
+            "mean_speaker_flag_rate": 0.066641,
+            "speakers": 300
+          }
+        },
+        "change_under_the_repair": {
+          "american": -0.013883,
+          "australian": -0.02176,
+          "british": -0.022283
+        },
+        "differential_against_the_american_group": {
+          "american": {
+            "australian": -0.000977,
+            "british": 0.008153
+          },
+          "british": {
+            "australian": -0.008854,
+            "british": -0.000247
+          }
+        }
+      }
+    }
+  },
+  "checkpoint": "22E8",
+  "clips_scored": 2400,
+  "contract_id": "speech_sound_patterns_reference_variety_probe_v1",
+  "declared_confounds": [
+    "Recording quality varies across Common Voice contributors. Comparing accent subsets of one release, on one platform, from one prompt pool, under one validation process removes most of it, and a difference between two references on the same audio is far better evidence than a difference between two corpora.",
+    "Both American subsets are filtered to a declared gender while the Australian and British subsets are not, so American contributors who declared none are absent where the others' are present.",
+    "The British subset pools England, Scotland, Wales and Ireland, so it is broader than the variety the repaired reference describes.",
+    "Self reported accent is context, not phonetic truth. A speaker tagged Australian may not speak a broad Australian variety.",
+    "The dictionaries describe documented varieties and not individual speakers, so a flag may reflect a legitimate personal or regional variant rather than the group's variety.",
+    "The aligner writes conditioned palatal allophones as separate phones, so a vowel difference between the varieties can surface as a consonant difference. The secondary analysis excluding that series is how this is checked rather than assumed away."
+  ],
+  "findings": {
+    "group_level_prediction_failed_for_australian_speakers": {
+      "australian_differential_under_the_american_reference": -0.003515,
+      "statement": "At group level the American reference did not flag Australian speakers more often than American speakers. The differential is negative at every reported threshold, before and after the phone mapping correction, so the checkpoint's central prediction is recorded as wrong rather than reinterpreted."
+    },
+    "group_level_prediction_held_for_british_speakers": {
+      "british_differential_under_the_american_reference": 0.011515,
+      "british_differential_under_the_british_reference": 0.005256,
+      "statement": "British speakers were flagged more often than the American control under the American reference, and the repaired reference roughly halved that gap. This is the informative middle case behaving as predicted, because it is the variety the repaired reference actually describes."
+    },
+    "no_detection_accuracy_claim": "These are native speakers reading known text, so a flag is presumed a false concern. Nothing here establishes that the system correctly detects a genuine Australian mispronunciation, and no accuracy, sensitivity or specificity figure is derivable from it.",
+    "the_group_mean_hid_a_real_per_consonant_effect": {
+      "rhotic_australian_minus_american_under_the_american_reference": 0.030039,
+      "rhotic_australian_minus_american_under_the_british_reference": -0.007984,
+      "statement": "On the consonants where the varieties actually differ, the predicted penalty is present and large. Under the American reference Australian speakers were flagged more often than American speakers on the rhotic and on t, and both differences collapse under the repaired reference. A mean taken across roughly thirty consonants cannot see an effect carried by three of them, so the checkpoint's hypothesis was sound and its headline statistic was not.",
+      "t_australian_minus_american_under_the_american_reference": 0.029779,
+      "t_australian_minus_american_under_the_british_reference": 0.00194
+    },
+    "the_repair_removes_opportunities_rather_than_improving_fit": {
+      "american_control_change_under_the_repair": -0.028563,
+      "rhotic_flag_rate_for_the_american_control": {
+        "american_reference": 0.305598,
+        "british_reference": 0.044129
+      },
+      "rhotic_opportunities_by_reference": {
+        "american": {
+          "american": 1947,
+          "british": 1337
+        },
+        "australian": {
+          "american": 1013,
+          "british": 664
+        },
+        "british": {
+          "american": 1047,
+          "british": 721
+        }
+      },
+      "statement": "The repaired reference lowers the flag rate in every group, including the American control it should have left alone. The reason is visible in the rhotic: a non-rhotic reference stops expecting a coda r for everybody, so the opportunity is not scored rather than scored better. That is legitimate under this project's own rule, because where varieties genuinely differ the opportunity is unscorable and a mismatch may be excluded but never subtracted. It is not evidence that the reference now describes Australian speakers more accurately, and no such claim is made."
+    }
+  },
+  "per_consonant_rates_at_threshold_minus_one": {
+    "american": {
+      "american": {
+        "b": {
+          "flagged": 24,
+          "opportunities": 587,
+          "rate": 0.040886
+        },
+        "c": {
+          "flagged": 184,
+          "opportunities": 184,
+          "rate": 1.0
+        },
+        "d": {
+          "flagged": 85,
+          "opportunities": 1227,
+          "rate": 0.069275
+        },
+        "dʒ": {
+          "flagged": 23,
+          "opportunities": 249,
+          "rate": 0.092369
+        },
+        "f": {
+          "flagged": 29,
+          "opportunities": 611,
+          "rate": 0.047463
+        },
+        "h": {
+          "flagged": 24,
+          "opportunities": 342,
+          "rate": 0.070175
+        },
+        "j": {
+          "flagged": 29,
+          "opportunities": 193,
+          "rate": 0.150259
+        },
+        "k": {
+          "flagged": 22,
+          "opportunities": 709,
+          "rate": 0.03103
+        },
+        "l": {
+          "flagged": 329,
+          "opportunities": 1366,
+          "rate": 0.240849
+        },
+        "m": {
+          "flagged": 55,
+          "opportunities": 1054,
+          "rate": 0.052182
+        },
+        "n": {
+          "flagged": 279,
+          "opportunities": 2802,
+          "rate": 0.099572
+        },
+        "p": {
+          "flagged": 15,
+          "opportunities": 492,
+          "rate": 0.030488
+        },
+        "s": {
+          "flagged": 71,
+          "opportunities": 2164,
+          "rate": 0.03281
+        },
+        "t": {
+          "flagged": 249,
+          "opportunities": 1753,
+          "rate": 0.142042
+        },
+        "tʃ": {
+          "flagged": 51,
+          "opportunities": 249,
+          "rate": 0.204819
+        },
+        "v": {
+          "flagged": 36,
+          "opportunities": 694,
+          "rate": 0.051873
+        },
+        "w": {
+          "flagged": 60,
+          "opportunities": 758,
+          "rate": 0.079156
+        },
+        "z": {
+          "flagged": 63,
+          "opportunities": 1394,
+          "rate": 0.045194
+        },
+        "ç": {
+          "flagged": 316,
+          "opportunities": 317,
+          "rate": 0.996845
+        },
+        "ð": {
+          "flagged": 55,
+          "opportunities": 1262,
+          "rate": 0.043582
+        },
+        "ŋ": {
+          "flagged": 21,
+          "opportunities": 221,
+          "rate": 0.095023
+        },
+        "ɟ": {
+          "flagged": 150,
+          "opportunities": 150,
+          "rate": 1.0
+        },
+        "ɡ": {
+          "flagged": 16,
+          "opportunities": 227,
+          "rate": 0.070485
+        },
+        "ɲ": {
+          "flagged": 357,
+          "opportunities": 359,
+          "rate": 0.994429
+        },
+        "ɹ": {
+          "flagged": 595,
+          "opportunities": 1947,
+          "rate": 0.305598
+        },
+        "ɾ": {
+          "flagged": 46,
+          "opportunities": 151,
+          "rate": 0.304636
+        },
+        "ʃ": {
+          "flagged": 21,
+          "opportunities": 360,
+          "rate": 0.058333
+        },
+        "ʎ": {
+          "flagged": 407,
+          "opportunities": 407,
+          "rate": 1.0
+        },
+        "ʒ": {
+          "flagged": 4,
+          "opportunities": 27,
+          "rate": 0.148148
+        },
+        "θ": {
+          "flagged": 11,
+          "opportunities": 94,
+          "rate": 0.117021
+        }
+      },
+      "australian": {
+        "b": {
+          "flagged": 8,
+          "opportunities": 295,
+          "rate": 0.027119
+        },
+        "c": {
+          "flagged": 106,
+          "opportunities": 106,
+          "rate": 1.0
+        },
+        "d": {
+          "flagged": 49,
+          "opportunities": 677,
+          "rate": 0.072378
+        },
+        "dʒ": {
+          "flagged": 5,
+          "opportunities": 140,
+          "rate": 0.035714
+        },
+        "f": {
+          "flagged": 12,
+          "opportunities": 329,
+          "rate": 0.036474
+        },
+        "h": {
+          "flagged": 8,
+          "opportunities": 208,
+          "rate": 0.038462
+        },
+        "j": {
+          "flagged": 11,
+          "opportunities": 110,
+          "rate": 0.1
+        },
+        "k": {
+          "flagged": 10,
+          "opportunities": 345,
+          "rate": 0.028986
+        },
+        "l": {
+          "flagged": 182,
+          "opportunities": 741,
+          "rate": 0.245614
+        },
+        "m": {
+          "flagged": 28,
+          "opportunities": 571,
+          "rate": 0.049037
+        },
+        "n": {
+          "flagged": 143,
+          "opportunities": 1535,
+          "rate": 0.09316
+        },
+        "p": {
+          "flagged": 10,
+          "opportunities": 293,
+          "rate": 0.03413
+        },
+        "s": {
+          "flagged": 40,
+          "opportunities": 1115,
+          "rate": 0.035874
+        },
+        "t": {
+          "flagged": 150,
+          "opportunities": 873,
+          "rate": 0.171821
+        },
+        "tʃ": {
+          "flagged": 29,
+          "opportunities": 125,
+          "rate": 0.232
+        },
+        "v": {
+          "flagged": 11,
+          "opportunities": 416,
+          "rate": 0.026442
+        },
+        "w": {
+          "flagged": 29,
+          "opportunities": 394,
+          "rate": 0.073604
+        },
+        "z": {
+          "flagged": 27,
+          "opportunities": 769,
+          "rate": 0.035111
+        },
+        "ç": {
+          "flagged": 139,
+          "opportunities": 139,
+          "rate": 1.0
+        },
+        "ð": {
+          "flagged": 15,
+          "opportunities": 621,
+          "rate": 0.024155
+        },
+        "ŋ": {
+          "flagged": 7,
+          "opportunities": 132,
+          "rate": 0.05303
+        },
+        "ɟ": {
+          "flagged": 75,
+          "opportunities": 75,
+          "rate": 1.0
+        },
+        "ɡ": {
+          "flagged": 8,
+          "opportunities": 138,
+          "rate": 0.057971
+        },
+        "ɲ": {
+          "flagged": 194,
+          "opportunities": 194,
+          "rate": 1.0
+        },
+        "ɹ": {
+          "flagged": 340,
+          "opportunities": 1013,
+          "rate": 0.335637
+        },
+        "ɾ": {
+          "flagged": 26,
+          "opportunities": 76,
+          "rate": 0.342105
+        },
+        "ʃ": {
+          "flagged": 12,
+          "opportunities": 211,
+          "rate": 0.056872
+        },
+        "ʎ": {
+          "flagged": 211,
+          "opportunities": 211,
+          "rate": 1.0
+        },
+        "ʒ": {
+          "flagged": 2,
+          "opportunities": 20,
+          "rate": 0.1
+        },
+        "ʔ": {
+          "flagged": 1,
+          "opportunities": 1,
+          "rate": 1.0
+        },
+        "θ": {
+          "flagged": 8,
+          "opportunities": 48,
+          "rate": 0.166667
+        }
+      },
+      "british": {
+        "b": {
+          "flagged": 16,
+          "opportunities": 333,
+          "rate": 0.048048
+        },
+        "c": {
+          "flagged": 129,
+          "opportunities": 129,
+          "rate": 1.0
+        },
+        "d": {
+          "flagged": 59,
+          "opportunities": 616,
+          "rate": 0.095779
+        },
+        "dʒ": {
+          "flagged": 8,
+          "opportunities": 134,
+          "rate": 0.059701
+        },
+        "f": {
+          "flagged": 10,
+          "opportunities": 347,
+          "rate": 0.028818
+        },
+        "h": {
+          "flagged": 14,
+          "opportunities": 168,
+          "rate": 0.083333
+        },
+        "j": {
+          "flagged": 17,
+          "opportunities": 98,
+          "rate": 0.173469
+        },
+        "k": {
+          "flagged": 9,
+          "opportunities": 354,
+          "rate": 0.025424
+        },
+        "l": {
+          "flagged": 149,
+          "opportunities": 723,
+          "rate": 0.206086
+        },
+        "m": {
+          "flagged": 36,
+          "opportunities": 589,
+          "rate": 0.061121
+        },
+        "n": {
+          "flagged": 158,
+          "opportunities": 1492,
+          "rate": 0.105898
+        },
+        "p": {
+          "flagged": 8,
+          "opportunities": 283,
+          "rate": 0.028269
+        },
+        "s": {
+          "flagged": 50,
+          "opportunities": 1084,
+          "rate": 0.046125
+        },
+        "t": {
+          "flagged": 102,
+          "opportunities": 832,
+          "rate": 0.122596
+        },
+        "tʃ": {
+          "flagged": 33,
+          "opportunities": 140,
+          "rate": 0.235714
+        },
+        "v": {
+          "flagged": 16,
+          "opportunities": 396,
+          "rate": 0.040404
+        },
+        "w": {
+          "flagged": 43,
+          "opportunities": 388,
+          "rate": 0.110825
+        },
+        "z": {
+          "flagged": 48,
+          "opportunities": 778,
+          "rate": 0.061697
+        },
+        "ç": {
+          "flagged": 156,
+          "opportunities": 156,
+          "rate": 1.0
+        },
+        "ð": {
+          "flagged": 56,
+          "opportunities": 678,
+          "rate": 0.082596
+        },
+        "ŋ": {
+          "flagged": 13,
+          "opportunities": 152,
+          "rate": 0.085526
+        },
+        "ɟ": {
+          "flagged": 83,
+          "opportunities": 83,
+          "rate": 1.0
+        },
+        "ɡ": {
+          "flagged": 8,
+          "opportunities": 109,
+          "rate": 0.073394
+        },
+        "ɲ": {
+          "flagged": 205,
+          "opportunities": 207,
+          "rate": 0.990338
+        },
+        "ɹ": {
+          "flagged": 336,
+          "opportunities": 1047,
+          "rate": 0.320917
+        },
+        "ɾ": {
+          "flagged": 38,
+          "opportunities": 90,
+          "rate": 0.422222
+        },
+        "ʃ": {
+          "flagged": 16,
+          "opportunities": 225,
+          "rate": 0.071111
+        },
+        "ʎ": {
+          "flagged": 239,
+          "opportunities": 239,
+          "rate": 1.0
+        },
+        "ʒ": {
+          "flagged": 4,
+          "opportunities": 12,
+          "rate": 0.333333
+        },
+        "θ": {
+          "flagged": 12,
+          "opportunities": 53,
+          "rate": 0.226415
+        }
+      }
+    },
+    "british": {
+      "american": {
+        "b": {
+          "flagged": 22,
+          "opportunities": 574,
+          "rate": 0.038328
+        },
+        "c": {
+          "flagged": 143,
+          "opportunities": 143,
+          "rate": 1.0
+        },
+        "d": {
+          "flagged": 131,
+          "opportunities": 1554,
+          "rate": 0.084299
+        },
+        "dʒ": {
+          "flagged": 48,
+          "opportunities": 272,
+          "rate": 0.176471
+        },
+        "f": {
+          "flagged": 29,
+          "opportunities": 629,
+          "rate": 0.046105
+        },
+        "h": {
+          "flagged": 37,
+          "opportunities": 449,
+          "rate": 0.082405
+        },
+        "j": {
+          "flagged": 32,
+          "opportunities": 204,
+          "rate": 0.156863
+        },
+        "k": {
+          "flagged": 26,
+          "opportunities": 866,
+          "rate": 0.030023
+        },
+        "l": {
+          "flagged": 279,
+          "opportunities": 1351,
+          "rate": 0.206514
+        },
+        "m": {
+          "flagged": 42,
+          "opportunities": 1064,
+          "rate": 0.039474
+        },
+        "n": {
+          "flagged": 201,
+          "opportunities": 2809,
+          "rate": 0.071556
+        },
+        "p": {
+          "flagged": 20,
+          "opportunities": 581,
+          "rate": 0.034423
+        },
+        "s": {
+          "flagged": 138,
+          "opportunities": 2217,
+          "rate": 0.062246
+        },
+        "t": {
+          "flagged": 406,
+          "opportunities": 2205,
+          "rate": 0.184127
+        },
+        "tʃ": {
+          "flagged": 87,
+          "opportunities": 274,
+          "rate": 0.317518
+        },
+        "v": {
+          "flagged": 39,
+          "opportunities": 758,
+          "rate": 0.051451
+        },
+        "w": {
+          "flagged": 44,
+          "opportunities": 765,
+          "rate": 0.057516
+        },
+        "z": {
+          "flagged": 59,
+          "opportunities": 1330,
+          "rate": 0.044361
+        },
+        "ç": {
+          "flagged": 211,
+          "opportunities": 211,
+          "rate": 1.0
+        },
+        "ð": {
+          "flagged": 60,
+          "opportunities": 1262,
+          "rate": 0.047544
+        },
+        "ŋ": {
+          "flagged": 23,
+          "opportunities": 284,
+          "rate": 0.080986
+        },
+        "ɟ": {
+          "flagged": 75,
+          "opportunities": 75,
+          "rate": 1.0
+        },
+        "ɡ": {
+          "flagged": 20,
+          "opportunities": 297,
+          "rate": 0.06734
+        },
+        "ɲ": {
+          "flagged": 302,
+          "opportunities": 303,
+          "rate": 0.9967
+        },
+        "ɹ": {
+          "flagged": 59,
+          "opportunities": 1337,
+          "rate": 0.044129
+        },
+        "ʃ": {
+          "flagged": 30,
+          "opportunities": 364,
+          "rate": 0.082418
+        },
+        "ʎ": {
+          "flagged": 345,
+          "opportunities": 345,
+          "rate": 1.0
+        },
+        "ʒ": {
+          "flagged": 5,
+          "opportunities": 23,
+          "rate": 0.217391
+        },
+        "ʔ": {
+          "flagged": 87,
+          "opportunities": 87,
+          "rate": 1.0
+        },
+        "θ": {
+          "flagged": 11,
+          "opportunities": 132,
+          "rate": 0.083333
+        }
+      },
+      "australian": {
+        "b": {
+          "flagged": 7,
+          "opportunities": 275,
+          "rate": 0.025455
+        },
+        "c": {
+          "flagged": 92,
+          "opportunities": 92,
+          "rate": 1.0
+        },
+        "d": {
+          "flagged": 53,
+          "opportunities": 862,
+          "rate": 0.061485
+        },
+        "dʒ": {
+          "flagged": 9,
+          "opportunities": 150,
+          "rate": 0.06
+        },
+        "f": {
+          "flagged": 13,
+          "opportunities": 343,
+          "rate": 0.037901
+        },
+        "h": {
+          "flagged": 12,
+          "opportunities": 251,
+          "rate": 0.047809
+        },
+        "j": {
+          "flagged": 19,
+          "opportunities": 119,
+          "rate": 0.159664
+        },
+        "k": {
+          "flagged": 10,
+          "opportunities": 417,
+          "rate": 0.023981
+        },
+        "l": {
+          "flagged": 152,
+          "opportunities": 717,
+          "rate": 0.211994
+        },
+        "m": {
+          "flagged": 24,
+          "opportunities": 575,
+          "rate": 0.041739
+        },
+        "n": {
+          "flagged": 93,
+          "opportunities": 1530,
+          "rate": 0.060784
+        },
+        "p": {
+          "flagged": 17,
+          "opportunities": 327,
+          "rate": 0.051988
+        },
+        "s": {
+          "flagged": 80,
+          "opportunities": 1152,
+          "rate": 0.069444
+        },
+        "t": {
+          "flagged": 211,
+          "opportunities": 1134,
+          "rate": 0.186067
+        },
+        "tʃ": {
+          "flagged": 48,
+          "opportunities": 134,
+          "rate": 0.358209
+        },
+        "v": {
+          "flagged": 12,
+          "opportunities": 450,
+          "rate": 0.026667
+        },
+        "w": {
+          "flagged": 16,
+          "opportunities": 397,
+          "rate": 0.040302
+        },
+        "z": {
+          "flagged": 24,
+          "opportunities": 730,
+          "rate": 0.032877
+        },
+        "ç": {
+          "flagged": 96,
+          "opportunities": 96,
+          "rate": 1.0
+        },
+        "ð": {
+          "flagged": 15,
+          "opportunities": 620,
+          "rate": 0.024194
+        },
+        "ŋ": {
+          "flagged": 7,
+          "opportunities": 154,
+          "rate": 0.045455
+        },
+        "ɟ": {
+          "flagged": 37,
+          "opportunities": 37,
+          "rate": 1.0
+        },
+        "ɡ": {
+          "flagged": 5,
+          "opportunities": 174,
+          "rate": 0.028736
+        },
+        "ɲ": {
+          "flagged": 181,
+          "opportunities": 181,
+          "rate": 1.0
+        },
+        "ɹ": {
+          "flagged": 24,
+          "opportunities": 664,
+          "rate": 0.036145
+        },
+        "ʃ": {
+          "flagged": 14,
+          "opportunities": 209,
+          "rate": 0.066986
+        },
+        "ʎ": {
+          "flagged": 192,
+          "opportunities": 192,
+          "rate": 1.0
+        },
+        "ʒ": {
+          "flagged": 1,
+          "opportunities": 17,
+          "rate": 0.058824
+        },
+        "ʔ": {
+          "flagged": 45,
+          "opportunities": 45,
+          "rate": 1.0
+        },
+        "θ": {
+          "flagged": 7,
+          "opportunities": 64,
+          "rate": 0.109375
+        }
+      },
+      "british": {
+        "b": {
+          "flagged": 21,
+          "opportunities": 342,
+          "rate": 0.061404
+        },
+        "c": {
+          "flagged": 101,
+          "opportunities": 101,
+          "rate": 1.0
+        },
+        "d": {
+          "flagged": 78,
+          "opportunities": 820,
+          "rate": 0.095122
+        },
+        "dʒ": {
+          "flagged": 6,
+          "opportunities": 143,
+          "rate": 0.041958
+        },
+        "f": {
+          "flagged": 11,
+          "opportunities": 354,
+          "rate": 0.031073
+        },
+        "h": {
+          "flagged": 26,
+          "opportunities": 232,
+          "rate": 0.112069
+        },
+        "j": {
+          "flagged": 20,
+          "opportunities": 105,
+          "rate": 0.190476
+        },
+        "k": {
+          "flagged": 10,
+          "opportunities": 427,
+          "rate": 0.023419
+        },
+        "l": {
+          "flagged": 133,
+          "opportunities": 719,
+          "rate": 0.184979
+        },
+        "m": {
+          "flagged": 29,
+          "opportunities": 590,
+          "rate": 0.049153
+        },
+        "n": {
+          "flagged": 92,
+          "opportunities": 1490,
+          "rate": 0.061745
+        },
+        "p": {
+          "flagged": 14,
+          "opportunities": 335,
+          "rate": 0.041791
+        },
+        "s": {
+          "flagged": 94,
+          "opportunities": 1120,
+          "rate": 0.083929
+        },
+        "t": {
+          "flagged": 183,
+          "opportunities": 1066,
+          "rate": 0.17167
+        },
+        "tʃ": {
+          "flagged": 48,
+          "opportunities": 152,
+          "rate": 0.315789
+        },
+        "v": {
+          "flagged": 19,
+          "opportunities": 430,
+          "rate": 0.044186
+        },
+        "w": {
+          "flagged": 28,
+          "opportunities": 390,
+          "rate": 0.071795
+        },
+        "z": {
+          "flagged": 41,
+          "opportunities": 736,
+          "rate": 0.055707
+        },
+        "ç": {
+          "flagged": 91,
+          "opportunities": 91,
+          "rate": 1.0
+        },
+        "ð": {
+          "flagged": 55,
+          "opportunities": 677,
+          "rate": 0.081241
+        },
+        "ŋ": {
+          "flagged": 14,
+          "opportunities": 192,
+          "rate": 0.072917
+        },
+        "ɟ": {
+          "flagged": 43,
+          "opportunities": 43,
+          "rate": 1.0
+        },
+        "ɡ": {
+          "flagged": 9,
+          "opportunities": 148,
+          "rate": 0.060811
+        },
+        "ɲ": {
+          "flagged": 173,
+          "opportunities": 175,
+          "rate": 0.988571
+        },
+        "ɹ": {
+          "flagged": 42,
+          "opportunities": 721,
+          "rate": 0.058252
+        },
+        "ʃ": {
+          "flagged": 19,
+          "opportunities": 227,
+          "rate": 0.0837
+        },
+        "ʎ": {
+          "flagged": 210,
+          "opportunities": 210,
+          "rate": 1.0
+        },
+        "ʒ": {
+          "flagged": 4,
+          "opportunities": 11,
+          "rate": 0.363636
+        },
+        "ʔ": {
+          "flagged": 44,
+          "opportunities": 44,
+          "rate": 1.0
+        },
+        "θ": {
+          "flagged": 12,
+          "opportunities": 73,
+          "rate": 0.164384
+        }
+      }
+    }
+  },
+  "phone_mapping_amendments": {
+    "1.1.0": {
+      "corrections": {
+        "d̪": {
+          "evidence": "The aligner transcribes the, that and this with d̪ at 0.99 probability, and the model uses ð for exactly those words. Mapping on symbol shape rather than function mis-expected the most frequent consonant context in English, which is why d was flagged in roughly half of about 1,300 opportunities.",
+          "now": "ð",
+          "was": "d"
+        },
+        "ɫ": {
+          "evidence": "The frozen model emits ɫ zero times across 25 clips while emitting l 28 times. The token exists in the vocabulary and the model never uses it for English, so expecting it guaranteed a flag: 100.0 percent of ɫ opportunities were flagged in all three speaker groups.",
+          "now": "l",
+          "was": "ɫ"
+        },
+        "ɫ̩": {
+          "evidence": "Follows the ɫ correction, since it resolved to the same unusable token.",
+          "now": "l",
+          "was": "ɫ"
+        }
+      },
+      "prompted_by": "the version 1.0.0 probe run, whose report is retained at .research_data/speech_sound_patterns/variety-probe/report-mapping-v1.0.0.json, SHA256 392c610d4cc1c87bda283e0cf4696afe5a614b95c48c5a4417a3525cbfa445c5"
+    }
+  },
+  "phone_mapping_version": "1.1.0",
+  "predictions": {
+    "american_control_change_under_the_repair": {
+      "-0.5": -0.03003,
+      "-1.0": -0.028563,
+      "-1.5": -0.026863,
+      "-2.0": -0.025688,
+      "-3.0": -0.02266
+    },
+    "held_at_every_threshold": false,
+    "largest_control_movement": 0.03003,
+    "narrowed_at_every_threshold": false,
+    "the_repair_narrowed_the_gap": {
+      "-0.5": {
+        "australian": false,
+        "british": true
+      },
+      "-1.0": {
+        "australian": false,
+        "british": true
+      },
+      "-1.5": {
+        "australian": false,
+        "british": true
+      },
+      "-2.0": {
+        "australian": false,
+        "british": true
+      },
+      "-3.0": {
+        "australian": false,
+        "british": true
+      }
+    },
+    "under_the_american_reference_non_american_groups_are_flagged_more": {
+      "-0.5": {
+        "australian": false,
+        "british": true
+      },
+      "-1.0": {
+        "australian": false,
+        "british": true
+      },
+      "-1.5": {
+        "australian": false,
+        "british": true
+      },
+      "-2.0": {
+        "australian": false,
+        "british": true
+      },
+      "-3.0": {
+        "australian": false,
+        "british": true
+      }
+    }
+  },
+  "release_boundaries": {
+    "coaching_progress_screening_or_diagnosis_output": false,
+    "detection_accuracy_claimed": false,
+    "frozen_benchmark_touched": false,
+    "gates_applied": false,
+    "held_out_read": false,
+    "pipeline_behaviour_changed": false,
+    "selection_record_touched": false,
+    "system_selected": false,
+    "threshold_selected": false
+  },
+  "report_id": "speech_sound_patterns_reference_variety_probe_v1",
+  "schema_version": "1.0.0",
+  "speakers": 1200,
+  "what_this_cannot_establish": [
+    "That the system correctly detects a genuine Australian mispronunciation. No Australian expert phone labels exist in this project or, so far as the 2026-07-28 search could establish, in any commercially usable form anywhere.",
+    "Any accuracy, sensitivity or specificity figure, because there is no truth to measure against.",
+    "That any candidate system, threshold or reference is fit for selection or release."
+  ]
+}

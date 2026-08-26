@@ -1,0 +1,63 @@
+{
+  "question_id": "clinical_trial_pathway",
+  "domain": "clinical_trial_regulation",
+  "question": "Would the future checkpoint 23C or 23D research be a clinical trial requiring a notification or an approval?",
+  "applies_to_purposes": [
+    "developer_research_only"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Therapeutic Goods Administration, How we regulate Australian clinical trials that use unapproved therapeutic goods",
+      "url": "https://www.tga.gov.au/products/unapproved-therapeutic-goods/access-pathways/clinical-trials/how-we-regulate-australian-clinical-trials-use-unapproved-therapeutic-goods",
+      "currency": "Last updated 26 May 2025",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Before you conduct a clinical trial in Australia, you must consult your HREC to determine if: your study is a clinical trial; your study involves an unapproved therapeutic good; an exemption under the CTN or CTA scheme is appropriate. We don't give advice on these matters."
+    },
+    {
+      "citation": "Therapeutic Goods Administration, How we regulate Australian clinical trials that use unapproved therapeutic goods",
+      "url": "https://www.tga.gov.au/products/unapproved-therapeutic-goods/access-pathways/clinical-trials/how-we-regulate-australian-clinical-trials-use-unapproved-therapeutic-goods",
+      "currency": "Last updated 26 May 2025",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "The CTN and CTA schemes are required to lawfully import or supply an unapproved therapeutic good for experimental purposes in humans in accordance with the Therapeutic Goods Act 1989. ... Will you be supplying unapproved therapeutic goods for use in humans in your research? If yes - you need a CTA or CTN."
+    },
+    {
+      "citation": "Therapeutic Goods Administration, Clinical Trial Notification (CTN) scheme",
+      "url": "https://www.tga.gov.au/products/unapproved-therapeutic-goods/access-pathways/clinical-trials/clinical-trial-notification-ctn-scheme",
+      "currency": "Last updated 9 April 2025",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "A CTN is submitted by the Australian clinical trial sponsor. ... Alongside the CTN submission, you need approval from: The Human Research Ethics Committee (HREC); The institution or organisation where the trial will be carried out (Approving Authority). It is the responsibility of the Australian clinical trial sponsor to have all relevant approvals in place."
+    }
+  ],
+  "reading": [
+    "The trigger is supplying an unapproved therapeutic good for use in humans. If the research software is not a medical device at all, which is the reading for the developer research only purpose, the schemes do not engage.",
+    "There is a genuine argument either way about whether software that analyses recordings afterwards is supplied for use in humans when participants only perform a speech task and never touch the software. That argument is available and untested, and this record does not resolve it.",
+    "The regulator will not resolve it either. It says in its own words that the researcher must consult their ethics committee to determine whether the study is a clinical trial, and that it does not give advice on the question.",
+    "That makes the question structurally unanswerable for this project today. Deciding it requires an ethics committee, and obtaining one is itself unresolved.",
+    "If the answer were ever yes, all three of the missing pieces appear at once: an Australian sponsor, an ethics committee approval and an institution acting as approving authority."
+  ],
+  "confidence": "unresolved_needs_specialist",
+  "unresolved": [
+    {
+      "question": "Whether checkpoint 23C or 23D would be a clinical trial, and whether the research software would be an unapproved therapeutic good supplied for use in humans.",
+      "why_it_cannot_be_settled_here": "The regulator expressly declines to advise on it and assigns the determination to a human research ethics committee, which this project does not have.",
+      "who_must_settle_it": "A human research ethics committee, with an Australian regulatory specialist."
+    }
+  ],
+  "consequences": [
+    "This is a clean example of a question public research cannot close by being more thorough. The answer is defined as somebody else's determination.",
+    "It also means the ethics route and the regulatory route are not independent. The regulatory question waits on the ethics committee, and the ethics committee is the thing hardest to obtain."
+  ],
+  "decided_by": [
+    "human_research_ethics_committee_or_review_body",
+    "australian_regulatory_specialist"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "clinical_trial_pathway_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

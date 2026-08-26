@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "bundle_id": "variety_probe_evidence_v1",
+  "built_by": "release/build_evidence_bundle.py",
+  "permission_record": "release/redistribution-decision-v1.0.0.json",
+  "records": 2400,
+  "speakers": 1200,
+  "bytes": 4975744,
+  "composite_sha256": "54935274b1f5c9ee52e32415d0cdf51d8431c9138480bdfc5802e5561dd431e7",
+  "reproduces": {
+    "report": "speech_sound_patterns/variety-probe-v1.2.0.json",
+    "report_sha256": "76928b1c172e28dd0a4fb7590038f3159e1214ad31500d16d2a1be3077e1869f",
+    "command": "python3 -m speech_sound_patterns.variety_probe_score",
+    "runtime": "about two minutes, needing only numpy"
+  },
+  "contains": [
+    "per clip frame counts",
+    "phone tokens and their index within the expected sequence",
+    "goodness of pronunciation scores under both references",
+    "the declared accent group, as the directory name"
+  ],
+  "does_not_contain": [
+    "any audio",
+    "any prompt text or transcript",
+    "any Common Voice contributor identifier",
+    "any mapping from a bundle key back to a contributor",
+    "any Common Voice metadata row"
+  ],
+  "per_group": {
+    "common_voice_26_american_english_female": 600,
+    "common_voice_26_american_english_male": 600,
+    "common_voice_26_australian_english": 600,
+    "common_voice_26_british_english": 600
+  }
+}

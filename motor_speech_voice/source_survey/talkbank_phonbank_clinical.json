@@ -1,0 +1,97 @@
+{
+  "source_id": "talkbank_phonbank_clinical",
+  "title": "TalkBank and PhonBank clinical corpora, including PERCEPT-R",
+  "citation": "TalkBank and PhonBank, Carnegie Mellon University; PERCEPT-R doi:10.21415/0JPJ-X403.",
+  "canonical_source": {
+    "landing_page": "https://talkbank.org/phon/access/Clinical/PERCEPT-R.html",
+    "terms_or_licence_url": "https://talkbank.org/0share/rules.html"
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "United States English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "PERCEPT-R holds 280 participants aged 6 to 17 plus a few adults, with typical speech and with residual speech sound disorder.",
+    "age_band": "children",
+    "clinical_status": "mixed",
+    "limitations": [
+      "Predominantly children, which is outside the approved adults first research scope.",
+      "Segment level accuracy judgement of one sound, not whole utterance intelligibility."
+    ]
+  },
+  "tasks_present": [
+    "single_word",
+    "sentence"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "intelligibility_multi_listener_transcription",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "It carries per listener judgements from both untrained crowd listeners and trained lab listeners, which is a genuinely rare shape, but the judgement is segment accuracy rather than orthographic transcription of what was understood.",
+      "The population is children, so it cannot enter the adults first scope at all."
+    ]
+  },
+  "access": {
+    "route": "application_and_review",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": false,
+    "account_required": true,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "restricted",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Creative Commons CC BY-NC-SA 3.0",
+    "spdx_id": "CC-BY-NC-SA-3.0",
+    "commercial_use_permitted": false,
+    "source_of_licence_string": "project_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "TalkBank data usage rules, read 2026-08-19.",
+      "The existing item 22 manifest talkbank-blocked.json, which recorded this family as restricted on 2026-07-21."
+    ],
+    "findings": [
+      "The stated licence precludes incorporating the data into commercial products, and explicitly names large language models as an example of what may not include it.",
+      "Password access to clinical corpora is granted only to full time faculty or clinicians holding ASHA speech language pathology certification. Neither applies here.",
+      "This confirms and sharpens item 22's earlier blocked decision with the exact reason."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_licence_non_commercial",
+    "reasons": [
+      "Non commercial share alike terms exclude a commercial product backend.",
+      "Clinical corpus access additionally requires professional certification or faculty status that this project does not have.",
+      "The population is children and therefore outside scope regardless."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "talkbank_phonbank_clinical_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

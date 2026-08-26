@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "motor_speech_voice_regulatory_reading_v1",
+  "checkpoint": "23B",
+  "prepared_at": "2026-08-19",
+  "status": "documented_reading_recorded_no_determination_made",
+  "record_schema": "regulatory-reading-schema-v1.0.0.json",
+  "standing_disclaimer": "This is a documented reading of public sources by a non lawyer who is not an Australian regulatory specialist. It is not legal advice, regulatory advice, a classification determination, an approval, an exemption, a defence or a substitute for the written specialist assessments checkpoint 23B requires. Every record names the human roles that must actually settle it. Reading the rules carefully is worth doing and is not the same as being told the answer.",
+  "purpose_ladder": {
+    "developer_research_only": {
+      "rung": "one",
+      "description": "A firewalled developer research question, with no result shown to a participant, a clinician or anybody else, and no software supplied to anyone. This is the checkpoint 23B draft intended use and the only rung this repository occupies.",
+      "occupied_today": true,
+      "medical_device_position": "likely_outside_the_definition",
+      "what_still_applies": [
+        "Queensland recording and publication law applies to Adam personally today, and the sharing of recordings with annotators is a separate question from the recording itself.",
+        "The statutory tort of serious invasion of privacy applies regardless of entity status and has no research exemption.",
+        "Research ethics review is required by the National Statement for more than low risk research, and no route to obtain it is confirmed.",
+        "Whether the work would be a clinical trial is a determination the regulator assigns to an ethics committee and declines to make itself."
+      ]
+    },
+    "consumer_communication_coaching": {
+      "rung": "two",
+      "description": "A hypothetical consumer feature that coaches communication and shows the person measured observations about their own speech, making no claim about any disease, condition, ailment or defect. Not built, not approved and not proposed here.",
+      "occupied_today": false,
+      "medical_device_position": "may_be_a_device_and_may_be_excluded",
+      "what_still_applies": [
+        "If it is a device, the wellness and coaching exclusions are plausibly available, and every function of the product must qualify for the exclusion to hold.",
+        "Supply includes free supply through a website or app store, and a device needs an Australian legal entity as sponsor.",
+        "An update that adds diagnostic or monitoring functionality can change the regulatory status of an already released product.",
+        "Privacy obligations engage in full once an entity operates it, including express consent for sensitive information and, from 10 December 2026, automated decision transparency in the privacy policy."
+      ]
+    },
+    "consumer_screening_referral": {
+      "rung": "three",
+      "description": "A hypothetical consumer feature that tells a person their speech may indicate a condition and that they may wish to seek professional assessment. Not built, not approved and not proposed here. Checkpoint 23E's described action sits closest to this rung and remains optional and unapproved.",
+      "occupied_today": false,
+      "medical_device_position": "device_and_no_exclusion_available",
+      "what_still_applies": [
+        "The regulator's definition of screening closely matches checkpoint 23E's own description of its action.",
+        "The reading is Class IIb where the result goes to the person and the condition is serious, dropping one class only if it instead informs a qualifying health professional, which may be unavailable because speech pathologists are probably not health professionals under the Regulations.",
+        "The clinical decision support exemption is closed for three independent reasons.",
+        "Conformity assessment evidence, ARTG inclusion and an Australian sponsor all become mandatory."
+      ]
+    }
+  },
+  "record_count": 16,
+  "records": [
+    {
+      "question_id": "medical_device_definition",
+      "record_id": "medical_device_definition_reading_v1",
+      "domain": "medical_device_regulation",
+      "confidence": "clear_on_the_face_of_the_source",
+      "applies_to_purposes": [
+        "developer_research_only",
+        "consumer_communication_coaching",
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "wellness_and_coaching_exclusions",
+      "record_id": "wellness_and_coaching_exclusions_reading_v1",
+      "domain": "medical_device_regulation",
+      "confidence": "reading_with_material_uncertainty",
+      "applies_to_purposes": [
+        "consumer_communication_coaching",
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "self_management_exclusion_and_future_speech_support",
+      "record_id": "self_management_exclusion_and_future_speech_support_reading_v1",
+      "domain": "medical_device_regulation",
+      "confidence": "reading_with_material_uncertainty",
+      "applies_to_purposes": [
+        "consumer_communication_coaching",
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "classification_if_a_screening_result_is_shown",
+      "record_id": "classification_if_a_screening_result_is_shown_reading_v1",
+      "domain": "medical_device_regulation",
+      "confidence": "reading_with_material_uncertainty",
+      "applies_to_purposes": [
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "seriousness_test",
+      "record_id": "seriousness_test_reading_v1",
+      "domain": "medical_device_regulation",
+      "confidence": "reading_with_material_uncertainty",
+      "applies_to_purposes": [
+        "consumer_communication_coaching",
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "health_professional_and_speech_pathology",
+      "record_id": "health_professional_and_speech_pathology_reading_v1",
+      "domain": "professional_regulation",
+      "confidence": "reading_with_material_uncertainty",
+      "applies_to_purposes": [
+        "consumer_communication_coaching",
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "clinical_decision_support_exemption",
+      "record_id": "clinical_decision_support_exemption_reading_v1",
+      "domain": "medical_device_regulation",
+      "confidence": "clear_on_the_face_of_the_source",
+      "applies_to_purposes": [
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "supply_sponsor_and_the_missing_entity",
+      "record_id": "supply_sponsor_and_the_missing_entity_reading_v1",
+      "domain": "medical_device_regulation",
+      "confidence": "clear_on_the_face_of_the_source",
+      "applies_to_purposes": [
+        "consumer_communication_coaching",
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "clinical_trial_pathway",
+      "record_id": "clinical_trial_pathway_reading_v1",
+      "domain": "clinical_trial_regulation",
+      "confidence": "unresolved_needs_specialist",
+      "applies_to_purposes": [
+        "developer_research_only"
+      ]
+    },
+    {
+      "question_id": "privacy_act_application_to_an_individual",
+      "record_id": "privacy_act_application_to_an_individual_reading_v1",
+      "domain": "privacy",
+      "confidence": "reading_with_material_uncertainty",
+      "applies_to_purposes": [
+        "developer_research_only"
+      ]
+    },
+    {
+      "question_id": "speech_recordings_as_sensitive_information",
+      "record_id": "speech_recordings_as_sensitive_information_reading_v1",
+      "domain": "privacy",
+      "confidence": "reading_with_material_uncertainty",
+      "applies_to_purposes": [
+        "developer_research_only",
+        "consumer_communication_coaching",
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "statutory_tort_serious_invasion_of_privacy",
+      "record_id": "statutory_tort_serious_invasion_of_privacy_reading_v1",
+      "domain": "privacy",
+      "confidence": "clear_on_the_face_of_the_source",
+      "applies_to_purposes": [
+        "developer_research_only",
+        "consumer_communication_coaching",
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "automated_decision_transparency_from_december_2026",
+      "record_id": "automated_decision_transparency_from_december_2026_reading_v1",
+      "domain": "privacy",
+      "confidence": "clear_on_the_face_of_the_source",
+      "applies_to_purposes": [
+        "consumer_communication_coaching",
+        "consumer_screening_referral"
+      ]
+    },
+    {
+      "question_id": "queensland_recording_and_publication",
+      "record_id": "queensland_recording_and_publication_reading_v1",
+      "domain": "recording_and_surveillance_law",
+      "confidence": "reading_with_material_uncertainty",
+      "applies_to_purposes": [
+        "developer_research_only"
+      ]
+    },
+    {
+      "question_id": "commonwealth_interception_scope",
+      "record_id": "commonwealth_interception_scope_reading_v1",
+      "domain": "recording_and_surveillance_law",
+      "confidence": "clear_on_the_face_of_the_source",
+      "applies_to_purposes": [
+        "developer_research_only"
+      ]
+    },
+    {
+      "question_id": "ethics_review_for_an_unaffiliated_individual",
+      "record_id": "ethics_review_for_an_unaffiliated_individual_reading_v1",
+      "domain": "research_ethics",
+      "confidence": "reading_with_material_uncertainty",
+      "applies_to_purposes": [
+        "developer_research_only"
+      ]
+    }
+  ],
+  "counts": {
+    "questions_read": 16,
+    "by_domain": {
+      "medical_device_regulation": 7,
+      "professional_regulation": 1,
+      "clinical_trial_regulation": 1,
+      "privacy": 4,
+      "recording_and_surveillance_law": 2,
+      "research_ethics": 1
+    },
+    "by_purpose": {
+      "developer_research_only": 8,
+      "consumer_communication_coaching": 9,
+      "consumer_screening_referral": 11
+    },
+    "by_confidence": {
+      "clear_on_the_face_of_the_source": 6,
+      "reading_with_material_uncertainty": 9,
+      "unresolved_needs_specialist": 1
+    },
+    "open_questions_recorded": 18,
+    "source_conflicts_recorded": 3,
+    "determinations_made": 0,
+    "approvals_obtained": 0,
+    "advice_received": 0
+  },
+  "what_this_is_not": [
+    "It is not the privacy impact assessment checkpoint 23B requires. That needs a legal entity to be the responsible entity, and there is none.",
+    "It is not the documented Australian classification and clinical trial pathway assessment checkpoint 23B requires, because that must be documented by a qualified Australian specialist.",
+    "It is not advice that any purpose on the ladder is safe to build. Rungs two and three are hypothetical and neither is proposed.",
+    "It is not a naming of any condition. Checkpoint 23A prohibits selecting a named motor speech condition or voice disorder, and no record names one.",
+    "It is not progress toward checkpoint 23B acceptance, which is defined as written review by accountable human roles."
+  ],
+  "limitations": [
+    "Sources change. Every source carries the currency the source itself states and the date it was read, and a stale reading must be redone rather than trusted.",
+    "Where a record's reading rests on a fact reported by a research pass rather than read at the primary source in this session, the record says so in the sentence that uses it. Those facts drive no conclusion on their own.",
+    "The ladder has three rungs because three were enough to locate the flip point. Real products occupy positions between them, and a real intended use statement would be more specific than any rung here.",
+    "A reading that a rule does not apply is the weakest kind of reading, because it depends on nothing else in the statute book applying either, and no search can prove that.",
+    "NHMRC has announced a revision of the provisions defining human research and exemption from ethics review. The ethics reading may date sooner than the others."
+  ]
+}

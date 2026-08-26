@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0.0",
+  "repair_id": "speech_sound_patterns_conservative_ctc_repair_v1",
+  "status": "rules_frozen_before_repair_feature_scoring",
+  "purpose": "Repair the failed sentence-wide greedy phone comparison by localising each known expected phone with CTC evidence, calibrating only an adult developer-review candidate and abstaining aggressively. This cannot establish pronunciation correctness, scientific validity or product readiness.",
+  "baseline": {
+    "report_path": "local-benchmark-v1.0.0.json",
+    "report_sha256": "3b3911c3917fe85467a3d4c146b6383dca379a48f07fee281a91f38ddf188a8b",
+    "finding": "greedy_sentence_wide_alignment_failed_selection",
+    "baseline_may_be_rewritten": false
+  },
+  "input_policy": {
+    "private_benchmark_manifest_sha256": "e856b2fef404cd28c9d09c6748797e1c6b888361c83c8d62f47ebf2560e03b98",
+    "expected_only_manifest_sha256": "c918feffa7c0a3a3fa99ce7a9e028621e8fb002980777297f30088e5975331da",
+    "expected_only_clip_count": 480,
+    "allowed_project_splits": [
+      "development",
+      "threshold_tuning"
+    ],
+    "held_out_access_allowed": false,
+    "candidate_runner_may_read_expert_outcomes": false,
+    "candidate_runner_inputs": [
+      "canonical_audio",
+      "known_expected_arpabet_sequence",
+      "declared_arpabet_to_ipa_mapping",
+      "word_and_target_indexes"
+    ]
+  },
+  "feature_extractor": {
+    "system": "phoneticxeus_8d83dee94817a07dc150f87d08f7e0ee01bdb66d",
+    "backend": "mps",
+    "same_input_repeats": 2,
+    "network_access": false,
+    "silent_cpu_fallback": false,
+    "alignment": "repository_deterministic_ctc_viterbi_alignment_of_known_expected_ipa_sequence",
+    "blank_token_id": 0,
+    "target_evidence_window": "forced_nonblank_target_span_plus_one_frame_on_each_side",
+    "full_logits_committed": false,
+    "private_target_features_retained": true,
+    "expected_phone_variants": {
+      "P": [
+        "p",
+        "pʰ"
+      ],
+      "T": [
+        "t",
+        "tʰ"
+      ],
+      "K": [
+        "k",
+        "kʰ"
+      ],
+      "L": [
+        "l",
+        "l̴"
+      ]
+    },
+    "numeric_features": [
+      "forced_path_expected_log_posterior",
+      "best_expected_variant_log_posterior",
+      "best_competing_consonant_log_posterior",
+      "expected_variant_margin",
+      "expected_variant_peak_posterior",
+      "expected_variant_top_one_frame_rate",
+      "forced_span_frame_count",
+      "forced_span_duration_seconds",
+      "greedy_alignment_relation_indicator",
+      "competing_panphon_feature_difference_rate",
+      "greedy_observed_panphon_feature_difference_rate"
+    ],
+    "numeric_preprocessing": {
+      "only_nullable_feature": "greedy_observed_panphon_feature_difference_rate",
+      "nullable_feature_fixed_imputation": 1.0,
+      "standardization": "development_training_fold_mean_and_population_standard_deviation",
+      "zero_variance_scaled_value": 0.0,
+      "tuning_values_may_fit_preprocessing": false
+    },
+    "feature_values_are_calibrated_confidence": false,
+    "forced_alignment_verifies_production": false
+  },
+  "calibration_policy": {
+    "eligible_population": "source_adults_only",
+    "child_status": "unavailable_insufficient_positive_reference_opportunities",
+    "child_labels_used_for_training_or_thresholds": false,
+    "insertion_status": "unavailable_no_positive_consensus_examples",
+    "training_split": "development",
+    "threshold_split": "threshold_tuning",
+    "participant_grouping_required": true,
+    "model_family": "l2_regularized_logistic_regression",
+    "fixed_regularization_candidates": [
+      0.01,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "regularization_selection": "four_fold_participant_grouped_development_average_precision_then_smallest_c",
+    "class_weight": "balanced",
+    "fixed_random_state": 2204,
+    "threshold_grid": {
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "step": 0.01
+    },
+    "threshold_selection": "highest_tuning_recall_meeting_every_selection_gate_then_highest_precision_then_highest_threshold",
+    "tuning_labels_may_change_feature_set_or_regularization": false,
+    "coefficients_refit_after_tuning": false,
+    "held_out_labels_or_outputs_used": false
+  },
+  "selection_gates": {
+    "development_out_of_fold_and_tuning_both_required": true,
+    "minimum_precision_point_estimate": 0.75,
+    "minimum_precision_wilson_95_lower": 0.5,
+    "maximum_false_concerns_per_scorable_opportunity": 0.01,
+    "minimum_recall": 0.2,
+    "minimum_true_positives": 7,
+    "same_input_target_features_exact": true,
+    "every_tuning_participant_reported": true,
+    "system_selection_if_all_gates_pass": "adult_developer_review_candidate_only",
+    "failure_behavior": "no_system_or_threshold_selected"
+  },
+  "report_policy": {
+    "development_and_tuning_separate": true,
+    "adult_and_child_separate": true,
+    "visible_denominators": true,
+    "participant_distribution_required": true,
+    "baseline_comparison_required": true,
+    "private_rows_committed": false,
+    "held_out_fields_allowed": false
+  },
+  "release_boundaries": {
+    "normal_pipeline": false,
+    "candidate_artifact": false,
+    "coaching": false,
+    "personal_progress": false,
+    "scientific_release": false,
+    "product_release": false,
+    "screening": false,
+    "diagnosis": false,
+    "severity": false,
+    "cause": false,
+    "treatment": false
+  }
+}

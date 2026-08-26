@@ -1,0 +1,94 @@
+{
+  "source_id": "speech_accessibility_project",
+  "title": "Speech Accessibility Project",
+  "citation": "Speech Accessibility Project, Beckman Institute, University of Illinois.",
+  "canonical_source": {
+    "landing_page": "https://speechaccessibilityproject.beckman.illinois.edu/",
+    "terms_or_licence_url": "https://speechaccessibilityproject.beckman.illinois.edu/conduct-research-through-the-project"
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "North American English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "About 999 participants and 1,500 hours of recorded speech across amyotrophic lateral sclerosis, cerebral palsy, Down syndrome, Parkinson's disease and stroke.",
+    "age_band": "adults",
+    "clinical_status": "clinical",
+    "limitations": [
+      "North American English only.",
+      "A clinical population, so it cannot describe the general adult population an undefined intended use would reach."
+    ]
+  },
+  "tasks_present": [
+    "prompted_speech",
+    "spontaneous_speech"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "unresolved",
+    "independent_rater_or_annotator_count": null,
+    "individual_records_retained": null,
+    "adjudication_defined": null,
+    "requirement_status": "unresolved",
+    "failure_reasons": [
+      "All samples are manually transcribed, and a subset carries certified clinician ratings on seven point scales for intelligibility and several speech dimensions.",
+      "Clinician scale ratings are not unfamiliar listener orthographic transcription, which is what item 23 names as intelligibility truth. Whether any listener level transcription exists cannot be checked without access."
+    ]
+  },
+  "access": {
+    "route": "signed_agreement_with_organisation_signatory",
+    "contact_with_a_person_required": true,
+    "organisation_signatory_required": true,
+    "account_required": false,
+    "agreement_signature_required": true,
+    "fee": null,
+    "state": "obtainable_only_after_contact_or_agreement",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "University of Illinois data use agreement, terms not published on the page",
+    "spdx_id": null,
+    "commercial_use_permitted": true,
+    "source_of_licence_string": "project_page",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "verified_directly",
+    "inspected_materials": [
+      "The project's research access page, read 2026-08-19, returning HTTP 200."
+    ],
+    "findings": [
+      "The data use agreement requires two signatures: the data user and an authorised representative of the user's organisation. A one page proposal must also be submitted and approved.",
+      "This is the clearest concrete instance of the missing legal entity blocking a route. The commercial permission is not the obstacle; the organisational signature is."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_access_requires_organisation",
+    "reasons": [
+      "The agreement cannot be executed without an organisation to countersign it, and no legal owner or sponsor exists.",
+      "Even with one, the proposal review is a discretionary decision by a third party and cannot be assumed."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "speech_accessibility_project_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

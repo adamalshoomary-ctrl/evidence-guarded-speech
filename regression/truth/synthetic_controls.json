@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.1.0",
+  "fixture_id": "synthetic_controls",
+  "fixture_kind": "synthetic_control",
+  "reference": {
+    "source": "versioned generator parameters and manually specified event design",
+    "annotator_role": "synthetic fixture designer",
+    "guide_version": "1.0.0",
+    "date": "2026-07-19",
+    "adjudication_status": "synthetic_ground_truth",
+    "independent_from_pipeline": true
+  },
+  "coverage": [
+    "clean and noisy signal quality",
+    "loud and quiet signal quality",
+    "fast and slow word timing",
+    "monotone pitch",
+    "task aware voice and prosody primitives",
+    "speaker attribution",
+    "overlap and short backchannel",
+    "known pause",
+    "drag, loud, and uptalk renderer events",
+    "valid and invalid evidence verification"
+  ],
+  "expectations": {
+    "words": [
+      {"index": 0, "word": "alpha", "speaker": "SPEAKER_00", "start_s": 0.0, "end_s": 0.3, "timing_tolerance_s": 0.02},
+      {"index": 2, "word": "yeah", "speaker": "SPEAKER_01", "start_s": 0.8, "end_s": 1.1, "timing_tolerance_s": 0.02},
+      {"index": 7, "word": "overlapword.", "speaker": "SPEAKER_01", "start_s": 7.0, "end_s": 7.4, "timing_tolerance_s": 0.02}
+    ],
+    "renderer_events": [
+      {"type": "drag", "word": "slowword", "speaker": "SPEAKER_00"},
+      {"type": "loud", "word": "loud", "speaker": "SPEAKER_00"},
+      {"type": "uptalk", "word": "really.", "speaker": "SPEAKER_00"}
+    ],
+    "metrics": [
+      {"path": "metrics.fast_wpm", "value": 241.6, "tolerance": 0.1},
+      {"path": "metrics.slow_wpm", "value": 61.6, "tolerance": 0.1},
+      {"path": "monotone.pitch_median_hz", "value": 180.0, "tolerance": 1.0},
+      {"path": "monotone.pitch_variation_hz", "value": 0.0, "tolerance": 1.0},
+      {"path": "voice_prosody.f0_median_hz", "value": 180.0, "tolerance": 0.6},
+      {"path": "voice_prosody.f0_distribution_span_st", "value": 0.0, "tolerance": 0.1},
+      {"path": "voice_prosody.recorder_level_span_db", "value": 12.04, "tolerance": 0.3},
+      {"path": "voice_prosody.frame_step_s", "value": 0.01, "tolerance": 0.0001}
+    ],
+    "conditions": [
+      {"path": "metrics.fast_wpm", "operator": "greater_than", "value": 180.0},
+      {"path": "metrics.slow_wpm", "operator": "less_than", "value": 90.0},
+      {"path": "metrics.conversation.SPEAKER_01.backchannels_given", "operator": "equals", "value": 1},
+      {"path": "turns.0.expressive_text", "operator": "contains", "value": "[SPEAKER_01: \"yeah\"]"},
+      {"path": "turns.0.expressive_text", "operator": "contains", "value": "[1.5s]"},
+      {"path": "quality.clean.overall_status", "operator": "equals", "value": "pass"},
+      {"path": "quality.noisy.checks.signal_to_noise_proxy", "operator": "equals", "value": "warn"},
+      {"path": "quality.loud.overall_status", "operator": "equals", "value": "pass"},
+      {"path": "quality.quiet.checks.peak_level", "operator": "equals", "value": "warn"},
+      {"path": "verification.valid_claim", "operator": "equals", "value": "pass"},
+      {"path": "verification.wrong_speaker_claim", "operator": "equals", "value": "fail"},
+      {"path": "voice_prosody.combined_index_present", "operator": "equals", "value": false}
+    ]
+  }
+}

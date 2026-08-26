@@ -1,0 +1,65 @@
+{
+  "question_id": "statutory_tort_serious_invasion_of_privacy",
+  "domain": "privacy",
+  "question": "Is there a privacy exposure that applies to an individual regardless of whether the Privacy Act does?",
+  "applies_to_purposes": [
+    "developer_research_only",
+    "consumer_communication_coaching",
+    "consumer_screening_referral"
+  ],
+  "primary_sources": [
+    {
+      "citation": "Privacy Act 1988 (Cth), Schedule 2, Part 2, clause 7, Cause of action",
+      "url": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "(1) An individual (the plaintiff) has a cause of action in tort against another person (the defendant) if: (a) the defendant invaded the plaintiff's privacy by doing one or both of the following: (i) intruding upon the plaintiff's seclusion; (ii) misusing information that relates to the plaintiff; and (b) a person in the position of the plaintiff would have had a reasonable expectation of privacy in all of the circumstances; and (c) the invasion of privacy was intentional or reckless; and (d) the invasion of privacy was serious; and (e) the public interest in the plaintiff's privacy outweighed any countervailing public interest. (2) The invasion of privacy is actionable without proof of damage."
+    },
+    {
+      "citation": "Privacy Act 1988 (Cth), Schedule 2, Part 2, clause 7(5)",
+      "url": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "Without limiting the matters that the court may consider in determining whether a person in the position of the plaintiff would have had a reasonable expectation of privacy in all of the circumstances, the court may consider the following: (a) the means, including the use of any device or technology, used to invade the plaintiff's privacy; (b) the purpose of the invasion of privacy; (c) attributes of the plaintiff including the plaintiff's age, occupation or cultural background ..."
+    },
+    {
+      "citation": "Privacy Act 1988 (Cth), endnotes, commencement of Schedule 2",
+      "url": "https://www.legislation.gov.au/C2004A03712/latest/text",
+      "currency": "Compilation in force 4 June 2026",
+      "read_at_source": true,
+      "read_on": "2026-08-19",
+      "extract": "sch 2: 10 June 2025 (s 2(1) item 8)"
+    }
+  ],
+  "reading": [
+    "Yes, and it is the single most important thing in this reading that the repository did not previously record. A statutory tort of serious invasion of privacy has been in force since 10 June 2025.",
+    "It runs against another person. There is no entity requirement, no turnover threshold and no Australian Privacy Principle entity analysis. Every shield discussed in the other privacy records is irrelevant to it.",
+    "It is actionable without proof of damage, and the court is expressly directed to consider the means and technology used and the purpose of the invasion.",
+    "A research pass that read the exemptions in Part 3 of Schedule 2 reported that they cover journalism, agencies, their staff, law enforcement and intelligence, and that there is no research or academic exemption. The cause of action and its commencement were read directly at the compilation; the absence of a research exemption is reported from that pass and was not separately verified here."
+  ],
+  "confidence": "clear_on_the_face_of_the_source",
+  "unresolved": [
+    {
+      "question": "Whether consent obtained for a research recording would engage the consent defence for every later use of that recording.",
+      "why_it_cannot_be_settled_here": "The defence turns on the scope of what was consented to, which depends on consent documents that do not exist.",
+      "who_must_settle_it": "An Australian privacy lawyer."
+    }
+  ],
+  "consequences": [
+    "Adam is personally exposed to this whether or not he ever forms a company, and forming one would not by itself remove it.",
+    "It raises the practical importance of the incidental speaker controls the plan already requires, because an incidental speaker is exactly a person with a reasonable expectation of privacy who never consented to anything.",
+    "It should be added to the future privacy impact assessment as its own item rather than folded into Australian Privacy Principle compliance, because compliance with the principles is not a defence to it."
+  ],
+  "decided_by": [
+    "australian_privacy_lawyer",
+    "owner"
+  ],
+  "schema_version": "1.0.0",
+  "record_id": "statutory_tort_serious_invasion_of_privacy_reading_v1",
+  "conflicts": [],
+  "status": "documented_reading_not_a_determination",
+  "is_legal_or_regulatory_advice": false,
+  "creates_any_authority": false
+}

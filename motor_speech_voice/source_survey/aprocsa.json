@@ -1,0 +1,92 @@
+{
+  "source_id": "aprocsa",
+  "title": "APROCSA, auditory-perceptual rating of connected speech in aphasia",
+  "citation": "APROCSA dataset, Language Neuroscience Laboratory, doi:10.21415/KT40-EA41.",
+  "canonical_source": {
+    "landing_page": "https://langneurosci.org/aprocsa-dataset",
+    "terms_or_licence_url": "https://langneurosci.org/aprocsa-dataset"
+  },
+  "language_and_variety": {
+    "language": "English",
+    "variety": "United States English",
+    "covers_australian_english": false
+  },
+  "population": {
+    "description": "Six speakers with chronic post-stroke aphasia, aged 46 to 72, rated on 27 features.",
+    "age_band": "adults",
+    "clinical_status": "clinical",
+    "limitations": [
+      "Six speakers cannot support any population claim.",
+      "Aphasia is a language construct, and item 23 must not let a language measure stand in for a motor speech or voice one."
+    ]
+  },
+  "tasks_present": [
+    "connected_speech"
+  ],
+  "reference_truth": {
+    "offered_truth_class": "perceptual_voice_consensus_only",
+    "independent_rater_or_annotator_count": 5,
+    "individual_records_retained": false,
+    "adjudication_defined": null,
+    "requirement_status": "fails",
+    "failure_reasons": [
+      "Five raters rated independently but the released ratings are consensus values, so the individual ratings and the disagreement between them are not available.",
+      "Item 23 states that raw disagreement is data and must never be silently replaced by a consensus label."
+    ]
+  },
+  "access": {
+    "route": "open_direct_download",
+    "contact_with_a_person_required": false,
+    "organisation_signatory_required": false,
+    "account_required": false,
+    "agreement_signature_required": false,
+    "fee": null,
+    "state": "obtainable_without_contact",
+    "checked_at": "2026-08-19"
+  },
+  "licence": {
+    "stated": "Access to these materials is unrestricted, however permission is granted only for research, education, and clinical uses",
+    "spdx_id": null,
+    "commercial_use_permitted": false,
+    "source_of_licence_string": "publication_text",
+    "verified_at": "2026-08-19"
+  },
+  "capability_audit": {
+    "verification_level": "reported_not_verified",
+    "inspected_materials": [
+      "Reported from a discovery sweep on 2026-08-19 and not confirmed at source by this survey."
+    ],
+    "findings": [
+      "The quoted permission covers research, education and clinical use and does not extend to a commercial product backend."
+    ],
+    "conflicting_claims": []
+  },
+  "eligibility": {
+    "decision": "blocked_licence_non_commercial",
+    "reasons": [
+      "Permission is limited to research, education and clinical use.",
+      "Consensus ratings destroy the disagreement item 23 requires."
+    ],
+    "selected": false
+  },
+  "schema_version": "1.0.0",
+  "record_id": "aprocsa_survey_v1",
+  "governance": {
+    "permitted_roles": [
+      "governance_review_material",
+      "evidence_that_a_route_exists_or_does_not_exist"
+    ],
+    "prohibited_roles": [
+      "acquisition_without_a_separate_owner_decision",
+      "item_23_truth_source",
+      "candidate_training_or_tuning_data",
+      "motor_speech_or_voice_claim",
+      "clinical_inference",
+      "product_release_truth",
+      "substitute_for_independent_professional_review"
+    ],
+    "raw_data_committed": false,
+    "acquisition_authorised": false,
+    "transfer_to_any_provider": "blocked"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0.0",
+  "record_id": "public_snapshot_redistribution_decision_v1",
+  "item": "R4",
+  "decided_at": "2026-08-24",
+  "decided_by": "repository owner",
+  "status": "open_and_binding_on_the_public_snapshot",
+  "what_this_record_is": "Item 22 manifested every acquired source with rehosting_permitted set to false. That was the correct default for a project that redistributed nothing. Item R4 publishes a snapshot, so two narrow redistribution questions had to be answered on their merits. This record answers them. It does not edit the item 22 manifests, which are release locked evidence of what was decided at acquisition time and which stay exactly as they are. Where this record and a manifest disagree, this record governs the public snapshot only, names the manifest field it qualifies, and states the reason. Nothing here permits redistribution of any source not listed below.",
+  "decisions": [
+    {
+      "decision_id": "librispeech_fixture_recordings",
+      "source_id": "librispeech_slr12_small",
+      "manifest": "speech_sound_patterns/corpus_manifests/librispeech-slr12-small.json",
+      "field_qualified": "governance.rehosting_permitted",
+      "manifest_value": false,
+      "manifest_duty_text": "Keep selected subsets privately with attribution and never commit or rehost the recordings.",
+      "decision": "permitted_for_the_regression_fixture_only",
+      "scope": "Two assembled fixture recordings, built from utterances of LibriSpeech dev-clean speakers in this project's development split, distributed inside the public snapshot with full attribution and a per utterance manifest. No other LibriSpeech audio, and no other subset, is redistributed.",
+      "reasoning": [
+        "The licence expressly permits it. LibriSpeech is CC BY 4.0 and redistribution with attribution is exactly what that licence grants.",
+        "There is no contract layered on top of the licence. The manifest records account_required false and terms_state not_required, so no terms of service constrain redistribution and no account governs access. The manifest's prohibition was a conservative project default, not a legal finding.",
+        "The declared role already covers this use. governance.permitted_roles lists runtime_and_determinism_regression and ordinary_read_speech_regression, which is precisely what the fixture does.",
+        "The alternative sources are worse. Common Voice carries a platform contract prohibiting rehosting, and synthetic speech is not the thing this pipeline measures.",
+        "Without this, the public snapshot ships no runnable recording at all, and the project's own definition of done requires that an independent person can install and run it."
+      ],
+      "constraints": [
+        "Only speakers assigned project_split development in .research_data/speech_sound_patterns/splits/librispeech-slr12-small.json may be used. Threshold tuning and held out evaluation speakers are excluded, so publishing a fixture cannot expose a sealed split.",
+        "Attribution travels with the snapshot in NOTICE.md and in the fixture manifest.",
+        "The fixture manifest names every source speaker, chapter and utterance, so the assembly is reproducible and checkable.",
+        "The fixture is a regression fixture and is not truth for any measurement. It establishes recording identity, mode, speaker count and duration only."
+      ],
+      "what_this_does_not_permit": [
+        "Redistribution of dev-other, of any training subset, or of held out or threshold tuning speakers.",
+        "Any claim that read audiobook speech represents conversational speech, Australian speech, or any population."
+      ]
+    },
+    {
+      "decision_id": "common_voice_derived_evidence_bundle",
+      "source_id": [
+        "common_voice_26_australian_english",
+        "common_voice_26_british_english",
+        "common_voice_26_american_english_male",
+        "common_voice_26_american_english_female"
+      ],
+      "manifest": "speech_sound_patterns/corpus_manifests/common-voice-26-*.json",
+      "field_qualified": "governance.rehosting_permitted and governance.prohibited_roles dataset_rehosting",
+      "manifest_value": false,
+      "decision": "audio_refused_derived_non_audio_evidence_permitted",
+      "scope": "The 2,400 per clip evidence records produced by the reference variety probe, carrying frame counts, phone tokens, phone indices and goodness of pronunciation scores, with every contributor identifier replaced by an opaque per bundle key. Nothing else.",
+      "refused": [
+        "The 2,400 decoded mp3 clips.",
+        "The 2,400 canonicalised wav files.",
+        "sample.json and its two superseded versions, which carry contributor identifiers and prompt text.",
+        "Any Common Voice metadata table.",
+        "Any Common Voice audio in any form, at any size, ever."
+      ],
+      "reasoning": [
+        "The audio refusal is the straightforward part. The clips are Common Voice bytes and the canonical wavs are a straight resample of them. Publishing either is rehosting on any reading, and both the manifests and the platform terms forbid it.",
+        "The evidence bundle is not the dataset. It contains no audio, no transcript, no prompt text and no metadata row. It is a derived measurement record about the dataset.",
+        "The platform terms carve out the licence. The Mozilla Data Collective consumer terms of 2026-05-06 prohibit hosting a Dataset outside the platform except as expressly permitted under the applicable Data Consumer License. That licence is CC0 1.0, which permits redistribution without restriction. The carve out therefore applies, and in any case the bundle is a small derived subset rather than the Dataset in whole or in substantial part.",
+        "Re identification is the real risk and it is removed rather than argued away. The stored evidence carries each contributor's verbatim Common Voice client_id, which joins directly against the public corpus and recovers that person's whole clip history, declared accent, age and gender. The terms prohibit re identification and the manifests list speaker_reidentification as a prohibited role. Publishing the raw identifiers would have breached both. The bundle replaces them with opaque keys minted per bundle.",
+        "The alternative fails the project's own definition of done. Publishing nothing means reproducing the headline analysis costs a multi gigabyte download and about three and a half hours of inference, so in practice the numbers would go unchecked."
+      ],
+      "verification": {
+        "claim": "The pseudonymised bundle regenerates the committed report byte for byte.",
+        "method": "The bundle was built, the scoring and uncertainty stages were run against it with no other change, and the result was compared with the committed report.",
+        "report": "speech_sound_patterns/variety-probe-v1.2.0.json",
+        "report_sha256": "76928b1c172e28dd0a4fb7590038f3159e1214ad31500d16d2a1be3077e1869f",
+        "result": "byte identical",
+        "verified_at": "2026-08-24",
+        "a_thing_that_went_wrong_first": "The first key scheme numbered speakers within each source directory. That collapsed the American reporting group from 600 speakers to 300, because it merges two source directories and variety_probe_score._speaker_rates groups by the participant value alone while every other call site groups by source and participant together. Real Common Voice identifiers are globally unique so the inconsistency never mattered in production. Bundle keys are now globally unique, and the ordering the bootstrap depends on is asserted rather than assumed."
+      },
+      "constraints": [
+        "Keys must be globally unique across all four source directories, because one scoring function groups by the participant value alone.",
+        "Keys must preserve the sort order of the original (source_id, participant) pairs, and record filenames must preserve the sort order of the original evidence paths. The speaker clustered bootstrap indexes speakers in sorted order, so either change would alter the resamples and the published intervals.",
+        "The mapping from a real contributor identifier to a bundle key is not written to disk and is not recoverable from the bundle."
+      ],
+      "what_this_does_not_permit": [
+        "Publishing the mapping, or any table that would let a bundle key be resolved to a contributor.",
+        "Publishing sample.json, prompt text, or any Common Voice metadata.",
+        "Treating the bundle as permission to redistribute any other part of Common Voice."
+      ]
+    }
+  ],
+  "unchanged_by_this_record": [
+    "Every other corpus manifest and every rehosting prohibition in it.",
+    "The refusal to send the repository owner's own audio to any external provider.",
+    "The frozen SpeechOcean762 benchmark, every item 22 gate, and all sealed held out participants.",
+    "The rule that a variety mismatch may be excluded and never subtracted.",
+    "The prohibition on any screening or clinical claim."
+  ]
+}
