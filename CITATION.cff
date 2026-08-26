@@ -16,6 +16,16 @@ authors:
     email: adamalshoomary@gmail.com
 license: GPL-3.0-or-later
 repository-code: "https://github.com/adamalshoomary-ctrl/evidence-guarded-speech"
+doi: 10.5281/zenodo.22106996
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22106996
+    description: >-
+      The concept DOI. It always resolves to the most recent version and is the
+      one to cite unless a specific version is meant.
+  - type: doi
+    value: 10.5281/zenodo.22106997
+    description: The DOI for version v0.1.0 specifically.
 version: "0.1.0"
 date-released: "2026-08-26"
 keywords:

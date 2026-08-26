@@ -3,8 +3,8 @@
   "record_id": "public_snapshot_provenance_v1",
   "contract": "release/snapshot-contract-v1.0.0.json",
   "contract_sha256": "71ee0d53f4a90ffa8b4aad7e680a5af3c6fb12e3956170b60ff71e44daba236c",
-  "source_commit": "c8838395f147234dc5d49d102f1cbf4a73ab6907",
-  "source_working_tree_clean": false,
+  "source_commit": "0dea116c6f602e938a65a95d77a321e7643778bb",
+  "source_working_tree_clean": true,
   "files_published": 2803,
   "files_withheld": 41,
   "withheld": [
