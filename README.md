@@ -1,5 +1,10 @@
 # Speech analysis pipeline
 
+**New readers should start with `findings.md`**, the honest account of what was
+built, what was measured, what was found, what was retracted, and what could not
+be established at all. It is the document that says what this repository
+actually demonstrates.
+
 For project status and whether any work is approved, read `current-state.md`.
 For what this project is and refuses to claim read `project-purpose.md`; for
 implementation order and binding boundaries read `improvement-plan.md`. This
@@ -42,7 +47,9 @@ every record states which produced it. The local path also cannot do two things
 the provider path can, and it declares both as unavailable rather than returning
 nothing: second voice detection in solo recordings, and the four fluency event
 families that need a word level ASR confidence. Conversation mode still needs a
-Hugging Face token for diarization; solo mode needs no credentials at all.
+Hugging Face token for diarization; a solo run on the local path needs no
+credentials at all. Remember that the default transcriber is AssemblyAI, so a
+run with no flags is not the credential free path.
 `docs/offline-transcription.md` carries the measurement behind all of this.
 
 On a laptop running on battery, prefix the command with `caffeinate -dimsu`. A

@@ -13,6 +13,15 @@ Read `README-SNAPSHOT.md` first if you have just arrived. It says what this
 repository is, what was removed from it before publication, and what that
 removal costs you.
 
+Then read `findings.md`. It is the honest account of what was built, what was
+measured, what was retracted, and what could not be established at all. It is
+the shortest route to knowing what this repository actually demonstrates, which
+is less than the amount of machinery here suggests.
+
+Releases are archived. Cite the concept DOI `10.5281/zenodo.22106996`, which
+always resolves to the newest version; `CITATION.cff` carries it along with the
+version specific DOI for each tag.
+
 Then read these short sources in order:
 
 1. this file;

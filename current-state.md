@@ -1,6 +1,6 @@
 # Current Project State
 
-Updated: 2026-08-24
+Updated: 2026-08-26
 
 ## Start here
 
@@ -13,12 +13,17 @@ Updated: 2026-08-24
   produces the measurement record and stops; the listener, the interpretation
   and the claim verifier run only under `--interpret`. The five language model
   scores of a person are deleted and nothing replaces them. Full account in
-  `improvement-plan.md` item R5. **Adam has not committed it.**
-- Before that, **item R4**, the sanitized public snapshot,
-  finished 2026-08-24. It built a separate repository at
-  `../evidence-guarded-speech`, staged and uncommitted, withholding 41 of 2,835
-  files. **Adam has not committed or pushed it yet, and the first commit, the
-  GitHub repository, the tag and the DOI are all his to make.** Before that, item
+  `improvement-plan.md` item R5. It is commit `134194b`.
+- **The public release happened on 2026-08-26 and is done.** The sanitized
+  snapshot built by item R4 is now published at
+  <https://github.com/adamalshoomary-ctrl/evidence-guarded-speech>, public,
+  GPL 3.0 or later, first commit `dd7274c`, withholding 41 of 2,844 files. It is
+  tagged `v0.1.0` and archived by Zenodo. **The concept DOI is
+  `10.5281/zenodo.22106996`**, which always resolves to the newest version and is
+  the one to cite; `10.5281/zenodo.22106997` is the version DOI for `v0.1.0`.
+  Both are recorded in `CITATION.cff`. Do not create the repository, the tag or
+  the archive again: they exist. Read the release hazards below before rebuilding
+  the snapshot. Before that, item
   R3 was the offline transcription path, which made the pipeline runnable with no
   paid credentials and found a cross provider defect: a forced alignment score was
   being compared against a threshold calibrated for an ASR posterior. Item R2 computed
@@ -26,13 +31,24 @@ Updated: 2026-08-24
   and leaving exactly one surviving test in the whole analysis. If
   `git status` is dirty when you arrive, that work may be uncommitted; ask Adam
   before touching it, and never commit yourself.
-- The next proposed item is **R6 in `improvement-plan.md`**, the honest written
-  account of what was built, measured, found and left unestablished. It is
-  proposed, not approved, and it is the last thing between this project and its
-  own definition of done. **Read `prior-art-2026-08-24.md` before writing a word
-  of it**, because the claim it was going to make was checked and did not
-  survive; only a narrow claim about integration and licence did. **This
+- **R6, the honest account, was written on 2026-08-26 as `findings.md`**, and
+  `README.md` now points to it. It leads with the self correction, makes only
+  the narrow integration and licence claim that survived
+  `prior-art-2026-08-24.md`, and relates the project to arXiv 2606.16019 and
+  2606.11639. **It is not yet published.** Publishing needs a snapshot rebuild,
+  which runs into the two release tool defects below, and Adam has a privacy
+  decision to make first about four quoted claims derived from his own
+  recording. Both are set out in `improvement-plan.md` item R6. **This
   repository is never made public; R4 produced a different one.**
+- **Three things were found while writing the account, by recomputing rather
+  than rereading.** One was a false claim in this file about a default run
+  making no remote call, now corrected below. The other two are code defects and
+  are **not fixed**: a solo run reports the referee stage as `pending` forever,
+  and a claim whose only evidence is a listener perception can be typed
+  `measured_observation`, so a model's subjective impression can enter the
+  machine readable ledger in the same truth class as a timestamp. The second is
+  the one worth attention. Neither is approved work; both are described in
+  `findings.md` section 9.
 - **The goal is a public repository with a citable release and an honest written
   account, not a peer reviewed paper.** Adam declined the paper route on
   2026-08-23. He also declined a public API or hosted service, permanently. Both
@@ -167,6 +183,28 @@ Standing conclusions a new agent needs before proposing anything.
   private original has changed fails the build rather than falling silently
   behind it. Run `python3 -m release.build_snapshot` then
   `python3 -m release.verify_snapshot`, and never publish without the second.
+
+- **Two release tools now have known defects, both found on 2026-08-26 during the
+  first real release. Read this before rebuilding the snapshot.** Neither is
+  fixed, and fixing them is unstarted work needing Adam's go.
+  - **`build_snapshot --force` deletes the destination directory including its
+    `.git`.** That was harmless when the snapshot had never been published. It is
+    not harmless now: it destroys the local commit history and the `origin`
+    remote of a repository that is public. It happened once, on 2026-08-26, and
+    was recovered only because the commit was already pushed. **Do not run
+    `--force` against `../evidence-guarded-speech`.** Build to a scratch
+    directory with `--destination`, then `rsync -a --delete --exclude='.git/'`
+    into place. If a wipe does happen, recover with `git remote add origin`, the
+    repository URL, `git fetch origin --tags`, then `git reset --soft
+    origin/main`.
+  - **`verify_snapshot` refuses every release after the first.** Its `scan_git`
+    section asserts the snapshot has no remote and no commits, which was true
+    exactly once. Both findings are now permanent and expected, and the four
+    checks that actually protect privacy, private content, structure, fixtures
+    and evidence bundle, still pass and still matter. Read those four rather than
+    the overall verdict, and do not let a check nobody can satisfy become a check
+    that is always overridden. It should learn the difference between a first
+    publication and an update.
 
 - **The reference variety probe was repaired on 2026-08-23 and its numbers
   changed materially. `variety-probe-v1.2.0.json` is the report; versions 1.0.0 and
@@ -368,16 +406,23 @@ phone accuracy, acceptable variants or user facing correctness.
 
 ## What does not exist
 
-- an honest written account of what was built, measured, found and left
-  unestablished. That is item R6 and it is the last thing between this project
-  and its own definition of done;
+- **the honest account is now written**, as `findings.md`, on 2026-08-26. It is
+  **not yet in the public repository**, and putting it there needs a snapshot
+  rebuild that runs into the two release tool defects recorded above. Until it
+  is published, the definition of done is not met, because that definition
+  requires an outsider to be able to read it;
 - any released score, rating, index, level or summary number describing a person.
   Five existed until 2026-08-24 and item R5 deleted them without replacement;
 - a fully credential free conversation path. Item R3 added local transcription
-  and item R5 made the model layer opt in, so a default solo run now makes no
-  remote call at all and finishes in about 70 seconds, but diarization still
-  uses a gated pyannote model and conversation mode still needs a Hugging Face
-  token;
+  and item R5 made the model layer opt in, so a solo run **with
+  `--transcriber local`** and no `--interpret` makes no remote call at all and
+  finishes in about 90 seconds, but diarization still uses a gated pyannote
+  model and conversation mode still needs a Hugging Face token. **The default
+  transcriber is AssemblyAI**, so a run with no flags is not the credential free
+  path. An earlier version of this line said a default solo run makes no remote
+  call, which was false: it dropped the `--transcriber local` scope that
+  `improvement-plan.md` states correctly. Corrected 2026-08-26 while writing
+  `findings.md`;
 - second voice detection or text derived fluency events on the local
   transcription path. Both are declared unavailable there rather than returning
   nothing, and that is a real capability loss, not a formality;

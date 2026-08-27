@@ -2,10 +2,10 @@
   "schema_version": "1.0.0",
   "record_id": "public_snapshot_provenance_v1",
   "contract": "release/snapshot-contract-v1.0.0.json",
-  "contract_sha256": "71ee0d53f4a90ffa8b4aad7e680a5af3c6fb12e3956170b60ff71e44daba236c",
-  "source_commit": "0dea116c6f602e938a65a95d77a321e7643778bb",
+  "contract_sha256": "dfec5b4c08eceb4852ddf2f9b24ceff792f25254d80774096ad8a482ecf35cd1",
+  "source_commit": "91dad46dd729b3d4abe26cd812541d1459830ee6",
   "source_working_tree_clean": true,
-  "files_published": 2803,
+  "files_published": 2804,
   "files_withheld": 41,
   "withheld": [
     "audio/owner-conversation-recording.m4a",

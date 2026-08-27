@@ -6,7 +6,7 @@ is preserved in `docs/archive/improvement-plan-through-item-16.md` and
 `docs/archive/phase-b-completion.md`. The full evidence behind the current
 direction is in `audit-2026-08-22.md`.
 
-## Current status, updated 2026-08-23
+## Current status, updated 2026-08-26
 
 | Work | Status |
 |------|--------|
@@ -18,7 +18,7 @@ direction is in `audit-2026-08-22.md`.
 | Item 23, motor speech and voice | **SHELVED.** Checkpoint 23A complete, 23B blocked on named human roles. Do not continue |
 | Item 24, personalised recognition for atypical speech | SHELVED with item 23 |
 | Former Phases D and E, coaching product and clinical validation | **REMOVED.** The project has no product and makes no clinical claim |
-| Research release track | R1 through R5 DONE. R6, the honest account, is proposed and not approved. Target is a public repository and an honest written account, not a peer reviewed paper |
+| Research release track | R1 through R5 DONE. **The public repository, the `v0.1.0` tag and the Zenodo DOI all exist as of 2026-08-26 and must not be created again.** R6, the honest account, is **written** as `findings.md` on 2026-08-26 and **not yet published**: putting it in the public repository needs a snapshot rebuild, and the two release tool defects stand in the way |
 
 `speech_sound_patterns/engineering-plan.md` is the authority for item 22 and
 carries every checkpoint's brief, numbers and acceptance evidence.
@@ -92,7 +92,9 @@ Important current limitations:
   voice in a solo recording and cannot run the four fluency families that need a
   word level ASR confidence, and it declares both as unavailable rather than
   returning nothing. Conversation mode still needs a Hugging Face token for
-  diarization; solo mode needs no credentials at all.
+  diarization; a solo run **on that path** needs no credentials at all. The
+  default transcriber is AssemblyAI, so a run with no flags is not the
+  credential free path.
 - The pipeline's output is `master.json`. The language model interpretation
   layer is opt in through `--interpret` as of item R5, produces no score and no
   rating of a person, and states in its own verification report what that
@@ -316,7 +318,7 @@ only became reachable here.
 Also recorded: the pyannote gate is documented rather than removed, so the fully
 credential free configuration is the solo path.
 
-### R4. Sanitized public snapshot and a citable release — **DONE, 2026-08-24**
+### R4. Sanitized public snapshot and a citable release — **DONE, 2026-08-24. PUBLISHED 2026-08-26**
 
 1. Add a `LICENSE` recording GPL 3.0 or later, plus attribution for the MFA
    dictionaries and Wiktionary derived material.
@@ -370,9 +372,21 @@ Four things are worth carrying forward.
   measurement unavailable rather than returning a zero. The snapshot runs the
   same 974 tests as this repository.
 
-**Still Adam's to do, and only his:** the first commit, creating the GitHub
-repository, the first push, the version tag, the Zenodo archive and the DOI.
-`CITATION.cff` carries a placeholder repository URL until the repository exists.
+**All of that is now done.** On 2026-08-26 Adam made the first commit `dd7274c`,
+created <https://github.com/adamalshoomary-ctrl/evidence-guarded-speech> as a
+public repository, pushed it, tagged `v0.1.0`, and enabled the Zenodo archive
+before creating the release, which is the order that matters because Zenodo only
+mints a DOI for a release published after its switch is on. The concept DOI is
+`10.5281/zenodo.22106996` and the `v0.1.0` version DOI is
+`10.5281/zenodo.22106997`; both are recorded in `CITATION.cff`, whose repository
+URL is no longer a placeholder. **None of it may be done again.**
+
+The release also found two defects in the release tooling itself. They are
+described in `current-state.md`, they are not fixed, and fixing them is unstarted
+work: `build_snapshot --force` destroys the destination's `.git`, which is now
+the git history of a public repository, and `verify_snapshot` refuses every
+release after the first because it asserts the snapshot has no remote and no
+commits.
 
 Publishing also starts the six month public history clock that JOSS requires, at
 no cost, which is the only reason to care about the clock while the paper route
@@ -609,7 +623,82 @@ survives. Regenerating it means running the current renderer over Adam's real
 `history.json`, which is his personal data, so it is his call and not a side
 effect of this item.
 
-### R6. The honest account
+### R6. The honest account — **WRITTEN, 2026-08-26. NOT YET PUBLISHED**
+
+**What was built.** `findings.md` at the repository root, 1,044 lines, plus
+a pointer to it at the top of `README.md` so a reader arriving at the public
+repository finds the account before the operating reference. It leads with the
+self correction, states the narrowed claim in the exact required wording, and
+relates the project to arXiv 2606.16019 and 2606.11639, both of which were read
+in full rather than from their abstracts.
+
+Every figure in it was recomputed from the stored evidence records rather than
+carried forward from prose. That found three things, recorded in the account's
+own section 9:
+
+- **A false claim in `current-state.md`, now corrected.** It said a default solo
+  run makes no remote call. `DEFAULT_TRANSCRIBER` is `assemblyai`, so that holds
+  only with `--transcriber local`. This plan stated the scope correctly and the
+  summary dropped it.
+- **A solo run reports the referee as `pending` forever.** Solo mode never
+  schedules that stage, so `initial_enrichment_status` leaves it describing a
+  stage that will never happen. This is the defect R5 fixed for the listener and
+  the evaluator, left behind for the referee. **Not fixed.**
+- **Claim type is not tied to evidence class.** A claim whose only evidence has
+  source `listener_perception` can be typed `measured_observation`, and both the
+  prompt's definition and the verifier permit it, so a model's subjective
+  impression can sit in the ledger in the same class as a timestamp. Found on a
+  real run. **Not fixed**, and it is the more interesting of the two.
+
+**The draft was fact checked against the stored records a second time, and that
+pass earned its place.** It found the account quoting the t differential at the
+superseded pooled aggregation, +0.0269, inside a sentence describing the per
+speaker analysis that produced +0.0362; the same error for v; a claim that all
+48 tests were pre registered when only the 5 group level ones were declared
+before the run; "the three optional model stages use Gemini" when the referee is
+not optional; the sensitivity family survivor described as at a neighbouring
+threshold when it is two steps away; and a pinned file count of 75 taken over
+all tracked files rather than 68 over the files the contract selects. All are
+corrected, and the account's closing note records the three that mattered rather
+than hiding them.
+
+It also found that `prior-art-2026-08-24.md` dates SpeakerCard-1M to 28 June
+2026. It is 2 June: the arXiv identifier 2606.03283 sits far below 2606.11639
+and 2606.15325, which are 10 and 13 June. The conclusion is unaffected. That
+file is otherwise accurate; its three load bearing citations were checked
+against arXiv directly and all three match.
+
+Two figures could not be verified and are therefore not asserted in the account:
+this plan and `current-state.md` disagree on the acceptance run claim counts, 18,
+24 and 24 against 18, 24 and 16, and neither is recoverable from a committed
+artifact. The account says three consecutive runs passed with zero issues and
+gives the count only for a run made on 2026-08-26 to check that section, which
+verified 11 of 11.
+
+**Acceptance.** 994 unit tests pass. A real solo run through the local path
+completed in 88 seconds with no remote call, and a second with `--interpret`
+completed in 167 seconds. The regression harness passes its software snapshot
+and its synthetic controls, including the pins `valid_claim: pass` and
+`wrong_speaker_claim: fail`. `findings.md` carries no forbidden identifier under
+the snapshot contract's own token and pattern checks.
+
+**What remains, and it is Adam's call.** The account exists in this repository
+and is not yet in the public one. Publishing it means rebuilding the snapshot,
+which runs into the two known release tool defects recorded in
+`current-state.md`: `build_snapshot --force` would destroy the public
+repository's `.git`, and `verify_snapshot` refuses every release after the
+first. Neither is fixed. Those should be dealt with properly rather than
+overridden, so publication is deliberately left as a separate decision.
+
+**One privacy question for Adam before any publication.** Section 5 quotes four
+claims from a real run on his own solo recording, including a model's
+characterisation of his delivery as "a very soft, breathy whisper with extremely
+low energy". They are the concrete evidence for the sharpest finding in the
+account and the section is much weaker without them, but they are derived
+personal content about him and publishing them is his decision, not a side
+effect of this item.
+
+#### The original brief
 
 A written record of what was built, what was measured, what was found, and what
 could not be established at all. Not a paper and not a submission.
