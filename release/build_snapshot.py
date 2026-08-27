@@ -81,6 +81,16 @@ def selected_files(contract):
             dropped.append(name)
         else:
             kept.append(name)
+    missing = [name for name in kept if not (REPOSITORY_ROOT / name).exists()]
+    if missing:
+        raise SnapshotError(
+            "these files are in the git index but not on disk, so the build "
+            "cannot know whether they were meant to be published or deleted: "
+            + ", ".join(missing)
+            + ". Stage the deletion and build again. Before this check the "
+            "build died on a FileNotFoundError halfway through writing a "
+            "snapshot, which left a half built directory behind."
+        )
     return kept, dropped, sorted(set(untracked) - set(dropped))
 
 
@@ -136,19 +146,33 @@ def _apply(text, contract, relative_path):
 
 
 def _check_overlays(contract):
+    """Refuse the build when a private source has moved under its overlay.
+
+    An overlay is a document written for the public repository in place of one
+    or more private ones. It is not generated from them, so nothing but this
+    check keeps the two in step. The failure it exists to prevent has already
+    happened once: on 2026-08-27 the published status document still said the
+    honest account was unpublished, in a repository that contained it.
+
+    Each overlay declares every private file it was written against, with that
+    file's hash. Changing any of them fails the next build until somebody
+    revisits the overlay, which is the intended cost.
+    """
     for overlay in contract["overlays"]:
-        source = REPOSITORY_ROOT / overlay["path"]
-        recorded = overlay["source_sha256"]
-        actual = hashlib.sha256(source.read_bytes()).hexdigest()
-        if recorded != actual:
-            raise SnapshotError(
-                f"{overlay['path']} has changed since its overlay was written. "
-                f"The overlay at {overlay['overlay']} was authored against "
-                f"{recorded} and the file is now {actual}. Revisit the overlay, "
-                "then record the new hash in the contract. An overlay that "
-                "silently falls behind its source is how a public document "
-                "starts lying about a private one."
-            )
+        for source in overlay["sources"]:
+            path = REPOSITORY_ROOT / source["path"]
+            recorded = source["sha256"]
+            actual = hashlib.sha256(path.read_bytes()).hexdigest()
+            if recorded != actual:
+                raise SnapshotError(
+                    f"{source['path']} has changed since the overlay at "
+                    f"{overlay['overlay']} was written. The overlay was "
+                    f"authored against {recorded} and the file is now {actual}. "
+                    "Revisit the overlay, then record the new hash in the "
+                    "contract. An overlay that silently falls behind its "
+                    "sources is how a public document starts lying about a "
+                    "private one."
+                )
 
 
 def build(destination, force=False):
@@ -193,7 +217,9 @@ def build(destination, force=False):
             binaries += 1
 
     for overlay in contract["overlays"]:
-        shutil.copy2(REPOSITORY_ROOT / overlay["overlay"], destination / overlay["path"])
+        target = destination / overlay["publish_as"]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(REPOSITORY_ROOT / overlay["overlay"], target)
 
     _write_snapshot_readme(destination, contract, kept, dropped)
     _write_provenance(destination, contract, kept, dropped, substitution_counts,
@@ -218,8 +244,15 @@ This is the public form of a private research repository. It carries the code,
 the contracts, the evidence and the record of what was decided. It does not
 carry the recordings that project was built on, or anything derived from them.
 
-Start with `project-purpose.md` for what this project claims and refuses,
-`README.md` for how to run it, and `AGENTS.md` for the working rules.
+Start with `findings.md` for what was measured and what could not be
+established, `PROJECT-STATUS.md` for where the work stands and what was
+deliberately not done, `project-purpose.md` for what this project claims and
+refuses, and `README.md` for how to run it.
+
+Some of the older documents here point at `current-state.md` and
+`improvement-plan.md`, the private repository's internal status page and
+roadmap. Neither is published. `PROJECT-STATUS.md` carries what they said that
+matters to a reader.
 
 ## Why a separate repository rather than a cleaned one
 

@@ -4,8 +4,15 @@ This is the public form of a private research repository. It carries the code,
 the contracts, the evidence and the record of what was decided. It does not
 carry the recordings that project was built on, or anything derived from them.
 
-Start with `project-purpose.md` for what this project claims and refuses,
-`README.md` for how to run it, and `AGENTS.md` for the working rules.
+Start with `findings.md` for what was measured and what could not be
+established, `PROJECT-STATUS.md` for where the work stands and what was
+deliberately not done, `project-purpose.md` for what this project claims and
+refuses, and `README.md` for how to run it.
+
+Some of the older documents here point at `current-state.md` and
+`improvement-plan.md`, the private repository's internal status page and
+roadmap. Neither is published. `PROJECT-STATUS.md` carries what they said that
+matters to a reader.
 
 ## Why a separate repository rather than a cleaned one
 
@@ -19,7 +26,7 @@ built fresh instead, so its history has one origin and nothing behind it.
 
 ## What was removed
 
-41 of 2845 tracked files were left behind.
+44 of 2846 tracked files were left behind.
 
 | Removed | Why |
 |---|---|
@@ -30,7 +37,10 @@ built fresh instead, so its history has one origin and nothing behind it.
 | `regression/truth/real_conversation.json` | Truth labels for an excluded recording, pinned to its exact byte hash. The openly licensed fixture_conversation record replaces it. |
 | `regression/truth/real_solo.json` | The same for the solo recording. The fixture_solo record replaces it. |
 | `release/snapshot-contract-v1.0.0.json` | The contract lists, as literal strings, exactly the private material it removes. Publishing it would republish every one of them, which is the same mistake the privacy validator made when its deny list named the owner's recording inline. The rule identifiers, their reasons and how often each fired travel instead, in release/snapshot-provenance.json. |
-| `release/overlay/AGENTS.md` | The overlay is copied into place as AGENTS.md, so shipping it a second time under its build path would only duplicate it. |
+| `AGENTS.md` | The working agreement for the private repository. It names which of the owner's recordings to test on, where the research corpora sit, which credentials exist, how the owner wants commits handed to him, and the rule that the repository is never published. An earlier build substituted a rewritten public version in its place. That was dropped on 2026-08-27: a public research repository should not ship one project's internal working agreement at all, rewritten or otherwise. |
+| `current-state.md` | The private repository's status handoff, written for whoever picks the work up next. It says what is approved, who to ask, and what not to start. None of that means anything to a reader here. PROJECT-STATUS.md carries the part that does. |
+| `improvement-plan.md` | The private roadmap. Its value to an outside reader is the record of what was deferred and what was decided against, and PROJECT-STATUS.md carries that. The rest is item numbers, acceptance criteria and a workflow agreement with the owner. |
+| `release/overlay/PROJECT-STATUS.md` | The overlay is copied into place as PROJECT-STATUS.md, so shipping it a second time under its build path would only duplicate it. |
 
 A small number of strings were also replaced across the surviving files: a place
 name, some machine local paths, a cloud resource name, a run identifier and a

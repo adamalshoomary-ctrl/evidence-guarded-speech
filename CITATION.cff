@@ -26,8 +26,14 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.22106997
     description: The DOI for version v0.1.0 specifically.
-version: "0.1.0"
-date-released: "2026-08-26"
+  - type: doi
+    value: 10.5281/zenodo.22119408
+    description: >-
+      The DOI for version v0.1.1 specifically, the release that added
+      findings.md, the honest account of what was built, what was measured,
+      what was retracted, and what could not be established.
+version: "0.1.2"
+date-released: "2026-08-27"
 keywords:
   - speech measurement
   - pronunciation assessment

@@ -52,7 +52,7 @@ speakers.
 **The strongest material here is the self correction.** Three times this
 project checked its own work and lost something it wanted to keep. The largest
 positive finding it ever produced was retracted after its own method was turned
-on itself. Its published figures have been wrong four separate times. Its most
+on itself. Its published figures have been wrong five separate times. Its most
 attractive novelty claim did not survive contact with the literature. Section 2
 is that record, and it leads because it is the part most projects omit.
 
@@ -145,16 +145,21 @@ recorded as holding again.
 
 ### 2.2 The evidence record was corrected after an open search disproved it
 
-Published figures in this repository have been wrong **four separate times**:
+Published figures in this repository have been wrong **five separate times**:
 the aligner phone counts recorded at one checkpoint, word counts taken from a
-publisher's own pages, the size of the Australian tagged Wiktionary pool, and
-the rhotic finding above.
+publisher's own pages, the size of the Australian tagged Wiktionary pool, the
+rhotic finding above, and the claim that a default run makes no remote call.
 
-The pattern in three of the four is the same: a number was taken from a source
+The fifth is the youngest and it belongs in this list rather than in a footnote.
+It was found while this document was being written, it is set out in section 9,
+and an earlier version of this document recorded it there while still counting
+four here. That is the same failure in miniature: a corrected fact sitting
+beside an uncorrected summary of it. The count was fixed on 2026-08-27.
+
+The pattern in four of the five is the same: a number was taken from a source
 that asserted it, rather than computed from the thing itself. The standing rule
 that came out of it is that published figures are recomputed rather than
-carried forward, and that rule earned its keep again while this document was
-being written, in section 9.
+carried forward.
 
 One case is worth stating separately because it moved from "undocumented" to
 "disproved". A candidate lane in the pronunciation system search was a
@@ -415,6 +420,31 @@ stable across the two references, so it is compared like with like.
 In the harshest sensitivity family, 430 tests, exactly one survives Bonferroni,
 and it is the same consonant in the same group at a different threshold, minus
 two rather than minus one.
+
+**That sentence is true and it was not the whole picture, which this account
+corrected on 2026-08-27.** Under Benjamini Hochberg, 16 of the 430 survive, and
+8 of those 16 sit on one consonant: the affricate dʒ, under the British
+reference, negative in both non American groups. Australian minus American runs
+between −0.098 and −0.121 across the five thresholds; British minus American
+runs between −0.107 and −0.132. Every one of the ten intervals excludes zero,
+and both effects are larger than the minimum difference this design could
+reliably detect for that consonant, which is 0.068 and 0.082. They are the
+largest differentials anywhere in the probe.
+
+The report does not promote them to findings and gives two reasons. Nobody
+declared them before the run. And dʒ is one of the 17 consonants whose
+opportunity count moves between the two references, gaining about nine percent
+under the British one, so the comparison that produces them is not like with
+like and the changed denominator is a live explanation for the whole effect.
+They are published in full so that a later pre declared analysis can test them
+properly. That reasoning stands, and this account is not overturning it.
+
+What was wrong was the reporting. This document gave the primary families under
+both corrections and the sensitivity family under the stricter one alone, which
+left a reader with the impression that the harsh analysis found almost nothing.
+The sensitivity family exists so that declaring a primary family cannot be
+mistaken for choosing the lenient answer. Reporting it selectively defeats the
+purpose of publishing it.
 
 **What that result is not** is evidence about British English. The groups read
 effectively disjoint prompt sets, 34 shared prompts out of hundreds, so variety
@@ -900,12 +930,24 @@ different conclusion on the evidence.
 - **The superseded reports are still there,** with their hashes, so the
   correction in section 2.1 can be audited rather than taken on trust. They no
   longer validate, deliberately.
-- **994 unit tests**, all passing, run on 2026-08-26 while writing this
-  document. In the public snapshot 86 of them skip, because they need the
-  private research corpora or the working repository's git history. They skip
-  **with the reason stated** rather than erroring or quietly passing, which is
-  the same discipline the pipeline applies when it declares a measurement
-  unavailable.
+- **1,000 unit tests**, all passing, run on 2026-08-27. In the public
+  repository 92 of them skip, because they need the private research corpora,
+  the working repository's git history, or the snapshot contract, which is not
+  published. They skip **with the reason stated** rather than erroring or
+  quietly passing, which is the same discipline the pipeline applies when it
+  declares a measurement unavailable.
+
+  **Two of them did not skip, and failed here from the first release until
+  2026-08-27.** The tests that need the working repository's history were gated
+  on whether a git history existed at all. A freshly built snapshot has no
+  commits, so they skipped during every verification and the release looked
+  clean. This repository accumulates commits of its own, so in the copy anybody
+  actually cloned the gate opened, the tests looked for commits that exist only
+  in the private repository, and two failed. The gate now asks whether it is
+  running inside a published snapshot rather than counting commits. The way it
+  was found is the point: the suite was run inside the synced public repository
+  instead of inside the scratch build, which is the only place the difference is
+  visible.
 - **The regression harness keeps three kinds of evidence separate**: unit tests
   for local rules, a replaceable software snapshot that detects changed
   behaviour but is not truth, and independent truth files carrying their source,
@@ -913,17 +955,21 @@ different conclusion on the evidence.
   flag can replace only the software snapshot; it cannot create or change a
   truth label.
 - **What is withheld, and why.** The public repository is a rebuilt sanitized
-  snapshot, never edited by hand: as computed on 2026-08-26, **2,804 files are
-  published and 41 are withheld** under a declared contract that names every
-  exclusion, substitution and overlay with its reason. The withheld material is personal recordings, transcripts and
-  derived measurements of the author and of one other person who consented to
-  being recorded and was never asked about publication. The regression fixtures
+  snapshot, never edited by hand: as computed on 2026-08-27, **2,802 files are
+  published and 44 are withheld** under a declared contract that names every
+  exclusion, substitution and overlay with its reason. Most of the withheld
+  material is personal recordings, transcripts and derived measurements of the
+  author and of one other person who consented to being recorded and was never
+  asked about publication. Three of the 44 are not private at all: the working
+  repository's status page, its roadmap and its working agreement with its
+  owner, which say nothing a reader here needs and which `PROJECT-STATUS.md`
+  replaces. The regression fixtures
   are openly licensed substitutes assembled from development split speakers
   only, so publishing one cannot expose a sealed split.
 - **Frozen records are copied unmodified**, and which files are frozen is
   computed rather than listed, because a hand written exemption list goes stale
   the first time a new record is frozen. Of the files the contract selects for
-  publication, **68 have their hash pinned by another**, computed on 2026-08-26
+  publication, **68 have their hash pinned by another**, computed on 2026-08-27
   with the builder's own function. A substitution that would have
   fired inside one is reported rather than applied, because a published
   repository whose own integrity checks fail would be worse than one carrying an
@@ -944,22 +990,38 @@ method that produced section 2. They are recorded here rather than quietly
 repaired.
 
 **A documentation claim that a default run makes no remote call was false, and
-is now corrected.** `current-state.md` stated that a default solo run "makes no
-remote call at all and finishes in about 70 seconds". The default transcriber is
-AssemblyAI, so a run with no flags uploads audio to a paid provider. The claim
-holds only with `--transcriber local`, a scope the engineering plan states
-correctly and the summary had dropped. A real solo run on this machine with
-`--transcriber local` and no interpretation layer completed in **88 seconds**
-and made no remote call. The line was corrected on 2026-08-26. It is recorded
-here because a project whose central discipline is not carrying figures forward
-should say when its own summary did exactly that.
+is now corrected.** The private repository's status summary stated that a
+default solo run "makes no remote call at all and finishes in about 70 seconds".
+The default transcriber is AssemblyAI, so a run with no flags uploads audio to a
+paid provider. The claim holds only with `--transcriber local`, a scope the
+roadmap stated correctly and the summary had dropped. A real solo run on that
+machine with `--transcriber local` and no interpretation layer completed in 88
+seconds and made no remote call. The line was corrected on 2026-08-26. It is
+recorded here because a project whose central discipline is not carrying figures
+forward should say when its own summary did exactly that.
 
-The runtime figures are themselves scattered. `docs/offline-transcription.md`
-still records "solo 261 seconds against 212 with AssemblyAI", measured before
-the interpretation layer became opt in and therefore describing a run that
-included stages a default run no longer performs. `improvement-plan.md` says
-about 70 seconds and the measured value today was 88. Three numbers describe
-three different things and none of them says which.
+**The runtime figures were scattered across three documents, and none of them
+said what it measured.** One recorded "solo 261 seconds against 212 with
+AssemblyAI", measured before the interpretation layer became opt in, so it
+describes a run that included stages a default run no longer performs. Another
+said about 70 seconds. The measured value on 2026-08-26 was 88. Three numbers,
+three different things, no conditions attached to any of them.
+
+They were measured again on 2026-08-27 under stated conditions, on the same
+machine, on a 141 second solo recording, with no interpretation layer and
+nothing else running:
+
+| Path | Wall clock |
+|---|---|
+| solo, `--transcriber local`, no remote call | 68 seconds |
+| solo, `--transcriber assemblyai` | 58 seconds |
+
+The local path costs about ten seconds more than the paid one on this recording,
+which is the useful comparison and is much narrower than the older figures
+suggest. Treat any of these numbers as a property of one machine on one
+recording. The same local run measured 88 seconds a day earlier under the same
+flags, which is the honest reason to state conditions rather than to quote a
+runtime as though it were a measurement of the software.
 
 **A solo run reports a stage as pending that will never run.** The enrichment
 status block initialises the speaker label referee as `pending`. Solo mode never
@@ -1032,7 +1094,7 @@ being honest about what is missing.
 *Prepared 2026-08-26. Every figure in this document except those in section 7.2,
 which come from two external papers and are marked as such, was taken from the
 stored evidence records rather than carried forward from earlier prose, because
-published figures in this repository have been wrong four times.*
+published figures in this repository have been wrong five times.*
 
 *The draft was then checked against those same records a second time, which was
 worth doing: it caught this document quoting the t differential at the

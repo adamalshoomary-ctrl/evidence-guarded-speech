@@ -1,5 +1,5 @@
 .env
-.research_data/
+.research_data
 __pycache__/
 .DS_Store
 

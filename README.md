@@ -5,10 +5,9 @@ built, what was measured, what was found, what was retracted, and what could not
 be established at all. It is the document that says what this repository
 actually demonstrates.
 
-For project status and whether any work is approved, read `current-state.md`.
-For what this project is and refuses to claim read `project-purpose.md`; for
-implementation order and binding boundaries read `improvement-plan.md`. This
-README is the technical operating reference.
+For where the work stands, what is deferred and what was decided against,
+read `PROJECT-STATUS.md`. For what this project is and refuses to claim read
+`project-purpose.md`. This README is the technical operating reference.
 
 This is an open research project with no monetisation plan. Any prose below that
 implies a product, an app or a user is stale text from before the 2026-08-22

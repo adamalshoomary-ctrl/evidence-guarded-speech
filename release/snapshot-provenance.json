@@ -2,17 +2,20 @@
   "schema_version": "1.0.0",
   "record_id": "public_snapshot_provenance_v1",
   "contract": "release/snapshot-contract-v1.0.0.json",
-  "contract_sha256": "dfec5b4c08eceb4852ddf2f9b24ceff792f25254d80774096ad8a482ecf35cd1",
-  "source_commit": "91dad46dd729b3d4abe26cd812541d1459830ee6",
+  "contract_sha256": "7a7e7d0236d5d7faae72e9dbfe9c7d7d37bc6b98e972c2dab2a21540c99190ef",
+  "source_commit": "0419f0ffa1b760a6f1fcb391052849e3c8431334",
   "source_working_tree_clean": true,
-  "files_published": 2804,
-  "files_withheld": 41,
+  "files_published": 2802,
+  "files_withheld": 44,
   "withheld": [
+    "AGENTS.md",
     "audio/owner-conversation-recording.m4a",
     "audio/accent-contrast-script.md",
     "audio/accent/owner-accent-contrast-recording.m4a",
     "regression/fixtures/solo.wav",
+    "current-state.md",
     "history.json",
+    "improvement-plan.md",
     "output/a-whole-run.zip",
     "output/a-whole-run/acoustics.json",
     "output/a-whole-run/alignment.json",
@@ -47,7 +50,7 @@
     "progress.md",
     "regression/truth/real_conversation.json",
     "regression/truth/real_solo.json",
-    "release/overlay/AGENTS.md",
+    "release/overlay/PROJECT-STATUS.md",
     "release/snapshot-contract-v1.0.0.json"
   ],
   "why_the_withheld_names_are_rewritten": "The withheld list names the files that were held back, and some of those filenames are themselves private: one names the place a private conversation was recorded. The same substitution table that cleans the published files is applied to the list, so the shape of what was withheld is visible without the names being republished.",
@@ -55,25 +58,19 @@
     {
       "id": "conversation_recording_name",
       "reason": "The filename names the suburb and shopping centre where a private conversation was recorded. The recording is excluded; its location should not travel in prose.",
-      "occurrences": 2,
+      "occurrences": 1,
       "restricted_to": null
     },
     {
       "id": "conversation_recording_name_bare",
       "reason": "The same place name where the prose does not carry the file extension.",
-      "occurrences": 2,
+      "occurrences": 1,
       "restricted_to": null
     },
     {
       "id": "solo_recording_path",
       "reason": "Every runnable command in the documentation should work in the published repository, and the fixture is the recording that ships.",
       "occurrences": 3,
-      "restricted_to": null
-    },
-    {
-      "id": "solo_recording_name",
-      "reason": "A personal filename in prose about an excluded recording.",
-      "occurrences": 1,
       "restricted_to": null
     },
     {
@@ -91,7 +88,7 @@
     {
       "id": "home_directory",
       "reason": "A machine local path, appearing in two remediation notes that quote the string they instruct someone to strip.",
-      "occurrences": 2,
+      "occurrences": 1,
       "restricted_to": null
     },
     {
@@ -145,9 +142,18 @@
       "reason": "The committed run directory name pairs an institution acronym with a date and the owner's recordings. It survives only in the withheld file list, which names what was held back.",
       "occurrences": 1,
       "restricted_to": null
+    },
+    {
+      "id": "readme_internal_document_pointers",
+      "reason": "The two documents named here are not published. This rule points a reader at the public status page instead of at filenames that do not exist in this repository.",
+      "occurrences": 1,
+      "restricted_to": [
+        "README.md"
+      ]
     }
   ],
   "substitution_rules_that_did_not_fire": [
+    "solo_recording_name",
     "run_archive_name"
   ],
   "why_the_replaced_strings_are_not_listed_here": "The rule table names, as literal strings, the private material it removes. Publishing it would republish all of it. The identifiers and reasons carry the transparency; the strings stay behind.",

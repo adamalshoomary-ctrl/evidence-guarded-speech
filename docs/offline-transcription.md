@@ -148,5 +148,27 @@ run in parallel and are independent by design, so the wall clock cost is small,
 but the work is duplicated. Sharing one inference between the two stages would
 couple them and is not done.
 
-Observed wall clock on this machine: solo 261 seconds against 212 with
-AssemblyAI, conversation 387 against 349.
+**Measured again on 2026-08-27, because the figures that used to sit here were
+not comparable with anything.** They were taken before the interpretation layer
+became opt in, so they timed runs that called a language model twice more than a
+default run now does, and they said so nowhere.
+
+Conditions: one machine, a 141 second solo recording and a 108 second two
+speaker conversation, no `--interpret`, nothing else running, each run under
+`caffeinate` in an isolated output directory.
+
+| Run | Local | AssemblyAI |
+|---|---|---|
+| solo | 68 s | 58 s |
+| conversation | 173 s | 160 s |
+
+So the local path costs roughly ten seconds more than the paid one in either
+mode on these recordings. The duplicated inference described above is real and
+it is cheap, because the two models run in parallel.
+
+Two warnings about quoting any of this. These are wall clock times for one
+machine on two short recordings, and the same solo local run measured 88 seconds
+a day earlier under identical flags. And a conversation run is not the
+credential free path in either column: diarization needs a gated model and the
+speaker label referee calls a provider, both of which happened in the two
+conversation runs above.

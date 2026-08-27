@@ -26,7 +26,26 @@ HAVE_RESEARCH_DATA = (
 )
 
 
+# The published snapshot is a separate repository with its own history, and it
+# grows commits of its own. Counting commits therefore cannot tell the two
+# apart, which is how two tests came to fail in the public repository from its
+# first release: they looked for commits that exist only in the working
+# repository, found a git history that was not that one, and ran anyway. Found
+# on 2026-08-27 by running the suite inside the synced public repository rather
+# than inside a freshly built snapshot, which has no commits at all and skipped
+# them honestly.
+#
+# The builder writes its provenance record into every snapshot and never into
+# the repository it builds from, so that file is the discriminator.
+IS_PUBLISHED_SNAPSHOT = (
+    REPOSITORY_ROOT / "release" / "snapshot-provenance.json"
+).is_file()
+
+
 def _have_history():
+    """True only in the working repository, and only once it has a history."""
+    if IS_PUBLISHED_SNAPSHOT:
+        return False
     result = subprocess.run(
         ["git", "-C", str(REPOSITORY_ROOT), "rev-list", "--count", "HEAD"],
         capture_output=True, text=True,
