@@ -1037,6 +1037,14 @@ as about to happen. This is the same defect that was identified and fixed for
 the other two model stages, which correctly report `not_requested`, left behind
 for the referee in the one mode that never calls it.
 
+**Closed in `v0.2.1`, on 2026-08-28.** A solo run starts the referee as
+`not_requested`, the same word the other two stages already used, and a
+conversation run still reports it truthfully. The finding above is left standing
+as what was found. What made it worth fixing rather than tolerating is that the
+provenance block in the same file already recorded the referee as not invoked in
+solo mode, so one `master.json` carried two records of one fact that contradicted
+each other.
+
 **Claim type and evidence class are not tied together**, so a language model's
 subjective impression can be recorded in the machine readable ledger as a
 measured observation. Section 5 sets this out in full, with the claim from a
@@ -1051,13 +1059,13 @@ verifier refuses anything else as `claim_type_evidence_mismatch`. The finding
 above is left standing as what was found. Before the fix, a run on the published
 code typed five listener backed claims as measured observations in one report
 and verified all of them without an issue. After it, four runs produced no
-measured observation resting on anything this pipeline did not measure. **The
-solo referee defect is still open.**
+measured observation resting on anything this pipeline did not measure.
 
-The referee defect is a code defect and is **not fixed**. Fixing it is separate
-work, because this account was written under a documentation only scope and a
-document that quietly changed the system it describes would be the wrong kind of
-honest.
+Neither code defect was fixed when this account was written, because it was
+written under a documentation only scope and a document that quietly changed the
+system it describes would be the wrong kind of honest. Both were fixed
+afterwards, in the two releases named above, and the findings are left as they
+were found.
 
 ---
 

@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-08-28, for release `v0.2.0`.
+Last updated 2026-08-28, for release `v0.2.1`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -47,7 +47,7 @@ What does not exist, stated because the absences are the point:
 
 Three were found on 2026-08-26 while writing the account, by checking the code
 rather than rereading the prose. Two more were found on 2026-08-27 the same way.
-**One of them is fixed in this release and the rest are not.**
+**Two of them are now fixed and the rest are not.**
 
 Fixed in `v0.2.0`, on 2026-08-28: **a claim's type is now tied to the class of
 evidence beneath it.** A claim typed a measured observation must rest on a
@@ -61,12 +61,16 @@ sections 5 and 9 keep the original finding and record the closure beside it.
 sound. Nothing here does, and section 5 of the account explains why a verifier
 of this kind cannot.**
 
+Fixed in `v0.2.1`, on 2026-08-28: **a solo run no longer reports a stage as
+pending that will never run.** The speaker label referee was initialised as
+pending for every run, and solo mode never schedules it, so a finished solo
+measurement record described it as about to happen. It now starts not requested,
+the same word the other two model stages already used. The provenance block in
+the same file already recorded the referee as not invoked in solo mode, so this
+ends a measurement record carrying two accounts of one fact that disagreed.
+
 Still open:
 
-- **A solo run reports a stage as pending that will never run.** The speaker
-  label referee is initialised as pending for every run and solo mode never
-  schedules it, so a finished solo measurement record describes it as about to
-  happen. Confirmed again on a real run on 2026-08-27.
 - **The snapshot builder deletes its destination under `--force`,** including
   that directory's git history. Harmless when this repository did not exist, and
   not harmless now.

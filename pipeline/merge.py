@@ -691,7 +691,7 @@ measurement_metadata = build_measurement_metadata(
     contamination=diar.get("contamination"),
 )
 
-enrichment_status = initial_enrichment_status()
+enrichment_status = initial_enrichment_status(solo=solo)
 previous_provenance = None
 if args.rebuild:
     previous_master_path = context.output_path("master.json", required=True)

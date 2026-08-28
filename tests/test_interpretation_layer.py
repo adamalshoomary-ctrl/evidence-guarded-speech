@@ -100,6 +100,31 @@ class EnrichmentStatusTests(unittest.TestCase):
         self.assertEqual(status["evaluator"]["status"], "not_requested")
         self.assertEqual(status["referee"]["status"], "pending")
 
+    def test_a_solo_run_never_reports_the_referee_as_pending(self):
+        """Solo mode never schedules the referee, so it is not waiting.
+
+        Nothing overrode the initial status, so a finished solo record
+        described the stage as about to happen forever. The provenance block
+        in the same file already recorded the referee as not invoked in solo
+        mode, so a reader had two records of one fact that disagreed.
+        """
+        from llm_contract import initial_enrichment_status
+
+        status = initial_enrichment_status(solo=True)
+
+        self.assertEqual(status["referee"]["status"], "not_requested")
+        self.assertEqual(status["listener"]["status"], "not_requested")
+        self.assertEqual(status["evaluator"]["status"], "not_requested")
+
+    def test_a_conversation_run_still_expects_the_referee(self):
+        """The referee does run there, so pending is the truth."""
+        from llm_contract import initial_enrichment_status
+
+        self.assertEqual(
+            initial_enrichment_status(solo=False)["referee"]["status"],
+            "pending",
+        )
+
 
 class VerificationHonestyTests(unittest.TestCase):
     def test_the_report_states_what_it_does_not_demonstrate(self):

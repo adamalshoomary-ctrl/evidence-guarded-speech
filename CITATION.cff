@@ -37,7 +37,12 @@ identifiers:
     description: >-
       The DOI for version v0.1.2 specifically, the release that replaced the
       private working documents with a status page written for readers.
-version: "0.2.0"
+  - type: doi
+    value: 10.5281/zenodo.22135972
+    description: >-
+      The DOI for version v0.2.0 specifically, the release that stopped a
+      listener's impression of a speaker being recorded as a measurement.
+version: "0.2.1"
 date-released: "2026-08-28"
 keywords:
   - speech measurement

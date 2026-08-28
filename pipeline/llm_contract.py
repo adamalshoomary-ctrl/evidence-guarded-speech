@@ -58,7 +58,7 @@ def not_requested_status(model_id=GEMINI_MODEL_ID):
     return status_record("not_requested", 0, model_id)
 
 
-def initial_enrichment_status():
+def initial_enrichment_status(solo=False):
     """Return fresh status records so earlier run state cannot leak in.
 
     The interpretation layer is opt in, so the listener and the evaluator
@@ -66,9 +66,16 @@ def initial_enrichment_status():
     them, and a record left saying "pending" would describe a stage that is
     about to happen when in fact none was ever asked for. Each stage sets
     itself pending when it actually starts.
+
+    A solo run never schedules the referee at all, so it starts not requested
+    for the same reason. Until 2026-08-28 it started pending in every mode,
+    and because nothing later overrode it, a finished solo record described
+    the stage as about to happen forever. The provenance block in the same
+    file already recorded the referee as not invoked in solo mode, so the two
+    records disagreed with each other.
     """
     return {
-        "referee": pending_status(),
+        "referee": not_requested_status() if solo else pending_status(),
         "listener": not_requested_status(),
         "evaluator": not_requested_status(),
     }
