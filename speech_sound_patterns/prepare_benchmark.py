@@ -8,6 +8,7 @@ import hashlib
 import io
 import json
 import re
+import shutil
 import subprocess
 import tarfile
 import wave
@@ -33,7 +34,9 @@ AUDIT_ROOT = PRIVATE_ROOT / "audit"
 SPLIT_ROOT = PRIVATE_ROOT / "splits"
 BENCHMARK_ROOT = PRIVATE_BENCHMARK_ROOT / "v1"
 MANIFEST_PATH = PRIVATE_BENCHMARK_ROOT / "benchmark-manifest-v1.0.0.json"
-FFMPEG_DEFAULT = Path("/opt/homebrew/bin/ffmpeg")
+# Resolved from PATH so this runs on Linux and Windows too. It was
+# hardcoded to a macOS Homebrew path, which no other machine has.
+FFMPEG_DEFAULT = Path(shutil.which("ffmpeg") or "ffmpeg")
 
 
 class BenchmarkPreparationError(ValueError):

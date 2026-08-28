@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-08-28, for release `v0.2.2`.
+Last updated 2026-08-28, for release `v0.2.3`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -47,8 +47,23 @@ What does not exist, stated because the absences are the point:
 
 Three were found on 2026-08-26 while writing the account, by checking the code
 rather than rereading the prose. Two more were found on 2026-08-27 the same way,
-and one more on 2026-08-28 by walking this repository as a stranger would.
-**Three of them are now fixed and the rest are not.**
+and two more on 2026-08-28 by walking this repository as a stranger would.
+**Four of them are now fixed and the rest are not.**
+
+Fixed in `v0.2.3`, on 2026-08-28: **the documented commands now run, and the
+prerequisites are stated.** Four of the six commands printed in this
+repository's own documentation crashed in a fresh copy of it. Three causes.
+Commands that named no recording died on a raw Python traceback, because they
+read whichever file sits in `audio/` and no audio is published here; they now
+say so and name a shipped example instead. `ffmpeg` was never listed as a
+requirement, and because a missing program fails the same way an unreadable file
+does, the preflight blamed the shipped example rather than the absent program; it
+now names ffmpeg and says how to install it on each platform. The reproduction
+instructions said the two verification commands need "only numpy", which was
+wrong: they need `jsonschema` too, established by blocking each package in turn.
+**That makes six times a published figure here has been wrong**, and the count is
+corrected in `findings.md` section 2.2. There is no documented way to run the
+tests either, so the README now gives one.
 
 Fixed in `v0.2.2`, on 2026-08-28, and **this one affected you rather than the
 project**: **releases `v0.1.0` through `v0.2.1` invited their own users to

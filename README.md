@@ -13,11 +13,32 @@ This is an open research project with no monetisation plan. Any prose below that
 implies a product, an app or a user is stale text from before the 2026-08-22
 direction change and should be reported as a defect.
 
-Install the exact tested environment with:
+## What you need before anything runs
+
+- **Python 3.12 or newer.**
+- **ffmpeg, and it is not a Python package.** Every run shells out to `ffmpeg`
+  and `ffprobe`, from the quality preflight, the pause detector, the diarizer,
+  the acoustics stage and the provenance stage. `pip` cannot supply them.
+  Install with `brew install ffmpeg` on macOS, `sudo apt install ffmpeg` on
+  Debian or Ubuntu, or from <https://ffmpeg.org/download.html> on Windows.
+  Check it with `ffmpeg -version`. Without it the preflight stops the run and
+  names the missing program.
+- **About 6 GB of disk**, mostly model weights fetched on the first run.
+
+Then install the exact tested environment with:
 
 ```text
 python3 -m pip install -r requirements.txt -c constraints.txt
 ```
+
+Run the test suite to confirm the installation:
+
+```text
+python3 -m unittest discover -s tests -t .
+```
+
+That is the whole suite, 1,017 tests. Some skip when optional evidence or
+credentials are absent, and the skips are reported rather than hidden.
 
 The pipeline's output is `master.json`: the measurements, the provenance of
 every input, the uncertainty beside every number, and an explicit refusal
@@ -61,7 +82,7 @@ Add `--interpret` to also run the listener, the interpretation and the claim
 verifier:
 
 ```text
-python3 pipeline/run_all.py --mode conversation --speakers 2 --interpret
+python3 pipeline/run_all.py --mode solo --audio "regression/fixtures/solo.wav" --transcriber local --interpret
 ```
 
 Every run begins with a deterministic audio quality preflight. The default
@@ -338,9 +359,9 @@ contract with:
 python3 -m assessment.validate_pronunciation
 ```
 
-## Item 22, speech sound patterns
+## Speech sound patterns
 
-Item 22 is release-locked developer engineering. It has no pipeline stage, no
+This is release locked developer engineering. It has no pipeline stage, no
 artifact in `master.json`, no detector, no score and no released output, and
 nothing it produced may reach the interpretation, progress, screening or
 diagnosis. Its
@@ -594,7 +615,7 @@ evidence, are in `speech_sound_patterns/feasibility-runbook.md`,
 `prompt-pack-runbook.md`, `candidate-extractor-runbook.md` and
 `final-acceptance-runbook.md`.
 
-## Item 23, motor speech and voice evidence
+## Motor speech and voice evidence
 
 Checkpoint 23A's evidence review, engineering plan and repository acceptance are
 complete in the working tree. It adds no
@@ -771,11 +792,16 @@ rewritten automatically. The context must explicitly label the attempt as
 baseline collection, a change check, practice, retention or transfer. The
 backend never guesses this from recording order.
 
-Run the current conversation recording with:
+Run a conversation recording with:
 
 ```text
-python3 pipeline/run_all.py --mode conversation --speakers 2
+python3 pipeline/run_all.py --mode conversation --speakers 2 --audio "regression/fixtures/conversation.wav"
 ```
+
+Leave `--audio` out and the runner reads whichever single recording sits in
+`audio/`. That is convenient on a machine that has one and an error on a fresh
+copy of this repository, which publishes no audio. Conversation mode also needs
+a Hugging Face token for diarization, so it is not the credential free path.
 
 `--mode auto` remains the command line default for compatibility. Declaring
 `--speakers 1` with auto selects the solo path; otherwise auto retains the

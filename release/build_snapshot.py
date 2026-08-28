@@ -305,7 +305,10 @@ python3 -m speech_sound_patterns.variety_probe_score --output /tmp/report.json
 python3 -m speech_sound_patterns.validate_variety_probe /tmp/report.json
 ```
 
-About two minutes, needing only `numpy`. The result is byte identical to the
+About two minutes, needing `numpy` and `jsonschema` and nothing else. Checked
+by blocking each one in turn on 2026-08-28: `variety_probe_uncertainty.py`
+imports numpy and `corpus_manifest.py` imports jsonschema, and the command
+stops without either. The result is byte identical to the
 committed report. Read the report's uncertainty block before quoting any number
 from it: nothing at group level is distinguishable from zero, and the single
 result that survives multiple comparison correction carries a lexical confound

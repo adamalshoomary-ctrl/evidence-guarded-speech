@@ -5,8 +5,15 @@ AssemblyAI, so it runs with no paid credentials.
 
 ```
 python3 pipeline/run_all.py --mode solo --audio AUDIO_PATH --transcriber local
-python3 pipeline/run_all.py --mode conversation --speakers 2 --transcriber local
+python3 pipeline/run_all.py --mode conversation --speakers 2 --audio AUDIO_PATH --transcriber local
 ```
+
+Replace `AUDIO_PATH` with a recording of your own. `regression/fixtures/solo.wav`
+is a short shipped example if you have none. Leave `--audio` out and the runner
+reads whichever single recording sits in `audio/`, which is an error on a fresh
+copy of this repository, because no audio is published here. Note that the solo
+line needs no credentials at all, while the conversation line still needs a
+Hugging Face token for diarization.
 
 `--transcriber assemblyai` remains the default, so nothing about an existing run
 changes unless the flag is passed.

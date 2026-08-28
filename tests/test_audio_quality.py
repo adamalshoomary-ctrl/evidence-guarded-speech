@@ -8,7 +8,11 @@ from pathlib import Path
 
 import numpy as np
 
-from pipeline.audio_quality import analyze_audio
+from pipeline.audio_quality import (
+    AudioQualityError,
+    analyze_audio,
+    require_program,
+)
 
 
 SAMPLE_RATE = 16000
@@ -210,6 +214,32 @@ class AudioQualityTests(unittest.TestCase):
             self.assertEqual(manifest["status"], "failed")
             self.assertIn("audio_quality.json", manifest["completed_outputs"])
             self.assertNotIn("transcript.json", manifest["completed_outputs"])
+
+
+class MissingProgramTests(unittest.TestCase):
+    """ffmpeg is a separate install and pip cannot supply it.
+
+    A missing program raises the same OSError as an unreadable file, so the
+    preflight used to report "ffprobe could not read the audio file" about a
+    recording that was fine, and a newcomer concluded the shipped example was
+    corrupt. Found 2026-08-28.
+    """
+
+    def test_a_present_program_is_accepted(self):
+        self.assertIsNone(require_program("python3"))
+
+    def test_a_missing_program_is_named(self):
+        with self.assertRaises(AudioQualityError) as caught:
+            require_program("ffprobe-that-is-not-installed")
+        self.assertIn("ffprobe-that-is-not-installed is not installed",
+                      str(caught.exception))
+
+    def test_a_missing_program_does_not_blame_the_recording(self):
+        with self.assertRaises(AudioQualityError) as caught:
+            require_program("ffprobe-that-is-not-installed")
+        message = str(caught.exception)
+        self.assertIn("ffmpeg", message)
+        self.assertIn("recording itself is probably fine", message)
 
 
 if __name__ == "__main__":

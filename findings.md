@@ -52,7 +52,7 @@ speakers.
 **The strongest material here is the self correction.** Three times this
 project checked its own work and lost something it wanted to keep. The largest
 positive finding it ever produced was retracted after its own method was turned
-on itself. Its published figures have been wrong five separate times. Its most
+on itself. Its published figures have been wrong six separate times. Its most
 attractive novelty claim did not survive contact with the literature. Section 2
 is that record, and it leads because it is the part most projects omit.
 
@@ -145,18 +145,24 @@ recorded as holding again.
 
 ### 2.2 The evidence record was corrected after an open search disproved it
 
-Published figures in this repository have been wrong **five separate times**:
+Published figures in this repository have been wrong **six separate times**:
 the aligner phone counts recorded at one checkpoint, word counts taken from a
 publisher's own pages, the size of the Australian tagged Wiktionary pool, the
-rhotic finding above, and the claim that a default run makes no remote call.
+rhotic finding above, the claim that a default run makes no remote call, and
+the claim that the reproduction commands need only numpy.
 
-The fifth is the youngest and it belongs in this list rather than in a footnote.
-It was found while this document was being written, it is set out in section 9,
-and an earlier version of this document recorded it there while still counting
-four here. That is the same failure in miniature: a corrected fact sitting
-beside an uncorrected summary of it. The count was fixed on 2026-08-27.
+The last two are the youngest and they belong in this list rather than in a
+footnote. The fifth was found while this document was being written, it is set
+out in section 9, and an earlier version of this document recorded it there
+while still counting four here. That is the same failure in miniature: a
+corrected fact sitting beside an uncorrected summary of it. The count was fixed
+on 2026-08-27. The sixth was found on 2026-08-28 while making the documented
+commands work, by blocking each package in turn rather than by rereading the
+sentence: jsonschema is needed too. The plan item that predicted this one
+guessed the opposite, that numpy was not needed at all, so the recompute
+corrected the correction.
 
-The pattern in four of the five is the same: a number was taken from a source
+The pattern in four of the six is the same: a number was taken from a source
 that asserted it, rather than computed from the thing itself. The standing rule
 that came out of it is that published figures are recomputed rather than
 carried forward.
@@ -928,7 +934,10 @@ different conclusion on the evidence.
 
 - **The probe is reproducible without any audio.** A 4.75 MB pseudonymised
   evidence bundle of 2,400 records from 1,200 speakers regenerates the full probe
-  report **byte for byte** in about two minutes, needing only numpy. Its manifest
+  report **byte for byte** in about two minutes, needing numpy and jsonschema.
+  An earlier version of this line said numpy alone, which was wrong; corrected
+  on 2026-08-28 by blocking each package in turn rather than by rereading. Its
+  manifest
   pins the sha256 of the report it reproduces, so the claim is checkable rather
   than asserted, and it was checked on 2026-08-26. No audio is redistributed and
   none may be. The stored evidence originally carried each contributor's verbatim
@@ -937,7 +946,7 @@ different conclusion on the evidence.
 - **The superseded reports are still there,** with their hashes, so the
   correction in section 2.1 can be audited rather than taken on trust. They no
   longer validate, deliberately.
-- **1,000 unit tests**, all passing, run on 2026-08-27. In the public
+- **1,017 unit tests**, all passing, run on 2026-08-28. In the public
   repository 92 of them skip, because they need the private research corpora,
   the working repository's git history, or the snapshot contract, which is not
   published. They skip **with the reason stated** rather than erroring or
@@ -1119,7 +1128,7 @@ being honest about what is missing.
 *Prepared 2026-08-26. Every figure in this document except those in section 7.2,
 which come from two external papers and are marked as such, was taken from the
 stored evidence records rather than carried forward from earlier prose, because
-published figures in this repository have been wrong five times.*
+published figures in this repository have been wrong six times.*
 
 *The draft was then checked against those same records a second time, which was
 worth doing: it caught this document quoting the t differential at the

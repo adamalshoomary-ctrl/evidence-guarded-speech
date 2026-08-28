@@ -1,11 +1,17 @@
 """
 The runner (v5).
-  python3 pipeline/run_all.py --speakers 2
-  python3 pipeline/run_all.py --mode solo --audio recording.m4a
-  python3 pipeline/run_all.py --mode conversation --speakers 2
+
+Every example names its recording with --audio. Leave --audio out and the
+runner reads whichever single recording sits in audio/, which is convenient on
+a machine that has one and an error on a fresh copy of this repository, because
+no audio is published here.
+
+  python3 pipeline/run_all.py --mode solo --audio regression/fixtures/solo.wav
+  python3 pipeline/run_all.py --mode solo --audio recording.m4a --transcriber local
+  python3 pipeline/run_all.py --mode conversation --speakers 2 --audio recording.m4a
   python3 pipeline/run_all.py --audio recording.m4a --output-dir results
-  python3 pipeline/run_all.py --speakers 2 --isolated-run
-  python3 pipeline/run_all.py --speakers 2 --interpret
+  python3 pipeline/run_all.py --audio recording.m4a --speakers 2 --isolated-run
+  python3 pipeline/run_all.py --audio recording.m4a --speakers 2 --interpret
 
 Every run receives an ID and manifest. Stage 1 runs in parallel, later stages
 run in order, and every active stage receives the same explicit input and

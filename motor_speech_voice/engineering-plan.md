@@ -995,10 +995,11 @@ contact, spending, participant work, data use and implementation locked.
 Acceptance ran on 2026-08-13. Item 23A changed research planning and the
 historical snapshot validator only; it added no item 23 runtime module.
 
-- `caffeinate -dimsu python3
-  pipeline/run_all.py --mode conversation --speakers 2 --audio "audio/Westfield
-  Mt Gravatt.m4a" --output-dir
-  an isolated output directory` exited 0. Run ID
+- `caffeinate -dimsu python3 pipeline/run_all.py --mode conversation
+  --speakers 2
+  --audio "regression/fixtures/conversation.wav"
+  --output-dir an isolated output directory`
+  exited 0. Run ID
   `a run identifier` completed all 14 stages in 536 seconds. The first
   evaluator attempt reached its established 240 second deadline; the retry
   completed. All 34 evidence-linked claims verified. No `--me` or session

@@ -1,11 +1,11 @@
 """
-Step 5 of the pipeline: pauses (voice activity detection).
+Pauses, by voice activity detection.
 Runs Silero VAD on the first audio file in /audio and saves:
   - every stretch of actual speech (start/end)
   - every pause between speech: where it happened and how long it lasted
 Saves to /output/vad.json
 Run from the repo root:  python3 pipeline/pauses.py
-Needs ffmpeg installed (you already have it from step 4).
+Needs ffmpeg installed. See the requirements in README.md.
 """
 
 import argparse

@@ -35,6 +35,34 @@ class RunContextTests(unittest.TestCase):
             with self.assertRaisesRegex(SystemExit, "Select one with --audio"):
                 resolve_audio(None, audio_dir)
 
+    def test_missing_audio_directory_explains_itself_instead_of_crashing(self):
+        """A fresh copy of this repository has no audio/ and publishes none.
+
+        Every documented command that omits --audio used to die on a raw
+        FileNotFoundError from iterdir, before any of this project's error
+        handling ran. Found 2026-08-28 by running the published documentation.
+        """
+        with tempfile.TemporaryDirectory() as temp_dir:
+            absent = Path(temp_dir) / "audio"
+
+            with self.assertRaisesRegex(SystemExit, "no audio/ directory"):
+                resolve_audio(None, absent)
+
+    def test_missing_audio_directory_names_a_file_the_reader_can_use(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            absent = Path(temp_dir) / "audio"
+
+            with self.assertRaisesRegex(SystemExit, "regression/fixtures/solo.wav"):
+                resolve_audio(None, absent)
+
+    def test_empty_audio_directory_names_a_file_the_reader_can_use(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            audio_dir = Path(temp_dir) / "audio"
+            audio_dir.mkdir()
+
+            with self.assertRaisesRegex(SystemExit, "regression/fixtures/solo.wav"):
+                resolve_audio(None, audio_dir)
+
     def test_manifest_rejects_a_planted_file_until_current_run_declares_it(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)

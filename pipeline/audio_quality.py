@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import math
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -85,9 +86,31 @@ def _problem_status(problem, policy, *, hard=False, warning_only=False):
     return "warn" if policy == "lenient" else "fail"
 
 
+def require_program(name):
+    """Fail with the missing program named, rather than blaming the recording.
+
+    ffmpeg and ffprobe are hard requirements of every run and they are separate
+    installs that nothing in requirements.txt can supply. When one is absent the
+    subprocess call raises the same OSError as an unreadable file, so the
+    message a newcomer used to get was "ffprobe could not read the audio file"
+    about a recording that was perfectly fine. They concluded the shipped
+    example was corrupt. Found 2026-08-28.
+    """
+    if shutil.which(name) is None:
+        raise AudioQualityError(
+            f"{name} is not installed, so this recording cannot be read. It is "
+            "part of ffmpeg, which this pipeline needs and pip cannot install. "
+            "Install it with 'brew install ffmpeg' on macOS, "
+            "'sudo apt install ffmpeg' on Debian or Ubuntu, or from "
+            "https://ffmpeg.org/download.html on Windows. The recording itself "
+            "is probably fine."
+        )
+
+
 def probe_audio(audio_path):
     """Return stable input metadata for quality and provenance."""
     audio_path = Path(audio_path).resolve()
+    require_program("ffprobe")
     try:
         result = subprocess.run(
             [
@@ -135,6 +158,7 @@ def probe_audio(audio_path):
 
 
 def _decode_audio(audio_path, channels, duration_s):
+    require_program("ffmpeg")
     decode_channels = channels if channels in (1, 2) else 1
     analysis_duration = min(duration_s, MAX_ANALYSIS_DURATION_S)
     command = [

@@ -37,12 +37,30 @@ def resolve_audio(explicit_audio, audio_dir):
             raise SystemExit(f"ERROR: unsupported audio type: {audio_path.suffix}")
         return audio_path
 
+    audio_dir = Path(audio_dir)
+    if not audio_dir.is_dir():
+        raise SystemExit(
+            f"ERROR: there is no {audio_dir.name}/ directory here, so there is "
+            "nothing to run.\n"
+            "This command reads whichever recording sits in that directory. A "
+            "fresh copy of this repository ships without one, because it "
+            "publishes no audio.\n"
+            "Either name a file directly:\n"
+            "  --audio regression/fixtures/solo.wav\n"
+            f"or create {audio_dir.name}/ and put one recording in it."
+        )
     audio_files = sorted(
-        f for f in Path(audio_dir).iterdir()
+        f for f in audio_dir.iterdir()
         if f.suffix.lower() in AUDIO_TYPES and not f.name.startswith(".")
     )
     if not audio_files:
-        raise SystemExit(f"ERROR: no audio file found in {audio_dir}")
+        raise SystemExit(
+            f"ERROR: {audio_dir.name}/ has no audio file in it, so there is "
+            "nothing to run.\n"
+            "Put one recording there, or name a file directly:\n"
+            "  --audio regression/fixtures/solo.wav\n"
+            "Readable types: " + ", ".join(sorted(AUDIO_TYPES))
+        )
     if len(audio_files) > 1:
         names = ", ".join(path.name for path in audio_files)
         raise SystemExit(

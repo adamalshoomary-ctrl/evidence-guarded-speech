@@ -2,14 +2,14 @@
   "schema_version": "1.0.0",
   "record_id": "public_snapshot_provenance_v1",
   "contract": "release/snapshot-contract-v1.0.0.json",
-  "contract_sha256": "5ec1afdf36d80e7a3152e19c197839acef6d9faf33bd7aab53de2149ee64716c",
-  "source_commit": "e87581623cd942a8c6ecb9e975df5b95c734c446",
+  "contract_sha256": "d81888a909a89746d97286c29acbb41b291ada58a9adf5deb6fddc5d279dafbe",
+  "source_commit": "1bca93507956d2c24ee28c9df14e755922a7b9d1",
   "source_working_tree_clean": true,
   "files_published": 2802,
   "files_withheld": 44,
   "withheld": [
     "AGENTS.md",
-    "audio/owner-conversation-recording.m4a",
+    "regression/fixtures/conversation.wav",
     "audio/accent-contrast-script.md",
     "audio/accent/owner-accent-contrast-recording.m4a",
     "regression/fixtures/solo.wav",
@@ -56,6 +56,12 @@
   "why_the_withheld_names_are_rewritten": "The withheld list names the files that were held back, and some of those filenames are themselves private: one names the place a private conversation was recorded. The same substitution table that cleans the published files is applied to the list, so the shape of what was withheld is visible without the names being republished.",
   "substitutions_applied": [
     {
+      "id": "conversation_recording_path",
+      "reason": "The same treatment the solo recording already gets. Every runnable command in the documentation should work in the published repository, and the conversation fixture is the recording that ships. This rule must stay ahead of the two name rules below it, which would otherwise rewrite the filename inside the path and leave the command naming a file that is not here.",
+      "occurrences": 2,
+      "restricted_to": null
+    },
+    {
       "id": "conversation_recording_name",
       "reason": "The filename names the suburb and shopping centre where a private conversation was recorded. The recording is excluded; its location should not travel in prose.",
       "occurrences": 1,
@@ -70,7 +76,7 @@
     {
       "id": "solo_recording_path",
       "reason": "Every runnable command in the documentation should work in the published repository, and the fixture is the recording that ships.",
-      "occurrences": 3,
+      "occurrences": 4,
       "restricted_to": null
     },
     {

@@ -47,7 +47,12 @@ identifiers:
     description: >-
       The DOI for version v0.2.1 specifically, the release that stopped a solo
       run reporting a stage that will never run as about to happen.
-version: "0.2.2"
+  - type: doi
+    value: 10.5281/zenodo.22139060
+    description: >-
+      The DOI for version v0.2.2 specifically, the release that stopped the
+      repository offering its own users their voice recordings to commit.
+version: "0.2.3"
 date-released: "2026-08-28"
 keywords:
   - speech measurement
