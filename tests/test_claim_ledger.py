@@ -541,6 +541,155 @@ class ClaimLedgerTests(unittest.TestCase):
 
         self.assertEqual(result["status"], "pass")
 
+    def test_a_listener_impression_cannot_be_typed_a_measurement(self):
+        """The exact case published in findings.md section 5, from a real run.
+
+        The model typed a listener's impression of how somebody sounded as a
+        measured observation, and its only evidence was a reference of source
+        listener_perception. Nothing compared the claim's type against the
+        class of evidence beneath it, so a subjective impression reached the
+        machine readable ledger in the same truth class as a timestamp. The
+        prose was honest and the prompt permitted it. Found 2026-08-27.
+        """
+        master = master_fixture()
+        master["speaker_overall_impressions"] = {
+            "SPEAKER_00": "A very soft, breathy whisper."
+        }
+        report, ledger = ledger_for(
+            "A listener's overall impression describes the speaker's delivery "
+            "as a very soft, breathy whisper with extremely low energy and a "
+            "slow pace punctuated by long silences.",
+            [reference(
+                "listener_perception",
+                "speaker_overall_impressions.SPEAKER_00",
+                speaker="SPEAKER_00",
+            )],
+        )
+
+        result = verify_claim_ledger(master, ledger, report)
+
+        self.assertIn("claim_type_evidence_mismatch", issue_codes(result))
+
+    def test_the_same_listener_claim_passes_as_an_interpretation(self):
+        master = master_fixture()
+        master["speaker_overall_impressions"] = {
+            "SPEAKER_00": "A very soft, breathy whisper."
+        }
+        report, ledger = ledger_for(
+            "A listener's overall impression describes the speaker's delivery "
+            "as a very soft, breathy whisper with extremely low energy and a "
+            "slow pace punctuated by long silences.",
+            [reference(
+                "listener_perception",
+                "speaker_overall_impressions.SPEAKER_00",
+                speaker="SPEAKER_00",
+            )],
+            claim_type="interpretation",
+        )
+
+        result = verify_claim_ledger(master, ledger, report)
+
+        self.assertEqual(result["status"], "pass")
+
+    def test_a_listener_note_cannot_be_typed_a_measurement(self):
+        report, ledger = ledger_for(
+            "The delivery sounded careful.",
+            [reference(
+                "listener_perception", "turns_by_id.1.listener_note",
+                speaker="SPEAKER_00", turn_id=1,
+            )],
+        )
+
+        result = verify_claim_ledger(master_fixture(), ledger, report)
+
+        self.assertIn("claim_type_evidence_mismatch", issue_codes(result))
+
+    def test_an_inferred_scenario_cannot_be_typed_a_measurement(self):
+        scenario = scenario_record("An ad hoc solo recording", declared=False)
+        package = {
+            "report_markdown": "The setting is an ad hoc solo recording. [C001]",
+            "claims": [{
+                "claim_id": "C001",
+                "claim_type": "measured_observation",
+                "text": "The setting is an ad hoc solo recording.",
+                "speaker": None,
+                "references": [reference(
+                    "inferred_context", "scenario.inferred"
+                )],
+            }],
+        }
+        ledger = claim_ledger(package, scenario)
+
+        result = verify_claim_ledger(
+            master_fixture(), ledger, package["report_markdown"]
+        )
+
+        self.assertIn("claim_type_evidence_mismatch", issue_codes(result))
+
+    def test_a_declared_scenario_cannot_be_typed_a_measurement(self):
+        """A person's own account of the setting is context, not measurement."""
+        report, ledger = ledger_for(
+            "The speaker described the setting as interview practice.",
+            [reference("user_context", "scenario.declared")],
+            speaker=None,
+        )
+
+        result = verify_claim_ledger(master_fixture(), ledger, report)
+
+        self.assertIn("claim_type_evidence_mismatch", issue_codes(result))
+
+    def test_one_listener_reference_taints_an_otherwise_measured_claim(self):
+        """Mixing the classes inside one claim is the same defect."""
+        report, ledger = ledger_for(
+            "Speaking rate was 120 wpm and the delivery sounded careful.",
+            [
+                reference(
+                    "metric", "computed_metrics.SPEAKER_00.wpm",
+                    speaker="SPEAKER_00", claimed_value=120.0,
+                ),
+                reference(
+                    "listener_perception", "turns_by_id.1.listener_note",
+                    speaker="SPEAKER_00", turn_id=1,
+                ),
+            ],
+        )
+
+        result = verify_claim_ledger(master_fixture(), ledger, report)
+
+        self.assertIn("claim_type_evidence_mismatch", issue_codes(result))
+
+    def test_a_listener_path_declared_as_a_metric_is_still_refused(self):
+        """Relabelling the source must not buy the claim its type back."""
+        report, ledger = ledger_for(
+            "The delivery sounded careful.",
+            [reference(
+                "metric", "turns_by_id.1.listener_note",
+                speaker="SPEAKER_00", turn_id=1,
+            )],
+        )
+
+        result = verify_claim_ledger(master_fixture(), ledger, report)
+
+        self.assertIn("claim_type_evidence_mismatch", issue_codes(result))
+        self.assertIn("evidence_source_mismatch", issue_codes(result))
+
+    def test_turn_and_pause_evidence_remain_measurements(self):
+        """The rule must not quietly shrink what a measurement may rest on."""
+        master = master_fixture()
+        master["turns"][1]["pause_before_s"] = 0.9
+        report, ledger = ledger_for(
+            "The turn began at 1.0 seconds.",
+            [reference(
+                "turn", "turns_by_id.1.start_s",
+                speaker="SPEAKER_00", turn_id=1,
+                timestamp_s=1.0, claimed_value=1.0,
+            )],
+        )
+
+        result = verify_claim_ledger(master, ledger, report)
+
+        self.assertEqual(result["status"], "pass")
+
     def test_screening_hypothesis_is_not_authorized(self):
         report, ledger = ledger_for(
             "This pattern may indicate a speech disorder.",

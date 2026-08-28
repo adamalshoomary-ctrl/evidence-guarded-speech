@@ -20,6 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pipeline"))
 from pipeline.claim_ledger import (
     SUPERSEDED_CLAIM_TYPES,
     CLAIM_LEDGER_SCHEMA_VERSION,
+    CLAIM_VERIFICATION_VERSION,
 )
 from pipeline.personal_progress import HISTORY_RECORD_VERSION
 
@@ -77,6 +78,15 @@ class ClaimVocabularyTests(unittest.TestCase):
 
     def test_the_schema_version_records_the_change(self):
         self.assertEqual(CLAIM_LEDGER_SCHEMA_VERSION, "1.1.0")
+
+    def test_the_verification_version_moved_when_the_rules_did(self):
+        """The ledger shape held still; the rules judging it did not.
+
+        Tying a claim's type to the class of evidence beneath it rejects
+        ledgers the previous verifier accepted, so a stored report has to say
+        which rules produced it.
+        """
+        self.assertEqual(CLAIM_VERIFICATION_VERSION, "1.2.0")
 
 
 class EnrichmentStatusTests(unittest.TestCase):

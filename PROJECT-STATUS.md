@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-08-27, for release `v0.1.2`.
+Last updated 2026-08-28, for release `v0.2.0`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -43,17 +43,26 @@ What does not exist, stated because the absences are the point:
 - any clinical or screening function. None is planned and no listed work leads
   to one.
 
-## Known defects, unfixed and recorded
+## Known defects, recorded rather than hidden
 
 Three were found on 2026-08-26 while writing the account, by checking the code
 rather than rereading the prose. Two more were found on 2026-08-27 the same way.
-None is fixed in this release.
+**One of them is fixed in this release and the rest are not.**
 
-- **A claim's type is not tied to the class of evidence beneath it.** A language
-  model's subjective impression can be recorded in the machine readable ledger
-  as a measured observation, because the evaluator prompt's own definition
-  permits it and no check refuses it. `findings.md` section 5 sets this out with
-  a real example. It is the one worth attention.
+Fixed in `v0.2.0`, on 2026-08-28: **a claim's type is now tied to the class of
+evidence beneath it.** A claim typed a measured observation must rest on a
+computed metric, a turn, a word effect or a pause. A listener's impression of
+how somebody sounded is an interpretation, and so is anything resting on the
+recording's setting. The defect was reproduced on the code published as
+`v0.1.2` before it was repaired: one run typed five listener backed claims as
+measured observations and verified all of them without an issue. `findings.md`
+sections 5 and 9 keep the original finding and record the closure beside it.
+**This does not make the verifier able to judge whether an interpretation is
+sound. Nothing here does, and section 5 of the account explains why a verifier
+of this kind cannot.**
+
+Still open:
+
 - **A solo run reports a stage as pending that will never run.** The speaker
   label referee is initialised as pending for every run and solo mode never
   schedules it, so a finished solo measurement record describes it as about to

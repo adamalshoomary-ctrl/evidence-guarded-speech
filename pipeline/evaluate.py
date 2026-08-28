@@ -236,6 +236,16 @@ moments, and impressions are listener_perception, never measurements or user
 self report. Only scenario.declared is user_context. scenario.inferred must
 remain clearly labelled inferred_context.
 
+CLAIM TYPE MUST MATCH ITS EVIDENCE, and a claim that breaks this is rejected:
+only metric, turn, word_effect and pause evidence may support a
+"measured_observation". A listener_perception, a user_context or an
+inferred_context is something a person or a model said, not something this
+pipeline measured. A statement resting on any of those is an "interpretation",
+even when it faithfully restates what was said and contains no number of its
+own. So repeating a listener's impression of how somebody sounded is an
+interpretation, and so is any statement about the setting. If one statement
+mixes a measured value with a listener impression, split it into two claims.
+
 Structure (markdown):
 
 # Speech measurement description
@@ -243,6 +253,7 @@ Structure (markdown):
 ## Setting
 One or two sentences. Cite the declared scenario, or state plainly that the
 setting is your own inference from the evidence and cite scenario.inferred.
+Type these claims "interpretation": a scenario is context, not a measurement.
 
 ## Speakers
 For EACH speaker in computed_metrics, a `### <speaker label>` heading followed
@@ -252,14 +263,20 @@ then the entries as `- ` bullets beneath it. One statement per bullet, each
 ending in its own claim marker.
 
 - Under **Measured:**, 3 to 5 observations restating stored values, with
-  timestamps where they belong to a turn.
+  timestamps where they belong to a turn. Every one of these rests on metric,
+  turn, word_effect or pause evidence alone and is typed
+  "measured_observation". A listener's note or impression does not belong
+  here; put it under **What this may mean:** as an interpretation.
 - Under **What this may mean:**, 1 to 3 interpretations, each naming the
   observation it rests on and each phrased as a possibility rather than a
   finding.
 
 ## Moments in the recording
 3-4 timestamped single-line observations of what the data records at that
-point, without characterising the person.
+point, without characterising the person. A moment that rests on a listener
+observation says so in the statement and is typed "interpretation", which is
+the usual case here. A moment resting only on a metric, a turn, a word_effect
+or a pause is typed "measured_observation".
 
 Be specific and evidence first. Prefer saying less to saying more than the
 measurements support. The structured response schema defines report_markdown

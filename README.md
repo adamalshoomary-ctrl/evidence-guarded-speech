@@ -174,7 +174,12 @@ a person what to practise, was withdrawn with the scores. `verification.json`
 independently checks those links and `verification.md` gives a human summary.
 The checks cover path existence, speaker ownership, turn and timestamp
 containment, measurement availability and quality, exact numeric values, and
-signed direction. Unavailable and low quality legacy values remain in
+signed direction. They also cover the claim's own type: only a computed
+metric, a turn, a word effect or a pause may support a measured observation,
+so a listener's impression of how somebody sounded is an interpretation
+however plainly it is stated, and so is anything resting on the setting. Until
+2026-08-28 nothing tied the two together, and a real run typed a listener's
+impression as a measurement. Unavailable and low quality legacy values remain in
 `master.json` for auditing but are replaced with `null` in the temporary
 model input and omitted from its allowed evidence catalog.
 

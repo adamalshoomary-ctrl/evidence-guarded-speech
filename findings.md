@@ -691,6 +691,13 @@ binding rule is to keep measurements, listener perceptions, interpretations and
 outcomes separate and never to pool truth classes. At the level of the evidence
 reference that rule holds. At the level of the claim type it is not enforced.
 
+**This was closed in `v0.2.0` on 2026-08-28 and section 9 records the closure.**
+The gap and the run that demonstrated it are left standing above, because the
+account of what was found is the point of this document. What changed is that a
+measured observation now has to rest on evidence this pipeline measured. What
+did not change is everything else in this section: the verifier still cannot
+tell a sound interpretation from an unsound one.
+
 Two further honesties about the layer.
 
 The model still degrades sometimes, and this was reduced rather than fixed. One
@@ -1037,7 +1044,17 @@ real run that demonstrates it. It is a specification gap rather than a model
 failure: the prompt's own definition of `measured_observation` permits it, and
 no check in the verifier refuses it.
 
-The last two are code defects and are **not fixed**. Fixing them is separate
+**Closed in `v0.2.0`, on 2026-08-28.** A measured observation must now rest on a
+computed metric, a turn, a word effect or a pause; a listener perception, a
+declared scenario or an inferred one makes the claim an interpretation, and the
+verifier refuses anything else as `claim_type_evidence_mismatch`. The finding
+above is left standing as what was found. Before the fix, a run on the published
+code typed five listener backed claims as measured observations in one report
+and verified all of them without an issue. After it, four runs produced no
+measured observation resting on anything this pipeline did not measure. **The
+solo referee defect is still open.**
+
+The referee defect is a code defect and is **not fixed**. Fixing it is separate
 work, because this account was written under a documentation only scope and a
 document that quietly changed the system it describes would be the wrong kind of
 honest.

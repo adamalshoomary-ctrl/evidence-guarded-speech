@@ -223,6 +223,11 @@ lines.extend([
     "support, carries no arithmetic at all, so nothing in this file can "
     "detect it.",
     "",
+    "A claim typed a measured observation must rest on a computed metric, a "
+    "turn, a word effect or a pause, so a listener's impression can no longer "
+    "arrive in the same truth class as a timestamp. That check reads the "
+    "class of the evidence, never whether the statement above it is true.",
+    "",
     "The run record at the top of `evaluation.md` is written by the pipeline "
     "from `master.json` and is excluded from every check above, because "
     "verifying it would verify the renderer against itself.",

@@ -9,7 +9,14 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 CLAIM_LEDGER_SCHEMA_VERSION = "1.1.0"
-CLAIM_VERIFICATION_VERSION = "1.1.0"
+
+# Verification 1.2.0 refuses a measured observation resting on evidence this
+# pipeline did not measure, and reports claim_type_evidence_mismatch when it
+# does. The ledger's own schema stays at 1.1.0: no field moved and the claim
+# type set is unchanged. This version moves because the verifier now rejects
+# ledgers 1.1.0 accepted, so a stored report has to say which rules produced
+# it rather than leaving a reader to date it.
+CLAIM_VERIFICATION_VERSION = "1.2.0"
 
 # Schema version 1.0.0 is superseded. It carried two claim types this version
 # does not. "coaching_interpretation" is renamed to "interpretation": the
@@ -47,6 +54,22 @@ EvidenceSource = Literal[
     "inferred_context",
 ]
 Direction = Literal["none", "above", "below"]
+
+# Evidence classes that carry a value this pipeline computed. Everything else
+# in EvidenceSource carries something a person or a model said: a listener's
+# impression of how somebody sounded, a scenario the user declared, a scenario
+# the model inferred. A claim resting on any of those is not a measured
+# observation, whatever its prose does, because the project's binding rule is
+# to keep measurements, listener perceptions, interpretations and outcomes
+# separate. The rule held at the evidence reference and was unenforced at the
+# claim type until 2026-08-28, so a real published run typed a listener's
+# impression of a "very soft, breathy whisper" as a measured observation.
+MEASUREMENT_EVIDENCE_SOURCES = frozenset({
+    "metric",
+    "turn",
+    "word_effect",
+    "pause",
+})
 
 
 class EvidenceReference(BaseModel):
@@ -908,6 +931,29 @@ def verify_claim_ledger(master, ledger, report_markdown):
                         "code": "wrong_direction",
                         "message": f"{prefix} has the wrong sign for {direction}.",
                     })
+
+        if claim.get("claim_type") == "measured_observation":
+            # Both the declared source and the catalogued source for the path,
+            # so declaring a listener path as a metric fails here as well as at
+            # evidence_source_mismatch rather than slipping past this rule.
+            non_measurement = sorted({
+                source
+                for reference in references
+                for source in (
+                    reference.get("source"),
+                    (catalog_index.get(reference.get("path")) or {}).get("source"),
+                )
+                if source and source not in MEASUREMENT_EVIDENCE_SOURCES
+            })
+            if non_measurement:
+                claim_issues.append({
+                    "code": "claim_type_evidence_mismatch",
+                    "message": (
+                        "A measured observation may not rest on "
+                        + ", ".join(non_measurement)
+                        + " evidence. Type this claim as an interpretation."
+                    ),
+                })
 
         mentions = numeric_mentions(claim.get("text", ""))
         for timestamp in mentions["timestamps"]:
