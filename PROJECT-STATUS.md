@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-08-28, for release `v0.2.1`.
+Last updated 2026-08-28, for release `v0.2.2`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -46,8 +46,26 @@ What does not exist, stated because the absences are the point:
 ## Known defects, recorded rather than hidden
 
 Three were found on 2026-08-26 while writing the account, by checking the code
-rather than rereading the prose. Two more were found on 2026-08-27 the same way.
-**Two of them are now fixed and the rest are not.**
+rather than rereading the prose. Two more were found on 2026-08-27 the same way,
+and one more on 2026-08-28 by walking this repository as a stranger would.
+**Three of them are now fixed and the rest are not.**
+
+Fixed in `v0.2.2`, on 2026-08-28, and **this one affected you rather than the
+project**: **releases `v0.1.0` through `v0.2.1` invited their own users to
+commit their own voice recordings.** The `.gitignore` published with them listed
+five entries and none of them covered `audio/`, `output/`, `history.json` or
+`progress.md`. The pipeline writes `output/` at the repository root by default,
+and that directory holds the full transcript of whatever was recorded. So
+somebody who followed the instructions, put a recording in `audio/` and ran the
+tool was shown their own voice and its transcript as ordinary pending changes,
+presented by a desktop git client as a tick box like any other. This repository
+exists as a separate sanitized snapshot **because** exactly that material
+reached the private working repository's history and can never be taken out of
+it, which makes leading a reader into the same trap the worst defect found so
+far. All four paths are now ignored. **If you cloned this repository before
+`v0.2.2` and ran it, check your own copy**: `git log --stat` for anything under
+`audio/` or `output/`, and remember that removing such a file in a later commit
+does not remove it from history.
 
 Fixed in `v0.2.0`, on 2026-08-28: **a claim's type is now tied to the class of
 evidence beneath it.** A claim typed a measured observation must rest on a

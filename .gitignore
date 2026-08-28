@@ -4,3 +4,9 @@ __pycache__/
 .DS_Store
 
 .private-identifiers
+
+# Your own recordings and everything derived from them. Never commit these.
+/audio/
+/output/
+/history.json
+/progress.md

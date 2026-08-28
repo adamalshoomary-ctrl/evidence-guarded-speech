@@ -42,7 +42,12 @@ identifiers:
     description: >-
       The DOI for version v0.2.0 specifically, the release that stopped a
       listener's impression of a speaker being recorded as a measurement.
-version: "0.2.1"
+  - type: doi
+    value: 10.5281/zenodo.22136735
+    description: >-
+      The DOI for version v0.2.1 specifically, the release that stopped a solo
+      run reporting a stage that will never run as about to happen.
+version: "0.2.2"
 date-released: "2026-08-28"
 keywords:
   - speech measurement
