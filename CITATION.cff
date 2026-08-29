@@ -52,7 +52,12 @@ identifiers:
     description: >-
       The DOI for version v0.2.2 specifically, the release that stopped the
       repository offering its own users their voice recordings to commit.
-version: "0.2.3"
+  - type: doi
+    value: 10.5281/zenodo.22139590
+    description: >-
+      The DOI for version v0.2.3 specifically, the release that made the
+      documented commands work in a fresh copy of the repository.
+version: "0.2.4"
 date-released: "2026-08-28"
 keywords:
   - speech measurement

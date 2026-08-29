@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-08-28, for release `v0.2.3`.
+Last updated 2026-08-28, for release `v0.2.4`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to

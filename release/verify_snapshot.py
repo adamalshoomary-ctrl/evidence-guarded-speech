@@ -70,6 +70,26 @@ def _walk(root):
             yield path
 
 
+def _flatten(text):
+    """Collapse every run of whitespace to one space.
+
+    A line wrap inside a private string used to defeat this check completely,
+    because it compares literal substrings. A place name inside a quoted command
+    in a committed document was wrapped across two lines by an ordinary text
+    reflow, and this check reported private content clean for six consecutive
+    releases while the name sat in the public repository. Found 2026-08-28. The
+    substitution engine in build_snapshot is literal in the same way and did not
+    replace it either, which is why the finding tells a reader to rewrap the
+    source rather than expecting the builder to cope: rewriting somebody's prose
+    layout so a replacement fits is worse than refusing to publish.
+
+    The string that escaped is deliberately not quoted here. It is on the
+    deny list this module reads, and a defect note that repeats the private
+    value republishes it, which is the same mistake in a new place.
+    """
+    return " ".join(text.split())
+
+
 def scan_content(root, contract, tokens):
     """Refuse forbidden content, allowing only what the contract declares.
 
@@ -99,14 +119,24 @@ def scan_content(root, contract, tokens):
         except UnicodeDecodeError:
             text = raw.decode("latin-1", errors="ignore")
         lowered = text.casefold()
+        flattened = _flatten(lowered)
         relative = path.relative_to(root).as_posix()
         for token in literals:
-            if token not in lowered:
+            wrapped = token not in lowered
+            if wrapped and _flatten(token) not in flattened:
                 continue
             if relative in pinned and token in exemptions:
                 allowed.append(
                     f"{relative} keeps {token!r}, declared acceptable because the "
                     "record is checksum pinned"
+                )
+            elif wrapped:
+                findings.append(
+                    f"{relative} contains the forbidden string {token!r} with a "
+                    "line break inside it. Rewrap the line in the private source "
+                    "so the string is contiguous, then rebuild: a substitution "
+                    "rule cannot match across a line break either, so the "
+                    "builder did not replace it."
                 )
             else:
                 findings.append(f"{relative} contains the forbidden string {token!r}")

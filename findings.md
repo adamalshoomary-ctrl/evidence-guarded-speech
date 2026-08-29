@@ -946,7 +946,7 @@ different conclusion on the evidence.
 - **The superseded reports are still there,** with their hashes, so the
   correction in section 2.1 can be audited rather than taken on trust. They no
   longer validate, deliberately.
-- **1,017 unit tests**, all passing, run on 2026-08-28. In the public
+- **1,021 unit tests**, all passing, run on 2026-08-28. In the public
   repository 92 of them skip, because they need the private research corpora,
   the working repository's git history, or the snapshot contract, which is not
   published. They skip **with the reason stated** rather than erroring or

@@ -37,7 +37,7 @@ Run the test suite to confirm the installation:
 python3 -m unittest discover -s tests -t .
 ```
 
-That is the whole suite, 1,017 tests. Some skip when optional evidence or
+That is the whole suite, 1,021 tests. Some skip when optional evidence or
 credentials are absent, and the skips are reported rather than hidden.
 
 The pipeline's output is `master.json`: the measurements, the provenance of

@@ -16,6 +16,8 @@ import json
 import unittest
 from pathlib import Path
 
+from release.verify_snapshot import _flatten
+
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CONTRACT = REPO_ROOT / "release" / "snapshot-contract-v1.0.0.json"
@@ -75,6 +77,46 @@ class SnapshotContractTests(unittest.TestCase):
             for name in rule.get("files") or []:
                 with self.subTest(rule=rule["id"], file=name):
                     self.assertTrue((REPO_ROOT / name).is_file())
+
+
+class PrivateStringMatchingTests(unittest.TestCase):
+    """A line wrap must not hide a private string from the verifier.
+
+    A place name inside a quoted command was wrapped across two lines by an
+    ordinary text reflow. Both the substitution engine and the privacy check
+    compare literal substrings, so neither saw it, and it sat in the public
+    repository through six releases while the verifier reported private content
+    clean. Found 2026-08-28.
+
+    The real string is not used here. It is on the deny list the verifier
+    reads, and a test that hardcodes the private value publishes it in the
+    test file, which is the same defect wearing a different hat. A stand in
+    with the same shape, two words either side of a space, exercises the same
+    code path.
+    """
+
+    SECRET = "hobart glenorchy"
+
+    def test_a_contiguous_private_string_is_still_found(self):
+        haystack = f"the file audio/{self.SECRET}.m4a was used"
+        self.assertIn(self.SECRET, _flatten(haystack))
+
+    def test_a_private_string_split_by_a_newline_is_found(self):
+        first, second = self.SECRET.split(" ")
+        haystack = f"the file audio/{first}\n  {second}.m4a was used"
+        self.assertNotIn(self.SECRET, haystack)
+        self.assertIn(self.SECRET, _flatten(haystack))
+
+    def test_a_private_string_split_by_any_whitespace_run_is_found(self):
+        first, second = self.SECRET.split(" ")
+        for gap in ("\n", "\n  ", "\t", "  \n\t "):
+            with self.subTest(gap=repr(gap)):
+                self.assertIn(self.SECRET, _flatten(f"audio/{first}{gap}{second}"))
+
+    def test_flattening_does_not_join_words_that_were_never_adjacent(self):
+        first, second = self.SECRET.split(" ")
+        haystack = f"{first} is one word and {second} sits on another line"
+        self.assertNotIn(self.SECRET, _flatten(haystack))
 
 
 if __name__ == "__main__":
