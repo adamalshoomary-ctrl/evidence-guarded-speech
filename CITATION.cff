@@ -11,7 +11,7 @@ abstract: >-
   abstention and claim verification machinery that audit needs. It makes no
   screening or clinical claim.
 authors:
-  - family-names: Alshoomary
+  - family-names: Al Shoomary
     given-names: Adam
     email: adamalshoomary@gmail.com
 license: GPL-3.0-or-later
@@ -62,7 +62,12 @@ identifiers:
     description: >-
       The DOI for version v0.2.4 specifically, the release that taught the
       privacy check to find a private string broken across two lines.
-version: "0.3.0"
+  - type: doi
+    value: 10.5281/zenodo.22151863
+    description: >-
+      The DOI for version v0.3.0 specifically, the release that made a run check
+      its credentials before it spends anything.
+version: "0.3.1"
 date-released: "2026-08-28"
 keywords:
   - speech measurement

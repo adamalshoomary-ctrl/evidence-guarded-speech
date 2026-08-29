@@ -2,10 +2,10 @@
   "schema_version": "1.0.0",
   "record_id": "public_snapshot_provenance_v1",
   "contract": "release/snapshot-contract-v1.0.0.json",
-  "contract_sha256": "1cca8b1a451a1191b5003c4ab25d2755f49d2e829ae43603f550e82017e434ca",
-  "source_commit": "86de7c8616236c696356d16eabfaddfb2926be3c",
+  "contract_sha256": "b992a57c836cb8ee5ec390a159df1d8d8a6b1da13d50c39173badad5e050a40e",
+  "source_commit": "6b678cbf596c977d9a7b7787cd257b089a3993f5",
   "source_working_tree_clean": true,
-  "files_published": 2805,
+  "files_published": 2808,
   "files_withheld": 44,
   "withheld": [
     "AGENTS.md",
@@ -151,7 +151,7 @@
     },
     {
       "id": "readme_internal_document_pointers",
-      "reason": "The two documents named here are not published. This rule points a reader at the public status page instead of at filenames that do not exist in this repository.",
+      "reason": "The two documents named here are not published. This rule points a reader at the public status page instead of at filenames that do not exist in that repository. The literal is one list item, so a reflow of the surrounding prose cannot silently stop it matching.",
       "occurrences": 1,
       "restricted_to": [
         "README.md"

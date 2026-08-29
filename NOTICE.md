@@ -1,6 +1,6 @@
 # Notices and attribution
 
-Copyright (C) 2026 Adam Alshoomary.
+Copyright (C) 2026 Adam Al Shoomary.
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

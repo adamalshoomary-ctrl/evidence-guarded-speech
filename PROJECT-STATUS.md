@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-08-28, for release `v0.3.0`.
+Last updated 2026-08-29, for release `v0.3.1`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -13,6 +13,10 @@ reader is below.
 
 For what the project measured and what it failed to establish, read
 `findings.md`. That is the account, and this page does not repeat it.
+
+Generative AI wrote most of the code and documents here, directed by one
+person who made every decision and every commit. `AI-ASSISTANCE.md` sets out
+what that means and what to check instead of trusting the process.
 
 ## The state of the work
 

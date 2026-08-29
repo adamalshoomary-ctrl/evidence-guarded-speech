@@ -87,5 +87,10 @@ project has produced so far is that no candidate system passed its gates.
 ## Audience
 
 Researchers and engineers working on pronunciation assessment, speech
-measurement fairness, and reproducibility in speech technology. Not end users,
-and not people seeking feedback on their speaking.
+measurement fairness, and reproducibility in speech technology, and anyone else
+curious enough to clone the repository and run a command.
+
+Adam widened this on 2026-08-28. Only who may run it changed. The project still
+gives nobody feedback on their speaking, and everything above under what it
+claims and what it refuses stands unaltered. A reader who arrives wanting to
+know how well they speak will not find out here, by design.

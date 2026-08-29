@@ -1,17 +1,68 @@
-# Speech analysis pipeline
+# Evidence guarded speech measurement
 
-**New readers should start with `findings.md`**, the honest account of what was
-built, what was measured, what was found, what was retracted, and what could not
-be established at all. It is the document that says what this repository
-actually demonstrates.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22106996.svg)](https://doi.org/10.5281/zenodo.22106996)
 
-For where the work stands, what is deferred and what was decided against,
-read `PROJECT-STATUS.md`. For what this project is and refuses to claim read
-`project-purpose.md`. This README is the technical operating reference.
+Turn one recording into a measurement record where every number carries its
+provenance and its uncertainty, and where a measurement the evidence cannot
+support is marked unavailable instead of guessed.
 
-This is an open research project with no monetisation plan. Any prose below that
-implies a product, an app or a user is stale text from before the 2026-08-22
-direction change and should be reported as a defect.
+It gives nobody a score, a rating or feedback on how well they speak. It makes
+no screening or clinical claim. `project-purpose.md` sets out what it refuses
+and why.
+
+Open research. GPL 3.0 or later. No product and no monetisation plan.
+
+## Run it in three steps
+
+You need Python 3.12 or newer and ffmpeg. Neither pip nor this repository can
+install ffmpeg for you.
+
+```text
+python3 -m pip install -r requirements.txt -c constraints.txt
+python3 -m unittest discover -s tests -t .
+python3 pipeline/run_all.py --mode solo --audio "regression/fixtures/solo.wav" --transcriber local
+```
+
+That third command needs no credentials and no network. It runs on a recording
+that ships with the repository and writes `output/master.json` in about 90
+seconds. Read `output/master_preview.txt` first.
+
+**Tested on macOS arm64 with Python 3.12.12**, which is what `constraints.txt`
+pins and what every lockfile under `speech_sound_patterns/environments/`
+targets. Linux and Windows should work and nobody has checked. Open an issue if
+they do not.
+
+## Where to read next
+
+- `findings.md` is the account of what was measured, what was retracted and
+  what could not be established. Start there to judge the work.
+- `PROJECT-STATUS.md` says where the work stands, what is deferred, and
+  what was decided against.
+- `project-purpose.md` states the claims and the refusals.
+- `AI-ASSISTANCE.md` records how much of this was written with generative AI.
+- `CONTRIBUTING.md` and `SECURITY.md` cover issues and reporting.
+
+The rest of this README is the operating reference: every command, every
+artifact and every contract.
+
+## Data and licence
+
+GPL 3.0 or later, because `praat-parselmouth` is GPL and the acoustics stage
+depends on it. `NOTICE.md` carries third party attribution.
+
+The recordings this project was built on are not here and never will be. They
+are one person's own voice and a conversation with somebody who agreed to be
+recorded and was never asked about publication. What ships instead:
+
+| Data | Source | Licence |
+|---|---|---|
+| `regression/fixtures/` | LibriSpeech | CC BY 4.0 |
+| Reference pronunciations | Montreal Forced Aligner English dictionaries 3.1.0 | CC BY 4.0 |
+| `speech_sound_patterns/variety-probe-evidence/` | Derived from Common Voice 26.0, pseudonymised, no audio | CC0 1.0 upstream |
+
+The probe evidence bundle is 4.75 MB and regenerates the published report byte
+for byte in about two minutes. No Common Voice audio is redistributed here and
+none may be. `CITATION.cff` holds the full source records with their DOIs.
 
 ## What you need before anything runs
 
