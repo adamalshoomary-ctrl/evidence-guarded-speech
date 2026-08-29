@@ -26,7 +26,7 @@ built fresh instead, so its history has one origin and nothing behind it.
 
 ## What was removed
 
-44 of 2846 tracked files were left behind.
+44 of 2849 tracked files were left behind.
 
 | Removed | Why |
 |---|---|

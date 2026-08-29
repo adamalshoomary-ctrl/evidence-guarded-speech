@@ -40,6 +40,36 @@ python3 -m unittest discover -s tests -t .
 That is the whole suite, 1,021 tests. Some skip when optional evidence or
 credentials are absent, and the skips are reported rather than hidden.
 
+## Credentials
+
+Three keys exist and which ones a command needs depends on the command. Copy
+`.env.example` to `.env` beside it, fill in the values you have, and keep only
+the lines you need. **`.env` is plain text and is not encrypted**, the same
+posture as any other command line tool; make it readable only by you with
+`chmod 600 .env`.
+
+| Variable | What it does | Needed by | Issued at |
+|---|---|---|---|
+| `ASSEMBLYAI_API_KEY` | transcribes the recording | every run except `--transcriber local` | <https://www.assemblyai.com/dashboard/signup> |
+| `HF_TOKEN` | downloads the speaker diarization model | `--mode conversation` only | <https://huggingface.co/settings/tokens> |
+| `GEMINI_API_KEY` | runs the language model stages | `--interpret`. Optional in conversation mode, where the speaker label referee uses it | <https://aistudio.google.com/apikey> |
+
+**The Hugging Face token is not sufficient on its own.** Accept the model user
+agreement at <https://hf.co/pyannote/speaker-diarization-3.1> first, or the
+download returns a bare 401 that does not explain itself.
+
+**You can run this with no credentials at all.** A solo recording on the local
+transcriber makes no remote call and needs no key:
+
+```text
+python3 pipeline/run_all.py --mode solo --audio "regression/fixtures/solo.wav" --transcriber local
+```
+
+Every run checks the keys its flags will need **before** it starts, and stops in
+well under a second naming the missing variable. Nothing downloads and no
+provider is billed. A key that only serves a stage nobody asked for produces a
+note rather than a stop, and that stage records itself as unavailable.
+
 The pipeline's output is `master.json`: the measurements, the provenance of
 every input, the uncertainty beside every number, and an explicit refusal
 wherever the evidence was inadequate. A run stops there. The optional language
@@ -79,7 +109,8 @@ the log are wall clock and include any sleep, while the enrichment deadlines
 count only awake time, so a run that slept looks far slower than it was.
 
 Add `--interpret` to also run the listener, the interpretation and the claim
-verifier:
+verifier. It needs `GEMINI_API_KEY`, and the run stops immediately without one
+rather than transcribing first and reporting the layer unavailable at the end:
 
 ```text
 python3 pipeline/run_all.py --mode solo --audio "regression/fixtures/solo.wav" --transcriber local --interpret

@@ -188,6 +188,15 @@ class AudioQualityTests(unittest.TestCase):
                 self.assertIn(item["status"], {"pass", "warn", "fail"})
 
     def test_runner_rejects_before_remote_stages_and_records_manifest(self):
+        """The audio gate, tested without depending on ambient credentials.
+
+        This passed in the working repository and failed in the built snapshot
+        the day the credential preflight landed, because it ran the default
+        transcriber and so needed a key that the working repository happened to
+        have in .env and a fresh copy never has. It was testing the audio gate
+        while quietly depending on a credential. --transcriber local needs none
+        in solo mode, so the assertion is now about the thing it names.
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
             audio = root / "short.wav"
@@ -198,6 +207,7 @@ class AudioQualityTests(unittest.TestCase):
                 [
                     sys.executable, "pipeline/run_all.py",
                     "--mode", "solo", "--audio", str(audio),
+                    "--transcriber", "local",
                     "--output-dir", str(output), "--run-id", "quality_test",
                 ],
                 cwd=REPO_ROOT, capture_output=True, text=True,

@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-08-28, for release `v0.2.4`.
+Last updated 2026-08-28, for release `v0.3.0`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -47,8 +47,26 @@ What does not exist, stated because the absences are the point:
 
 Three were found on 2026-08-26 while writing the account, by checking the code
 rather than rereading the prose. Two more were found on 2026-08-27 the same way,
-and two more on 2026-08-28 by walking this repository as a stranger would.
-**Four of them are now fixed and the rest are not.**
+and three more on 2026-08-28 by walking this repository as a stranger would.
+**Five of them are now fixed and the rest are not.**
+
+Fixed in `v0.3.0`, on 2026-08-28: **a run now checks its credentials before it
+spends anything.** Three keys exist and nothing outside the Python source named
+them. A newcomer running the first command in the README was told
+`ASSEMBLYAI_API_KEY not found in .env`, naming a file that does not exist, that
+nothing creates, that nothing templates, and whose required location was stated
+nowhere. Worse, the runner read no credential at all: each stage loaded its own
+key when it ran, and the stages that need one run last. So somebody holding a
+transcription key and no model key paid for a full transcription, waited for a
+model download, and was then told the interpretation was unavailable, without
+the message ever naming the key they could have added in thirty seconds. The
+runner now works out which keys the given flags will need and stops in well
+under a second, naming each missing variable and where it is issued, before
+anything downloads or bills. A key serving a stage nobody asked for produces a
+note instead, and that stage records itself as unavailable as before. There is
+a `.env.example` to copy, and the README carries a credentials table, the
+Hugging Face model agreement step that a token alone does not satisfy, and the
+credential free command as a first class option.
 
 Fixed in `v0.2.3`, on 2026-08-28: **the documented commands now run, and the
 prerequisites are stated.** Four of the six commands printed in this

@@ -29,6 +29,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from audio_quality import analyze_audio
+from credentials import check_credentials
 from pipeline_config import DEFAULT_TRANSCRIBER, TRANSCRIBERS
 from provenance import (
     build_initial_provenance,
@@ -109,6 +110,16 @@ if (run_id in {".", ".."}
     parser.error("--run-id may contain only letters, numbers, dots, and underscores")
 
 audio_path = resolve_audio(args.audio, REPO_ROOT / "audio")
+
+# Before anything downloads a model or bills a provider. The stages that need a
+# key run last, so without this the run failed after paying rather than before.
+credential_stop, credential_warnings = check_credentials(
+    execution_mode, args.transcriber, args.interpret
+)
+if credential_stop:
+    raise SystemExit(credential_stop)
+for warning in credential_warnings:
+    print(f"NOTE: {warning}")
 base_output = (args.output_dir.expanduser().resolve()
                if args.output_dir else REPO_ROOT / "output")
 output_dir = base_output / run_id if args.isolated_run else base_output
