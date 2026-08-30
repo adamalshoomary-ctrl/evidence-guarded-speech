@@ -1,0 +1,16 @@
+# Every file in this repository is checked out exactly as it was committed.
+#
+# This project pins the sha256 of many files it treats as evidence: frozen
+# research contracts, provider registers, acceptance records and the fixtures
+# under regression/. Git on Windows rewrites line endings on checkout by
+# default, which changes those bytes and therefore every one of those hashes.
+#
+# Measured on 2026-08-29, on a Windows runner with no .gitattributes: 23 test
+# failures and 21 errors, almost all of them a checksum or a byte for byte
+# comparison refusing a file that was correct when committed. The records were
+# behaving properly. The checkout had altered them.
+#
+# Disabling the text attribute outright, rather than normalising to LF, is the
+# stronger guarantee: git performs no conversion in either direction, on any
+# platform, for any file, so a checkout is byte identical everywhere.
+* -text

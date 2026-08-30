@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-08-29, for release `v0.3.1`.
+Last updated 2026-08-29, for release `v0.4.0`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -51,8 +51,27 @@ What does not exist, stated because the absences are the point:
 
 Three were found on 2026-08-26 while writing the account, by checking the code
 rather than rereading the prose. Two more were found on 2026-08-27 the same way,
-and three more on 2026-08-28 by walking this repository as a stranger would.
-**Five of them are now fixed and the rest are not.**
+three more on 2026-08-28 by walking this repository as a stranger would, and
+four more on 2026-08-29 by running the tests on Linux and Windows for the first
+time. **Nine of them are now fixed and three are not.**
+
+Fixed in `v0.4.0`, on 2026-08-29: **the tests now run on Linux, macOS and
+Windows, and this repository did not work on Windows before they did.** The
+suite ran only on the owner's laptop, so nobody arriving could see it pass, and
+the pinned dependencies had never been installed on another platform. Putting it
+on GitHub answered both questions and found four defects. Git on Windows
+rewrites line endings when it checks a repository out, which changes the bytes of
+every file this project pins by sha256, so frozen contracts and provider
+registers correctly refused themselves and 44 tests failed. Six modules imported
+a library that exists only on Unix, and one failed import took 62 tests with it
+before any of them ran. Records built their paths with backslashes, so a machine
+readable record produced on Windows differed from the same record produced
+anywhere else. One writer synced a directory to make a file durable, which
+Windows cannot do at all. All four are fixed, and a `.gitattributes` now stops
+git converting anything, on any platform, in either direction. **All 1,036 tests
+pass on Linux, macOS and Windows**, and the badge on the README reports every
+platform on every push. The 83 that skip need research corpora this repository
+does not redistribute, and they skip identically everywhere.
 
 Fixed in `v0.3.0`, on 2026-08-28: **a run now checks its credentials before it
 spends anything.** Three keys exist and nothing outside the Python source named

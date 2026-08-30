@@ -29,7 +29,7 @@ from .final_acceptance import (
 
 MODULE_ROOT = Path(__file__).resolve().parent
 CLOSURE_PATH = MODULE_ROOT / "repository-closure-v1.0.0.json"
-CLOSURE_RELATIVE_PATH = str(CLOSURE_PATH.relative_to(REPOSITORY_ROOT))
+CLOSURE_RELATIVE_PATH = CLOSURE_PATH.relative_to(REPOSITORY_ROOT).as_posix()
 ACTIVE_RESEARCH_CONTRACT_PATH = MODULE_ROOT / "research-contract-v1.7.0.json"
 
 CLOSURE_FIELDS = {
@@ -188,7 +188,11 @@ def snapshot_git_repository(revision, repo_root=REPOSITORY_ROOT, *, exclude_path
             "cannot enumerate historical repository snapshot"
         ) from exc
 
-    excluded = {str(Path(item)) for item in exclude_paths}
+    # git always reports forward slashes, so the exclusion set has to be
+    # spelled the same way. str(Path(...)) gives backslashes on Windows and
+    # never matched, which silently left the closure file inside its own
+    # snapshot and made the commit unfindable. Measured 2026-08-29.
+    excluded = {Path(item).as_posix() for item in exclude_paths}
     records = []
     object_ids = []
     for raw in listing.split(b"\0"):

@@ -866,8 +866,8 @@ def active_pipeline_leakage(repo_root=REPOSITORY_ROOT):
             try:
                 source = path.read_text(encoding="utf-8")
             except OSError:
-                matches.append(str(path.relative_to(repo_root)))
+                matches.append(path.relative_to(repo_root).as_posix())
                 continue
             if any(token in source for token in tokens):
-                matches.append(str(path.relative_to(repo_root)))
+                matches.append(path.relative_to(repo_root).as_posix())
     return sorted(set(matches))

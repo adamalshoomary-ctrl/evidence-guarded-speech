@@ -299,7 +299,7 @@ def evidence_pins(version=ACTIVE_SELECTION_VERSION):
     """Hash every file the record depends on, as it stands on disk now."""
     return {
         name: {
-            "path": str(path.resolve().relative_to(REPOSITORY_ROOT)),
+            "path": path.resolve().relative_to(REPOSITORY_ROOT).as_posix(),
             "sha256": file_sha256(path),
         }
         for name, path in sorted(pinned_evidence(version).items())

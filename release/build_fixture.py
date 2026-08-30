@@ -317,7 +317,7 @@ def write(name, specification):
     path = FIXTURE_ROOT / f"{name}.wav"
     sf.write(path, waveform, SAMPLE_RATE_HZ, subtype="PCM_16", format="WAV")
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
-    manifest["audio"]["path"] = str(path.relative_to(REPOSITORY_ROOT))
+    manifest["audio"]["path"] = path.relative_to(REPOSITORY_ROOT).as_posix()
     manifest["audio"]["sha256"] = digest
     manifest["audio"]["bytes"] = path.stat().st_size
     report = analyze_audio(path)

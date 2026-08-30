@@ -67,8 +67,13 @@ identifiers:
     description: >-
       The DOI for version v0.3.0 specifically, the release that made a run check
       its credentials before it spends anything.
-version: "0.3.1"
-date-released: "2026-08-28"
+  - type: doi
+    value: 10.5281/zenodo.22152285
+    description: >-
+      The DOI for version v0.3.1 specifically, the release that rewrote the
+      landing page for a reader arriving for the first time.
+version: "0.4.0"
+date-released: "2026-08-29"
 keywords:
   - speech measurement
   - pronunciation assessment

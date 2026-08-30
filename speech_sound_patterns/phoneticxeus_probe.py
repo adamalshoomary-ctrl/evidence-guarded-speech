@@ -237,7 +237,7 @@ def run_probe(manifest_path, model_root, output_root, backend, repeats, safe_ids
                     "collapsed_token_ids": collapsed_ids,
                     "collapsed_tokens": collapsed_tokens,
                     "top_five_per_frame": top_frames,
-                    "logits_artifact": str(logits_path.relative_to(REPOSITORY_ROOT)),
+                    "logits_artifact": logits_path.relative_to(REPOSITORY_ROOT).as_posix(),
                     "logits_artifact_sha256": file_sha256(logits_path),
                 }
             repeat_results.append(

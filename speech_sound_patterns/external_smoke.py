@@ -201,7 +201,7 @@ def _validate_supersession(review) -> list[str]:
             f"superseded review version {earlier_version!r} is not on disk, so the "
             "earlier decisions cannot be checked"
         ]
-    if supersedes.get("path") != str(earlier_path.relative_to(REPOSITORY_ROOT)):
+    if supersedes.get("path") != earlier_path.relative_to(REPOSITORY_ROOT).as_posix():
         return ["supersedes path does not point at the superseded review on disk"]
     try:
         earlier = _load_json(earlier_path)

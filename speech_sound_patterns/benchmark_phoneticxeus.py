@@ -174,7 +174,7 @@ def run_benchmark(
                     "project_split": clip["project_split"],
                     "source_stratum": clip["source_stratum"],
                     "duration_s": clip["duration_s"],
-                    "output_path": str(output_path.relative_to(REPOSITORY_ROOT)),
+                    "output_path": output_path.relative_to(REPOSITORY_ROOT).as_posix(),
                     "output_sha256": file_sha256(output_path),
                     "repeatability_passed": True,
                 }
@@ -283,7 +283,7 @@ def run_benchmark(
                 "project_split": clip["project_split"],
                 "source_stratum": clip["source_stratum"],
                 "duration_s": clip["duration_s"],
-                "output_path": str(output_path.relative_to(REPOSITORY_ROOT)),
+                "output_path": output_path.relative_to(REPOSITORY_ROOT).as_posix(),
                 "output_sha256": file_sha256(output_path),
                 "repeatability_passed": all(
                     item["frame_ids_exact_match_first"]

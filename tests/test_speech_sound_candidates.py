@@ -221,7 +221,7 @@ def adam_manifest(evidence_path, *, evidence_sha=None):
     evidence_path = Path(evidence_path)
     digest = evidence_sha or file_sha256(evidence_path)
     try:
-        path_text = str(evidence_path.resolve().relative_to(REPOSITORY_ROOT))
+        path_text = evidence_path.resolve().relative_to(REPOSITORY_ROOT).as_posix()
     except ValueError:
         path_text = str(evidence_path.resolve())
     reference = {"path": path_text, "sha256": digest}

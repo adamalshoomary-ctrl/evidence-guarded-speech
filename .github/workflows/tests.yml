@@ -1,0 +1,109 @@
+name: tests
+
+# Why this workflow exists: the suite only ever ran on the owner's macOS arm64
+# laptop, so nobody arriving at the repository could see that it passes, and the
+# pinned dependency closure had never been installed on any other platform.
+#
+# Two rules bind anyone editing this file. Do not narrow the suite, skip tests
+# or drop a platform to make the badge green: a badge reporting on quietly
+# narrowed tests is worse than no badge. If a platform genuinely cannot run this
+# project, say so in README.md and stop claiming it here.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unittest:
+    # Automatic runs happen only in the public repository, where GitHub bills
+    # nothing for them. The private working repository would spend its monthly
+    # allowance on every push, at ten times the rate for macOS. Running this
+    # workflow by hand still works in either repository, which is how the three
+    # platforms get checked before anything is published.
+    if: >-
+      github.repository == 'adamalshoomary-ctrl/evidence-guarded-speech'
+      || github.event_name == 'workflow_dispatch'
+
+    strategy:
+      # Report every platform's real result. Stopping the other jobs at the
+      # first failure would hide whether the failure is one platform or all of
+      # them, which is the question this workflow exists to answer.
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The full history, because tests/research_data.py gates part of the
+          # suite on the working repository having more than one commit. A
+          # shallow clone has exactly one, so those tests would skip without
+          # saying why. The public repository skips them anyway, by design,
+          # because release/snapshot-provenance.json marks it as a snapshot.
+          fetch-depth: 0
+
+      # The Linux runner ships with about 14 GB free, and the pinned closure
+      # does not fit: the install died on "No space left on device" while
+      # unpacking torch, measured 2026-08-29. The same install completes in a
+      # Linux container on a machine with room, so this is the runner's disk
+      # rather than the project. These four directories are preinstalled
+      # toolchains this project never uses.
+      - name: Reclaim runner disk (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android \
+                      /opt/ghc /usr/local/share/boost
+          df -h /
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: constraints.txt
+
+      # ffmpeg is a separate install and pip cannot supply it, which README.md
+      # states and which the audio quality stage depends on. Without it twelve
+      # tests fail on a FileNotFoundError for ffprobe, measured in a Linux
+      # container on 2026-08-29 before this step existed. The three commands
+      # below are the ones README.md gives a reader for each platform.
+      - name: Install ffmpeg (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install ffmpeg (macOS)
+        if: runner.os == 'macOS'
+        run: brew install ffmpeg
+
+      - name: Install ffmpeg (Windows)
+        if: runner.os == 'Windows'
+        run: choco install ffmpeg --no-progress -y
+
+      - name: Confirm ffmpeg is present
+        run: ffmpeg -version
+
+      - name: Install the pinned closure
+        # The command README.md tells a new arrival to run, unchanged.
+        run: python -m pip install -r requirements.txt -c constraints.txt
+
+      - name: Record what actually got installed
+        # A green tick says the tests passed. It does not say which versions
+        # they passed against, and on a platform the closure was never built
+        # for that is the more interesting half.
+        run: |
+          python -c "import platform, sys; print(platform.platform()); print(sys.version)"
+          python -m pip freeze
+
+      - name: Run the tests
+        run: python -m unittest discover -s tests -t .

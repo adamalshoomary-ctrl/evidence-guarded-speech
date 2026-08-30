@@ -22,7 +22,7 @@ def protected_file_hashes():
     paths = [REPO_ROOT / "history.json", REPO_ROOT / "progress.md"]
     paths.extend(sorted((REPO_ROOT / "output").glob("*")))
     return {
-        str(path.relative_to(REPO_ROOT)): sha256_file(path)
+        path.relative_to(REPO_ROOT).as_posix(): sha256_file(path)
         for path in paths if path.is_file()
     }
 

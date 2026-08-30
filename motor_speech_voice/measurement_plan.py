@@ -348,7 +348,7 @@ def committed_data_leakage():
     if not PLAN_ROOT.exists():
         return ["the measurement plan directory is missing"]
     return sorted(
-        str(path.relative_to(REPOSITORY_ROOT))
+        path.relative_to(REPOSITORY_ROOT).as_posix()
         for path in PLAN_ROOT.rglob("*")
         if path.is_file() and path.suffix != ".json"
     )
@@ -364,7 +364,7 @@ def active_pipeline_leakage():
         for path in sorted(directory.rglob("*.py")):
             text = path.read_text(errors="ignore")
             if "measurement_plan" in text or "motor_speech_voice" in text:
-                hits.append(str(path.relative_to(REPOSITORY_ROOT)))
+                hits.append(path.relative_to(REPOSITORY_ROOT).as_posix())
     return hits
 
 

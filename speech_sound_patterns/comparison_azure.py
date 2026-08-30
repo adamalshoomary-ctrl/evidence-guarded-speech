@@ -485,7 +485,7 @@ def run_comparison(
     summary_path.write_bytes(canonical_json_bytes(summary))
     return {
         "status": "complete",
-        "summary_path": str(summary_path.relative_to(REPOSITORY_ROOT)),
+        "summary_path": summary_path.relative_to(REPOSITORY_ROOT).as_posix(),
         "by_locale": summary["by_locale"],
     }
 

@@ -1,6 +1,7 @@
 # Evidence guarded speech measurement
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22106996.svg)](https://doi.org/10.5281/zenodo.22106996)
+[![tests](https://github.com/adamalshoomary-ctrl/evidence-guarded-speech/actions/workflows/tests.yml/badge.svg)](https://github.com/adamalshoomary-ctrl/evidence-guarded-speech/actions/workflows/tests.yml)
 
 Turn one recording into a measurement record where every number carries its
 provenance and its uncertainty, and where a measurement the evidence cannot
@@ -27,10 +28,15 @@ That third command needs no credentials and no network. It runs on a recording
 that ships with the repository and writes `output/master.json` in about 90
 seconds. Read `output/master_preview.txt` first.
 
-**Tested on macOS arm64 with Python 3.12.12**, which is what `constraints.txt`
-pins and what every lockfile under `speech_sound_patterns/environments/`
-targets. Linux and Windows should work and nobody has checked. Open an issue if
-they do not.
+**The full test suite runs on Linux, macOS and Windows on every push**, on
+Python 3.12, and the badge above reports the result. All 1,036 tests pass on all
+three. The 83 that report as skipped need research corpora this repository does
+not redistribute, and they skip for the same reason on every platform.
+
+`constraints.txt` pins the dependency versions, and every lockfile under
+`speech_sound_patterns/environments/` targets macOS arm64, which is where the
+pinned closure was originally built. Linux and Windows install the same pins and
+pass. Open an issue if yours does not.
 
 ## Where to read next
 

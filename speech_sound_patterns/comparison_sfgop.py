@@ -22,7 +22,6 @@ import argparse
 import json
 import os
 import platform
-import resource
 import time
 from pathlib import Path
 
@@ -41,6 +40,11 @@ from .comparison import (
 )
 from .feasibility import REPOSITORY_ROOT, canonical_json_bytes, file_sha256
 from .sfgop import (
+
+try:
+    import resource
+except ModuleNotFoundError:  # Windows has no resource module
+    resource = None
     META_CONTRACT_PATH,
     SFGOP_CONTRACT_SHA256,
     _candidate_ids,
@@ -52,6 +56,23 @@ from .sfgop import (
 
 LANE_ID = "segmentation_free_gop"
 SAME_INPUT_REPEATS = 2
+
+
+def peak_maxrss_bytes():
+    """Peak resident memory, or a refusal where the platform cannot report it.
+
+    The resource module is Unix only. Windows offers no standard library
+    equivalent, and a provenance summary that quietly recorded nothing would
+    state a measurement this project cannot support. Refusing keeps the record
+    honest and keeps the module importable everywhere, which matters because a
+    bare import of resource failed the whole test module on Windows.
+    """
+    if resource is None:
+        raise RuntimeError(
+            "peak memory cannot be recorded on this platform because the "
+            "resource module is Unix only, so no provenance summary is written"
+        )
+    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
 
 
 def default_output(version=ACTIVE_COMPARISON_VERSION):
@@ -258,14 +279,14 @@ def run_comparison(
         "total_audio_seconds": round(total_audio, 6),
         "total_processing_seconds": round(total_seconds, 6),
         "real_time_factor_all_repeats": round(total_seconds / total_audio, 6),
-        "peak_maxrss_bytes": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+        "peak_maxrss_bytes": peak_maxrss_bytes(),
         "worst_forward_backward_abs_diff": worst_consistency,
         "clips": clip_summaries,
     }
     summary_path.write_bytes(canonical_json_bytes(summary))
     return {
         "status": "complete",
-        "summary_path": str(summary_path.relative_to(REPOSITORY_ROOT)),
+        "summary_path": summary_path.relative_to(REPOSITORY_ROOT).as_posix(),
         **{key: summary[key] for key in ("scored_targets", "unscorable_targets")},
         "clip_count": len(finished),
         "real_time_factor_all_repeats": summary["real_time_factor_all_repeats"],

@@ -262,7 +262,7 @@ def run_benchmark(
                 "source_id": source_id,
                 "project_split": clip["project_split"],
                 "source_stratum": clip["source_stratum"],
-                "output_path": str(clip_summary_path.relative_to(REPOSITORY_ROOT)),
+                "output_path": clip_summary_path.relative_to(REPOSITORY_ROOT).as_posix(),
                 "output_sha256": file_sha256(clip_summary_path),
                 "repeatability_passed": all(
                     item["canonical_exact_match_first"] for item in repeat_records

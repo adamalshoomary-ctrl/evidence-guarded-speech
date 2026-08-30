@@ -1307,7 +1307,7 @@ def private_root(subdirectory=None, version=DEFAULT_COMPARISON_VERSION):
 
 
 def relative_to_repository(path):
-    return str(Path(path).resolve(strict=False).relative_to(REPOSITORY_ROOT))
+    return Path(path).resolve(strict=False).relative_to(REPOSITORY_ROOT).as_posix()
 
 
 def phone_map():

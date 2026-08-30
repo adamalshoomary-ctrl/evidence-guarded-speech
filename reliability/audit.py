@@ -55,7 +55,7 @@ def _source_identity():
     digest = hashlib.sha256()
     included = []
     for path in files:
-        relative = str(path.relative_to(REPO_ROOT))
+        relative = path.relative_to(REPO_ROOT).as_posix()
         included.append(relative)
         digest.update(relative.encode("utf-8"))
         digest.update(b"\0")

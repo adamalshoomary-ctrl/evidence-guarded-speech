@@ -20,10 +20,14 @@ import json
 import math
 import os
 import platform
-import resource
 import struct
 import time
 from pathlib import Path
+
+try:
+    import resource
+except ModuleNotFoundError:  # Windows has no resource module
+    resource = None
 
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 PRIVATE_ROOT = REPOSITORY_ROOT / ".research_data" / "speech_sound_patterns"
@@ -62,6 +66,23 @@ SYMBOLS = {
 }
 INDEX_TO_SYMBOL = {index: symbol for symbol, index in SYMBOLS.items()}
 CLASS_COUNT = 102
+
+
+def peak_maxrss_bytes():
+    """Peak resident memory, or a refusal where the platform cannot report it.
+
+    The resource module is Unix only. Windows offers no standard library
+    equivalent, and a provenance summary that quietly recorded nothing would
+    state a measurement this project cannot support. Refusing keeps the record
+    honest and keeps the module importable everywhere, which matters because a
+    bare import of resource failed the whole test module on Windows.
+    """
+    if resource is None:
+        raise RuntimeError(
+            "peak memory cannot be recorded on this platform because the "
+            "resource module is Unix only, so no provenance summary is written"
+        )
+    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
 
 
 def file_sha256(path):
@@ -239,9 +260,7 @@ def main():
         "total_audio_seconds": round(total_audio, 6),
         "total_processing_seconds": round(total_seconds, 6),
         "real_time_factor_two_repeats": round(total_seconds / total_audio, 6),
-        "peak_maxrss_bytes": resource.getrusage(
-            resource.RUSAGE_SELF
-        ).ru_maxrss,
+        "peak_maxrss_bytes": peak_maxrss_bytes(),
         "all_repeats_exact": True,
         "clips": clip_records,
     }

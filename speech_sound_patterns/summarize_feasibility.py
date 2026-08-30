@@ -567,7 +567,7 @@ def build_report(manifest_path, evidence_root, outer_metrics_path):
             "montreal_forced_aligner": {
                 "version": "3.4.1",
                 "environment_python": "3.11.15",
-                "environment_lock": str(mfa_lock.relative_to(REPOSITORY_ROOT)),
+                "environment_lock": mfa_lock.relative_to(REPOSITORY_ROOT).as_posix(),
                 "environment_lock_sha256": file_sha256(mfa_lock),
                 "acoustic_model": "english_us_arpa_v3.0.0",
                 "acoustic_model_sha256": ACOUSTIC_SHA256,
@@ -581,9 +581,9 @@ def build_report(manifest_path, evidence_root, outer_metrics_path):
             "phoneticxeus": {
                 "revision": MODEL_REVISION,
                 "environment_python": "3.10.20",
-                "environment_lock": str(phonetic_lock.relative_to(REPOSITORY_ROOT)),
+                "environment_lock": phonetic_lock.relative_to(REPOSITORY_ROOT).as_posix(),
                 "environment_lock_sha256": file_sha256(phonetic_lock),
-                "pip_lock": str(pip_lock.relative_to(REPOSITORY_ROOT)),
+                "pip_lock": pip_lock.relative_to(REPOSITORY_ROOT).as_posix(),
                 "pip_lock_sha256": file_sha256(pip_lock),
                 "model_tree_sha256": MODEL_TREE_SHA256,
                 "weights_sha256": MODEL_WEIGHTS_SHA256,

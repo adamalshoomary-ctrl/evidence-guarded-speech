@@ -210,7 +210,7 @@ def _canonicalize_audio(payload, source_suffix, target_path, ffmpeg):
             f"canonical audio is outside the benchmark contract: {target_path}"
         )
     return {
-        "canonical_audio_path": str(target_path.relative_to(REPOSITORY_ROOT)),
+        "canonical_audio_path": target_path.relative_to(REPOSITORY_ROOT).as_posix(),
         "canonical_audio_sha256": file_sha256(target_path),
         "duration_s": round(duration, 6),
     }
@@ -223,7 +223,7 @@ def _write_text(safe_id, text, root=None):
     if not normalized:
         raise BenchmarkPreparationError(f"selected clip {safe_id} has empty text")
     _safe_write(path, (normalized + "\n").encode("utf-8"))
-    return str(path.relative_to(REPOSITORY_ROOT)), file_sha256(path), normalized
+    return path.relative_to(REPOSITORY_ROOT).as_posix(), file_sha256(path), normalized
 
 
 def _textgrid_intervals(payload, tier_name=None):
@@ -738,7 +738,7 @@ def _source_document(source_id, truth_class, reference_records, clips, root=None
     return {
         "source_id": source_id,
         "truth_class": truth_class,
-        "private_reference_path": str(reference_path.relative_to(REPOSITORY_ROOT)),
+        "private_reference_path": reference_path.relative_to(REPOSITORY_ROOT).as_posix(),
         "private_reference_sha256": file_sha256(reference_path),
         "clips": clips,
     }

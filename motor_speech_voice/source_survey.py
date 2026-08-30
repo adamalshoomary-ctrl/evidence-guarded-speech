@@ -248,7 +248,7 @@ def committed_data_leakage():
     if not SURVEY_ROOT.exists():
         return ["the survey directory is missing"]
     return sorted(
-        str(path.relative_to(REPOSITORY_ROOT))
+        path.relative_to(REPOSITORY_ROOT).as_posix()
         for path in SURVEY_ROOT.rglob("*")
         if path.is_file() and path.suffix != ".json"
     )
@@ -269,7 +269,7 @@ def active_pipeline_leakage():
         for path in sorted(directory.rglob("*.py")):
             text = path.read_text(errors="ignore")
             if "source_survey" in text or "motor_speech_voice" in text:
-                hits.append(str(path.relative_to(REPOSITORY_ROOT)))
+                hits.append(path.relative_to(REPOSITORY_ROOT).as_posix())
     return hits
 
 
@@ -311,7 +311,7 @@ def validate_survey():
     if private_evidence_root_present():
         errors.append(
             "the planned private evidence root exists before it is authorised: "
-            + str(PRIVATE_EVIDENCE_ROOT.relative_to(REPOSITORY_ROOT))
+            + PRIVATE_EVIDENCE_ROOT.relative_to(REPOSITORY_ROOT).as_posix()
         )
     pipeline_hits = active_pipeline_leakage()
     if pipeline_hits:

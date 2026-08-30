@@ -2,10 +2,10 @@
   "schema_version": "1.0.0",
   "record_id": "public_snapshot_provenance_v1",
   "contract": "release/snapshot-contract-v1.0.0.json",
-  "contract_sha256": "b992a57c836cb8ee5ec390a159df1d8d8a6b1da13d50c39173badad5e050a40e",
-  "source_commit": "6b678cbf596c977d9a7b7787cd257b089a3993f5",
+  "contract_sha256": "d2d397ee9cd282729b610712c0cffa2666716f779ee54e74557ae440613c8967",
+  "source_commit": "53ee9695bf636960178c7b37369f2b9c16b6ba64",
   "source_working_tree_clean": true,
-  "files_published": 2808,
+  "files_published": 2810,
   "files_withheld": 44,
   "withheld": [
     "AGENTS.md",

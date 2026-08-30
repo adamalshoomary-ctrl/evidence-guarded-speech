@@ -572,7 +572,7 @@ def _common_voice_manifest(source_id):
         with path.open(newline="", encoding="utf-8") as handle:
             clip_counts[split] = sum(1 for _ in csv.DictReader(handle, delimiter="\t"))
     participants = sum(summary["participant_counts"].values())
-    relative_assignment = str(assignment_path.relative_to(REPOSITORY_ROOT))
+    relative_assignment = assignment_path.relative_to(REPOSITORY_ROOT).as_posix()
     return {
         "schema_version": "1.0.0",
         "manifest_id": f"{source_id}_manifest_v1",

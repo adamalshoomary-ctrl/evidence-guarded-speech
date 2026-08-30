@@ -292,7 +292,7 @@ class FinalAcceptanceContractTests(unittest.TestCase):
                             lambda document, link=link: document[
                                 "historical_inputs"
                             ]["exact_files"][0].update({
-                                "path": str(link.relative_to(CONTRACT_PATH.parent)),
+                                "path": link.relative_to(CONTRACT_PATH.parent).as_posix(),
                                 "sha256": original["sha256"],
                             })
                         )

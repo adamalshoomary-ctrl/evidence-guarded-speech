@@ -743,23 +743,23 @@ def canonical_digest(value):
 def _snapshot_entry(path, root):
     path = Path(path)
     if not path.exists() and not path.is_symlink():
-        return {"path": str(path.relative_to(root)), "type": "missing"}
+        return {"path": path.relative_to(root).as_posix(), "type": "missing"}
     if path.is_symlink():
         return {
-            "path": str(path.relative_to(root)),
+            "path": path.relative_to(root).as_posix(),
             "type": "symlink",
             "target": os.readlink(path),
         }
     if path.is_file():
         return {
-            "path": str(path.relative_to(root)),
+            "path": path.relative_to(root).as_posix(),
             "type": "file",
             "sha256": file_sha256(path),
             "size": path.stat().st_size,
         }
     if path.is_dir():
-        return {"path": str(path.relative_to(root)), "type": "directory"}
-    return {"path": str(path.relative_to(root)), "type": "other"}
+        return {"path": path.relative_to(root).as_posix(), "type": "directory"}
+    return {"path": path.relative_to(root).as_posix(), "type": "other"}
 
 
 def snapshot_protected_state(repo_root=REPOSITORY_ROOT):
@@ -789,7 +789,9 @@ def snapshot_public_repository(repo_root=REPOSITORY_ROOT, *, exclude_paths=()):
         )
     except (OSError, subprocess.CalledProcessError) as exc:
         raise FinalAcceptanceError("cannot enumerate public repository files") from exc
-    excluded = {str(Path(item)) for item in exclude_paths}
+    # git ls-files reports forward slashes on every platform, so the
+    # exclusion set must too. See repository_closure for the same fix.
+    excluded = {Path(item).as_posix() for item in exclude_paths}
     paths = sorted(
         item.decode("utf-8") for item in result.stdout.split(b"\0") if item
         and item.decode("utf-8") not in excluded
@@ -810,7 +812,7 @@ def build_evidence_inventory(run_root):
         if path.is_symlink() or (not path.is_file() and not path.is_dir()):
             raise FinalAcceptanceError("private evidence contains an unsafe entry")
         if path.is_file():
-            relative = str(path.relative_to(run_root))
+            relative = path.relative_to(run_root).as_posix()
             files.append({
                 "path": relative,
                 "sha256": file_sha256(path),
@@ -1022,7 +1024,7 @@ def static_pipeline_leakage(contract):
         "forbidden_strong_content_tokens"
     ]
     for path in sorted(pipeline_root.rglob("*.py")):
-        relative = str(path.relative_to(REPOSITORY_ROOT))
+        relative = path.relative_to(REPOSITORY_ROOT).as_posix()
         source = path.read_text(encoding="utf-8")
         try:
             tree = ast.parse(source, filename=relative)
@@ -1108,7 +1110,7 @@ def runtime_output_leakage(output_dir, contract):
     content_matches = []
     unreadable = []
     for path in sorted(output_dir.rglob("*")):
-        relative = str(path.relative_to(output_dir))
+        relative = path.relative_to(output_dir).as_posix()
         normalized_name = _normalized(relative)
         for token in forbidden:
             if _normalized(token) in normalized_name:
@@ -2458,11 +2460,19 @@ def write_exclusive_atomic(path, payload):
             raise FinalAcceptanceError(
                 f"refusing to overwrite existing output: {path}"
             ) from exc
-        directory_fd = os.open(path.parent, os.O_RDONLY)
-        try:
-            os.fsync(directory_fd)
-        finally:
-            os.close(directory_fd)
+        # Syncing the directory makes the new link itself durable, and it is a
+        # POSIX technique: Windows cannot open a directory as a file
+        # descriptor, which surfaced there as PermissionError on the temporary
+        # directory, measured 2026-08-29. The bytes are already flushed and
+        # fsynced above and the refusal to overwrite still holds, so what
+        # Windows loses is the barrier that survives a crash between the link
+        # and the flush, not the exclusivity this function exists to provide.
+        if os.name == "posix":
+            directory_fd = os.open(path.parent, os.O_RDONLY)
+            try:
+                os.fsync(directory_fd)
+            finally:
+                os.close(directory_fd)
     finally:
         try:
             os.unlink(temp_name)

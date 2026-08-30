@@ -100,7 +100,7 @@ def _acceptance_source_digest():
     for path in paths:
         if not path.is_file():
             raise FinalAcceptanceError(f"acceptance source is missing: {path}")
-        relative = str(path.relative_to(REPOSITORY_ROOT))
+        relative = path.relative_to(REPOSITORY_ROOT).as_posix()
         digest.update(relative.encode("utf-8"))
         digest.update(b"\0")
         digest.update(path.read_bytes())

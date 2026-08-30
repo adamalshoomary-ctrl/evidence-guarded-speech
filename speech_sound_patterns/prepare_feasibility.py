@@ -112,7 +112,7 @@ def _canonicalize_audio(source_path, target_path, ffmpeg):
     if channels != 1 or sample_rate != 16000 or not 0 < duration <= 30:
         raise ValueError(f"canonical audio is outside the spike contract: {target_path}")
     return {
-        "canonical_audio_path": str(target_path.relative_to(REPOSITORY_ROOT)),
+        "canonical_audio_path": target_path.relative_to(REPOSITORY_ROOT).as_posix(),
         "canonical_audio_sha256": file_sha256(target_path),
         "sample_rate_hz": sample_rate,
         "channels": channels,
@@ -287,7 +287,7 @@ def _owner_record(owner_audio, ffmpeg):
         "private_participant_id": "owner",
         "source_state": "owner_controlled_integration_only",
         "original_audio_sha256": file_sha256(owner_audio),
-        "canonical_audio_path": str(wav_path.relative_to(REPOSITORY_ROOT)),
+        "canonical_audio_path": wav_path.relative_to(REPOSITORY_ROOT).as_posix(),
         "canonical_audio_sha256": file_sha256(wav_path),
         "sample_rate_hz": 16000,
         "channels": 1,
