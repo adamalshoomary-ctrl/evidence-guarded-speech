@@ -26,7 +26,7 @@ built fresh instead, so its history has one origin and nothing behind it.
 
 ## What was removed
 
-44 of 2854 tracked files were left behind.
+49 of 2860 tracked files were left behind.
 
 | Removed | Why |
 |---|---|
@@ -40,6 +40,9 @@ built fresh instead, so its history has one origin and nothing behind it.
 | `AGENTS.md` | The working agreement for the private repository. It names which of the owner's recordings to test on, where the research corpora sit, which credentials exist, how the owner wants commits handed to him, and the rule that the repository is never published. An earlier build substituted a rewritten public version in its place. That was dropped on 2026-08-27: a public research repository should not ship one project's internal working agreement at all, rewritten or otherwise. |
 | `current-state.md` | The private repository's status handoff, written for whoever picks the work up next. It says what is approved, who to ask, and what not to start. None of that means anything to a reader here. PROJECT-STATUS.md carries the part that does. |
 | `improvement-plan.md` | The private roadmap. Its value to an outside reader is the record of what was deferred and what was decided against, and PROJECT-STATUS.md carries that. The rest is item numbers, acceptance criteria and a workflow agreement with the owner. |
+| `learning/` | Explainers agents write for the owner after each queue item, part of the private handoff system. Excluded on 2026-09-23 at the owner's choice, before any of them was published. |
+| `project-context/` | The handoff system's rules for agents working in the private repository: how to write explainers and when to delegate. It sits with AGENTS.md. Excluded on 2026-09-23 at the owner's choice. |
+| `VOICE.md` | The owner's personal writing guide for agents. AGENTS.md points to it. Excluded on 2026-09-23 at the owner's choice. |
 | `release/overlay/PROJECT-STATUS.md` | The overlay is copied into place as PROJECT-STATUS.md, so shipping it a second time under its build path would only duplicate it. |
 
 A small number of strings were also replaced across the surviving files: a place

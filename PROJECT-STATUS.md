@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-08-29, for release `v0.4.0`.
+Last updated 2026-09-23, for release `v0.4.1`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -53,7 +53,17 @@ Three were found on 2026-08-26 while writing the account, by checking the code
 rather than rereading the prose. Two more were found on 2026-08-27 the same way,
 three more on 2026-08-28 by walking this repository as a stranger would, and
 four more on 2026-08-29 by running the tests on Linux and Windows for the first
-time. **Nine of them are now fixed and three are not.**
+time. **Eleven of them are now fixed and one is not.**
+
+Fixed in `v0.4.1`, on 2026-09-23: **the two release tools now tell a first
+publication from an update.** The snapshot builder deleted its destination under
+`--force`, including that directory's git history, and on 2026-08-26 it deleted
+the history of this repository's own working copy. It now refuses any directory
+whose git has a remote or a commit, and says how to build into an empty
+directory instead. The snapshot verifier asserted that a snapshot has no remote
+and no commit, which held for exactly one release. It now accepts this
+repository, with its commits and its own remote, as an update, and it scans the
+files an update adds before anyone stages them.
 
 Fixed in `v0.4.0`, on 2026-08-29: **the tests now run on Linux, macOS and
 Windows, and this repository did not work on Windows before they did.** The
@@ -145,18 +155,23 @@ ends a measurement record carrying two accounts of one fact that disagreed.
 
 Still open:
 
-- **The snapshot builder deletes its destination under `--force`,** including
-  that directory's git history. Harmless when this repository did not exist, and
-  not harmless now.
-- **The snapshot verifier assumes a first publication.** Its git section asserts
-  the snapshot has no remote and no commits, which was true exactly once. It
-  bites only if you verify a directory that already has a git repository in it,
-  which the documented build procedure avoids.
 - **The interpretation layer still degrades sometimes.** One acceptance run
   failed both attempts and degraded safely, leaving the measurement record
   untouched. The prompt rules were then made explicit and the runs that followed
   passed first time. A handful of passes is not a reliability measurement, and
   this is not solved.
+
+## What comes next
+
+On 2026-09-23 the author made this his only project for the rest of 2026, and
+set the order of work. The next releases cut this repository down to the
+measurement tool, about 11,000 of its 84,000 lines. The research code, the
+shelved motor speech work and their tests leave the main branch. They stay
+citable, byte for byte, at tag `v0.4.0` and its DOI, and `findings.md` will
+point there. After that come a review of the metric names inherited from the
+project's coaching origins, a `pip` package that runs with no account at all,
+a shorter README, a notebook you can run in a browser, and a measurement of what
+the claim verifier catches.
 
 ## What was deferred, and what would make it worth restarting
 

@@ -50,7 +50,11 @@ def private_tokens():
 
 
 def _walk(root):
-    """Every file git would actually publish, which is the staged set.
+    """Every file git would actually publish: tracked, plus untracked and not ignored.
+
+    The untracked half matters for an update. After the rsync into the public
+    repository nothing new is staged yet, and `git add -A` in GitHub Desktop
+    publishes those files next.
 
     Walking the filesystem instead was wrong in a way worth recording. Running
     the test suite inside a built snapshot leaves ``__pycache__`` behind, and a
@@ -61,7 +65,7 @@ def _walk(root):
     anybody happened to run the tests first.
     """
     staged = subprocess.run(
-        ["git", "ls-files", "--cached", "-z"],
+        ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
         cwd=root, capture_output=True, text=True, check=True,
     ).stdout.split("\0")
     for name in sorted(filter(None, staged)):
@@ -215,21 +219,39 @@ def scan_evidence_bundle(root):
     return findings
 
 
+PUBLIC_REMOTE = "https://github.com/adamalshoomary-ctrl/evidence-guarded-speech.git"
+
+
+def publication_kind(root):
+    """Return "first", "update" or None when the git state fits neither.
+
+    A fresh build has a git with no remote and no commit. The public repository
+    after an rsync has both. The verifier was written when only the first case
+    existed, and it failed every update from 2026-08-26 onward.
+    """
+    remotes = subprocess.run(["git", "remote"], cwd=root,
+                             capture_output=True, text=True).stdout.split()
+    committed = subprocess.run(["git", "rev-parse", "--verify", "--quiet", "HEAD"],
+                               cwd=root, capture_output=True, text=True).returncode == 0
+    if not remotes and not committed:
+        return "first"
+    if remotes and committed:
+        return "update"
+    return None
+
+
 def scan_git(root):
-    findings = []
     if not (root / ".git").is_dir():
         return ["the snapshot is not a git repository"]
-    remotes = subprocess.run(["git", "remote"], cwd=root,
-                             capture_output=True, text=True).stdout.strip()
-    if remotes:
-        findings.append(f"the snapshot already has a remote: {remotes}")
-    committed = subprocess.run(["git", "rev-parse", "--verify", "HEAD"], cwd=root,
-                               capture_output=True, text=True)
-    if committed.returncode == 0:
-        findings.append(
-            "the snapshot already has a commit. The builder must never commit; "
-            "the first commit is the owner's."
-        )
+    kind = publication_kind(root)
+    if kind is None:
+        return [
+            "the snapshot's git has a remote without a commit, or a commit without "
+            "a remote. That fits neither a fresh build nor the public repository"
+        ]
+    if kind == "update":
+        return _scan_update(root)
+    findings = []
     staged = subprocess.run(["git", "diff", "--cached", "--name-only"], cwd=root,
                             capture_output=True, text=True).stdout.split()
     if not staged:
@@ -241,6 +263,19 @@ def scan_git(root):
         findings.append(
             f"{len(unstaged)} files are present but not staged, so the verifier "
             f"has not checked them, starting with {unstaged[0]}"
+        )
+    return findings
+
+
+def _scan_update(root):
+    findings = []
+    remotes = subprocess.run(["git", "remote", "-v"], cwd=root,
+                             capture_output=True, text=True).stdout.split("\n")
+    urls = {line.split()[1] for line in remotes if len(line.split()) >= 2}
+    if urls != {PUBLIC_REMOTE}:
+        findings.append(
+            f"an update must point only at {PUBLIC_REMOTE}, and this points at "
+            f"{', '.join(sorted(urls))}"
         )
     return findings
 
@@ -267,6 +302,10 @@ def main():
     parser.add_argument("--destination", type=Path, default=DEFAULT_DESTINATION)
     arguments = parser.parse_args()
     sections, allowed = verify(arguments.destination)
+    root = arguments.destination.resolve()
+    kind = publication_kind(root) if (root / ".git").is_dir() else None
+    if kind:
+        print(f"checked as: {'a first publication' if kind == 'first' else 'an update to the public repository'}")
     for note in allowed:
         print(f"declared exemption: {note}")
     total = sum(len(findings) for findings in sections.values())
@@ -277,7 +316,10 @@ def main():
             print(f"    {finding}")
     if total:
         raise SystemExit(f"\nSNAPSHOT REFUSED: {total} findings")
-    print("\nSnapshot verified. It is staged and uncommitted, ready for review.")
+    if kind == "update":
+        print("\nUpdate verified. The changes are uncommitted, ready for review.")
+    else:
+        print("\nSnapshot verified. It is staged and uncommitted, ready for review.")
 
 
 if __name__ == "__main__":

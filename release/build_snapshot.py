@@ -175,18 +175,53 @@ def _check_overlays(contract):
                 )
 
 
-def build(destination, force=False):
-    contract = load_contract()
-    _check_overlays(contract)
+def published_history(destination):
+    """Say why a destination holds history that --force must not delete.
 
+    Returns None for a directory with no git, or with a git that has neither a
+    remote nor a commit, which is what an earlier build leaves behind. On
+    2026-08-26 --force deleted the .git of the public repository, and only an
+    earlier push made that recoverable.
+    """
+    if not (Path(destination) / ".git").exists():
+        return None
+    remotes = subprocess.run(["git", "remote"], cwd=destination,
+                             capture_output=True, text=True).stdout.split()
+    committed = subprocess.run(["git", "rev-parse", "--verify", "--quiet", "HEAD"],
+                               cwd=destination, capture_output=True, text=True)
+    reasons = []
+    if remotes:
+        reasons.append(f"a remote ({', '.join(remotes)})")
+    if committed.returncode == 0:
+        reasons.append("at least one commit")
+    if not reasons:
+        return None
+    return (
+        f"{destination} is a git repository with {' and '.join(reasons)}. "
+        "--force would delete that history. Build into an empty scratch "
+        "directory with --destination, then rsync it into place excluding .git."
+    )
+
+
+def build(destination, force=False):
+    # The destination is checked before the contract loads, so a refusal never
+    # depends on the contract being present or current.
     destination = Path(destination).resolve()
     if destination == REPOSITORY_ROOT:
         raise SnapshotError("the snapshot cannot be built over the source repository")
-    if destination.exists() and any(destination.iterdir()):
+    replace = destination.exists() and any(destination.iterdir())
+    if replace:
         if not force:
             raise SnapshotError(
                 f"{destination} is not empty. Pass --force to replace it."
             )
+        refusal = published_history(destination)
+        if refusal:
+            raise SnapshotError(refusal)
+
+    contract = load_contract()
+    _check_overlays(contract)
+    if replace:
         shutil.rmtree(destination)
     destination.mkdir(parents=True, exist_ok=True)
 
