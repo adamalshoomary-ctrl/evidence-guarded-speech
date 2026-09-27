@@ -12,7 +12,7 @@ from .contract import load_contract
 
 
 ALGORITHM_VERSION = "fluency-event-candidates-1.1.0"
-ARTIFACT_SCHEMA_VERSION = "1.1.0"
+ARTIFACT_SCHEMA_VERSION = "1.2.0"
 _TOKEN_EDGE = re.compile(r"^[^a-z0-9']+|[^a-z0-9']+$", re.IGNORECASE)
 _LEADING_ELONGATION = re.compile(r"^([a-z])\1{2,}([a-z].+)$", re.IGNORECASE)
 _FORBIDDEN_REVIEW_WORDS = {
@@ -501,7 +501,7 @@ def extract_candidates(words, alignment, master, audio_quality,
             "diagnosis": "blocked",
             "severity": "blocked",
             "released_interpretation": "blocked",
-            "personal_progress": "blocked",
+            "change_over_time": "blocked",
         },
         "analysis_context": {
             "recording_type": master.get("meta", {}).get("recording_type"),
@@ -581,7 +581,7 @@ def validate_artifact(artifact, contract=None):
     if boundaries.get("candidate_absence_does_not_establish_fluency") is not True:
         errors.append("artifact cannot use candidate absence as fluency")
     for field in ("diagnosis", "severity", "released_interpretation",
-                  "personal_progress"):
+                  "change_over_time"):
         if boundaries.get(field) != "blocked":
             errors.append(f"artifact claim boundary {field} must be blocked")
     availability = artifact.get("availability") or {}

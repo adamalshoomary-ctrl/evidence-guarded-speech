@@ -82,7 +82,7 @@
         "start_s": 0.0,
         "end_s": 6.4,
         "pause_before_s": null,
-        "expressive_text": "alpha speaks [SPEAKER_01: \"yeah\"] continues ... [1.5s] slowwoooord LOUD really?"
+        "expressive_text": "alpha speaks [SPEAKER_01: \"yeah\"] continues ... [1.5s] slowwoooord LOUD really."
       },
       {
         "turn_id": 2,
@@ -95,19 +95,19 @@
     ],
     "renderer_events": [
       {
-        "type": "drag",
+        "type": "lengthened_word",
         "word": "slowword",
         "speaker": "SPEAKER_00",
         "timestamp_s": 3.0
       },
       {
-        "type": "loud",
+        "type": "level_above_median",
         "word": "loud",
         "speaker": "SPEAKER_00",
         "timestamp_s": 5.0
       },
       {
-        "type": "uptalk",
+        "type": "final_rise",
         "word": "really.",
         "speaker": "SPEAKER_00",
         "timestamp_s": 6.0
@@ -122,56 +122,50 @@
           "talk_share_pct": 89.4,
           "words": 6,
           "wpm": 61.0,
-          "filler_count": 0,
-          "fillers_per_min": 0.0,
-          "drag_count": 1,
-          "loud_spike_count": 1,
-          "uptalk_count": 1,
-          "uptalk_per_min": 10.17,
+          "filled_pause_count": 0,
+          "filled_pauses_per_min": 0.0,
+          "lengthened_word_count": 1,
+          "level_above_median_word_count": 1,
+          "final_rise_count": 1,
+          "final_rises_per_min": 10.17,
           "backchannels_given": 0,
-          "avg_response_pause_s": 0.0,
-          "median_pitch_hz": 100.0,
-          "hedge_count": 0,
-          "hedges_per_min": 0.0,
-          "hedge_breakdown": {},
+          "mean_pause_before_turn_s": null,
+          "listed_phrase_counts": {},
           "question_count": 0,
           "question_ratio": 0.0,
-          "pronoun_balance": {
+          "pronoun_counts": {
             "i_me_my": 0,
             "you_your": 0,
             "ratio": null
           },
           "repetition_count": 0,
-          "repetition_rate": 0.0,
-          "vocab_variety": null
+          "repetitions_per_min": 0.0,
+          "type_token_ratio": null
         },
         "SPEAKER_01": {
           "talk_time_s": 0.7,
           "talk_share_pct": 10.6,
           "words": 2,
           "wpm": 171.4,
-          "filler_count": 0,
-          "fillers_per_min": 0.0,
-          "drag_count": 0,
-          "loud_spike_count": 0,
-          "uptalk_count": 0,
-          "uptalk_per_min": 0.0,
+          "filled_pause_count": 0,
+          "filled_pauses_per_min": 0.0,
+          "lengthened_word_count": 0,
+          "level_above_median_word_count": 0,
+          "final_rise_count": 0,
+          "final_rises_per_min": 0.0,
           "backchannels_given": 1,
-          "avg_response_pause_s": 0.0,
-          "median_pitch_hz": null,
-          "hedge_count": 0,
-          "hedges_per_min": 0.0,
-          "hedge_breakdown": {},
+          "mean_pause_before_turn_s": null,
+          "listed_phrase_counts": {},
           "question_count": 0,
           "question_ratio": 0.0,
-          "pronoun_balance": {
+          "pronoun_counts": {
             "i_me_my": 0,
             "you_your": 0,
             "ratio": null
           },
           "repetition_count": 0,
-          "repetition_rate": 0.0,
-          "vocab_variety": null
+          "repetitions_per_min": 0.0,
+          "type_token_ratio": null
         }
       }
     },

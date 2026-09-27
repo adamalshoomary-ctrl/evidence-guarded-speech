@@ -82,8 +82,13 @@ identifiers:
     description: >-
       The DOI for version v0.4.1 specifically, the release that stopped the
       release tools deleting published history.
-version: "0.5.0"
-date-released: "2026-09-23"
+  - type: doi
+    value: 10.5281/zenodo.22988979
+    description: >-
+      The DOI for version v0.5.0 specifically, the release that cut the
+      repository down to the measuring tool.
+version: "0.6.0"
+date-released: "2026-09-27"
 keywords:
   - speech measurement
   - pronunciation assessment

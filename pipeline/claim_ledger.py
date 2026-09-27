@@ -718,7 +718,11 @@ _DATA_PATTERNS = [
     (re.compile(r"([+-]?\d+(?:\.\d+)?)\s*Hz\b", re.I), "Hz"),
     (re.compile(r"([+-]?\d+(?:\.\d+)?)\s*(?:words?\s*(?:/|per)\s*min|wpm)\b", re.I),
      "per_minute"),
-    (re.compile(r"([+-]?\d+(?:\.\d+)?)\s*(?:fillers?|uptalks?|hedges?)\s*(?:/|per)\s*min", re.I),
+    # New and old metric words both count, so a number written with an old
+    # name is still checked.
+    (re.compile(r"([+-]?\d+(?:\.\d+)?)\s*(?:filled\s+pauses?|"
+                r"final\s+(?:pitch\s+)?rises?|repetitions?|fillers?|uptalks?|"
+                r"hedges?)\s*(?:/|per)\s*min", re.I),
      "per_minute"),
     (re.compile(r"([+-]?\d+(?:\.\d+)?)\s*%"), "percent"),
 ]

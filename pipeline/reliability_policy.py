@@ -1,6 +1,8 @@
 """Release policy for longitudinal reliability and subgroup evaluation."""
 
-VALIDATION_POLICY_VERSION = "1.1.0"
+# 1.2.0 on 2026-09-27: item F7 replaced the progress fields with one
+# change_over_time limit and followed the metric renames.
+VALIDATION_POLICY_VERSION = "1.2.0"
 AUDIT_PROTOCOL_VERSION = "1.0.0"
 
 FAIRNESS_DIMENSIONS = (
@@ -14,22 +16,22 @@ FAIRNESS_DIMENSIONS = (
 )
 
 COUNT_METRICS = {
-    "words", "filler_count", "drag_count", "loud_spike_count",
-    "uptalk_count", "backchannels_given", "hedge_count", "question_count",
-    "repetition_count", "pronoun_balance.i_me_my",
-    "pronoun_balance.you_your",
+    "words", "filled_pause_count", "lengthened_word_count",
+    "level_above_median_word_count", "final_rise_count",
+    "backchannels_given", "question_count", "repetition_count",
+    "pronoun_counts.i_me_my", "pronoun_counts.you_your",
 }
 RATE_METRICS = {
-    "wpm", "fillers_per_min", "uptalk_per_min", "hedges_per_min",
-    "repetition_rate",
+    "wpm", "filled_pauses_per_min", "final_rises_per_min",
+    "repetitions_per_min",
 }
 PROPORTION_METRICS = {
-    "talk_share_pct", "question_ratio", "pronoun_balance.ratio",
-    "vocab_variety",
+    "talk_share_pct", "question_ratio", "pronoun_counts.ratio",
+    "type_token_ratio",
 }
-TIME_METRICS = {"talk_time_s", "avg_response_pause_s"}
+TIME_METRICS = {"talk_time_s", "mean_pause_before_turn_s"}
 PITCH_METRICS = {
-    "median_pitch_hz", "pitch_median_hz", "pitch_variation_hz",
+    "pitch_median_hz", "pitch_variation_hz",
     "f0_median_hz", "f0_p05_hz", "f0_p25_hz", "f0_p75_hz",
     "f0_p95_hz", "f0_distribution_span_st",
 }
@@ -179,8 +181,6 @@ def measurement_validation(metric):
             "status": "experimental",
             "exact_same_input_requirement": "exact for deterministic stages",
             "human_repeatability_status": "not_established",
-            "progress_use": "blocked",
-            "minimum_baseline_observations": None,
             "natural_variation_status": "not_established",
             "meaningful_change_status": "not_established",
             "reason": (
@@ -212,7 +212,7 @@ def measurement_validation(metric):
         },
         "release_limits": {
             "single_recording_interpretation": "allowed_with_measurement_quality_limits",
-            "individual_progress": "blocked",
+            "change_over_time": "blocked",
             "ranking": "blocked",
             "screening": "blocked",
             "high_stakes_decision": "blocked",

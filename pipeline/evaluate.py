@@ -131,21 +131,26 @@ the measurement instead.
 
 The master JSON contains:
 - meta.recording_type: "solo" or "conversation"
-- computed_metrics: DETERMINISTIC per-speaker numbers (talk share, wpm,
-  fillers/min, uptalk count, drags, backchannels given, pauses), plus language
-  metrics: hedge_count / hedges_per_min (with hedge_breakdown), question_count
-  / question_ratio, pronoun_balance, repetition_rate, vocab_variety. They are
-  legacy-compatible values, not automatically trustworthy.
+- computed_metrics: DETERMINISTIC per-speaker numbers (talk time and share,
+  words and wpm, filled_pause_count / filled_pauses_per_min,
+  lengthened_word_count, level_above_median_word_count, final_rise_count /
+  final_rises_per_min, backchannels given, mean_pause_before_turn_s), plus
+  language metrics: listed_phrase_counts (each phrase on a fixed list, counted
+  on its own), question_count / question_ratio, pronoun_counts,
+  repetition_count / repetitions_per_min, type_token_ratio. Each is named for
+  what it counts, and none is automatically trustworthy.
 - measurement_metadata: the required reliability record for every computed
   metric and voice measurement. It states source, minimum evidence,
   availability, quality, warnings, confounders, and method versions.
 - turns with EXPRESSIVE TEXT: spelling encodes measured delivery
-  (CAPS = louder than that speaker's own average; stretched letters = held
-  longer than their own pace; trailing ? on a statement = measured rising
-  inflection/uptalk; ... [measured pause] = a pause whose precise duration is
-  not citeable here; [SPK: "..."] inline = a backchannel interjection while
-  the main speaker continued)
-- word_effects: raw measurements behind the spellings
+  (CAPS = recorder level at least 5.5 dB above that speaker's own median,
+  which microphone distance and head movement also change; stretched letters
+  = held longer than their own pace per letter; ... [measured pause] = a pause
+  whose precise duration is not citeable here; [SPK: "..."] inline = a
+  backchannel interjection while the main speaker continued). Question marks
+  are the transcriber's own punctuation.
+- word_effects: raw measurements behind the spellings, and the final pitch
+  rises (rising_pitch_hz), which change no spelling
 - per-turn acoustics, plus listener notes when the listener enrichment status is
   complete
 - meta.per_speaker_voice_quality: jitter/shimmer/pitch per speaker. Check its

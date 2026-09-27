@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-CONTRACT_PATH = Path(__file__).with_name("contract-v1.1.0.json")
+CONTRACT_PATH = Path(__file__).with_name("contract-v1.2.0.json")
 REQUIRED_PRIMITIVES = {
     "f0_median_hz",
     "f0_percentiles_hz",
@@ -28,7 +28,7 @@ REQUIRED_TASK_PROFILES = {
     "repeated_phrase_research",
     "unknown_ad_hoc",
 }
-FORBIDDEN_RELEASES = {"personal_progress", "ranking", "screening", "diagnosis"}
+FORBIDDEN_RELEASES = {"change_over_time", "ranking", "screening", "diagnosis"}
 
 
 def load_contract(path=CONTRACT_PATH):
@@ -78,7 +78,7 @@ def validate_contract(document):
         "screening_allowed": False,
         "diagnosis_allowed": False,
         "ranking_allowed": False,
-        "personal_progress_allowed": False,
+        "change_over_time_claims_allowed": False,
         "universal_ideal_voice_allowed": False,
         "missing_evidence_becomes_zero": False,
     }

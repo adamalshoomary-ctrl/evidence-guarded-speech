@@ -12,11 +12,14 @@ New in v3:
   word's measured pitch votes using each speaker's pitch profile
 - BACKCHANNELS: short interjections ("yeah", "no way?") inside another
   speaker's run are rendered inline as [SPK: "..."] instead of shattering
-  the turn - and counted as an engagement metric
-- COMPUTED METRICS per speaker: deterministic numbers (filler rate, uptalk
-  count, WPM, talk share, backchannels...) for stable, anchorable scoring
-- Recalibrated thresholds (less sensitive): DRAG 1.9->2.3 with a 0.40s
-  floor, CAPS +4.0->+5.5 dB, uptalk 1.12->1.18 with a 15 Hz floor
+  the turn, and counted per speaker
+- COMPUTED METRICS per speaker: deterministic counts, rates and times
+  (filled pauses, final pitch rises, words per minute, talk share,
+  backchannels...). Each is named for what it counts. Item F7 renamed the
+  ones that carried names from the coaching era, on 2026-09-27
+- Recalibrated thresholds (less sensitive): lengthened words 1.9->2.3 with a
+  0.40s floor, capitals +4.0->+5.5 dB, final rises 1.12->1.18 with a 15 Hz
+  floor
 
 Saves /output/master.json and /output/master_preview.txt
 Run:  python3 pipeline/merge.py
@@ -50,16 +53,19 @@ OUT = context.output_dir
 
 # ---- calibration knobs (v3: desensitised) --------------------------------
 PAUSE_MIN = 0.7
-DRAG_RATIO = 2.6          # floor: word must run 2.6x its expected length...
+# The DRAG, LOUD and RISE constants keep their names because the regression
+# harness protects them by name. They set the lengthened word, recorder level
+# and final pitch rise rules.
+DRAG_RATIO = 2.6          # lengthened word: runs 2.6x its expected length...
 DRAG_MIN_S = 0.50         # ...AND at least 0.50s absolute
-DRAG_PERCENTILE = 95      # ...AND be in this speaker's top 5% most-stretched words
-LOUD_DB_ABOVE = 5.5       # dB above the speaker's own median for CAPS
-RISE_RATIO = 1.18         # end-pitch vs start-pitch for uptalk...
+DRAG_PERCENTILE = 95      # ...AND is in this speaker's top 5% most-stretched words
+LOUD_DB_ABOVE = 5.5       # recorder level dB above the speaker's own median, for CAPS
+RISE_RATIO = 1.18         # final rise: end-pitch vs start-pitch of the last word...
 RISE_MIN_HZ = 15.0        # ...AND at least +15 Hz absolute
 SLIVER_S = 0.30           # diarization turns shorter than this are noise
 BACKCHANNEL_MAX_S = 1.6   # interjection length cap
 BACKCHANNEL_MAX_WORDS = 4
-FILLERS = {"um", "uh", "erm", "hmm", "mm", "uhm", "er"}
+FILLED_PAUSES = {"um", "uh", "erm", "hmm", "mm", "uhm", "er"}
 VOWELS = "aeiou"
 
 def load(name, required=True):
@@ -82,7 +88,8 @@ audio_quality = load("audio_quality.json", required=False)
 words = transcript.get("words", [])
 
 # ASR word end-times sometimes swallow the silence after a word, producing
-# false drags (a "5.25s held" word that is really a ~1s word + ~4s pause).
+# false lengthened words (a "5.25s held" word that is really a ~1s word +
+# ~4s pause).
 # Before any duration is computed, clip each word's end to the end of the
 # VAD speech chunk containing its start. Words whose start lies in silence
 # (between chunks) are left unchanged.
@@ -172,17 +179,20 @@ pitch_observation_counts = {
 phase_c_summaries = (
     (acoustics.get("voice_prosody") or {}).get("speakers") or {}
 )
-if not solo:
-    for spk in {w["final_speaker"] for w in words}:
-        vals = []
-        for w in words:
-            if w["final_speaker"] == spk and w["speaker_confidence"] == "high":
-                p = pitch_window(w["start_s"], w["end_s"])
-                if p:
-                    vals.append(p)
-        pitch_observation_counts[spk] = len(vals)
-        if len(vals) >= 5:
-            pitch_profile[spk] = statistics.median(vals)
+# Pitch observations are counted in both modes, because they gate every pitch
+# based measurement. Until 2026-09-27 they were counted only in conversations,
+# so every solo run marked its final rise count unavailable while still
+# reporting it. The profile is only for the conversation pitch voter.
+for spk in {w["final_speaker"] for w in words}:
+    vals = []
+    for w in words:
+        if w["final_speaker"] == spk and w["speaker_confidence"] == "high":
+            p = pitch_window(w["start_s"], w["end_s"])
+            if p:
+                vals.append(p)
+    pitch_observation_counts[spk] = len(vals)
+    if not solo and len(vals) >= 5:
+        pitch_profile[spk] = statistics.median(vals)
 
 def pitch_vote(w):
     """Return the speaker whose pitch profile best matches this word, or None."""
@@ -274,9 +284,10 @@ for spk in speakers:
         "median_db": statistics.median(louds) if louds else -15.0,
     }
 
-# adaptive drag threshold: for each speaker, a word only counts as a drag
-# if its stretch-ratio is an OUTLIER for that speaker in this recording -
-# the top (100-DRAG_PERCENTILE)% - never below the DRAG_RATIO floor.
+# adaptive lengthening threshold: for each speaker, a word only counts as
+# lengthened if its stretch-ratio is an OUTLIER for that speaker in this
+# recording - the top (100-DRAG_PERCENTILE)% - never below the DRAG_RATIO
+# floor.
 drag_threshold = {}
 for spk in speakers:
     ratios = []
@@ -334,8 +345,8 @@ def render_word(w, is_phrase_final):
     spk = baseline[w["final_speaker"]]
     fx = {}
 
-    if core.lower() in FILLERS:
-        fx["filler_s"] = round(w["dur"], 2)
+    if core.lower() in FILLED_PAUSES:
+        fx["filled_pause_s"] = round(w["dur"], 2)
         if w["dur"] >= 0.9:
             return text.replace(core, core[0] * 3 + core[1:] * 3), fx
         if w["dur"] >= 0.5:
@@ -347,8 +358,8 @@ def render_word(w, is_phrase_final):
             and w["dur"] >= DRAG_MIN_S
             and w["dur"] / expected >= drag_threshold[w["final_speaker"]]):
         # stretch the spelling only for alphabetic words - repeating digits
-        # ("2:20" -> "2:20000") reads as a different number. Numeric drags
-        # still count and still carry held_s.
+        # ("2:20" -> "2:20000") reads as a different number. Lengthened
+        # numbers still count and still carry held_s.
         if any(c.isalpha() for c in core):
             text = text.replace(core, stretch(core, longest_vowel_in(w["start_s"], w["end_s"])))
         fx["held_s"] = round(w["dur"], 2)
@@ -356,8 +367,11 @@ def render_word(w, is_phrase_final):
     db = loudness_at(w["mid"])
     if db is not None and db >= spk["median_db"] + LOUD_DB_ABOVE:
         text = text.upper()
-        fx["loud_db_above_avg"] = round(db - spk["median_db"], 1)
+        fx["level_db_above_median"] = round(db - spk["median_db"], 1)
 
+    # A final pitch rise is recorded in word_effects and nowhere in the text.
+    # Until 2026-09-27 the word was respelled with a question mark, which
+    # rewrote a statement as a question in the transcript.
     ends_statement = text.rstrip().endswith((".", "!")) or is_phrase_final
     if ends_statement and "?" not in text and w["dur"] >= 0.15:
         first = pitch_window(w["start_s"], w["start_s"] + w["dur"] * 0.4)
@@ -365,7 +379,6 @@ def render_word(w, is_phrase_final):
         if (first and last and last / first >= RISE_RATIO
                 and last - first >= RISE_MIN_HZ):
             fx["rising_pitch_hz"] = [round(first, 1), round(last, 1)]
-            text = text.rstrip().rstrip(".!") + "?"
 
     return text, fx
 
@@ -410,7 +423,8 @@ def pause_between(t1, t2):
 turns = []
 current = None
 prev_end = None
-effect_totals = {s: {"fillers": 0, "drags": 0, "loud": 0, "uptalk": 0}
+effect_totals = {s: {"filled_pauses": 0, "lengthened_words": 0,
+                     "level_above_median": 0, "final_rises": 0}
                  for s in speakers}
 
 
@@ -440,14 +454,14 @@ for ri, r in enumerate(runs):
         rendered_words.append((w, piece, fx))
         if fx:
             et = effect_totals[w["final_speaker"]]
-            if "filler_s" in fx:
-                et["fillers"] += 1
+            if "filled_pause_s" in fx:
+                et["filled_pauses"] += 1
             if "held_s" in fx:
-                et["drags"] += 1
-            if "loud_db_above_avg" in fx:
-                et["loud"] += 1
+                et["lengthened_words"] += 1
+            if "level_db_above_median" in fx:
+                et["level_above_median"] += 1
             if "rising_pitch_hz" in fx:
-                et["uptalk"] += 1
+                et["final_rises"] += 1
 
     if is_bc and current is not None:
         # weave into the surrounding speaker's turn inline
@@ -533,22 +547,26 @@ for t in turns:
     pitches = [m["pitch_hz"] for m in mids if m["pitch_hz"]]
     spk_base = baseline[t["speaker"]]
     t["acoustics"] = {
-        "loudness_vs_own_avg_db": round(statistics.mean(louds) - spk_base["median_db"], 1) if louds else None,
+        "level_vs_own_median_db": round(statistics.mean(louds) - spk_base["median_db"], 1) if louds else None,
         "pitch_mean_hz": round(statistics.mean(pitches), 1) if pitches else None,
     }
 
 moments = []  # filled by the listener enrichment step
 
 # ------------------------------ 8a. deterministic language metrics helpers
-# Hedges: longest-phrase-first greedy scan over each speaker's normalized
-# word tokens, so "you know what I mean" counts once (not also "you know").
-HEDGE_PHRASES = [
+# Listed phrases: longest-phrase-first greedy scan over each speaker's
+# normalized word tokens, so "you know what I mean" counts once (not also
+# "you know"). Each phrase is counted on its own. Until 2026-09-27 they were
+# also added into one "hedge" total, but the list mixes softeners ("maybe"),
+# emphasis words ("literally") and discourse markers ("you know"), so the
+# total measured none of them. Item F7 removed it.
+LISTED_PHRASES = [
     "you know what i mean", "kind of", "sort of", "or something",
     "or whatever", "i think", "i guess", "you know",
     "kinda", "sorta", "maybe", "basically", "literally", "honestly",
 ]
-_HEDGE_TOKENS = sorted((tuple(p.split()) for p in HEDGE_PHRASES),
-                       key=len, reverse=True)
+_LISTED_PHRASE_TOKENS = sorted((tuple(p.split()) for p in LISTED_PHRASES),
+                               key=len, reverse=True)
 FIRST_PERSON = {"i", "me", "my"}
 SECOND_PERSON = {"you", "your"}
 
@@ -557,9 +575,9 @@ def _norm_token(text):
     return text.strip(".,?!'\";:").lower()
 
 
-def _hedge_at(tokens, i):
-    """Longest hedge phrase starting at token i, or None."""
-    for pt in _HEDGE_TOKENS:
+def _listed_phrase_at(tokens, i):
+    """Longest listed phrase starting at token i, or None."""
+    for pt in _LISTED_PHRASE_TOKENS:
         if tuple(tokens[i:i + len(pt)]) == pt:
             return " ".join(pt)
     return None
@@ -570,30 +588,28 @@ def language_metrics(sw, own_turn_count, minutes):
 
     sw: that speaker's words in chronological order (final attributions).
 
-    "like" heuristic (v1, per spec): "like" only counts as a hedge when it
-    looks like a discourse filler - i.e. it is sentence-initial (first word,
-    or previous word ends with . ? !), follows a comma, follows a real pause
-    (>=0.5s gap from the speaker's previous word - also covers turn starts),
-    or is adjacent to another counted hedge. "I like X" therefore does not
+    "like" heuristic (v1, per spec): "like" only counts when it looks like a
+    discourse use - i.e. it is sentence-initial (first word, or previous
+    word ends with . ? !), follows a comma, follows a real pause (>=0.5s gap
+    from the speaker's previous word - also covers turn starts), or is
+    adjacent to another counted listed phrase. "I like X" therefore does not
     count.
 
     Questions: a word whose RAW ASR text ends with "?" ends a question
-    sentence. Renderer uptalk adds "?" only to expressive_text, never to the
-    raw word, so uptalk is excluded automatically.
+    sentence. The transcriber may punctuate a final pitch rise as a question,
+    and that stays a confounder of the question count.
     """
     tokens = [_norm_token(w["text"]) for w in sw]
 
-    breakdown = {}
-    hedge_count = 0
+    phrase_counts = {}
     i = 0
-    last_hedge_end = -1  # index just past the most recent counted hedge
+    last_phrase_end = -1  # index just past the most recent counted phrase
     while i < len(tokens):
-        m = _hedge_at(tokens, i)
+        m = _listed_phrase_at(tokens, i)
         if m:
-            breakdown[m] = breakdown.get(m, 0) + 1
-            hedge_count += 1
+            phrase_counts[m] = phrase_counts.get(m, 0) + 1
             i += len(m.split())
-            last_hedge_end = i
+            last_phrase_end = i
             continue
         if tokens[i] == "like":
             prev_raw = sw[i - 1]["text"].rstrip() if i else ""
@@ -601,13 +617,14 @@ def language_metrics(sw, own_turn_count, minutes):
             after_comma = prev_raw.endswith(",")
             after_pause = (i > 0
                            and sw[i]["start_s"] - sw[i - 1]["end_s"] >= 0.5)
-            near_hedge = (last_hedge_end == i
-                          or (i + 1 < len(tokens)
-                              and _hedge_at(tokens, i + 1) is not None))
-            if sentence_initial or after_comma or after_pause or near_hedge:
-                breakdown["like (filler)"] = breakdown.get("like (filler)", 0) + 1
-                hedge_count += 1
-                last_hedge_end = i + 1
+            near_phrase = (last_phrase_end == i
+                           or (i + 1 < len(tokens)
+                               and _listed_phrase_at(tokens, i + 1) is not None))
+            if sentence_initial or after_comma or after_pause or near_phrase:
+                phrase_counts["like (discourse)"] = (
+                    phrase_counts.get("like (discourse)", 0) + 1
+                )
+                last_phrase_end = i + 1
         i += 1
 
     question_count = sum(1 for w in sw if w["text"].rstrip().endswith("?"))
@@ -626,24 +643,22 @@ def language_metrics(sw, own_turn_count, minutes):
             reps += 1
 
     clean = [t for t in tokens if t]
-    vocab_variety = (round(len(set(clean)) / len(clean), 3)
-                     if len(clean) >= 50 else None)
+    type_token_ratio = (round(len(set(clean)) / len(clean), 3)
+                        if len(clean) >= 50 else None)
 
     return {
-        "hedge_count": hedge_count,
-        "hedges_per_min": round(hedge_count / minutes, 2),
-        "hedge_breakdown": breakdown,
+        "listed_phrase_counts": phrase_counts,
         "question_count": question_count,
         "question_ratio": (round(question_count / own_turn_count, 2)
                            if own_turn_count else 0.0),
-        "pronoun_balance": {
+        "pronoun_counts": {
             "i_me_my": first,
             "you_your": second,
             "ratio": round(first / second, 2) if second else None,
         },
         "repetition_count": reps,
-        "repetition_rate": round(reps / minutes, 2),
-        "vocab_variety": vocab_variety,
+        "repetitions_per_min": round(reps / minutes, 2),
+        "type_token_ratio": type_token_ratio,
     }
 
 
@@ -661,6 +676,9 @@ for spk in speakers:
     minutes = max(talk_s / 60.0, 1e-6)
     et = effect_totals[spk]
     own_turns = [t for t in turns if t["speaker"] == spk]
+    # pause_before_s is set only for a pause of PAUSE_MIN or more, so this is
+    # the mean of those pauses. With none there is no mean to report. Until
+    # 2026-09-27 it reported 0.0, which read as instant replies.
     long_pauses = [t.get("pause_before_s", 0) for t in own_turns
                    if t.get("pause_before_s")]
     computed[spk] = {
@@ -672,15 +690,15 @@ for spk in speakers:
                                         for s in speakers), 1e-6), 1),
         "words": len(sw),
         "wpm": round(len(sw) / minutes, 1),
-        "filler_count": et["fillers"],
-        "fillers_per_min": round(et["fillers"] / minutes, 2),
-        "drag_count": et["drags"],
-        "loud_spike_count": et["loud"],
-        "uptalk_count": et["uptalk"],
-        "uptalk_per_min": round(et["uptalk"] / minutes, 2),
+        "filled_pause_count": et["filled_pauses"],
+        "filled_pauses_per_min": round(et["filled_pauses"] / minutes, 2),
+        "lengthened_word_count": et["lengthened_words"],
+        "level_above_median_word_count": et["level_above_median"],
+        "final_rise_count": et["final_rises"],
+        "final_rises_per_min": round(et["final_rises"] / minutes, 2),
         "backchannels_given": backchannel_counts.get(spk, 0),
-        "avg_response_pause_s": round(statistics.mean(long_pauses), 2) if long_pauses else 0.0,
-        "median_pitch_hz": round(pitch_profile.get(spk), 1) if pitch_profile.get(spk) else None,
+        "mean_pause_before_turn_s": (round(statistics.mean(long_pauses), 2)
+                                     if long_pauses else None),
     }
     computed[spk].update(language_metrics(sw, len(own_turns), minutes))
 
@@ -736,17 +754,21 @@ master = {
         "audio_quality": audio_quality,
         "audio_conditions": None,  # filled by listener enrichment
         "enrichment_status": enrichment_status,
-        "notes": "expressive spelling: CAPS = louder than that speaker's own "
-                 "average; stretched letters = held longer than their own pace; "
-                 "trailing ? on a statement = measured rising inflection "
-                 "(uptalk); ... [Ns] = measured silence; [SPK: \"...\"] inline "
-                 "= backchannel interjection while the main speaker continued. "
-                 "low_confidence_words separately mark uncertain attribution "
-                 "and provisional ASR confidence below 0.50.",
+        "notes": "expressive spelling: CAPS = recorder level at least 5.5 dB "
+                 "above that speaker's own median in this recording, which "
+                 "microphone distance and head movement also change; "
+                 "stretched letters = held longer than that speaker's own pace "
+                 "per letter; ... [Ns] = measured silence; [SPK: \"...\"] "
+                 "inline = backchannel interjection while the main speaker "
+                 "continued. Question marks are the transcriber's own. A "
+                 "final pitch rise appears only in word_effects as "
+                 "rising_pitch_hz. low_confidence_words separately mark "
+                 "uncertain attribution and provisional ASR confidence below "
+                 "0.50.",
     },
     "speaker_baselines": {
         s: {"sec_per_char": round(b["sec_per_char"], 4),
-            "median_loudness_db": round(b["median_db"], 1)}
+            "median_level_db": round(b["median_db"], 1)}
         for s, b in baseline.items()
     },
     "computed_metrics": computed,
@@ -774,8 +796,9 @@ print(f"Done. master.json: {len(turns)} turns ({master['meta']['recording_type']
 print("Computed metrics:")
 for spk, m in computed.items():
     print(f"  {spk}: {m['talk_share_pct']}% talk, {m['wpm']} wpm, "
-          f"{m['fillers_per_min']} fillers/min, {m['uptalk_count']} uptalk, "
+          f"{m['filled_pauses_per_min']} filled pauses/min, "
+          f"{m['final_rise_count']} final rises, "
           f"{m['backchannels_given']} backchannels, "
-          f"{m['hedges_per_min']} hedges/min, {m['question_count']} questions")
+          f"{m['question_count']} questions")
 print("\nPreview:\n")
 print(txt[:1500])

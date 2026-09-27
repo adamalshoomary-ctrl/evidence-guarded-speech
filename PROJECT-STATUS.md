@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-09-23, for release `v0.5.0`.
+Last updated 2026-09-27, for release `v0.6.0`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -42,7 +42,7 @@ What does not exist, stated because the absences are the point:
 - any released score, rating, index or summary number describing a person. Five
   existed until 2026-08-24 and they were deleted with nothing put in their place;
 - independently validated voice, prosody or event detection accuracy;
-- a validated personal progress metric;
+- a validated measure of change over time in one person;
 - a professionally reviewed pronunciation word pack, or a selected pronunciation
   system;
 - expert produced phone level truth for any first language English variety this
@@ -57,8 +57,23 @@ Three were found on 2026-08-26 while writing the account, by checking the code
 rather than rereading the prose. Two more were found on 2026-08-27 the same way,
 three more on 2026-08-28 by walking this repository as a stranger would, and
 four more on 2026-08-29 by running the tests on Linux and Windows for the first
-time. One more turned up on 2026-09-23. **Twelve of them are now fixed and one
-is not.**
+time. One more turned up on 2026-09-23, and three on 2026-09-27 while the metric
+names were reviewed. **Fifteen of them are now fixed and one is not.**
+
+Fixed in `v0.6.0`, on 2026-09-27: **three defects in how the measurement record
+reported pitch rises and pauses.** Every solo run counted its pitch samples as
+zero, because it counted them only in conversations, so its record marked the
+count of final pitch rises unavailable while reporting the count beside that
+verdict. It now counts pitch samples in both modes. The transcript also
+respelled each of those statements with a question mark. Many Australian
+English speakers end statements with a high rise that checks the listener is
+following ([Guy et al. 1986](https://doi.org/10.1017/S0047404500011635)), so a
+feature of the speaker's variety turned their statement into a question. The
+rise now appears only among each word's measured effects, and the transcript
+keeps the transcriber's punctuation. And the mean pause before a turn read 0.0
+whenever no pause of 0.7 seconds or more came before any of a speaker's turns,
+which reads as instant replies. It now reports no value, and it applies to
+conversations only.
 
 Fixed in `v0.5.0`, on 2026-09-23: **a documented validation command failed.**
 The README told readers to validate a session context example written for
@@ -172,18 +187,62 @@ Still open:
   passed first time. A handful of passes is not a reliability measurement, and
   this is not solved.
 
+## Names changed in `v0.6.0`
+
+Every computed metric is now named for what it counts. Eleven names were
+replaced. Nine came from the project's origins as the backend of a coaching app
+and described a habit to fix; the other two named the wrong thing or left out
+the unit. Three metrics were removed. Rerunning the
+local stages on the same saved inputs with the old and the new code gave the
+same value under every kept or renamed name, apart from the pause fix above.
+
+| Old name | New name |
+|---|---|
+| `filler_count` | `filled_pause_count` |
+| `fillers_per_min` | `filled_pauses_per_min` |
+| `drag_count` | `lengthened_word_count` |
+| `loud_spike_count` | `level_above_median_word_count` |
+| `uptalk_count` | `final_rise_count` |
+| `uptalk_per_min` | `final_rises_per_min` |
+| `avg_response_pause_s` | `mean_pause_before_turn_s` |
+| `hedge_breakdown` | `listed_phrase_counts` |
+| `pronoun_balance` | `pronoun_counts` |
+| `repetition_rate` | `repetitions_per_min` |
+| `vocab_variety` | `type_token_ratio` |
+| `hedge_count`, `hedges_per_min` | removed |
+| `median_pitch_hz` | removed |
+
+The hedge total added softeners such as "maybe", emphasis words such as
+"literally" and discourse markers such as "you know" into one number that
+measured none of them; `listed_phrase_counts` keeps each phrase's own count.
+The median pitch was empty in every solo run, and a conversation record already
+carries two other median pitch values from other methods. The level count reads
+recorder level, which microphone distance and head movement change, and which
+is not vocal loudness.
+
+Also renamed, by the same rule. In each word's effects, `filler_s` is
+`filled_pause_s` and `loud_db_above_avg` is `level_db_above_median`, because it
+was always measured from the median. `median_loudness_db` in the speaker
+baselines is `median_level_db`, and each turn's `loudness_vs_own_avg_db` is
+`level_vs_own_median_db`. In `listed_phrase_counts`, `like (filler)` is
+`like (discourse)`. The renderer events `drag`, `loud`, `uptalk` and `filler`
+are `lengthened_word`, `level_above_median`, `final_rise` and `filled_pause`,
+in the regression truth and in version 1.1.0 of its annotation guide. In every
+measurement's validation block, `progress_use` and
+`minimum_baseline_observations` are gone and `individual_progress` is
+`change_over_time`, still blocked. The voice and fluency contracts moved to
+version 1.2.0 with the matching renames, and the measurement schema to `2.0.0`.
+
 ## What comes next
 
-On 2026-09-23 the author made this his only project for the rest of 2026. The
+On 2026-09-23 the author made this the only project for the rest of 2026. The
 first step shipped in `v0.5.0`: this repository went from about 84,000 lines of
 Python to about 17,000, and from 1,047 tests to 227. The research code, the
 shelved motor speech work, the onboarding assessment, the personal history
-feature and their tests left the main branch. On the same saved inputs the tool
-produces the same measurements as before; the one change to the measurement
-record is a removed field naming the deleted progress contract.
+feature and their tests left the main branch. The second shipped in `v0.6.0`,
+the review of the metric names above.
 
-Next come a review of the metric names inherited from the project's coaching
-origins, a `pip` package that runs with no account at all, a shorter README, a
+Next come a `pip` package that runs with no account at all, a shorter README, a
 notebook you can run in a browser, and a measurement of what the claim verifier
 catches.
 

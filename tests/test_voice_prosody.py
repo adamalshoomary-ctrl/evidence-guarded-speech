@@ -100,7 +100,8 @@ class VoiceProsodyContractTests(unittest.TestCase):
             contract["claim_boundaries"]["combined_voice_or_prosody_index_allowed"]
         )
         self.assertEqual(contract["release_limits"]["screening"], "blocked")
-        self.assertEqual(contract["release_limits"]["personal_progress"], "blocked")
+        self.assertEqual(contract["release_limits"]["change_over_time"], "blocked")
+        self.assertNotIn("personal_progress", contract["release_limits"])
 
     def test_validator_rejects_combined_index_and_connected_speech_jitter(self):
         contract = load_contract()

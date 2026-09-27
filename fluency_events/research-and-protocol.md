@@ -22,7 +22,7 @@ The module is a local deterministic post-processing stage. It uses the
 existing AssemblyAI verbatim transcript, final speaker attribution and
 WhisperX character timing. It adds no API or generative model. Candidate data
 is stored in `fluency_events.json` and is intentionally excluded from the
-listener, the interpretation, the claim ledger, history and progress.
+listener, the interpretation, the claim ledger and any comparison over time.
 
 No output means that a candidate met the rules in this contract. It does not
 mean that the person stutters, that the event was involuntary, that the speech
@@ -36,7 +36,8 @@ two-token sequence. It was designed as a broad language observation. It
 cannot tell a single-syllable repetition from a multiple-syllable repetition,
 intentional emphasis, turn management, self-repair or an ASR duplication.
 
-The existing renderer `drag_count` finds a whole word that is unusually long
+The existing renderer `lengthened_word_count`, named `drag_count` until item
+F7 renamed it on 2026-09-27, finds a whole word that is unusually long
 relative to the speaker's character timing baseline. It is useful for
 expressive spelling. It does not localise a sound and cannot distinguish an
 ordinary emphasis, expressive lengthening, speech technique, accent pattern,
@@ -289,6 +290,7 @@ explicitly approves a later item.
   impact or diagnosis.
 - Event frequency does not by itself measure lived impact or severity.
 - Fewer candidates are not automatically better communication.
-- No event is sent into the interpretation or personal progress in this item.
+- No event is sent into the interpretation or into any comparison over time in
+  this item.
 - No combined count, percentage, severity score, screening result, diagnosis,
   ranking or high-stakes decision is produced.

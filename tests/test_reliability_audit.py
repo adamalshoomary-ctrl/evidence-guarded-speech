@@ -109,7 +109,7 @@ class ReliabilityAuditTests(unittest.TestCase):
         )
         self.assertEqual(report["fairness"]["status"], "not_evaluated")
         self.assertIn("No fairness conclusion", report["fairness"]["claim"])
-        self.assertEqual(report["release_gates"]["individual_progress"]
+        self.assertEqual(report["release_gates"]["change_over_time"]
                          ["status"], "block")
         self.assertFalse(report["diagnostic_claims"]["made"])
 

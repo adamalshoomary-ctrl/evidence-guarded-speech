@@ -105,11 +105,6 @@ Moving one out requires the evidence, named here, to exist.
   claim that passes, one wrong speaker claim pinned to fail. `findings.md`
   section 5 and `prior-art-2026-08-24.md` both say so about this repository's own
   work. Item P5 in `improvement-plan.md` is the measurement that would settle it.
-- **The 22 computed metrics survived the direction change of 2026-08-22.** Item
-  R5 examined the five invented scores and deleted them. Nothing examined the
-  metrics. Six of them carry names inherited from the commercial coaching era,
-  and `uptalk` counts a documented feature of Australian English as a rate per
-  minute. Item F7 records this and is not approved.
 - **The sources released by the non commercial decision are obtainable and
   usable.** The decision on 2026-08-22 removed the licensing block on an
   Australian English reference lexicon and on large Australian speech

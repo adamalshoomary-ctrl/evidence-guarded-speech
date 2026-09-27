@@ -8,8 +8,11 @@ except ModuleNotFoundError:
     from .reliability_policy import measurement_validation
 
 
-MEASUREMENT_SCHEMA_VERSION = "1.3.0"
-MEASUREMENT_ALGORITHM_VERSION = "merge-metrics-1.0.0"
+# 2.0.0 on 2026-09-27: item F7 renamed eleven computed metrics and removed
+# three. merge-metrics-1.1.0 counts pitch observations in solo runs and
+# reports no pause mean when there is no pause to average.
+MEASUREMENT_SCHEMA_VERSION = "2.0.0"
+MEASUREMENT_ALGORITHM_VERSION = "merge-metrics-1.1.0"
 MINIMUM_REQUIREMENTS_VERSION = "generated-fixtures-1.0.0"
 ASR_CONFIDENCE_THRESHOLD = 0.50
 ASR_CONFIDENCE_THRESHOLD_VERSION = (
@@ -73,40 +76,52 @@ METRIC_DEFINITIONS = {
         dependencies=("transcription", "speaker_attribution", "word_timing", "rate"),
         confounders=("task type and natural pausing",),
     ),
-    "filler_count": _definition(
-        "verbatim filler count", "events", ("transcript.words",), "rate",
+    "filled_pause_count": _definition(
+        "verbatim filled pause count: um, uh, erm, hmm, mm, uhm and er",
+        "events", ("transcript.words",), "rate",
         dependencies=("transcription", "speaker_attribution", "language"),
-        confounders=("ASR disfluency recognition",),
+        confounders=("ASR disfluency recognition",
+                     "mm and hmm can be listener responses"),
     ),
-    "fillers_per_min": _definition(
-        "verbatim filler rate", "events per minute",
+    "filled_pauses_per_min": _definition(
+        "verbatim filled pause rate", "events per minute",
         ("transcript.words", "diarization.turns"), "rate",
         dependencies=("transcription", "speaker_attribution", "word_timing", "rate"),
-        confounders=("ASR disfluency recognition", "task type"),
+        confounders=("ASR disfluency recognition", "task type",
+                     "mm and hmm can be listener responses"),
     ),
-    "drag_count": _definition(
-        "unusually lengthened words", "events",
+    "lengthened_word_count": _definition(
+        "words held unusually long against the speaker's own pace per letter",
+        "events",
         ("transcript.words", "alignment.segments.chars", "vad.speech_chunks"),
         "rate", dependencies=("transcription", "word_timing", "speaker_attribution"),
-        confounders=("word timing error", "natural emphasis"),
+        confounders=("word timing error", "natural emphasis",
+                     "phrase final lengthening",
+                     "letter count as a guide to spoken length"),
     ),
-    "loud_spike_count": _definition(
-        "words above personal loudness baseline", "events",
-        ("acoustics.timeline", "speaker_baselines.median_loudness_db"),
+    "level_above_median_word_count": _definition(
+        "words at least 5.5 dB above the speaker's own median recorder level",
+        "events",
+        ("acoustics.timeline", "speaker_baselines.median_level_db"),
         "loudness", dependencies=("loudness", "speaker_attribution"),
-        confounders=("microphone distance and automatic gain control",),
+        confounders=("microphone distance and automatic gain control",
+                     "head movement",
+                     "recorder level is not vocal loudness"),
     ),
-    "uptalk_count": _definition(
-        "phrase final measured pitch rises", "events",
+    "final_rise_count": _definition(
+        "pitch rises across the last word of a statement or phrase", "events",
         ("acoustics.pitch_track", "transcript.words"), "pitch",
         dependencies=("pitch", "word_timing", "speaker_attribution"),
-        confounders=("question punctuation and expressive intonation",),
+        confounders=("question punctuation and expressive intonation",
+                     "regional and social intonation patterns"),
     ),
-    "uptalk_per_min": _definition(
-        "phrase final measured pitch rise rate", "events per minute",
+    "final_rises_per_min": _definition(
+        "rate of pitch rises across the last word of a statement or phrase",
+        "events per minute",
         ("acoustics.pitch_track", "transcript.words", "diarization.turns"),
         "pitch", dependencies=("pitch", "word_timing", "speaker_attribution", "rate"),
-        confounders=("question punctuation and expressive intonation",),
+        confounders=("question punctuation and expressive intonation",
+                     "regional and social intonation patterns"),
     ),
     "backchannels_given": _definition(
         "short interjections inside another speaker turn", "events",
@@ -115,38 +130,26 @@ METRIC_DEFINITIONS = {
         dependencies=("transcription", "speaker_attribution", "turn_metrics"),
         confounders=("overlap and diarization error",),
     ),
-    "avg_response_pause_s": _definition(
-        "mean detected pause before a response", "seconds",
-        ("vad.pauses", "turns.pause_before_s"), "response_pause",
+    "mean_pause_before_turn_s": _definition(
+        "mean of the pauses of 0.7 seconds or more before this speaker's turns",
+        "seconds", ("vad.pauses", "turns.pause_before_s"), "response_pause",
+        modes=("conversation",), task="interactive conversation",
         dependencies=("word_timing", "speaker_attribution", "turn_metrics"),
-        confounders=("turn segmentation and response opportunity count",),
+        confounders=("turn segmentation and response opportunity count",
+                     "pauses under 0.7 seconds are not counted"),
     ),
-    "median_pitch_hz": _definition(
-        "median speaker pitch from confidently attributed words", "hertz",
-        ("acoustics.pitch_track", "transcript.words.speaker_confidence"),
-        "pitch", dependencies=("pitch", "speaker_attribution"),
-        confounders=("voicing detection and speaker attribution",),
-    ),
-    "hedge_count": _definition(
-        "rule matched hedging expressions", "events", ("transcript.words",),
+    "listed_phrase_counts": _definition(
+        "counts of each phrase on a fixed list, and of like in a discourse use",
+        "event counts", ("transcript.words",),
         "language", dependencies=("transcription", "speaker_attribution", "language"),
-        confounders=("language, dialect, context, and literal phrase use",),
-    ),
-    "hedges_per_min": _definition(
-        "rule matched hedge rate", "events per minute",
-        ("transcript.words", "diarization.turns"), "language",
-        dependencies=("transcription", "speaker_attribution", "language", "rate"),
-        confounders=("language, dialect, context, and literal phrase use",),
-    ),
-    "hedge_breakdown": _definition(
-        "matched hedge phrases by rule", "event counts", ("transcript.words",),
-        "language", dependencies=("transcription", "speaker_attribution", "language"),
-        confounders=("language, dialect, context, and literal phrase use",),
+        confounders=("language, dialect, context, and literal phrase use",
+                     "the list mixes softeners, emphasis words and discourse markers"),
     ),
     "question_count": _definition(
         "ASR punctuated question endings", "events", ("transcript.words.text",),
         "language", dependencies=("transcription", "speaker_attribution", "language"),
-        confounders=("ASR punctuation and rhetorical questions",),
+        confounders=("ASR punctuation and rhetorical questions",
+                     "a final pitch rise the transcriber punctuated as a question"),
     ),
     "question_ratio": _definition(
         "ASR punctuated questions per attributed turn", "questions per turn",
@@ -154,17 +157,17 @@ METRIC_DEFINITIONS = {
         dependencies=("transcription", "speaker_attribution", "turn_metrics", "language"),
         confounders=("ASR punctuation and turn segmentation",),
     ),
-    "pronoun_balance.i_me_my": _definition(
+    "pronoun_counts.i_me_my": _definition(
         "first person singular pronouns", "words", ("transcript.words",),
         "language", dependencies=("transcription", "speaker_attribution", "language"),
         confounders=("task, language, dialect, and quoted speech",),
     ),
-    "pronoun_balance.you_your": _definition(
+    "pronoun_counts.you_your": _definition(
         "second person pronouns", "words", ("transcript.words",),
         "language", dependencies=("transcription", "speaker_attribution", "language"),
         confounders=("task, language, dialect, and quoted speech",),
     ),
-    "pronoun_balance.ratio": _definition(
+    "pronoun_counts.ratio": _definition(
         "first to second person pronoun ratio", "ratio", ("transcript.words",),
         "pronoun_ratio", dependencies=("transcription", "speaker_attribution", "language"),
         confounders=("task, language, dialect, quoted speech, and small denominator",),
@@ -174,13 +177,13 @@ METRIC_DEFINITIONS = {
         "language", dependencies=("transcription", "speaker_attribution", "language"),
         confounders=("intentional rhetorical repetition",),
     ),
-    "repetition_rate": _definition(
+    "repetitions_per_min": _definition(
         "adjacent repetition rate", "events per minute",
         ("transcript.words", "diarization.turns"), "language",
         dependencies=("transcription", "speaker_attribution", "language", "rate"),
         confounders=("intentional rhetorical repetition",),
     ),
-    "vocab_variety": _definition(
+    "type_token_ratio": _definition(
         "unique token proportion", "ratio", ("transcript.words",),
         "vocabulary", dependencies=("transcription", "speaker_attribution", "language"),
         confounders=("sample length, task, names, language, and inflection",),
@@ -276,10 +279,10 @@ def _value_at(metrics, path):
 
 def _computed_paths(metrics):
     paths = set(metrics)
-    paths.discard("pronoun_balance")
-    pronouns = metrics.get("pronoun_balance")
+    paths.discard("pronoun_counts")
+    pronouns = metrics.get("pronoun_counts")
     if isinstance(pronouns, dict):
-        paths.update(f"pronoun_balance.{key}" for key in pronouns)
+        paths.update(f"pronoun_counts.{key}" for key in pronouns)
     return paths
 
 
@@ -619,7 +622,7 @@ def build_measurement_metadata(computed_metrics, words, turns, acoustics,
         speaker_words = [word for word in words
                          if word.get("final_speaker") == speaker]
         speaker_turns = [turn for turn in turns if turn.get("speaker") == speaker]
-        pronouns = metrics.get("pronoun_balance") or {}
+        pronouns = metrics.get("pronoun_counts") or {}
         sample = {
             "word_count": len(speaker_words),
             "talk_time_s": metrics.get("talk_time_s"),

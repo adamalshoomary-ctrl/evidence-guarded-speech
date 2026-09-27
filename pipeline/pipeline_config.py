@@ -2,7 +2,7 @@
 
 from copy import deepcopy
 
-PIPELINE_VERSION = "0.12.0"
+PIPELINE_VERSION = "0.13.0"
 PROVENANCE_SCHEMA_VERSION = "1.0.0"
 
 GEMINI_MODEL_ID = "gemini-3.5-flash"
@@ -55,8 +55,8 @@ WHISPERX_TRANSCRIPTION_VAD_METHOD = "silero"
 
 PROMPT_VERSIONS = {
     "referee": "1.0.0",
-    "listener": "1.2.0",
-    "evaluator": "2.3.0",
+    "listener": "1.3.0",
+    "evaluator": "2.4.0",
 }
 
 RESPONSE_SCHEMA_VERSIONS = {
@@ -85,9 +85,9 @@ DIRECT_DEPENDENCIES = (
 
 ACTIVE_SOURCE_FILES = (
     "data_model/contract-v1.1.0.json",
-    "voice_prosody/contract-v1.1.0.json",
+    "voice_prosody/contract-v1.2.0.json",
     "voice_prosody/contract.py",
-    "fluency_events/contract-v1.1.0.json",
+    "fluency_events/contract-v1.2.0.json",
     "fluency_events/contract.py",
     "fluency_events/extract.py",
     "fluency_events/review.py",

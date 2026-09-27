@@ -16,9 +16,12 @@ import parselmouth
 from parselmouth.praat import call
 
 
-SCHEMA_VERSION = "1.0.0"
+# The artifact schema moved to 1.1.0 and the contract to 1.2.0 on 2026-09-27,
+# when item F7 renamed the progress limits. The contract version said 1.0.0
+# until then, although this module had read contract 1.1.0 since 2026-08-24.
+SCHEMA_VERSION = "1.1.0"
 ALGORITHM_VERSION = "voice-prosody-primitives-1.0.0"
-CONTRACT_VERSION = "1.0.0"
+CONTRACT_VERSION = "1.2.0"
 ANALYSIS_SAMPLE_RATE_HZ = 48000
 FRAME_STEP_S = 0.01
 LEVEL_WINDOW_S = 0.02
@@ -64,7 +67,7 @@ def _round(value, digits=3):
 
 
 def _load_contract(repo_root):
-    path = Path(repo_root) / "voice_prosody" / "contract-v1.1.0.json"
+    path = Path(repo_root) / "voice_prosody" / "contract-v1.2.0.json"
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -773,7 +776,7 @@ def _add_vowel_research(summary, samples, sample_rate, vad, context,
             "low" if quality_warnings else "moderate",
             quality_warnings + [{
                 "code": "research_only",
-                "reason": "This value cannot support interpretation, progress or diagnosis.",
+                "reason": "This value cannot support interpretation, a claim of change over time or diagnosis.",
             }]
         )
 
@@ -846,8 +849,8 @@ def extract_voice_prosody(samples, sample_rate, diarization, vad, context,
         ),
         "release_limits": {
             "released_interpretation": "blocked_pending_separate_validation",
-            "personal_progress": "blocked",
-            "cross_device_progress": "blocked",
+            "change_over_time": "blocked",
+            "cross_device_comparison": "blocked",
             "combined_index": "blocked",
             "ranking": "blocked",
             "screening": "blocked",

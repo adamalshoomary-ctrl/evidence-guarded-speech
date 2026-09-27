@@ -221,28 +221,33 @@ unapproved long inputs stop under both policies. Background speakers cannot be
 identified reliably from a deterministic waveform preflight, so solo mode
 retains its later transcription provider contamination check.
 
-Every `master.json` also contains `measurement_metadata` beside the unchanged
+Every `master.json` also contains `measurement_metadata` beside
 `computed_metrics`. Before a number is used, this record says where it came
 from, whether enough evidence exists, its quality, known warnings and
-confounders, and the algorithm and threshold versions. An old numeric value may
-remain for compatibility while its metadata says `unavailable`; evaluators and
-progress tracking must then ignore it rather than treating it as zero.
+confounders, and the algorithm and threshold versions. A numeric value may
+remain in `computed_metrics` while its metadata says `unavailable`; anything
+reading the record must then ignore it rather than treating it as zero.
+
+Each computed metric is named for what it counts. On 2026-09-27 eleven names
+were replaced, nine of them inherited from the project's coaching origins, and
+three metrics were removed. `PROJECT-STATUS.md` lists every old name beside its new one.
 
 There are 10 minimum evidence rules in `pipeline/measurement_evidence.py`, and
-all 10 are listed below. They cover the 24 metrics defined in the same file.
-Rates and language patterns share one rule, so the table has 9 rows.
+all 10 are listed below. They cover the 21 computed metric definitions in the
+same file and the voice quality measures. Rates and language patterns share one
+rule, so the table has 9 rows.
 
 | Measurement family | Minimum evidence |
 |------|------|
 | Basic word and time totals | 1 word and 0.5 seconds of attributed speech |
 | Rates and basic language patterns | 20 words and 10 seconds of attributed speech |
-| Vocabulary variety | 50 words and 20 seconds of attributed speech |
-| Speaker pitch | 5 confidently attributed pitch observations |
-| Loudness events | 5 acoustic timeline points |
+| Type token ratio | 50 words and 20 seconds of attributed speech |
+| Final pitch rises | 5 confidently attributed pitch observations |
+| Words above the speaker's median recorder level | 5 acoustic timeline points |
 | Turn measures | 3 attributed turns |
-| Average response pause | 2 response opportunities |
+| Mean pause before a turn | 2 response opportunities |
 | Voice quality | 3 seconds of analysed speech |
-| Pronoun balance ratio | 20 words and at least 1 second person word |
+| Pronoun ratio | 20 words and at least 1 second person word |
 
 These rules are versioned generated fixture safeguards, not validated norms.
 [AssemblyAI documents word confidence](https://www.assemblyai.com/docs/pre-recorded-audio/guides/detecting-low-confidence-words)
@@ -392,8 +397,8 @@ is not expressiveness or monotonicity. Context free solo runs are labelled
 per speaker regions and excludes overlap and region edges. CPPS is research
 only. Jitter and shimmer require the versioned sustained vowel task, separate
 research consent and three valid repetitions; they remain unavailable to the
-interpretation. Personal progress, cross device comparison, ranking, screening,
-diagnosis and every combined index remain blocked.
+interpretation. Claims of change over time, cross device comparison, ranking,
+screening, diagnosis and every combined index remain blocked.
 
 The two owner recordings provide functional integration evidence only. They do
 not validate acoustic accuracy, device equivalence, fairness, task meaning or

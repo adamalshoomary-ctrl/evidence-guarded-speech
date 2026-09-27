@@ -129,20 +129,21 @@ random.seed(7)
 
 def kind_of(fx):
     if "rising_pitch_hz" in fx:
-        return "uptalk"
+        return "final_rise"
     if "held_s" in fx:
-        return "drag"
-    if "loud_db_above_avg" in fx:
-        return "loud"
-    if "filler_s" in fx and fx["filler_s"] >= 0.5:
-        return "long_filler"
+        return "lengthened_word"
+    if "level_db_above_median" in fx:
+        return "level_above_median"
+    if "filled_pause_s" in fx and fx["filled_pause_s"] >= 0.5:
+        return "long_filled_pause"
     return None
 
 CLAIM = {
-    "drag": "is noticeably stretched/held longer than the speaker's normal pace",
-    "loud": "is spoken noticeably louder than the speaker's normal volume",
-    "uptalk": "ends with a rising, question-like pitch although it is a statement",
-    "long_filler": "is a noticeably long, drawn-out filler",
+    "lengthened_word": "is held noticeably longer than the speaker's own pace",
+    "level_above_median": ("sounds noticeably louder in the recording than the "
+                           "speaker's other words"),
+    "final_rise": "ends with a rise in pitch",
+    "long_filled_pause": "is a noticeably long filled pause, such as a drawn out um",
 }
 
 by_kind = {}
@@ -217,9 +218,9 @@ PROMPT = f"""You are an expert speech analyst with EARS. Below is the turn
 structure of this recording, produced by instrumented analysis. Speaker
 labels, timestamps, and expressive effects have explicit confidence limits;
 do not treat flagged evidence as certain. The expressive spelling encodes
-measured delivery - CAPS = louder than that speaker's average, stretched
-letters = held longer, trailing ? = measured rising pitch, [SPK: "..."] =
-backchannel).
+measured delivery - CAPS = recorder level at least 5.5 dB above that
+speaker's own median, stretched letters = held longer than that speaker's own
+pace, [SPK: "..."] = backchannel. Question marks are the transcriber's own).
 
 Inspect meta.audio_quality before interpreting the sound. It contains the
 deterministic preflight policy, checks, limitations, and signal quality
@@ -361,10 +362,10 @@ master["speaker_overall_impressions"] = {
 master["meta"]["audio_conditions"] = data.get("audio_conditions")
 
 # ---- score the built-in renderer audit -----------------------------------
-KNOB = {"drag": "DRAG_RATIO / DRAG_MIN_S / DRAG_PERCENTILE",
-        "loud": "LOUD_DB_ABOVE",
-        "uptalk": "RISE_RATIO / RISE_MIN_HZ",
-        "long_filler": "filler stretch thresholds"}
+KNOB = {"lengthened_word": "DRAG_RATIO / DRAG_MIN_S / DRAG_PERCENTILE",
+        "level_above_median": "LOUD_DB_ABOVE",
+        "final_rise": "RISE_RATIO / RISE_MIN_HZ",
+        "long_filled_pause": "filled pause stretch thresholds"}
 results = {}
 for v in data.get("renderer_audit", []):
     i = v.get("check")

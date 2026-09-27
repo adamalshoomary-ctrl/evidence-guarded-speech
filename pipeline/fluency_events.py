@@ -56,7 +56,7 @@ def main():
         "diagnosis": "blocked",
         "severity": "blocked",
         "released_interpretation": "blocked",
-        "personal_progress": "blocked",
+        "change_over_time": "blocked",
     }
     context.write_json("master.json", master)
 

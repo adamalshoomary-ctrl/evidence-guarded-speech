@@ -355,10 +355,10 @@ def _voice_prosody_case():
 
 def _effect_events(master):
     field_types = {
-        "filler_s": "filler",
-        "held_s": "drag",
-        "loud_db_above_avg": "loud",
-        "rising_pitch_hz": "uptalk",
+        "filled_pause_s": "filled_pause",
+        "held_s": "lengthened_word",
+        "level_db_above_median": "level_above_median",
+        "rising_pitch_hz": "final_rise",
     }
     result = []
     for turn in master.get("turns", []):

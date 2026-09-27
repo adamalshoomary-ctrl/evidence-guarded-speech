@@ -21,24 +21,21 @@ def computed_metrics(*, words=60, talk_time=30.0):
         "talk_share_pct": 50.0,
         "words": words,
         "wpm": round(words / (talk_time / 60), 1),
-        "filler_count": 1,
-        "fillers_per_min": 2.0,
-        "drag_count": 1,
-        "loud_spike_count": 1,
-        "uptalk_count": 1,
-        "uptalk_per_min": 2.0,
+        "filled_pause_count": 1,
+        "filled_pauses_per_min": 2.0,
+        "lengthened_word_count": 1,
+        "level_above_median_word_count": 1,
+        "final_rise_count": 1,
+        "final_rises_per_min": 2.0,
         "backchannels_given": 1,
-        "avg_response_pause_s": 0.8,
-        "median_pitch_hz": 180.0,
-        "hedge_count": 1,
-        "hedges_per_min": 2.0,
-        "hedge_breakdown": {"maybe": 1},
+        "mean_pause_before_turn_s": 0.8,
+        "listed_phrase_counts": {"maybe": 1},
         "question_count": 1,
         "question_ratio": 0.25,
-        "pronoun_balance": {"i_me_my": 2, "you_your": 2, "ratio": 1.0},
+        "pronoun_counts": {"i_me_my": 2, "you_your": 2, "ratio": 1.0},
         "repetition_count": 0,
-        "repetition_rate": 0.0,
-        "vocab_variety": 0.7,
+        "repetitions_per_min": 0.0,
+        "type_token_ratio": 0.7,
     }
 
 
@@ -142,7 +139,7 @@ class MeasurementEvidenceTests(unittest.TestCase):
             }.issubset(entry))
             self.assertEqual(entry["value_path"],
                              f"computed_metrics.SPEAKER_00.{name}")
-        self.assertEqual(metadata["schema_version"], "1.3.0")
+        self.assertEqual(metadata["schema_version"], "2.0.0")
         prosody = metadata["speakers"]["SPEAKER_00"]["voice_prosody"]
         self.assertEqual(prosody["f0_median_hz"]["availability"]["status"],
                          "available")
@@ -199,14 +196,15 @@ class MeasurementEvidenceTests(unittest.TestCase):
             validation = evidence["validation"]
             self.assertEqual(validation["reliability"]["status"],
                              "experimental")
-            self.assertEqual(validation["reliability"]["progress_use"],
-                             "blocked")
-            self.assertNotIn(
-                "personal_progress_contract_version",
-                validation["reliability"],
-            )
-            self.assertIsNone(
-                validation["reliability"]["minimum_baseline_observations"]
+            # Item F7 replaced every progress field with one limit on
+            # claims of change over time.
+            for removed in ("progress_use", "minimum_baseline_observations",
+                            "personal_progress_contract_version"):
+                self.assertNotIn(removed, validation["reliability"])
+            self.assertNotIn("individual_progress",
+                             validation["release_limits"])
+            self.assertEqual(
+                validation["release_limits"]["change_over_time"], "blocked"
             )
             self.assertEqual(
                 validation["reliability"]["natural_variation_status"],
@@ -236,9 +234,13 @@ class MeasurementEvidenceTests(unittest.TestCase):
         )
         entries = metadata["speakers"]["SPEAKER_00"]["computed_metrics"]
 
-        self.assertEqual(entries["hedge_count"]["quality"]["category"], "low")
-        self.assertEqual(entries["loud_spike_count"]["quality"]["category"],
-                         "high")
+        self.assertEqual(
+            entries["listed_phrase_counts"]["quality"]["category"], "low"
+        )
+        self.assertEqual(
+            entries["level_above_median_word_count"]["quality"]["category"],
+            "high",
+        )
 
     def test_low_asr_confidence_is_separate_transcription_uncertainty(self):
         metadata = build_measurement_metadata(
@@ -247,7 +249,7 @@ class MeasurementEvidenceTests(unittest.TestCase):
             pitch_observation_counts={"SPEAKER_00": 10},
         )
         evidence = (metadata["speakers"]["SPEAKER_00"]
-                    ["computed_metrics"]["hedge_count"])
+                    ["computed_metrics"]["listed_phrase_counts"])
 
         self.assertEqual(metadata["asr_confidence"]["low_below"],
                          ASR_CONFIDENCE_THRESHOLD)

@@ -24,7 +24,8 @@ from regression.harness import (
 )
 
 
-SCHEMA_VERSION = "1.0.0"
+# 1.1.0 on 2026-09-27: item F7 renamed the individual progress gate.
+SCHEMA_VERSION = "1.1.0"
 REQUIRED_ARTIFACTS = (
     "run_manifest.json",
     "master.json",
@@ -202,7 +203,7 @@ def _metric_differences(left, right):
             "right": right_value,
             "absolute_difference": round(abs(left_value - right_value), 8),
             "release_threshold": None,
-            "interpretation": "descriptive_only_not_a_progress_threshold",
+            "interpretation": "descriptive_only_not_a_change_threshold",
         })
     return rows
 
@@ -411,7 +412,7 @@ def _release_gates(exact_status):
             "status": "pass" if exact_status == "pass" else "block",
             "reason": "Deterministic stages must match exactly on identical frozen input.",
         },
-        "individual_progress": {
+        "change_over_time": {
             "status": "block",
             "reason": "Human repeatability and smallest detectable change are not established.",
         },
@@ -453,7 +454,7 @@ def render_report(report):
         "## What is not proven",
         "",
         "- Personal day to day stability is not established.",
-        "- No metric is approved for personal progress yet.",
+        "- No metric is approved for a claim of change over time yet.",
         "- Device repeatability is not tested.",
         "- Fairness across language, accent, age, voice range, device, audio "
         "quality, or speech difference is not established.",
@@ -534,7 +535,7 @@ def run_audit(*, repeat_artifacts=None, encoding_artifacts=None,
                 "independent_participants": 0,
                 "natural_day_to_day_variation": "not_estimated",
                 "pipeline_measurement_error": "not_separable_from_human_variation",
-                "consequence": "all personal progress metrics remain experimental",
+                "consequence": "every claim of change over time stays blocked",
             },
         },
         "fairness": _subgroup_audit(list(unique.values()), study_metadata),

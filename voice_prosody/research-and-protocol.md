@@ -20,8 +20,8 @@ not truth.
 
 No output in this item means confident, nervous, expressive, monotone, shaky,
 healthy, disordered, masculine, feminine, professional, good or bad. No
-primitive enters a combined score, personal progress, ranking, screening,
-diagnosis or high-stakes decision.
+primitive enters a combined score, a claim of change over time, ranking,
+screening, diagnosis or high-stakes decision.
 
 ## Why the legacy acoustic output is not enough
 
@@ -285,9 +285,10 @@ task repeatability and device agreement meet prespecified bounds on held-out
 participants; subgroup uncertainty is reported; and the pipeline abstains when
 conditions are unsuitable.
 
-After item 20, personal progress, cross-device progress, combined indices,
-ranking, screening, diagnosis, clinical cutoffs and high-stakes decisions all
-remain blocked. Later roadmap items require their own owner approval.
+After item 20, claims of change over time, cross-device comparison, combined
+indices, ranking, screening, diagnosis, clinical cutoffs and high-stakes
+decisions all remain blocked. Contract 1.2.0 renamed the first two on
+2026-09-27; they were called personal progress and cross-device progress. Later roadmap items require their own owner approval.
 
 ## Engineering acceptance for item 20
 

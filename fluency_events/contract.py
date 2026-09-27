@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 
-CONTRACT_PATH = Path(__file__).with_name("contract-v1.1.0.json")
+CONTRACT_PATH = Path(__file__).with_name("contract-v1.2.0.json")
 REQUIRED_EVENT_TYPES = {
     "sound_or_syllable_repetition",
     "single_syllable_whole_word_repetition",
@@ -18,7 +18,7 @@ REQUIRED_EVENT_TYPES = {
 }
 BLOCKED_USES = {
     "released_interpretation",
-    "personal_progress",
+    "change_over_time",
     "monitoring",
     "screening",
     "diagnosis",
@@ -197,7 +197,8 @@ def validate_contract(document):
     if isinstance(downstream, dict):
         for field in (
                 "included_in_evaluator_input", "included_in_listener_prompt",
-                "included_in_claim_ledger", "included_in_personal_progress",
+                "included_in_claim_ledger",
+                "included_in_change_over_time_comparison",
                 "included_in_released_interpretation", "combined_count_or_severity_score",
                 "absence_used_as_positive_fluency_claim"):
             if downstream.get(field) is not False:

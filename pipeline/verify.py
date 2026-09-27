@@ -105,7 +105,10 @@ signed_db = set()
 def harvest_signed(obj):
     if isinstance(obj, dict):
         for k, v in obj.items():
-            if (k in ("loud_db_above_avg", "loudness_vs_own_avg_db")
+            # The old names are kept so a record from before 2026-09-27 is
+            # still checked.
+            if (k in ("level_db_above_median", "level_vs_own_median_db",
+                      "loud_db_above_avg", "loudness_vs_own_avg_db")
                     and isinstance(v, (int, float))):
                 signed_db.add(round(float(v), 1))
             harvest_signed(v)
@@ -125,7 +128,10 @@ CLAIM_PATTERNS = [
     (r"(\d+(?:\.\d+)?)\s*(?:s\b|sec|second)", "seconds"),
     (r"(\d+(?:\.\d+)?)\s*dB", "dB"),
     (r"(\d+(?:\.\d+)?)\s*Hz", "Hz"),
-    (r"(\d+(?:\.\d+)?)\s*(?:fillers?|uptalks?)\s*(?:/|per)\s*min", "per-min rate"),
+    # New and old metric words both count, so a number written with an old
+    # name is still checked.
+    (r"(\d+(?:\.\d+)?)\s*(?:filled\s+pauses?|final\s+(?:pitch\s+)?rises?|"
+     r"repetitions?|fillers?|uptalks?)\s*(?:/|per)\s*min", "per-min rate"),
     (r"t\s*=\s*(\d+(?:\.\d+)?)", "timestamp"),
 ]
 DIRECTIONAL_DB = re.compile(r"([+-]?\d+(?:\.\d+)?)\s*dB\s+(above|below)", re.I)
