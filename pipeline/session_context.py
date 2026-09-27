@@ -648,8 +648,7 @@ def validate_session_context(document):
     return errors
 
 
-def validate_context_for_run(document, recording_mode, history_speaker_label=None,
-                             quality_policy=None):
+def validate_context_for_run(document, recording_mode, quality_policy=None):
     """Add runner-specific checks to the standalone context validation."""
     errors = validate_session_context(document)
     session = document.get("session") if isinstance(document, dict) else None
@@ -659,27 +658,7 @@ def validate_context_for_run(document, recording_mode, history_speaker_label=Non
     if (quality_policy is not None and isinstance(capture, dict)
             and capture.get("quality_policy") != quality_policy):
         errors.append("capture quality policy does not match the pipeline run")
-    if history_speaker_label is not None:
-        holder = account_holder_participant(document)
-        if holder is None or holder.get("speaker_label") != history_speaker_label:
-            errors.append("history speaker label must identify the account holder")
-        attempt = document.get("attempt") if isinstance(document, dict) else None
-        if not isinstance(attempt, dict) or not attempt.get("progress_intent"):
-            errors.append(
-                "durable history requires an explicit attempt.progress_intent"
-            )
     return errors
-
-
-def account_holder_participant(document):
-    participants = document.get("participants") if isinstance(document, dict) else []
-    if not isinstance(participants, list):
-        return None
-    return next(
-        (item for item in participants
-         if isinstance(item, dict) and item.get("role") == "account_holder"),
-        None,
-    )
 
 
 def session_context_reference(document):

@@ -16,7 +16,7 @@ class RecordingModeTests(unittest.TestCase):
         """
         for mode, speakers in (("solo", None), ("conversation", 2)):
             with self.subTest(mode=mode):
-                _, later = build_stage_plan(mode, speakers, ["history.py"])
+                _, later = build_stage_plan(mode, speakers)
                 scripts = [spec[1][0] for spec in later]
 
                 self.assertNotIn("listener.py", scripts)
@@ -24,7 +24,8 @@ class RecordingModeTests(unittest.TestCase):
                 self.assertNotIn("verify.py", scripts)
                 self.assertIn("merge.py", scripts)
                 self.assertIn("fluency_events.py", scripts)
-                self.assertEqual(scripts[-1], "history.py")
+                self.assertEqual(scripts[-1], "fluency_events.py")
+                self.assertNotIn("history.py", scripts)
 
     def test_referee_is_measurement_and_stays_on_by_default(self):
         """The referee uses the same provider but corrects master.json itself.
@@ -32,7 +33,7 @@ class RecordingModeTests(unittest.TestCase):
         It rewrites speaker attribution rather than commenting on it, so it
         belongs to the measurement and not to the optional interpretation.
         """
-        _, later = build_stage_plan("conversation", 2, ["history.py"])
+        _, later = build_stage_plan("conversation", 2)
         commands = [spec[1] for spec in later]
 
         self.assertIn(["referee.py"], commands)
@@ -41,8 +42,8 @@ class RecordingModeTests(unittest.TestCase):
     def test_interpretation_outputs_are_only_declared_when_requested(self):
         from pipeline.recording_modes import INTERPRETATION_OUTPUTS
 
-        _, plain = build_stage_plan("solo", None, ["history.py"])
-        _, asked = build_stage_plan("solo", None, ["history.py"],
+        _, plain = build_stage_plan("solo", None)
+        _, asked = build_stage_plan("solo", None,
                                     interpret=True)
         declared = {name for spec in asked for name in spec[2] + spec[3]}
         plain_declared = {name for spec in plain for name in spec[2] + spec[3]}
@@ -52,7 +53,7 @@ class RecordingModeTests(unittest.TestCase):
 
     def test_solo_plan_skips_pyannote_and_referee(self):
         stage_1, later = build_stage_plan(
-            "solo", None, ["history.py"], interpret=True
+            "solo", None, interpret=True
         )
         scripts = [spec[1][0] for spec in stage_1 + later]
 
@@ -72,7 +73,7 @@ class RecordingModeTests(unittest.TestCase):
 
     def test_conversation_plan_preserves_diarization_and_referee(self):
         stage_1, later = build_stage_plan(
-            "conversation", 2, ["history.py"], interpret=True
+            "conversation", 2, interpret=True
         )
         scripts = [spec[1][0] for spec in stage_1 + later]
 
@@ -161,13 +162,13 @@ class TranscriberRoutingTests(unittest.TestCase):
     """The choice of transcriber is explicit, and there is no fallback."""
 
     def test_the_default_is_the_provider_path(self):
-        stage_1, _ = build_stage_plan("conversation", 2, ["history.py"])
+        stage_1, _ = build_stage_plan("conversation", 2)
         self.assertEqual(stage_1[1][1], ["transcribe.py", "--speakers", "2"])
 
     def test_the_local_path_replaces_the_transcription_stage_only(self):
-        provider, _ = build_stage_plan("conversation", 2, ["history.py"])
+        provider, _ = build_stage_plan("conversation", 2)
         local, _ = build_stage_plan(
-            "conversation", 2, ["history.py"], transcriber="local"
+            "conversation", 2, transcriber="local"
         )
         self.assertEqual(local[1][1], ["transcribe_local.py"])
         self.assertEqual(
@@ -180,13 +181,13 @@ class TranscriberRoutingTests(unittest.TestCase):
 
     def test_the_speaker_hint_is_not_passed_to_a_path_that_cannot_use_it(self):
         local, _ = build_stage_plan(
-            "conversation", 2, ["history.py"], transcriber="local"
+            "conversation", 2, transcriber="local"
         )
         self.assertNotIn("--speakers", local[1][1])
 
     def test_an_unknown_transcriber_is_refused_rather_than_defaulted(self):
         with self.assertRaises(ValueError):
-            build_stage_plan("solo", None, ["history.py"], transcriber="whisper")
+            build_stage_plan("solo", None, transcriber="whisper")
 
 
 class SoloContaminationEvidenceTests(unittest.TestCase):

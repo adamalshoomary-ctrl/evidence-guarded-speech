@@ -22,7 +22,6 @@ from pipeline.claim_ledger import (
     CLAIM_LEDGER_SCHEMA_VERSION,
     CLAIM_VERIFICATION_VERSION,
 )
-from pipeline.personal_progress import HISTORY_RECORD_VERSION
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -51,18 +50,13 @@ class DeletedScoreTests(unittest.TestCase):
         self.assertNotIn("communication coach", text)
         self.assertNotIn("One drill", text)
 
-    def test_history_records_no_language_model_output(self):
-        text = source("pipeline/history.py")
+    def test_the_duplicated_score_parser_is_gone(self):
+        """It lived twice, in the evaluator and in the history module.
 
-        self.assertNotIn("stat_scores", text)
-        self.assertNotIn("extract_scores", text)
-        self.assertEqual(HISTORY_RECORD_VERSION, "3.0.0")
-
-    def test_the_duplicated_score_parser_is_gone_from_both_modules(self):
-        """It lived twice, and its own comment admitted the duplication."""
-        for module in ("pipeline/evaluate.py", "pipeline/history.py"):
-            with self.subTest(module=module):
-                self.assertNotIn("Pull '- **Stats", source(module))
+        The history module was deleted with personal history on 2026-09-23.
+        """
+        self.assertNotIn("Pull '- **Stats", source("pipeline/evaluate.py"))
+        self.assertFalse((REPO_ROOT / "pipeline" / "history.py").exists())
 
 
 class ClaimVocabularyTests(unittest.TestCase):

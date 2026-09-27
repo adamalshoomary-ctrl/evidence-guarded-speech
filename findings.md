@@ -17,6 +17,11 @@ measurement fairness and reproducibility in speech technology.
 Software and evidence: <https://github.com/adamalshoomary-ctrl/evidence-guarded-speech>,
 GPL 3.0 or later, DOI [10.5281/zenodo.22106996](https://doi.org/10.5281/zenodo.22106996).
 
+On 2026-09-23 the repository's main branch was cut down to the measurement tool.
+The research code and evidence this account cites are still published, byte for
+byte, at tag `v0.4.0`, DOI
+[10.5281/zenodo.22167605](https://doi.org/10.5281/zenodo.22167605).
+
 ---
 
 ## 1. The short version
@@ -932,8 +937,9 @@ this document's word for them.
 The point of publishing is that someone can obtain this, run it, and reach a
 different conclusion on the evidence.
 
-- **The probe is reproducible without any audio.** A 4.75 MB pseudonymised
-  evidence bundle of 2,400 records from 1,200 speakers regenerates the full probe
+- **The probe is reproducible without any audio, from tag `v0.4.0`.** A 4.75
+  MB pseudonymised evidence bundle of 2,400 records from 1,200 speakers
+  regenerates the full probe
   report **byte for byte** in about two minutes, needing numpy and jsonschema.
   An earlier version of this line said numpy alone, which was wrong; corrected
   on 2026-08-28 by blocking each package in turn rather than by rereading. Its

@@ -325,19 +325,23 @@ of the private strings.
   LibriSpeech. They prove the pipeline runs. They validate nothing: they are read
   audiobook speech taking turns, with no overlap, no interruption and no
   disfluency.
-- **`speech_sound_patterns/accent_contrast.py` cannot run**, because its whole
-  design is holding one speaker constant across two accent targets. The frozen
-  result of the single run that was made is committed and readable.
-- **`.research_data/` was never tracked and is not here.** The part needed to
-  reproduce the one published analysis has been extracted and pseudonymised into
-  `speech_sound_patterns/variety-probe-evidence/`.
+- **The research code and its evidence live at tag `v0.4.0`.** On 2026-09-23
+  this repository was cut down to the measurement tool. The dialect probe, its
+  pseudonymised evidence bundle, the shelved motor speech work and their tests
+  are still published, byte for byte, at that tag, DOI
+  `10.5281/zenodo.22167605`. `.research_data/` was never tracked and is in
+  neither place.
 - **No finished pipeline run is committed.** Produce one from a fixture.
 
 ## What you can check for yourself
 
+The published probe analysis still reproduces, from the tagged release:
+
 ```text
+git checkout v0.4.0
 python3 -m speech_sound_patterns.variety_probe_score --output /tmp/report.json
 python3 -m speech_sound_patterns.validate_variety_probe /tmp/report.json
+git checkout main
 ```
 
 About two minutes, needing `numpy` and `jsonschema` and nothing else. Checked

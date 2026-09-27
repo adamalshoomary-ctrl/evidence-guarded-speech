@@ -6,10 +6,10 @@ abstract: >-
   An open research project on speech measurement that records where every input
   came from, carries uncertainty beside every number, and refuses to produce a
   result when the evidence, the reference or the validation is inadequate. It
-  includes a reproducible audit of how pronunciation measurement behaves across
-  declared English reference varieties, and an implementation of the provenance,
-  abstention and claim verification machinery that audit needs. It makes no
-  screening or clinical claim.
+  implements the provenance, abstention and claim verification machinery for
+  that. Versions up to 0.4.0 also include a reproducible audit of how
+  pronunciation measurement behaves across declared English reference
+  varieties. It makes no screening or clinical claim.
 authors:
   - family-names: Al Shoomary
     given-names: Adam
@@ -77,7 +77,12 @@ identifiers:
     description: >-
       The DOI for version v0.4.0 specifically, the release that ran the test
       suite on Linux, macOS and Windows and repaired what Windows broke.
-version: "0.4.1"
+  - type: doi
+    value: 10.5281/zenodo.22914709
+    description: >-
+      The DOI for version v0.4.1 specifically, the release that stopped the
+      release tools deleting published history.
+version: "0.5.0"
 date-released: "2026-09-23"
 keywords:
   - speech measurement

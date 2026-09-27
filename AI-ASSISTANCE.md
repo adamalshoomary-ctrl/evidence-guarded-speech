@@ -20,11 +20,11 @@ for provenance and stay quiet about your own.
 
 Judge the evidence, not the process.
 
-Every number this repository publishes can be recomputed from data it ships.
+Every number this project publishes can be recomputed from data it publishes.
 The variety probe report rebuilds byte for byte in about two minutes from a
-4.75 MB evidence bundle. The claim verifier checks a model's prose against the
-stored measurements it cites. The release verifier refuses a snapshot carrying
-private material. 1,036 tests run on one command. None of that asks you to
+4.75 MB evidence bundle, kept at tag `v0.4.0`. The claim verifier checks a
+model's prose against the stored measurements it cites. The release verifier
+refuses a snapshot carrying private material. 227 tests run on one command. None of that asks you to
 trust how the code was written.
 
 `findings.md` is the sharper test. It records three occasions where this

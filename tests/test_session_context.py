@@ -1,7 +1,6 @@
 import copy
 import unittest
 
-from pipeline.history_identity import durable_history_scope, records_for_scope
 from pipeline.pipeline_config import ACTIVE_SOURCE_FILES
 from pipeline.session_context import (
     CONSENT_PURPOSES,
@@ -170,9 +169,8 @@ class DataModelContractTests(unittest.TestCase):
         self.assertTrue(any("retention periods" in error for error in errors))
         self.assertTrue(any("exact age" in error for error in errors))
 
-    def test_runtime_identity_rules_are_in_pipeline_source_fingerprint(self):
+    def test_context_rules_are_in_pipeline_source_fingerprint(self):
         self.assertIn("data_model/contract-v1.1.0.json", ACTIVE_SOURCE_FILES)
-        self.assertIn("pipeline/history_identity.py", ACTIVE_SOURCE_FILES)
         self.assertIn("pipeline/session_context.py", ACTIVE_SOURCE_FILES)
 
 
@@ -291,15 +289,6 @@ class SessionContextTests(unittest.TestCase):
 
         self.assertTrue(any("retention intent" in error for error in errors))
 
-    def test_durable_history_requires_explicit_progress_intent(self):
-        context = session_fixture()
-        del context["attempt"]["progress_intent"]
-
-        errors = validate_context_for_run(context, "solo", "SPEAKER_00")
-
-        self.assertTrue(any("explicit attempt.progress_intent" in error
-                            for error in errors))
-
     def test_context_must_match_pipeline_recording_mode(self):
         errors = validate_context_for_run(session_fixture(), "conversation")
 
@@ -352,34 +341,6 @@ class SessionContextTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertEqual(first["session_id"], "sess_00000001")
         self.assertNotIn("run_id", first)
-
-
-class HistoryIdentityTests(unittest.TestCase):
-    def test_history_uses_account_and_context_not_speaker_label(self):
-        current = {
-            "account_id": "acct_00000001",
-            "context_id": "ctx_00000001",
-            "speaker_label": "SPEAKER_00",
-        }
-        records = [
-            current,
-            {
-                "account_id": "acct_00000001",
-                "context_id": "ctx_00000002",
-                "speaker_label": "SPEAKER_00",
-            },
-            {
-                "account_id": "acct_00000002",
-                "context_id": "ctx_00000001",
-                "speaker_label": "SPEAKER_00",
-            },
-            {"speaker_label": "SPEAKER_00"},
-        ]
-
-        self.assertEqual(durable_history_scope(current), (
-            "acct_00000001", "ctx_00000001"
-        ))
-        self.assertEqual(records_for_scope(records, current), [current])
 
 
 if __name__ == "__main__":

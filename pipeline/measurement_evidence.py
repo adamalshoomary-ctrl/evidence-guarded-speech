@@ -265,16 +265,6 @@ def is_low_asr_confidence(word):
             and value < ASR_CONFIDENCE_THRESHOLD)
 
 
-def is_measurement_usable_for_progress(evidence):
-    """Use only quality evidence independently released for progress."""
-    evidence = evidence or {}
-    return (evidence.get("availability", {}).get("status") == "available"
-            and evidence.get("quality", {}).get("category")
-            in {"high", "moderate"}
-            and evidence.get("validation", {}).get("reliability", {})
-            .get("progress_use") == "approved")
-
-
 def _value_at(metrics, path):
     value = metrics
     for part in path.split("."):

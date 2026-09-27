@@ -1,1 +1,0 @@
-"""Versioned onboarding assessment protocol."""

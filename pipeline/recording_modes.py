@@ -21,7 +21,7 @@ def resolve_recording_mode(requested_mode, speakers):
     return requested_mode
 
 
-def build_stage_plan(execution_mode, speakers, history_command,
+def build_stage_plan(execution_mode, speakers,
                      transcriber=DEFAULT_TRANSCRIBER, interpret=False):
     """Return runner stage specifications for one validated execution mode.
 
@@ -104,7 +104,6 @@ def build_stage_plan(execution_mode, speakers, history_command,
             ("Verify claims -> verification.md", ["verify.py"],
              ["verification.md", "verification.json"], []),
         ])
-    later.append(("History + progress tracking", history_command, [], []))
     return stage_1, later
 
 

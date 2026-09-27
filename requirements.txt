@@ -1,7 +1,6 @@
 assemblyai==0.64.31
 google-genai==2.12.1
 httpx==0.28.1
-jsonschema==4.26.0
 librosa==0.11.0
 numpy==2.3.5
 praat-parselmouth==0.4.7

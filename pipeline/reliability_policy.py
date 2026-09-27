@@ -180,7 +180,6 @@ def measurement_validation(metric):
             "exact_same_input_requirement": "exact for deterministic stages",
             "human_repeatability_status": "not_established",
             "progress_use": "blocked",
-            "personal_progress_contract_version": "1.0.0",
             "minimum_baseline_observations": None,
             "natural_variation_status": "not_established",
             "meaningful_change_status": "not_established",

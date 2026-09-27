@@ -1,6 +1,6 @@
 # Where this project stands
 
-Last updated 2026-09-23, for release `v0.4.1`.
+Last updated 2026-09-23, for release `v0.5.0`.
 
 This page is written for someone who has just arrived. It says what state the
 work is in, what was deliberately not done and why, and what would have to
@@ -26,12 +26,16 @@ analysis from published data, read an honest account of what was measured, and
 disagree with it on the evidence. That was the whole target and it was met on
 2026-08-27.
 
-What exists: a Python speech measurement engine that turns one recording into a
-measurement record carrying provenance, uncertainty and explicit abstention;
-versioned research contracts and validators; licence audited corpus manifests;
-a pre registered dialect comparison with its full evidence and a pseudonymised
-bundle that reproduces its report; and the record of a system selection that
-selected nothing.
+What exists on the main branch: a Python speech measurement engine that turns
+one recording into a measurement record carrying provenance, uncertainty and
+explicit abstention, with the contracts and validators for what it measures.
+
+What exists at tag `v0.4.0`, DOI `10.5281/zenodo.22167605`: everything above,
+plus the research that `findings.md` reports. That means licence audited corpus
+manifests, a pre registered dialect comparison with its full evidence, a
+pseudonymised bundle that reproduces its report, and the record of a system
+selection that selected nothing. On 2026-09-23 all of that left the main
+branch, and the tag keeps it byte for byte.
 
 What does not exist, stated because the absences are the point:
 
@@ -53,7 +57,14 @@ Three were found on 2026-08-26 while writing the account, by checking the code
 rather than rereading the prose. Two more were found on 2026-08-27 the same way,
 three more on 2026-08-28 by walking this repository as a stranger would, and
 four more on 2026-08-29 by running the tests on Linux and Windows for the first
-time. **Eleven of them are now fixed and one is not.**
+time. One more turned up on 2026-09-23. **Twelve of them are now fixed and one
+is not.**
+
+Fixed in `v0.5.0`, on 2026-09-23: **a documented validation command failed.**
+The README told readers to validate a session context example written for
+version 1.0.0 of the data model, and version 1.1.0 rejects it by design. The
+command now names the 1.1.0 example, which passes. Found by running every quick
+command in the README after the research left the main branch.
 
 Fixed in `v0.4.1`, on 2026-09-23: **the two release tools now tell a first
 publication from an update.** The snapshot builder deleted its destination under
@@ -163,15 +174,18 @@ Still open:
 
 ## What comes next
 
-On 2026-09-23 the author made this his only project for the rest of 2026, and
-set the order of work. The next releases cut this repository down to the
-measurement tool, about 11,000 of its 84,000 lines. The research code, the
-shelved motor speech work and their tests leave the main branch. They stay
-citable, byte for byte, at tag `v0.4.0` and its DOI, and `findings.md` will
-point there. After that come a review of the metric names inherited from the
-project's coaching origins, a `pip` package that runs with no account at all,
-a shorter README, a notebook you can run in a browser, and a measurement of what
-the claim verifier catches.
+On 2026-09-23 the author made this his only project for the rest of 2026. The
+first step shipped in `v0.5.0`: this repository went from about 84,000 lines of
+Python to about 17,000, and from 1,047 tests to 227. The research code, the
+shelved motor speech work, the onboarding assessment, the personal history
+feature and their tests left the main branch. On the same saved inputs the tool
+produces the same measurements as before; the one change to the measurement
+record is a removed field naming the deleted progress contract.
+
+Next come a review of the metric names inherited from the project's coaching
+origins, a `pip` package that runs with no account at all, a shorter README, a
+notebook you can run in a browser, and a measurement of what the claim verifier
+catches.
 
 ## What was deferred, and what would make it worth restarting
 

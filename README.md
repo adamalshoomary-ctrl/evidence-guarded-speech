@@ -29,14 +29,13 @@ that ships with the repository and writes `output/master.json` in about 90
 seconds. Read `output/master_preview.txt` first.
 
 **The full test suite runs on Linux, macOS and Windows on every push**, on
-Python 3.12, and the badge above reports the result. All 1,036 tests pass on all
-three. The 83 that report as skipped need research corpora this repository does
-not redistribute, and they skip for the same reason on every platform.
+Python 3.12, and the badge above reports the result. All 227 tests run on all
+three and none fail. Six of them check the release contract, which stays in the
+private working repository, so here they skip and say why.
 
-`constraints.txt` pins the dependency versions, and every lockfile under
-`speech_sound_patterns/environments/` targets macOS arm64, which is where the
-pinned closure was originally built. Linux and Windows install the same pins and
-pass. Open an issue if yours does not.
+`constraints.txt` pins the dependency versions. The pinned closure was first
+built on macOS arm64, and Linux and Windows install the same pins and pass. Open
+an issue if yours does not.
 
 ## Where to read next
 
@@ -63,12 +62,11 @@ recorded and was never asked about publication. What ships instead:
 | Data | Source | Licence |
 |---|---|---|
 | `regression/fixtures/` | LibriSpeech | CC BY 4.0 |
-| Reference pronunciations | Montreal Forced Aligner English dictionaries 3.1.0 | CC BY 4.0 |
-| `speech_sound_patterns/variety-probe-evidence/` | Derived from Common Voice 26.0, pseudonymised, no audio | CC0 1.0 upstream |
 
-The probe evidence bundle is 4.75 MB and regenerates the published report byte
-for byte in about two minutes. No Common Voice audio is redistributed here and
-none may be. `CITATION.cff` holds the full source records with their DOIs.
+The research behind `findings.md`, including the pseudonymised probe evidence
+bundle that regenerates the published report, is at tag `v0.4.0`. See
+[Research at v0.4.0](#research-at-v040). `CITATION.cff` holds the full source
+records with their DOIs.
 
 ## What you need before anything runs
 
@@ -94,8 +92,8 @@ Run the test suite to confirm the installation:
 python3 -m unittest discover -s tests -t .
 ```
 
-That is the whole suite, 1,021 tests. Some skip when optional evidence or
-credentials are absent, and the skips are reported rather than hidden.
+That is the whole suite, 227 tests. Six skip here with their reason printed,
+because the release contract they check is not published.
 
 ## Credentials
 
@@ -354,13 +352,12 @@ python3 -m reliability.run \
 deterministic stage fails the audit. Remote transcript differences are reported
 as pairwise disagreement, not as error, because neither transcript is truth.
 
-Every measurement is currently labelled experimental for personal progress.
-The pipeline has no suitable repeated same person study from which to estimate
-measurement error, natural variation or meaningful change, so `progress.md`
-does not trend delivery metrics. The old generic five percent trend rule has
-been removed, and the five language model scores it once also trended were
-deleted on 2026-08-24. This does not prevent describing a single recording. It
-prevents an unproven difference from being called personal improvement.
+Every measurement is labelled experimental, and each one records that it may
+not be used to track change over time. The pipeline has no repeated same person
+study from which to estimate measurement error, natural variation or meaningful
+change. Personal history and progress tracking were removed on 2026-09-23, and
+the five language model scores the old trend rule once followed were deleted on
+2026-08-24. A single recording can still be described.
 
 Fairness results remain `not_evaluated` until independently labelled data from
 enough independent participants covers the intended languages, accents, ages,
@@ -419,7 +416,7 @@ automation is unavailable because silence alone cannot establish a block.
 
 These are engineering candidates, not confirmed stuttering events. Candidate
 absence does not establish fluent speech. The artifact is excluded from the
-listener, the interpretation, the claim ledger, history and progress, and it
+listener, the interpretation and the claim ledger, and it
 does not create a released rate, severity score, screening result or diagnosis.
 Structured review packets can confirm, reject, relabel or add observable
 events while retaining reviewer role and disagreement; one review never
@@ -434,388 +431,30 @@ python3 -m fluency_events.review fluency_events.json REVIEW_PACKET.json \
   --output fluency_events_reviewed.json
 ```
 
-Validate the versioned onboarding assessment blueprint with:
+## Research at v0.4.0
+
+On 2026-09-23 this repository was cut down to the measurement tool. Three bodies
+of research left the main branch, and all of them are still published, byte for
+byte, at tag `v0.4.0`, DOI
+[10.5281/zenodo.22167605](https://doi.org/10.5281/zenodo.22167605):
+
+- the speech sound pattern work, including the reference variety probe that
+  `findings.md` reports and its pseudonymised evidence bundle;
+- the motor speech and voice evidence programme, shelved before it left;
+- the onboarding and pronunciation assessment protocols.
+
+The published probe report still reproduces from the tag, with no audio, in
+about two minutes:
 
 ```text
-python3 -m assessment.validate
+git checkout v0.4.0
+python3 -m speech_sound_patterns.variety_probe_score --output /tmp/report.json
+python3 -m speech_sound_patterns.validate_variety_probe /tmp/report.json
+git checkout main
 ```
 
-Validate the separate controlled pronunciation and intelligibility research
-contract with:
-
-```text
-python3 -m assessment.validate_pronunciation
-```
-
-## Speech sound patterns
-
-This is release locked developer engineering. It has no pipeline stage, no
-artifact in `master.json`, no detector, no score and no released output, and
-nothing it produced may reach the interpretation, progress, screening or
-diagnosis. Its
-contract defines how future work must keep source audio, intended words, blind
-listener records, blind human production transcriptions, reviewed legitimate
-accent and dialect variants, ASR outputs and adjudication separate. ASR
-disagreement cannot create a speech sound concern, one opportunity cannot create
-a phonological pattern, and unresolved language or variety forms remain
-unscorable.
-
-**Two frozen comparisons and a closed selection record all recorded
-`no_selection`.** No candidate system or threshold was selected, nothing is
-frozen forward, and no paid provider added value beyond the free local stack.
-Checkpoint 22E6 then corrected the evidence record after an open search disproved
-claims this repository stated as fact, most importantly the Bookbot lane's
-Australian training source: WikiPron defines English with two dialects only, UK
-and US, so the dataset that model's name advertises does not exist.
-
-**Checkpoint 22E7 acquired the openly licensed reference stack and the comparison
-accent groups, and measured nothing.** Four pronunciation lexicons and four
-Common Voice accent subsets are held, each with a licence snapshot, a size and
-digest matching its publisher, a declared role and its prohibited uses. The
-checkpoint acquired three of those four subsets. The Australian one was already
-held, hashed and split on 2026-07-21, so it was rechecked rather than fetched
-again. The four subsets form three accent groups, because the American group is
-built from a male and a female subset and neither may stand alone. Two findings
-from it bind later work. The British reference is the Montreal Forced
-Aligner English (UK) dictionary rather than the WikiPron scrape the plan assumed,
-because the scrape is 6.85 percent post-vocalic rhotic against the dictionary's
-0.01 percent. And most published figures the checkpoint checked were wrong,
-including two this repository had recorded itself, so every count in those
-manifests is generated from the acquired bytes and a test rebuilds them byte for
-byte.
-
-`speech_sound_patterns/engineering-plan.md` is the authority. It holds every
-checkpoint's brief, numbers, acceptance evidence and limitations, and the
-acquisition and account register. The reasoning behind the constructs and the
-variety safeguards is in `speech_sound_patterns/research-and-protocol.md`.
-
-Committed artifacts, all under `speech_sound_patterns/`, each beside the
-contract that was frozen before it ran:
-
-| Artifact | What it holds |
-|---|---|
-| `local-feasibility-v1.0.0.json` | Pinned MFA, PhoneticXEUS and PanPhon environments fit this machine and repeat. |
-| `local-research-feasibility-v1.0.0.json` | Segmentation-free GOP, POWSM and CommonPhone repeat exactly on label-blind clips. |
-| `local-benchmark-v1.0.0.json` | The frozen local stack measured on development and tuning participants only. |
-| `local-benchmark-repair-v1.0.0.json` | The label-blind repair. Its closest point passed nine of ten checks and still selected nothing. |
-| `external-schema-smoke-v1.0.0.json` | Field presence, repeatability and outcomes from the only real external requests. |
-| `frozen-comparison-v1.0.0.json` | Every eligible lane against the unchanged gates on 480 frozen clips. `no_selection`. |
-| `frozen-comparison-v1.1.0.json` | The same, replicated on every non held out adult. `no_selection` again. |
-| `selection-record-v1.1.0.json` | A verdict, reason, incremental value, six limitation classes and reopening conditions for all fourteen lanes. |
-| `provider_register/provider-register-v1.2.0.json` | The fail-closed authority on what each lane may be, and the standing owner decisions. |
-| `variety-probe-v1.0.0.json` | The reference variety probe. Its central prediction failed and is recorded as failed. |
-| `research-prompt-pack-v1.0.0.json` | Twenty chosen words and the consonant opportunities in them. Not reviewed, not active, not a validated pack. |
-| `candidate-evidence-v1.0.0.json` | The task-matched adequacy audit and its no-rule decision. It contains safe aggregates only. |
-| `final-evidence-v1.0.0.json` | Final no-selection acceptance, 40 explicitly unavailable held-out measures and the normal-pipeline regression result. |
-| `repository-closure-v1.0.0.json` | The immutable post-report repository snapshot. Its valid presence is the mechanical item 22 completion record. |
-| `corpus_manifests/` | Licence, provenance, split and role for all 22 sources, and the corpus to provider transfer review. |
-
-Raw audio, labels, logits, alignments, provider responses, threshold grids and
-per participant rows stay private under `.research_data`. Earlier versions of any
-contract, report, register or record stay on disk byte-for-byte unedited and
-remain loadable as historical records. The active version-specific validator
-validates the active contract. The 26 sealed held-out adults and 24 sealed
-held-out children have never been read for checkpoint 22H.
-
-Checkpoint 22G is committed. It added `candidate-artifact-contract-v1.0.0.json`,
-the safe aggregate `candidate-evidence-v1.0.0.json`,
-`research-contract-v1.6.0.json`, and the private offline evidence assembler.
-Checkpoint 22H adds the frozen final acceptance contract, the safe aggregate
-final evidence, research contract version 1.7 and the post-report repository
-closure. `research-contract-v1.7.0.json` is the active contract, loaded by
-`speech_sound_patterns/contract.py`. No private candidate or acceptance artifact
-is committed.
-
-**Audio leaves this machine in exactly one place.** Checkpoint 22E3 sent public
-research corpus audio to Azure, and nothing else has ever been sent. Adam's own
-recordings never leave, and that exclusion is written into the review rather than
-assumed. Two documents gate every request: the corpus to provider transfer review
-at `speech_sound_patterns/corpus_manifests/provider-transfer-review-v1.2.0.json`,
-which decides one named corpus and one named provider at a time, and the
-predeclared `speech_sound_patterns/external-smoke-contract-v1.0.0.json`. A pair
-that is not reviewed is prohibited.
-
-Validate everything without sending anything or running a model:
-
-```text
-python3 -m speech_sound_patterns.validate
-python3 -m speech_sound_patterns.validate_corpora
-python3 -m speech_sound_patterns.validate_benchmark
-python3 -m speech_sound_patterns.validate_comparison
-python3 -m speech_sound_patterns.validate_selection
-python3 -m speech_sound_patterns.validate_variety_probe
-python3 -m speech_sound_patterns.validate_prompt_pack
-python3 -m speech_sound_patterns.validate_candidates
-python3 -m speech_sound_patterns.validate_final_acceptance
-```
-
-Inspect the external gates and the planned requests, still without sending:
-
-```text
-python3 -m speech_sound_patterns.azure_smoke --dry-run
-```
-
-Running it without `--dry-run` sends audio and needs a fresh owner decision.
-`--summarize-from PATH` rebuilds the smoke report from retained responses
-instead of sending anything again. `comparison_azure` refuses to run at all,
-`--dry-run` included, while completed Azure comparison evidence exists, so the
-committed comparison cannot be overwritten by an accidental rerun.
-
-**Checkpoint 22E8 measured the reference variety probe, and its headline
-prediction failed.** Across 2,400 clips from 1,200 speakers in four accent
-groups, the American reference did not flag Australian speakers more often than
-American speakers at group level, and that is recorded as a wrong prediction
-rather than reinterpreted. It did flag British speakers more, and the repaired
-reference halved that. On the two consonants where the varieties genuinely
-differ, the rhotic and `t`, Australian speakers were flagged about three points
-more often under the American reference and the gap collapses under the repaired
-one, so the hypothesis was sound and the group mean was too diluted to see it.
-The repaired reference lowers flag rates in every group, including the American
-control, because a non-rhotic reference stops expecting a coda r for everybody.
-That removes false concerns by declining to score them; it is not evidence that
-the system is now fairer to Australian speakers, and no such claim is made.
-
-**Checkpoint 22F built the conservative research prompt pack.** Twenty chosen
-English words carry 62 consonant opportunities, 61 scorable and 1 refused,
-probing 21 consonants of which 20 reach two or more word positions. Every word
-carries a British broad transcription in the Montreal Forced Aligner English (UK)
-dictionary and an Australian tagged Wiktionary pronunciation, no target is
-machine generated, and where the two varieties genuinely differ the opportunity
-is unscorable rather than corrected. The post-vocalic rhotic rule refuses nothing
-anywhere in the eligible pool, because under a non-rhotic British reference that
-opportunity does not exist to be refused, which is the checkpoint 22E8 mechanism
-seen from the other side. **This is not a reviewed onboarding word pack**,
-which is still empty and still awaiting professional review; the pack validator
-reads that file and fails if it ever stops being true. Build and check it with:
-
-```text
-python3 -m speech_sound_patterns.build_prompt_pack --check
-```
-
-The derived lexicon stays server side. The committed pack carries the words and
-their consonant opportunities; the verbatim forms, the vowels and the whole
-eligible pool are written to gitignored storage, because Wiktionary derived
-material is share alike and share alike attaches on distribution.
-`speech_sound_patterns/prompt-pack-runbook.md` explains the rest.
-
-**Checkpoint 22G assembles evidence and selects nothing.** The permitted
-development and tuning evidence is not the controlled isolated-word task, no
-adult participant supplies two different prompt-pack words, and the exact
-produced feature-relation truth needed for a rule does not exist. The adequacy
-gate therefore stopped before threshold or repeated-rule search. The assembler
-preserves raw proposals, conflicts, unavailable evidence, unsupported contexts
-and reference variants, but the current contract cannot emit a possible relation
-or repeated relation.
-
-The command is deliberately offline, explicit and private:
-
-```text
-SPEECH_SOUND_OFFLINE=1 python3 -m speech_sound_patterns.extract_candidates \
-  --manifest .research_data/speech_sound_patterns/candidates/manifests/MANIFEST.json \
-  --output-dir .research_data/speech_sound_patterns/candidates/NEW_OUTPUT \
-  --acknowledge-developer-only
-```
-
-It never overwrites an output, never enters the normal pipeline, and accepts only
-exact synthetic structural fixtures or Adam recordings used for local functional
-integration. A real recording and its evidence must be checksum bound inside the
-private research root. `speech_sound_patterns/candidate-extractor-runbook.md`
-documents the manifest and validation procedure.
-
-**Checkpoint 22H closes engineering without inventing held-out performance.**
-No system, mapping, feature rule, provider configuration, threshold or repeated
-minimum qualified in the earlier work, so there was no eligible method to test.
-Adam approved keeping the held-out evidence sealed on 2026-08-12. The final
-report therefore records every one of its 40 predeclared held-out measures as
-`unavailable`, with no numerator, denominator, value, interval or gate result.
-That is not zero, a pass or a failure.
-
-The real two-speaker conversation pipeline also ran in a new isolated directory
-under `caffeinate`, without `--me`. All 14 stages completed, the independent
-regression checks passed, the listener and referee completed, and the evaluator
-used its existing safe unavailable state after two semantically invalid drafts.
-No speech-sound module, artifact, key or content leaked into the ordinary
-pipeline, and personal history, progress and the existing root output were
-unchanged. No task-matched controlled written-word owner recording exists, so
-owner integration is explicitly unavailable rather than replaced with ordinary
-solo, conversation or accent-sentence audio.
-
-Validate the complete public result with the acceptance interpreter:
-
-```text
-python3 \
-  -m speech_sound_patterns.validate_final_acceptance
-```
-
-The validator requires `repository-closure-v1.0.0.json`. The closure binds the
-final contract, aggregate report, active research contract, tests and the full
-post-report public repository while excluding only itself. If that file is
-absent or validation fails, item 22 is not complete. The private rebuild and
-one-time finalizer commands are documented in
-`speech_sound_patterns/final-acceptance-runbook.md`. This is engineering closure
-only: detector accuracy, Australian English correctness, population validity,
-fairness, clinical validity and every scientific release remain unestablished
-and locked.
-
-The closure is a historical snapshot, not a command to prevent every later
-roadmap commit. Once the repository advances, validation finds the ancestor
-commit containing the exact unchanged closure and reconstructs that Git tree.
-The historical digest and file count must still match; the closure JSON is never
-overwritten. This preserves item 22 while allowing later approved work.
-
-Reacquire and reprove the open reference stack, which downloads but measures
-nothing. `speech_sound_patterns/open-stack-runbook.md` explains every step and
-the evidence behind the checkpoint's one real choice:
-
-```text
-python3 -m speech_sound_patterns.acquire_open_stack --all
-python3 -m speech_sound_patterns.build_open_stack_manifests
-python3 -m speech_sound_patterns.validate_corpora --verify-private --rehash-archives
-```
-
-```text
-python3 -m unittest tests.test_speech_sound_feasibility
-python3 -m unittest tests.test_speech_sound_benchmark
-python3 -m unittest tests.test_speech_sound_benchmark_repair
-python3 -m unittest tests.test_speech_sound_corpus_manifests
-python3 -m unittest tests.test_speech_sound_provider_register
-python3 -m unittest tests.test_speech_sound_external_smoke
-python3 -m unittest tests.test_speech_sound_comparison
-python3 -m unittest tests.test_speech_sound_powered_sample
-python3 -m unittest tests.test_speech_sound_selection_record
-python3 -m unittest tests.test_speech_sound_variety_probe
-python3 -m unittest tests.test_speech_sound_prompt_pack
-python3 -m unittest tests.test_speech_sound_candidates
-python3 -m unittest tests.test_speech_sound_final_acceptance
-```
-
-Those tests do more than check shapes. The powered truth extractor must
-reproduce all 5,478 committed checkpoint 22D relation rows before it may write
-anything; one test rebuilds the entire committed checkpoint 22E4 report through
-the current version aware code and requires an exact match; another rebuilds each
-selection record version byte for byte from its own evidence. A metric,
-alignment, abstention, denominator or verdict therefore cannot drift unnoticed.
-
-Private reproduction procedures, none of which are needed to read the committed
-evidence, are in `speech_sound_patterns/feasibility-runbook.md`,
-`benchmark-runbook.md`, `external-smoke-runbook.md`, `comparison-runbook.md`,
-`selection-record-runbook.md`, `open-stack-runbook.md`, `variety-probe-runbook.md`
-`prompt-pack-runbook.md`, `candidate-extractor-runbook.md` and
-`final-acceptance-runbook.md`.
-
-## Motor speech and voice evidence
-
-Checkpoint 23A's evidence review, engineering plan and repository acceptance are
-complete in the working tree. It adds no
-runtime package, recording task, detector, score, threshold, provider call or
-ordinary pipeline output. Validate the existing pipeline with its existing
-commands; there is no item 23 command to run.
-
-For this repository's currently undefined intended use, the review does not
-justify a general motor speech detector or automatic voice health screen from an
-ordinary recording. It leaves a tightly controlled rapid-syllable research
-question for independent professionals and people with lived experience to
-accept or reject. No task or protocol is selected and the onboarding task remains
-locked. Controlled connected-speech timing, unfamiliar-listener intelligibility,
-participant report and the existing item 20 voice primitives answer separate
-questions and cannot be combined into one score or used to infer cause,
-disorder, severity or diagnosis.
-
-Redenlab was investigated from public sources as a possible Australian adviser
-or vendor. It was not contacted or selected and is not an independent clinical,
-ethics, regulatory or truth authority.
-
-Adam approved checkpoint 23B planning with adults first on 2026-08-14. The
-public governance package and machine-checkable contract keep motor speech,
-voice, participant report, controlled intelligibility and clinical reference as
-independent unselected lanes. The legal sponsor and every external authority
-remain unresolved. Nobody has been contacted and all participant work, data
-use, spending, implementation and external transfer remain unapproved.
-
-Validate that state with:
-
-```text
-python3 -m motor_speech_voice.validate_governance
-```
-
-On 2026-08-19 Adam confirmed there is no legal entity behind the project and no
-institutional or clinical connection, and approved a research only route that
-contacts nobody. The candidate reference source survey records what public
-sources could supply the independent human reference evidence item 23 needs,
-what they may lawfully be used for, and whether they can be obtained at all.
-It covers 27 sources across rapid syllable task timing and accuracy, perceptual
-voice judgement and unfamiliar listener intelligibility. It selects no source,
-acquires nothing and authorises no acquisition, and its schema cannot express
-that a source meets an item 23 truth requirement, because that judgement belongs
-to the independent governance roles.
-
-Validate it with:
-
-```text
-python3 -m motor_speech_voice.validate_source_survey
-```
-
-Rebuild it from the recorded findings with:
-
-```text
-python3 -m motor_speech_voice.build_source_survey
-```
-
-The same research only route then produced the two remaining deliverables public
-research could reach, and a ledger recording that everything else needs a person.
-
-The measurement and sampling input package records, once for each of the twelve
-provisional constructs, what a future study would estimate, what variation a
-design would have to separate, which inputs only an independent statistician can
-supply and why, and what blocks the question today. It is not a statistical plan
-and structurally cannot become one: a record may contain no JSON number at all,
-and the computed sample size is typed null in its schema.
-
-```text
-python3 -m motor_speech_voice.validate_measurement_plan
-python3 -m motor_speech_voice.build_measurement_plan
-```
-
-The documented Australian regulatory and privacy reading reads sixteen questions
-against public primary sources along a three rung intended purpose ladder:
-firewalled developer research, hypothetical consumer coaching, and a hypothetical
-consumer feature suggesting professional assessment. Only the first rung is
-occupied. Every record quotes the operative wording, records when it was read,
-names what it could not settle and names the accountable human role that must
-settle it. It is a reading by a non lawyer and is never advice, a determination
-or an approval.
-
-```text
-python3 -m motor_speech_voice.validate_regulatory_reading
-python3 -m motor_speech_voice.build_regulatory_reading
-```
-
-The deliverable ledger records all thirteen of checkpoint 23B's requirements as
-two complete, three advanced but unfinished and eight blocked on a named human
-role, so a large body of honest public research cannot be mistaken for progress
-toward acceptance.
-
-```text
-python3 -m motor_speech_voice.validate_checkpoint_ledger
-python3 -m motor_speech_voice.build_checkpoint_ledger
-```
-
-The full evidence review, source list, Australian safety and governance
-boundaries, candidate and deferral register, truth architecture, source survey
-findings, measurement input package, regulatory and privacy reading, deliverable
-ledger and ordered 23B through 23F acceptance plan are in
-`motor_speech_voice/engineering-plan.md`.
-The active decision package and safe evidence-handling procedure are in
-`motor_speech_voice/governance-review-package.md` and
-`motor_speech_voice/governance-runbook.md`. Blank records for future human role,
-conflict, intended-use, institution, privacy, statistical, regulatory and lane
-decisions are in `motor_speech_voice/governance-record-templates.md`; none is an
-approval. `motor_speech_voice/final_decision.py` defines, but does not create,
-the fail-closed final 23B decision shape. It requires one accountable owner,
-separate controlling organisations, exact signed-artifact and evidence-node
-hashes, exact lane scopes and a closed dependency chain to an owner-issued
-overall decision. Private signatures and professional substance still require
-authorised human verification.
+That checkout needs `numpy` and `jsonschema`. The main branch no longer
+installs `jsonschema`, because nothing on it imports the package.
 
 ## Backend contracts
 
@@ -824,7 +463,7 @@ and deletion contract with:
 
 ```text
 python3 -m data_model.validate
-python3 -m data_model.validate data_model/session-context-example-v1.0.0.json
+python3 -m data_model.validate data_model/session-context-example-v1.1.0.json
 ```
 
 The data model is a versioned contract, not a database or a service API. A
@@ -833,52 +472,10 @@ stores the validated snapshot as `session_context.json` and places its stable
 account, session, context, attempt, recording references and canonical hash in
 provenance. Context-free developer runs continue to work.
 
-Validate the personal baseline and meaningful change protocol with:
-
-```text
-python3 -m progress_model.validate
-```
-
-The production reliability registry intentionally releases zero speech
-metrics. A future metric needs its own comparable conditions, repeated human
-production evidence, individual measurement error, natural variation, user
-relevant meaningful change boundary and independent evaluation. The backend
-keeps baseline status, speech change, user reports, real world outcomes,
-practice, mastery and run quality separate. Synthetic tests exercise the
-future calculation without supplying a production threshold.
-
-The manifest in `assessment/manifest-v1.1.0.json` defines a roughly ten minute
-English solo session containing context and consent, a recording check, a fixed
-reading or spoken alternative, natural speech, a goal-specific response, a
-short repeat and self reflection. It has no backend age gate and uses no age
-norms. It schedules and limits future work; it does not record audio or provide any
-interface.
-
-Every task declares its purpose, prompt version, expected text where relevant,
-duration, preparation, audio quality policy, candidate measurements,
-accommodations, retry rules, stop conditions and valid comparisons. Current
-measurements remain blocked from progress. Optional sustained voice and repeated
-phrase probes require separate research consent and cannot affect the
-released interpretation.
-Rapid syllable and pronunciation tasks remain locked. The evidence and design
-decisions for onboarding are documented in
-`assessment/research-and-protocol.md`. The pronunciation research method,
-human reference rules, provider comparison and release blocks are documented
-in `assessment/pronunciation-research-and-protocol.md`. It contains no active
-word pack, selected provider or user-facing pronunciation measurement.
-
 Solo mode always assigns the account holder to `SPEAKER_00`. It uses Silero
 speech activity instead of pyannote speaker diarization and skips the Gemini
 referee. If the transcription provider detects multiple speaker clusters, the
 report contains a contamination warning.
-
-`SPEAKER_00` is local to one recording and is never durable identity. A history
-write using `--me` now also requires `--session-context`; its stable account and
-communication context scope prevent unrelated people or goals from being
-silently compared. Existing personal history files are not migrated or
-rewritten automatically. The context must explicitly label the attempt as
-baseline collection, a change check, practice, retention or transfer. The
-backend never guesses this from recording order.
 
 Run a conversation recording with:
 

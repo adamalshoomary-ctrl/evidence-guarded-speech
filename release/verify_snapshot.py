@@ -191,34 +191,6 @@ def scan_fixtures(root):
     return findings
 
 
-def scan_evidence_bundle(root):
-    findings = []
-    bundle = root / "speech_sound_patterns" / "variety-probe-evidence"
-    manifest_path = bundle / "bundle-manifest.json"
-    if not manifest_path.is_file():
-        return ["the probe evidence bundle manifest is missing"]
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    paths = sorted(p for p in bundle.glob("*/*.json"))
-    if len(paths) != manifest["records"]:
-        findings.append(
-            f"the bundle holds {len(paths)} records against {manifest['records']} declared"
-        )
-    running = hashlib.sha256()
-    for path in paths:
-        running.update(path.relative_to(bundle).as_posix().encode("utf-8"))
-        running.update(path.read_bytes())
-    if running.hexdigest() != manifest["composite_sha256"]:
-        findings.append("the bundle does not match its declared composite hash")
-    # A Common Voice client_id is 128 hex characters. Nothing derived from one
-    # should survive into a published record.
-    identifier = re.compile(r"\b[0-9a-f]{64,}\b")
-    for path in paths[:] :
-        if identifier.search(path.read_text(encoding="utf-8")):
-            findings.append(f"{path.name} carries a contributor shaped identifier")
-            break
-    return findings
-
-
 PUBLIC_REMOTE = "https://github.com/adamalshoomary-ctrl/evidence-guarded-speech.git"
 
 
@@ -291,7 +263,6 @@ def verify(root):
         "private content": content,
         "structure": scan_structure(root),
         "fixtures": scan_fixtures(root),
-        "evidence bundle": scan_evidence_bundle(root),
         "git": scan_git(root),
     }
     return sections, allowed

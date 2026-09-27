@@ -2,7 +2,7 @@
 
 from copy import deepcopy
 
-PIPELINE_VERSION = "0.11.0"
+PIPELINE_VERSION = "0.12.0"
 PROVENANCE_SCHEMA_VERSION = "1.0.0"
 
 GEMINI_MODEL_ID = "gemini-3.5-flash"
@@ -85,8 +85,6 @@ DIRECT_DEPENDENCIES = (
 
 ACTIVE_SOURCE_FILES = (
     "data_model/contract-v1.1.0.json",
-    "progress_model/contract-v1.1.0.json",
-    "progress_model/reliability-registry-v1.1.0.json",
     "voice_prosody/contract-v1.1.0.json",
     "voice_prosody/contract.py",
     "fluency_events/contract-v1.1.0.json",
@@ -101,14 +99,11 @@ ACTIVE_SOURCE_FILES = (
     "pipeline/diarize.py",
     "pipeline/evaluate.py",
     "pipeline/fluency_events.py",
-    "pipeline/history.py",
-    "pipeline/history_identity.py",
     "pipeline/listener.py",
     "pipeline/llm_contract.py",
     "pipeline/measurement_evidence.py",
     "pipeline/merge.py",
     "pipeline/pauses.py",
-    "pipeline/personal_progress.py",
     "pipeline/pipeline_config.py",
     "pipeline/provenance.py",
     "pipeline/reliability_policy.py",

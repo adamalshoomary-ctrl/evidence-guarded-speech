@@ -45,13 +45,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          # The full history, because tests/research_data.py gates part of the
-          # suite on the working repository having more than one commit. A
-          # shallow clone has exactly one, so those tests would skip without
-          # saying why. The public repository skips them anyway, by design,
-          # because release/snapshot-provenance.json marks it as a snapshot.
-          fetch-depth: 0
 
       # The Linux runner ships with about 14 GB free, and the pinned closure
       # does not fit: the install died on "No space left on device" while

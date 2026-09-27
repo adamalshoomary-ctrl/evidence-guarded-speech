@@ -2,11 +2,11 @@
   "schema_version": "1.0.0",
   "record_id": "public_snapshot_provenance_v1",
   "contract": "release/snapshot-contract-v1.0.0.json",
-  "contract_sha256": "54e03fe60d0f4629761b330a68b2e742d0d2199ea3f9d9edf47a64c221ac3bfb",
-  "source_commit": "06dc55d843a6d21b75af4e2d8f9f6c1472699bc8",
+  "contract_sha256": "dee18688cb9268b408b9dbb39686391b947395e25dbe84175cd5b61ae9e82767",
+  "source_commit": "68a3d32a8b8deb0d36b68f69d24595ecaec66dd2",
   "source_working_tree_clean": true,
-  "files_published": 2811,
-  "files_withheld": 49,
+  "files_published": 108,
+  "files_withheld": 47,
   "withheld": [
     "AGENTS.md",
     "VOICE.md",
@@ -15,7 +15,6 @@
     "audio/accent/owner-accent-contrast-recording.m4a",
     "regression/fixtures/solo.wav",
     "current-state.md",
-    "history.json",
     "improvement-plan.md",
     "learning/P4-release-tools-first-publication-and-update.md",
     "learning/README.md",
@@ -50,7 +49,6 @@
     "output/vad.json",
     "output/verification.md",
     "output/words_attributed.json",
-    "progress.md",
     "project-context/LEARNING.md",
     "project-context/ORCHESTRATION.md",
     "regression/truth/real_conversation.json",
@@ -63,12 +61,6 @@
     {
       "id": "conversation_recording_path",
       "reason": "The same treatment the solo recording already gets. Every runnable command in the documentation should work in the published repository, and the conversation fixture is the recording that ships. This rule must stay ahead of the two name rules below it, which would otherwise rewrite the filename inside the path and leave the command naming a file that is not here.",
-      "occurrences": 2,
-      "restricted_to": null
-    },
-    {
-      "id": "conversation_recording_name",
-      "reason": "The filename names the suburb and shopping centre where a private conversation was recorded. The recording is excluded; its location should not travel in prose.",
       "occurrences": 1,
       "restricted_to": null
     },
@@ -81,71 +73,13 @@
     {
       "id": "solo_recording_path",
       "reason": "Every runnable command in the documentation should work in the published repository, and the fixture is the recording that ships.",
-      "occurrences": 4,
-      "restricted_to": null
-    },
-    {
-      "id": "accent_recording_path",
-      "reason": "The recording is excluded and the module refuses to run without it. The path stays visible so the frozen evidence remains readable, with the personal filename removed.",
-      "occurrences": 2,
-      "restricted_to": null
-    },
-    {
-      "id": "accent_recording_name",
-      "reason": "The module builds the path from separate components, so the joined path rule never matched the filename in the source. The verifier caught it.",
-      "occurrences": 1,
+      "occurrences": 3,
       "restricted_to": null
     },
     {
       "id": "home_directory",
       "reason": "A machine local path, appearing in two remediation notes that quote the string they instruct someone to strip.",
       "occurrences": 1,
-      "restricted_to": null
-    },
-    {
-      "id": "azure_resource",
-      "reason": "An account scoped cloud resource name. The finding it supports does not depend on the name.",
-      "occurrences": 2,
-      "restricted_to": null
-    },
-    {
-      "id": "azure_resource_group",
-      "reason": "The same, for the resource group it sits in.",
-      "occurrences": 1,
-      "restricted_to": null
-    },
-    {
-      "id": "run_identifier",
-      "reason": "A run identifier for a pipeline run over the owner's own recording.",
-      "occurrences": 1,
-      "restricted_to": null
-    },
-    {
-      "id": "local_temp_path",
-      "reason": "A machine local path from the same run.",
-      "occurrences": 1,
-      "restricted_to": null
-    },
-    {
-      "id": "acceptance_audio_constant",
-      "reason": "The acceptance run has to point at a recording that exists in this repository. Applied after the filename substitution, which is why the literal reads in its already substituted form.",
-      "occurrences": 1,
-      "restricted_to": [
-        "speech_sound_patterns/run_final_acceptance.py"
-      ]
-    },
-    {
-      "id": "acceptance_fixture_constant",
-      "reason": "The truth record it checks against is the fixture record, because the real recording record is excluded.",
-      "occurrences": 1,
-      "restricted_to": [
-        "speech_sound_patterns/run_final_acceptance.py"
-      ]
-    },
-    {
-      "id": "researcher_emails",
-      "reason": "Named third parties' email addresses, sitting beside draft enquiry text. They are publicly listed academics, so this is not a disclosure so much as a refusal to build them a spam target. No enquiry was ever sent.",
-      "occurrences": 5,
       "restricted_to": null
     },
     {
@@ -164,39 +98,20 @@
     }
   ],
   "substitution_rules_that_did_not_fire": [
+    "conversation_recording_name",
     "solo_recording_name",
+    "accent_recording_path",
+    "accent_recording_name",
+    "azure_resource",
+    "azure_resource_group",
+    "run_identifier",
+    "local_temp_path",
+    "researcher_emails",
     "run_archive_name"
   ],
   "why_the_replaced_strings_are_not_listed_here": "The rule table names, as literal strings, the private material it removes. Publishing it would republish all of it. The identifiers and reasons carry the transparency; the strings stay behind.",
-  "checksum_pinned_files_copied_unmodified": 68,
-  "substitutions_withheld_from_pinned_files": {
-    "speech_sound_patterns/corpus_manifests/provider-transfer-review-v1.2.0.json": [
-      {
-        "id": "accent_recording_path",
-        "occurrences": 1
-      }
-    ],
-    "speech_sound_patterns/provider_register/provider-register-v1.1.0.json": [
-      {
-        "id": "azure_resource",
-        "occurrences": 1
-      },
-      {
-        "id": "azure_resource_group",
-        "occurrences": 1
-      }
-    ],
-    "speech_sound_patterns/provider_register/provider-register-v1.2.0.json": [
-      {
-        "id": "azure_resource",
-        "occurrences": 1
-      },
-      {
-        "id": "azure_resource_group",
-        "occurrences": 1
-      }
-    ]
-  },
+  "checksum_pinned_files_copied_unmodified": 2,
+  "substitutions_withheld_from_pinned_files": {},
   "why_pinned_files_are_not_substituted": "These records carry each other's checksums. Editing one breaks every record that pins it, and a published repository whose own integrity checks fail would be worse than one carrying a cloud resource name or the filename of a recording that is not published. They are copied byte for byte and the withheld substitutions are listed above so the decision is visible rather than silent.",
   "note": "source_working_tree_clean records whether the private repository had uncommitted changes when this snapshot was built. A snapshot built from a dirty tree cannot be traced back to a commit, so it should not be published."
 }

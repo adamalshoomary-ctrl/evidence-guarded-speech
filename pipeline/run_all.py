@@ -62,9 +62,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--speakers", type=int, default=None)
 parser.add_argument("--mode", choices=RECORDING_MODES, default="auto",
                     help="declared recording mode, default: auto")
-parser.add_argument("--me", type=str, default=None,
-                    help="your speaker label (e.g. SPEAKER_00): appends this "
-                         "run to history.json and updates progress.md")
 parser.add_argument("--audio", type=Path, default=None,
                     help="explicit audio file instead of the first in /audio")
 parser.add_argument("--output-dir", type=Path, default=None,
@@ -101,8 +98,6 @@ try:
     execution_mode = resolve_recording_mode(args.mode, args.speakers)
 except ValueError as exc:
     parser.error(str(exc))
-if execution_mode == "solo" and args.me not in (None, "SPEAKER_00"):
-    parser.error("solo mode account holder is always SPEAKER_00")
 
 run_id = args.run_id or time.strftime("%Y%m%dT%H%M%S") + uuid.uuid4().hex[:8]
 if (run_id in {".", ".."}
@@ -134,7 +129,7 @@ if args.session_context is not None:
     except (json.JSONDecodeError, OSError) as exc:
         parser.error(f"session context is unreadable: {exc}")
     context_errors = validate_context_for_run(
-        session_context_data, execution_mode, args.me, args.quality_policy
+        session_context_data, execution_mode, args.quality_policy
     )
     if context_errors:
         parser.error("invalid session context:\n" + "\n".join(context_errors))
@@ -163,13 +158,9 @@ common_args = [
 if session_context_output_path is not None:
     common_args += ["--session-context", str(session_context_output_path)]
 
-history_cmd = ["history.py"]
-if args.me:
-    history_cmd += ["--me", args.me]
-
 # label, command, outputs that must be atomically replaced, optional outputs
 STAGE_1, LATER = build_stage_plan(
-    execution_mode, args.speakers, history_cmd, transcriber=args.transcriber,
+    execution_mode, args.speakers, transcriber=args.transcriber,
     interpret=args.interpret,
 )
 
@@ -197,7 +188,6 @@ initial_provenance = build_initial_provenance(
             None if execution_mode == "solo" else args.speakers
         ),
         "transcriber": args.transcriber,
-        "history_speaker_label": args.me,
         "isolated_output": args.isolated_run,
         "quality_policy": args.quality_policy,
         "interpretation_requested": args.interpret,

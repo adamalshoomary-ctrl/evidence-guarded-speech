@@ -9,7 +9,6 @@ from pipeline.measurement_evidence import (
     ASR_CONFIDENCE_THRESHOLD,
     METRIC_DEFINITIONS,
     build_measurement_metadata,
-    is_measurement_usable_for_progress,
 )
 
 
@@ -188,24 +187,6 @@ class MeasurementEvidenceTests(unittest.TestCase):
                 acoustics_fixture(), clean_quality(), "conversation",
             )
 
-    def test_progress_rejects_low_or_unavailable_measurements(self):
-        self.assertTrue(is_measurement_usable_for_progress({
-            "availability": {"status": "available"},
-            "quality": {"category": "moderate"},
-            "validation": {"reliability": {"progress_use": "approved"}},
-        }))
-        self.assertFalse(is_measurement_usable_for_progress({
-            "availability": {"status": "available"},
-            "quality": {"category": "moderate"},
-            "validation": {"reliability": {"progress_use": "blocked"}},
-        }))
-        self.assertFalse(is_measurement_usable_for_progress({
-            "availability": {"status": "available"},
-            "quality": {"category": "low"},
-            "validation": {"reliability": {"progress_use": "approved"}},
-        }))
-        self.assertFalse(is_measurement_usable_for_progress(None))
-
     def test_every_measurement_exposes_reliability_and_fairness_limits(self):
         metadata = build_measurement_metadata(
             {"SPEAKER_00": computed_metrics()}, words_for(60), turns_for(4),
@@ -220,11 +201,9 @@ class MeasurementEvidenceTests(unittest.TestCase):
                              "experimental")
             self.assertEqual(validation["reliability"]["progress_use"],
                              "blocked")
-            self.assertEqual(
-                validation["reliability"][
-                    "personal_progress_contract_version"
-                ],
-                "1.0.0",
+            self.assertNotIn(
+                "personal_progress_contract_version",
+                validation["reliability"],
             )
             self.assertIsNone(
                 validation["reliability"]["minimum_baseline_observations"]

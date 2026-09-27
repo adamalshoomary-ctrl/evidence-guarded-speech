@@ -156,20 +156,17 @@ The runner copies the validated snapshot to `session_context.json` and stores
 its stable references and canonical SHA-256 in provenance. The full context is
 not treated as pipeline configuration truth until validation succeeds.
 
-A durable history write additionally uses `--me SPEAKER_00`. It is rejected
-without a session context. The history record stores account, session, context,
-task, prompt, and attempt IDs. The personal progress protocol also requires the
-attempt to state whether it is collecting baseline, checking change, recording
-practice, checking retention, or checking transfer. Optional usefulness and
+Durable history writes, and the `--me` option that made them, were removed on
+2026-09-23 along with personal progress tracking. A session context now sets
+only the declared task and capture context of one run. Optional usefulness and
 real world outcome reports remain user declared and separate from speech
 measurements. The speaker label remains only the local measurement selector.
-Tests never append to the owner's history.
 
 Validate the model and an optional context with:
 
 ```text
 python3 -m data_model.validate
-python3 -m data_model.validate data_model/session-context-example-v1.0.0.json
+python3 -m data_model.validate data_model/session-context-example-v1.1.0.json
 ```
 
 The example contains fictional opaque identifiers and no real user data.
